@@ -11,7 +11,10 @@
   "dependencies": {
     "@aws-amplify/ui-react": "^3.5.10",
     "aws-amplify": "^4.3.42",
+    "aws-sdk": "^2.1246.0",
+    "graphql": "^15.8.0",
     "next": "^13.0.0",
+    "ra-data-graphql": "^4.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
