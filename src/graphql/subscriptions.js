@@ -7,12 +7,8 @@ export const onCreateNote = /* GraphQL */ `
       id
       name
       description
-      image
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -22,12 +18,8 @@ export const onUpdateNote = /* GraphQL */ `
       id
       name
       description
-      image
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -37,12 +29,8 @@ export const onDeleteNote = /* GraphQL */ `
       id
       name
       description
-      image
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
