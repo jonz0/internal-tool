@@ -1,7 +1,6 @@
-import "../../styles/globals.css";
+import "../styles/globals.css";
 import { Amplify } from "aws-amplify";
-import config from "../aws-exports";
-Amplify.configure(config);
+import "@aws-amplify/ui-react/styles.css";
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;

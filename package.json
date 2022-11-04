@@ -12,6 +12,7 @@
     "@aws-amplify/ui-react": "^3.5.10",
     "aws-amplify": "^4.3.42",
     "aws-sdk": "^2.1246.0",
+    "dotenv": "^16.0.3",
     "graphql": "^15.8.0",
     "next": "^13.0.0",
     "ra-data-graphql": "^4.4.3",
