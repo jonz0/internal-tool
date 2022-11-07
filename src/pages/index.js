@@ -1,6 +1,23 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
+import { API } from "aws-amplify";
+import * as mutations from "./graphql/mutations";
+
+async function addItem() {
+  const userDetails = {
+    id: "12341234",
+    name: "Sam",
+    description: "Learn AWS AppSync",
+  };
+
+  const newTodo = await API.graphql({
+    query: mutations.createUser,
+    variables: { input: userDetails },
+  });
+
+  console.log("success!");
+}
 
 export default function Home() {
   return (
@@ -26,6 +43,10 @@ export default function Home() {
             <h2>Learn &rarr;</h2>
             <p>Learn about Next.js in an interactive course with quizzes!</p>
           </a>
+
+          <button type="button" onClick={() => addItem()}>
+            Add item
+          </button>
 
           <a
             href="https://github.com/vercel/next.js/tree/canary/examples"
