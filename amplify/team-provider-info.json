@@ -1,49 +1,31 @@
 {
-  "staging": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-amplify5fe5670de5044-staging-232226-authRole",
-      "UnauthRoleArn": "arn:aws:iam::671643402861:role/amplify-amplify5fe5670de5044-staging-232226-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::671643402861:role/amplify-amplify5fe5670de5044-staging-232226-authRole",
-      "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-amplify5fe5670de5044-staging-232226-deployment",
-      "UnauthRoleName": "amplify-amplify5fe5670de5044-staging-232226-unauthRole",
-      "StackName": "amplify-amplify5fe5670de5044-staging-232226",
-      "StackId": "arn:aws:cloudformation:us-west-2:671643402861:stack/amplify-amplify5fe5670de5044-staging-232226/62c40030-5717-11ed-8e95-06eb7925cc73",
-      "AmplifyAppId": "d1hrc7cozomlmt"
-    },
-    "categories": {
-      "auth": {
-        "calendarsignupea54d51a": {}
-      },
-      "api": {
-        "calendarsignup": {}
-      },
-      "storage": {
-        "userstorage": {}
-      }
-    }
-  },
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-calendarsignup-dev-130748-authRole",
-      "UnauthRoleArn": "arn:aws:iam::671643402861:role/amplify-calendarsignup-dev-130748-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::671643402861:role/amplify-calendarsignup-dev-130748-authRole",
+      "AuthRoleName": "amplify-calendarsignup-dev-170522-authRole",
+      "UnauthRoleArn": "arn:aws:iam::671643402861:role/amplify-calendarsignup-dev-170522-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::671643402861:role/amplify-calendarsignup-dev-170522-authRole",
       "Region": "us-west-1",
-      "DeploymentBucketName": "amplify-calendarsignup-dev-130748-deployment",
-      "UnauthRoleName": "amplify-calendarsignup-dev-130748-unauthRole",
-      "StackName": "amplify-calendarsignup-dev-130748",
-      "StackId": "arn:aws:cloudformation:us-west-1:671643402861:stack/amplify-calendarsignup-dev-130748/dbdb9e90-5a20-11ed-8548-0607cf7ba2cd",
-      "AmplifyAppId": "doa26yg4gjinv"
+      "DeploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
+      "UnauthRoleName": "amplify-calendarsignup-dev-170522-unauthRole",
+      "StackName": "amplify-calendarsignup-dev-170522",
+      "StackId": "arn:aws:cloudformation:us-west-1:671643402861:stack/amplify-calendarsignup-dev-170522/6c895920-5f01-11ed-88dd-0647b41002c3",
+      "AmplifyAppId": "dv1hj4egrjuo2"
     },
     "categories": {
       "auth": {
-        "calendarsignupea54d51a": {}
+        "calendarsignup54ecf769": {}
+      },
+      "function": {
+        "S3Trigger5916beb7": {
+          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
+          "s3Key": "amplify-builds/S3Trigger5916beb7-446a315a733546425939-build.zip"
+        }
       },
       "api": {
         "calendarsignup": {}
       },
       "storage": {
-        "userstorage": {}
+        "calendarstorage": {}
       }
     }
   }

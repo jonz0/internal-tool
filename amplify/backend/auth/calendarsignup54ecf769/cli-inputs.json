@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "calendarsignupea54d51a_identitypool_ea54d51a",
+    "identityPoolName": "calendarsignup54ecf769_identitypool_54ecf769",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "calendea54d51a",
-    "userPoolName": "calendarsignupea54d51a_userpool_ea54d51a",
+    "resourceNameTruncated": "calend54ecf769",
+    "userPoolName": "calendarsignup54ecf769_userpool_54ecf769",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "calendea54d51a_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "calend54ecf769_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "ea54d51a",
-    "resourceName": "calendarsignupea54d51a",
+    "sharedId": "54ecf769",
+    "resourceName": "calendarsignup54ecf769",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "userPoolGroupList": [],

@@ -9,7 +9,17 @@ type UserMetaData = {
 type EagerUser = {
   readonly id: string;
   readonly name?: string | null;
-  readonly description?: string | null;
+  readonly active?: boolean | null;
+  readonly renewDate?: string | null;
+  readonly kickboxing?: number | null;
+  readonly kidsGi?: number | null;
+  readonly kidsNogi?: number | null;
+  readonly littleGi?: number | null;
+  readonly littleNogi?: number | null;
+  readonly secretGi?: number | null;
+  readonly secretNogi?: number | null;
+  readonly luta?: number | null;
+  readonly bjj?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -17,7 +27,17 @@ type EagerUser = {
 type LazyUser = {
   readonly id: string;
   readonly name?: string | null;
-  readonly description?: string | null;
+  readonly active?: boolean | null;
+  readonly renewDate?: string | null;
+  readonly kickboxing?: number | null;
+  readonly kidsGi?: number | null;
+  readonly kidsNogi?: number | null;
+  readonly littleGi?: number | null;
+  readonly littleNogi?: number | null;
+  readonly secretGi?: number | null;
+  readonly secretNogi?: number | null;
+  readonly luta?: number | null;
+  readonly bjj?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

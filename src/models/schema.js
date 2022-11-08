@@ -17,10 +17,80 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "description": {
-                    "name": "description",
+                "active": {
+                    "name": "active",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "renewDate": {
+                    "name": "renewDate",
+                    "isArray": false,
+                    "type": "AWSDate",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "kickboxing": {
+                    "name": "kickboxing",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "kidsGi": {
+                    "name": "kidsGi",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "kidsNogi": {
+                    "name": "kidsNogi",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "littleGi": {
+                    "name": "littleGi",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "littleNogi": {
+                    "name": "littleNogi",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "secretGi": {
+                    "name": "secretGi",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "secretNogi": {
+                    "name": "secretNogi",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "luta": {
+                    "name": "luta",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "bjj": {
+                    "name": "bjj",
+                    "isArray": false,
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -70,5 +140,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.1",
-    "version": "2b91953a97202efee09b64a5a2d15a42"
+    "version": "7698ca3f952f345cefd91f4ee95e4b52"
 };
