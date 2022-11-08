@@ -1,234 +1,234 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBlog = /* GraphQL */ `
-  subscription OnCreateBlog($filter: ModelSubscriptionBlogFilterInput) {
-    onCreateBlog(filter: $filter) {
+export const onCreateDay = /* GraphQL */ `
+  subscription OnCreateDay($filter: ModelSubscriptionDayFilterInput) {
+    onCreateDay(filter: $filter) {
       id
-      name
-      posts {
+      className
+      classes {
         items {
-          id
-          title
-          createdAt
-          updatedAt
-          blogPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateBlog = /* GraphQL */ `
-  subscription OnUpdateBlog($filter: ModelSubscriptionBlogFilterInput) {
-    onUpdateBlog(filter: $filter) {
-      id
-      name
-      posts {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          blogPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteBlog = /* GraphQL */ `
-  subscription OnDeleteBlog($filter: ModelSubscriptionBlogFilterInput) {
-    onDeleteBlog(filter: $filter) {
-      id
-      name
-      posts {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          blogPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreatePost = /* GraphQL */ `
-  subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
-    onCreatePost(filter: $filter) {
-      id
-      title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      comments {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          postCommentsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      blogPostsId
-    }
-  }
-`;
-export const onUpdatePost = /* GraphQL */ `
-  subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
-    onUpdatePost(filter: $filter) {
-      id
-      title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      comments {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          postCommentsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      blogPostsId
-    }
-  }
-`;
-export const onDeletePost = /* GraphQL */ `
-  subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
-    onDeletePost(filter: $filter) {
-      id
-      title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      comments {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          postCommentsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      blogPostsId
-    }
-  }
-`;
-export const onCreateComment = /* GraphQL */ `
-  subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
-    onCreateComment(filter: $filter) {
-      id
-      post {
-        id
-        title
-        blog {
           id
           name
           createdAt
           updatedAt
+          dayClassesId
         }
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        blogPostsId
+        nextToken
       }
-      content
       createdAt
       updatedAt
-      postCommentsId
     }
   }
 `;
-export const onUpdateComment = /* GraphQL */ `
-  subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
-    onUpdateComment(filter: $filter) {
+export const onUpdateDay = /* GraphQL */ `
+  subscription OnUpdateDay($filter: ModelSubscriptionDayFilterInput) {
+    onUpdateDay(filter: $filter) {
       id
-      post {
-        id
-        title
-        blog {
+      className
+      classes {
+        items {
           id
           name
           createdAt
           updatedAt
+          dayClassesId
         }
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        blogPostsId
+        nextToken
       }
-      content
       createdAt
       updatedAt
-      postCommentsId
     }
   }
 `;
-export const onDeleteComment = /* GraphQL */ `
-  subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
-    onDeleteComment(filter: $filter) {
+export const onDeleteDay = /* GraphQL */ `
+  subscription OnDeleteDay($filter: ModelSubscriptionDayFilterInput) {
+    onDeleteDay(filter: $filter) {
       id
-      post {
-        id
-        title
-        blog {
+      className
+      classes {
+        items {
           id
           name
           createdAt
           updatedAt
+          dayClassesId
         }
-        comments {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateClass = /* GraphQL */ `
+  subscription OnCreateClass($filter: ModelSubscriptionClassFilterInput) {
+    onCreateClass(filter: $filter) {
+      id
+      name
+      day {
+        id
+        className
+        classes {
           nextToken
         }
         createdAt
         updatedAt
-        blogPostsId
       }
-      content
+      attendees {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          classAttendeesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
-      postCommentsId
+      dayClassesId
+    }
+  }
+`;
+export const onUpdateClass = /* GraphQL */ `
+  subscription OnUpdateClass($filter: ModelSubscriptionClassFilterInput) {
+    onUpdateClass(filter: $filter) {
+      id
+      name
+      day {
+        id
+        className
+        classes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      attendees {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          classAttendeesId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      dayClassesId
+    }
+  }
+`;
+export const onDeleteClass = /* GraphQL */ `
+  subscription OnDeleteClass($filter: ModelSubscriptionClassFilterInput) {
+    onDeleteClass(filter: $filter) {
+      id
+      name
+      day {
+        id
+        className
+        classes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      attendees {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          classAttendeesId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      dayClassesId
+    }
+  }
+`;
+export const onCreateAttendee = /* GraphQL */ `
+  subscription OnCreateAttendee($filter: ModelSubscriptionAttendeeFilterInput) {
+    onCreateAttendee(filter: $filter) {
+      id
+      class {
+        id
+        name
+        day {
+          id
+          className
+          createdAt
+          updatedAt
+        }
+        attendees {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        dayClassesId
+      }
+      name
+      createdAt
+      updatedAt
+      classAttendeesId
+    }
+  }
+`;
+export const onUpdateAttendee = /* GraphQL */ `
+  subscription OnUpdateAttendee($filter: ModelSubscriptionAttendeeFilterInput) {
+    onUpdateAttendee(filter: $filter) {
+      id
+      class {
+        id
+        name
+        day {
+          id
+          className
+          createdAt
+          updatedAt
+        }
+        attendees {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        dayClassesId
+      }
+      name
+      createdAt
+      updatedAt
+      classAttendeesId
+    }
+  }
+`;
+export const onDeleteAttendee = /* GraphQL */ `
+  subscription OnDeleteAttendee($filter: ModelSubscriptionAttendeeFilterInput) {
+    onDeleteAttendee(filter: $filter) {
+      id
+      class {
+        id
+        name
+        day {
+          id
+          className
+          createdAt
+          updatedAt
+        }
+        attendees {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        dayClassesId
+      }
+      name
+      createdAt
+      updatedAt
+      classAttendeesId
     }
   }
 `;

@@ -1,150 +1,150 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getBlog = /* GraphQL */ `
-  query GetBlog($id: ID!) {
-    getBlog(id: $id) {
+export const getDay = /* GraphQL */ `
+  query GetDay($id: ID!) {
+    getDay(id: $id) {
+      id
+      className
+      classes {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          dayClassesId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listDays = /* GraphQL */ `
+  query ListDays(
+    $filter: ModelDayFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listDays(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        className
+        classes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getClass = /* GraphQL */ `
+  query GetClass($id: ID!) {
+    getClass(id: $id) {
       id
       name
-      posts {
+      day {
+        id
+        className
+        classes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      attendees {
         items {
           id
-          title
+          name
           createdAt
           updatedAt
-          blogPostsId
+          classAttendeesId
         }
         nextToken
       }
       createdAt
       updatedAt
+      dayClassesId
     }
   }
 `;
-export const listBlogs = /* GraphQL */ `
-  query ListBlogs(
-    $filter: ModelBlogFilterInput
+export const listClasses = /* GraphQL */ `
+  query ListClasses(
+    $filter: ModelClassFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listBlogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listClasses(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
-        posts {
+        day {
+          id
+          className
+          createdAt
+          updatedAt
+        }
+        attendees {
           nextToken
         }
         createdAt
         updatedAt
+        dayClassesId
       }
       nextToken
     }
   }
 `;
-export const getPost = /* GraphQL */ `
-  query GetPost($id: ID!) {
-    getPost(id: $id) {
+export const getAttendee = /* GraphQL */ `
+  query GetAttendee($id: ID!) {
+    getAttendee(id: $id) {
       id
-      title
-      blog {
+      class {
         id
         name
-        posts {
+        day {
+          id
+          className
+          createdAt
+          updatedAt
+        }
+        attendees {
           nextToken
         }
         createdAt
         updatedAt
+        dayClassesId
       }
-      comments {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          postCommentsId
-        }
-        nextToken
-      }
+      name
       createdAt
       updatedAt
-      blogPostsId
+      classAttendeesId
     }
   }
 `;
-export const listPosts = /* GraphQL */ `
-  query ListPosts(
-    $filter: ModelPostFilterInput
+export const listAttendees = /* GraphQL */ `
+  query ListAttendees(
+    $filter: ModelAttendeeFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listAttendees(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        title
-        blog {
+        class {
           id
           name
           createdAt
           updatedAt
+          dayClassesId
         }
-        comments {
-          nextToken
-        }
+        name
         createdAt
         updatedAt
-        blogPostsId
-      }
-      nextToken
-    }
-  }
-`;
-export const getComment = /* GraphQL */ `
-  query GetComment($id: ID!) {
-    getComment(id: $id) {
-      id
-      post {
-        id
-        title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        blogPostsId
-      }
-      content
-      createdAt
-      updatedAt
-      postCommentsId
-    }
-  }
-`;
-export const listComments = /* GraphQL */ `
-  query ListComments(
-    $filter: ModelCommentFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        post {
-          id
-          title
-          createdAt
-          updatedAt
-          blogPostsId
-        }
-        content
-        createdAt
-        updatedAt
-        postCommentsId
+        classAttendeesId
       }
       nextToken
     }

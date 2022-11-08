@@ -1,261 +1,261 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createBlog = /* GraphQL */ `
-  mutation CreateBlog(
-    $input: CreateBlogInput!
-    $condition: ModelBlogConditionInput
+export const createDay = /* GraphQL */ `
+  mutation CreateDay(
+    $input: CreateDayInput!
+    $condition: ModelDayConditionInput
   ) {
-    createBlog(input: $input, condition: $condition) {
+    createDay(input: $input, condition: $condition) {
       id
-      name
-      posts {
+      className
+      classes {
         items {
-          id
-          title
-          createdAt
-          updatedAt
-          blogPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateBlog = /* GraphQL */ `
-  mutation UpdateBlog(
-    $input: UpdateBlogInput!
-    $condition: ModelBlogConditionInput
-  ) {
-    updateBlog(input: $input, condition: $condition) {
-      id
-      name
-      posts {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          blogPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteBlog = /* GraphQL */ `
-  mutation DeleteBlog(
-    $input: DeleteBlogInput!
-    $condition: ModelBlogConditionInput
-  ) {
-    deleteBlog(input: $input, condition: $condition) {
-      id
-      name
-      posts {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          blogPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createPost = /* GraphQL */ `
-  mutation CreatePost(
-    $input: CreatePostInput!
-    $condition: ModelPostConditionInput
-  ) {
-    createPost(input: $input, condition: $condition) {
-      id
-      title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      comments {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          postCommentsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      blogPostsId
-    }
-  }
-`;
-export const updatePost = /* GraphQL */ `
-  mutation UpdatePost(
-    $input: UpdatePostInput!
-    $condition: ModelPostConditionInput
-  ) {
-    updatePost(input: $input, condition: $condition) {
-      id
-      title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      comments {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          postCommentsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      blogPostsId
-    }
-  }
-`;
-export const deletePost = /* GraphQL */ `
-  mutation DeletePost(
-    $input: DeletePostInput!
-    $condition: ModelPostConditionInput
-  ) {
-    deletePost(input: $input, condition: $condition) {
-      id
-      title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      comments {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          postCommentsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      blogPostsId
-    }
-  }
-`;
-export const createComment = /* GraphQL */ `
-  mutation CreateComment(
-    $input: CreateCommentInput!
-    $condition: ModelCommentConditionInput
-  ) {
-    createComment(input: $input, condition: $condition) {
-      id
-      post {
-        id
-        title
-        blog {
           id
           name
           createdAt
           updatedAt
+          dayClassesId
         }
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        blogPostsId
+        nextToken
       }
-      content
       createdAt
       updatedAt
-      postCommentsId
     }
   }
 `;
-export const updateComment = /* GraphQL */ `
-  mutation UpdateComment(
-    $input: UpdateCommentInput!
-    $condition: ModelCommentConditionInput
+export const updateDay = /* GraphQL */ `
+  mutation UpdateDay(
+    $input: UpdateDayInput!
+    $condition: ModelDayConditionInput
   ) {
-    updateComment(input: $input, condition: $condition) {
+    updateDay(input: $input, condition: $condition) {
       id
-      post {
-        id
-        title
-        blog {
+      className
+      classes {
+        items {
           id
           name
           createdAt
           updatedAt
+          dayClassesId
         }
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        blogPostsId
+        nextToken
       }
-      content
       createdAt
       updatedAt
-      postCommentsId
     }
   }
 `;
-export const deleteComment = /* GraphQL */ `
-  mutation DeleteComment(
-    $input: DeleteCommentInput!
-    $condition: ModelCommentConditionInput
+export const deleteDay = /* GraphQL */ `
+  mutation DeleteDay(
+    $input: DeleteDayInput!
+    $condition: ModelDayConditionInput
   ) {
-    deleteComment(input: $input, condition: $condition) {
+    deleteDay(input: $input, condition: $condition) {
       id
-      post {
-        id
-        title
-        blog {
+      className
+      classes {
+        items {
           id
           name
           createdAt
           updatedAt
+          dayClassesId
         }
-        comments {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createClass = /* GraphQL */ `
+  mutation CreateClass(
+    $input: CreateClassInput!
+    $condition: ModelClassConditionInput
+  ) {
+    createClass(input: $input, condition: $condition) {
+      id
+      name
+      day {
+        id
+        className
+        classes {
           nextToken
         }
         createdAt
         updatedAt
-        blogPostsId
       }
-      content
+      attendees {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          classAttendeesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
-      postCommentsId
+      dayClassesId
+    }
+  }
+`;
+export const updateClass = /* GraphQL */ `
+  mutation UpdateClass(
+    $input: UpdateClassInput!
+    $condition: ModelClassConditionInput
+  ) {
+    updateClass(input: $input, condition: $condition) {
+      id
+      name
+      day {
+        id
+        className
+        classes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      attendees {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          classAttendeesId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      dayClassesId
+    }
+  }
+`;
+export const deleteClass = /* GraphQL */ `
+  mutation DeleteClass(
+    $input: DeleteClassInput!
+    $condition: ModelClassConditionInput
+  ) {
+    deleteClass(input: $input, condition: $condition) {
+      id
+      name
+      day {
+        id
+        className
+        classes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      attendees {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+          classAttendeesId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      dayClassesId
+    }
+  }
+`;
+export const createAttendee = /* GraphQL */ `
+  mutation CreateAttendee(
+    $input: CreateAttendeeInput!
+    $condition: ModelAttendeeConditionInput
+  ) {
+    createAttendee(input: $input, condition: $condition) {
+      id
+      class {
+        id
+        name
+        day {
+          id
+          className
+          createdAt
+          updatedAt
+        }
+        attendees {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        dayClassesId
+      }
+      name
+      createdAt
+      updatedAt
+      classAttendeesId
+    }
+  }
+`;
+export const updateAttendee = /* GraphQL */ `
+  mutation UpdateAttendee(
+    $input: UpdateAttendeeInput!
+    $condition: ModelAttendeeConditionInput
+  ) {
+    updateAttendee(input: $input, condition: $condition) {
+      id
+      class {
+        id
+        name
+        day {
+          id
+          className
+          createdAt
+          updatedAt
+        }
+        attendees {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        dayClassesId
+      }
+      name
+      createdAt
+      updatedAt
+      classAttendeesId
+    }
+  }
+`;
+export const deleteAttendee = /* GraphQL */ `
+  mutation DeleteAttendee(
+    $input: DeleteAttendeeInput!
+    $condition: ModelAttendeeConditionInput
+  ) {
+    deleteAttendee(input: $input, condition: $condition) {
+      id
+      class {
+        id
+        name
+        day {
+          id
+          className
+          createdAt
+          updatedAt
+        }
+        attendees {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        dayClassesId
+      }
+      name
+      createdAt
+      updatedAt
+      classAttendeesId
     }
   }
 `;
