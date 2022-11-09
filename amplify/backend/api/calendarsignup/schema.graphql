@@ -4,19 +4,51 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 
 type Day @model {
   id: ID!
-  className: String!
+  day: String!
   classes: [Class] @hasMany
+  date: AWSDate
+  open: Boolean
 }
 
 type Class @model {
   id: ID!
   name: String!
+  start: AWSTime
+  end: AWSTime
+  type: String
+  spotsAvailable: Int!
+  spotsTaken: Int!
+  available: Boolean
   day: Day @belongsTo
   attendees: [Attendee] @hasMany
+  message: String
+  instructor: String
 }
 
 type Attendee @model {
   id: ID!
   class: Class @belongsTo
-  name: String!
+  username: String!
+  firstName: String!
+  lastName: String!
+}
+
+type User @model {
+  id: ID!
+  username: String!
+  firstName: String!
+  lastName: String!
+  jjBelt: Int!
+  llBelt: Int!
+  image: String
+  email: String!
+  phone: String!
+  enroll: AWSDate!
+  renew: AWSDate!
+  insta: String
+  hideEmail: Boolean
+  hidePhone: Boolean
+  freeze: Boolean!
+  freezeStart: AWSDate
+  freezeEnd: AWSDate
 }

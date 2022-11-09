@@ -1,0 +1,9 @@
+.slot {
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.day {
+  font-size: 16pt;
+}

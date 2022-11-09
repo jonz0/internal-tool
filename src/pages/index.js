@@ -8,6 +8,7 @@ import * as queries from "../graphql/queries";
 import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import DaySet from "../components/DaySet";
+import { useState, useEffect, useRef } from "react";
 
 async function listAll() {
   let filter = {
@@ -57,24 +58,47 @@ function returnDayComponents() {
   }
 }
 
+async function getDays() {
+  const fetchDays = await API.graphql({
+    query: queries.listDays,
+  });
+  // console.log(fetchDays.data.listDays.items.length);
+  return fetchDays.data.listDays.items.length;
+}
+
 export default function Home() {
   return (
-    <div className="signup-container">
-      <Day increment={0} />
-      <Day increment={1} />
-      <Day increment={2} />
-      <Day increment={3} />
-      <Day increment={4} />
-      <Day increment={5} />
-      <Day increment={6} />
+    <div className="page-container">
+      <div className="toolbar-container">
+        <div className="toolkit">
+          <p className="tools">Home</p>
+          <p className="tools">Profile</p>
+          <p className="tools">Sign Out</p>
+        </div>
+      </div>
+      <div className="calendar-container">
+        <div className="signup-container">
+          <DaySet
+            days={() => {
+              getDays().then((ret) => {
+                return ret;
+              });
+            }}
+          />
+        </div>
+        <div className="details-container">
+          <h1>Details</h1>
+        </div>
+      </div>
+
       <button type="button" onClick={() => addItem()}>
         Add item
       </button>
       <button type="button" onClick={() => listAll()}>
         List all
       </button>
-      <button type="button" onClick={() => getItem()}>
-        Get item
+      <button type="button" onClick={() => getDays()}>
+        Get days
       </button>
     </div>
   );

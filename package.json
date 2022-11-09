@@ -14,10 +14,12 @@
     "@aws-amplify/ui-react": "^3.5.11",
     "aws-amplify": "^4.3.43",
     "aws-sdk": "^2.1246.0",
+    "bootstrap": "^3.4.1",
     "graphql": "^15.8.0",
     "next": "^13.0.0",
     "ra-data-graphql": "^4.4.3",
     "react": "18.2.0",
+    "react-bootstrap": "^2.6.0",
     "react-dom": "18.2.0",
     "uuid": "^9.0.0"
   },

@@ -5,17 +5,27 @@ export const getDay = /* GraphQL */ `
   query GetDay($id: ID!) {
     getDay(id: $id) {
       id
-      className
+      day
       classes {
         items {
           id
           name
+          start
+          end
+          type
+          spotsAvailable
+          spotsTaken
+          available
+          message
+          instructor
           createdAt
           updatedAt
           dayClassesId
         }
         nextToken
       }
+      date
+      open
       createdAt
       updatedAt
     }
@@ -30,10 +40,12 @@ export const listDays = /* GraphQL */ `
     listDays(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        className
+        day
         classes {
           nextToken
         }
+        date
+        open
         createdAt
         updatedAt
       }
@@ -46,25 +58,37 @@ export const getClass = /* GraphQL */ `
     getClass(id: $id) {
       id
       name
+      start
+      end
+      type
+      spotsAvailable
+      spotsTaken
+      available
       day {
         id
-        className
+        day
         classes {
           nextToken
         }
+        date
+        open
         createdAt
         updatedAt
       }
       attendees {
         items {
           id
-          name
+          username
+          firstName
+          lastName
           createdAt
           updatedAt
           classAttendeesId
         }
         nextToken
       }
+      message
+      instructor
       createdAt
       updatedAt
       dayClassesId
@@ -81,15 +105,25 @@ export const listClasses = /* GraphQL */ `
       items {
         id
         name
+        start
+        end
+        type
+        spotsAvailable
+        spotsTaken
+        available
         day {
           id
-          className
+          day
+          date
+          open
           createdAt
           updatedAt
         }
         attendees {
           nextToken
         }
+        message
+        instructor
         createdAt
         updatedAt
         dayClassesId
@@ -105,20 +139,32 @@ export const getAttendee = /* GraphQL */ `
       class {
         id
         name
+        start
+        end
+        type
+        spotsAvailable
+        spotsTaken
+        available
         day {
           id
-          className
+          day
+          date
+          open
           createdAt
           updatedAt
         }
         attendees {
           nextToken
         }
+        message
+        instructor
         createdAt
         updatedAt
         dayClassesId
       }
-      name
+      username
+      firstName
+      lastName
       createdAt
       updatedAt
       classAttendeesId
@@ -137,14 +183,81 @@ export const listAttendees = /* GraphQL */ `
         class {
           id
           name
+          start
+          end
+          type
+          spotsAvailable
+          spotsTaken
+          available
+          message
+          instructor
           createdAt
           updatedAt
           dayClassesId
         }
-        name
+        username
+        firstName
+        lastName
         createdAt
         updatedAt
         classAttendeesId
+      }
+      nextToken
+    }
+  }
+`;
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      username
+      firstName
+      lastName
+      jjBelt
+      llBelt
+      image
+      email
+      phone
+      enroll
+      renew
+      insta
+      hideEmail
+      hidePhone
+      freeze
+      freezeStart
+      freezeEnd
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        firstName
+        lastName
+        jjBelt
+        llBelt
+        image
+        email
+        phone
+        enroll
+        renew
+        insta
+        hideEmail
+        hidePhone
+        freeze
+        freezeStart
+        freezeEnd
+        createdAt
+        updatedAt
       }
       nextToken
     }

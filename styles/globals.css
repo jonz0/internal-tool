@@ -25,15 +25,48 @@ a {
   }
 }
 
-.component-container {
+.toolbar-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 60px;
+  background-color: gray;
+  vertical-align: middle;
+}
+
+.toolkit {
+  margin-left: 10vw;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.tools {
+  margin-right: 20px;
+}
+
+.page-container {
+  position: relative;
+  margin-top: 150px;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: row;
+  height: 50vh;
 }
 
 .signup-container {
-  position: relative;
-  margin-top: 150px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 70vw;
+  display: flex;
+  flex-direction: row;
+  overflow-y: auto;
+  overflow-x: auto;
+  width: 60vw;
+}
+
+.details-container {
+  width: 10vw;
+  padding-left: 3vw;
 }

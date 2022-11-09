@@ -5,17 +5,27 @@ export const onCreateDay = /* GraphQL */ `
   subscription OnCreateDay($filter: ModelSubscriptionDayFilterInput) {
     onCreateDay(filter: $filter) {
       id
-      className
+      day
       classes {
         items {
           id
           name
+          start
+          end
+          type
+          spotsAvailable
+          spotsTaken
+          available
+          message
+          instructor
           createdAt
           updatedAt
           dayClassesId
         }
         nextToken
       }
+      date
+      open
       createdAt
       updatedAt
     }
@@ -25,17 +35,27 @@ export const onUpdateDay = /* GraphQL */ `
   subscription OnUpdateDay($filter: ModelSubscriptionDayFilterInput) {
     onUpdateDay(filter: $filter) {
       id
-      className
+      day
       classes {
         items {
           id
           name
+          start
+          end
+          type
+          spotsAvailable
+          spotsTaken
+          available
+          message
+          instructor
           createdAt
           updatedAt
           dayClassesId
         }
         nextToken
       }
+      date
+      open
       createdAt
       updatedAt
     }
@@ -45,17 +65,27 @@ export const onDeleteDay = /* GraphQL */ `
   subscription OnDeleteDay($filter: ModelSubscriptionDayFilterInput) {
     onDeleteDay(filter: $filter) {
       id
-      className
+      day
       classes {
         items {
           id
           name
+          start
+          end
+          type
+          spotsAvailable
+          spotsTaken
+          available
+          message
+          instructor
           createdAt
           updatedAt
           dayClassesId
         }
         nextToken
       }
+      date
+      open
       createdAt
       updatedAt
     }
@@ -66,25 +96,37 @@ export const onCreateClass = /* GraphQL */ `
     onCreateClass(filter: $filter) {
       id
       name
+      start
+      end
+      type
+      spotsAvailable
+      spotsTaken
+      available
       day {
         id
-        className
+        day
         classes {
           nextToken
         }
+        date
+        open
         createdAt
         updatedAt
       }
       attendees {
         items {
           id
-          name
+          username
+          firstName
+          lastName
           createdAt
           updatedAt
           classAttendeesId
         }
         nextToken
       }
+      message
+      instructor
       createdAt
       updatedAt
       dayClassesId
@@ -96,25 +138,37 @@ export const onUpdateClass = /* GraphQL */ `
     onUpdateClass(filter: $filter) {
       id
       name
+      start
+      end
+      type
+      spotsAvailable
+      spotsTaken
+      available
       day {
         id
-        className
+        day
         classes {
           nextToken
         }
+        date
+        open
         createdAt
         updatedAt
       }
       attendees {
         items {
           id
-          name
+          username
+          firstName
+          lastName
           createdAt
           updatedAt
           classAttendeesId
         }
         nextToken
       }
+      message
+      instructor
       createdAt
       updatedAt
       dayClassesId
@@ -126,25 +180,37 @@ export const onDeleteClass = /* GraphQL */ `
     onDeleteClass(filter: $filter) {
       id
       name
+      start
+      end
+      type
+      spotsAvailable
+      spotsTaken
+      available
       day {
         id
-        className
+        day
         classes {
           nextToken
         }
+        date
+        open
         createdAt
         updatedAt
       }
       attendees {
         items {
           id
-          name
+          username
+          firstName
+          lastName
           createdAt
           updatedAt
           classAttendeesId
         }
         nextToken
       }
+      message
+      instructor
       createdAt
       updatedAt
       dayClassesId
@@ -158,20 +224,32 @@ export const onCreateAttendee = /* GraphQL */ `
       class {
         id
         name
+        start
+        end
+        type
+        spotsAvailable
+        spotsTaken
+        available
         day {
           id
-          className
+          day
+          date
+          open
           createdAt
           updatedAt
         }
         attendees {
           nextToken
         }
+        message
+        instructor
         createdAt
         updatedAt
         dayClassesId
       }
-      name
+      username
+      firstName
+      lastName
       createdAt
       updatedAt
       classAttendeesId
@@ -185,20 +263,32 @@ export const onUpdateAttendee = /* GraphQL */ `
       class {
         id
         name
+        start
+        end
+        type
+        spotsAvailable
+        spotsTaken
+        available
         day {
           id
-          className
+          day
+          date
+          open
           createdAt
           updatedAt
         }
         attendees {
           nextToken
         }
+        message
+        instructor
         createdAt
         updatedAt
         dayClassesId
       }
-      name
+      username
+      firstName
+      lastName
       createdAt
       updatedAt
       classAttendeesId
@@ -212,23 +302,110 @@ export const onDeleteAttendee = /* GraphQL */ `
       class {
         id
         name
+        start
+        end
+        type
+        spotsAvailable
+        spotsTaken
+        available
         day {
           id
-          className
+          day
+          date
+          open
           createdAt
           updatedAt
         }
         attendees {
           nextToken
         }
+        message
+        instructor
         createdAt
         updatedAt
         dayClassesId
       }
-      name
+      username
+      firstName
+      lastName
       createdAt
       updatedAt
       classAttendeesId
+    }
+  }
+`;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+    onCreateUser(filter: $filter) {
+      id
+      username
+      firstName
+      lastName
+      jjBelt
+      llBelt
+      image
+      email
+      phone
+      enroll
+      renew
+      insta
+      hideEmail
+      hidePhone
+      freeze
+      freezeStart
+      freezeEnd
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+    onUpdateUser(filter: $filter) {
+      id
+      username
+      firstName
+      lastName
+      jjBelt
+      llBelt
+      image
+      email
+      phone
+      enroll
+      renew
+      insta
+      hideEmail
+      hidePhone
+      freeze
+      freezeStart
+      freezeEnd
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+    onDeleteUser(filter: $filter) {
+      id
+      username
+      firstName
+      lastName
+      jjBelt
+      llBelt
+      image
+      email
+      phone
+      enroll
+      renew
+      insta
+      hideEmail
+      hidePhone
+      freeze
+      freezeStart
+      freezeEnd
+      createdAt
+      updatedAt
     }
   }
 `;

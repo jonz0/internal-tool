@@ -8,17 +8,27 @@ export const createDay = /* GraphQL */ `
   ) {
     createDay(input: $input, condition: $condition) {
       id
-      className
+      day
       classes {
         items {
           id
           name
+          start
+          end
+          type
+          spotsAvailable
+          spotsTaken
+          available
+          message
+          instructor
           createdAt
           updatedAt
           dayClassesId
         }
         nextToken
       }
+      date
+      open
       createdAt
       updatedAt
     }
@@ -31,17 +41,27 @@ export const updateDay = /* GraphQL */ `
   ) {
     updateDay(input: $input, condition: $condition) {
       id
-      className
+      day
       classes {
         items {
           id
           name
+          start
+          end
+          type
+          spotsAvailable
+          spotsTaken
+          available
+          message
+          instructor
           createdAt
           updatedAt
           dayClassesId
         }
         nextToken
       }
+      date
+      open
       createdAt
       updatedAt
     }
@@ -54,17 +74,27 @@ export const deleteDay = /* GraphQL */ `
   ) {
     deleteDay(input: $input, condition: $condition) {
       id
-      className
+      day
       classes {
         items {
           id
           name
+          start
+          end
+          type
+          spotsAvailable
+          spotsTaken
+          available
+          message
+          instructor
           createdAt
           updatedAt
           dayClassesId
         }
         nextToken
       }
+      date
+      open
       createdAt
       updatedAt
     }
@@ -78,25 +108,37 @@ export const createClass = /* GraphQL */ `
     createClass(input: $input, condition: $condition) {
       id
       name
+      start
+      end
+      type
+      spotsAvailable
+      spotsTaken
+      available
       day {
         id
-        className
+        day
         classes {
           nextToken
         }
+        date
+        open
         createdAt
         updatedAt
       }
       attendees {
         items {
           id
-          name
+          username
+          firstName
+          lastName
           createdAt
           updatedAt
           classAttendeesId
         }
         nextToken
       }
+      message
+      instructor
       createdAt
       updatedAt
       dayClassesId
@@ -111,25 +153,37 @@ export const updateClass = /* GraphQL */ `
     updateClass(input: $input, condition: $condition) {
       id
       name
+      start
+      end
+      type
+      spotsAvailable
+      spotsTaken
+      available
       day {
         id
-        className
+        day
         classes {
           nextToken
         }
+        date
+        open
         createdAt
         updatedAt
       }
       attendees {
         items {
           id
-          name
+          username
+          firstName
+          lastName
           createdAt
           updatedAt
           classAttendeesId
         }
         nextToken
       }
+      message
+      instructor
       createdAt
       updatedAt
       dayClassesId
@@ -144,25 +198,37 @@ export const deleteClass = /* GraphQL */ `
     deleteClass(input: $input, condition: $condition) {
       id
       name
+      start
+      end
+      type
+      spotsAvailable
+      spotsTaken
+      available
       day {
         id
-        className
+        day
         classes {
           nextToken
         }
+        date
+        open
         createdAt
         updatedAt
       }
       attendees {
         items {
           id
-          name
+          username
+          firstName
+          lastName
           createdAt
           updatedAt
           classAttendeesId
         }
         nextToken
       }
+      message
+      instructor
       createdAt
       updatedAt
       dayClassesId
@@ -179,20 +245,32 @@ export const createAttendee = /* GraphQL */ `
       class {
         id
         name
+        start
+        end
+        type
+        spotsAvailable
+        spotsTaken
+        available
         day {
           id
-          className
+          day
+          date
+          open
           createdAt
           updatedAt
         }
         attendees {
           nextToken
         }
+        message
+        instructor
         createdAt
         updatedAt
         dayClassesId
       }
-      name
+      username
+      firstName
+      lastName
       createdAt
       updatedAt
       classAttendeesId
@@ -209,20 +287,32 @@ export const updateAttendee = /* GraphQL */ `
       class {
         id
         name
+        start
+        end
+        type
+        spotsAvailable
+        spotsTaken
+        available
         day {
           id
-          className
+          day
+          date
+          open
           createdAt
           updatedAt
         }
         attendees {
           nextToken
         }
+        message
+        instructor
         createdAt
         updatedAt
         dayClassesId
       }
-      name
+      username
+      firstName
+      lastName
       createdAt
       updatedAt
       classAttendeesId
@@ -239,23 +329,119 @@ export const deleteAttendee = /* GraphQL */ `
       class {
         id
         name
+        start
+        end
+        type
+        spotsAvailable
+        spotsTaken
+        available
         day {
           id
-          className
+          day
+          date
+          open
           createdAt
           updatedAt
         }
         attendees {
           nextToken
         }
+        message
+        instructor
         createdAt
         updatedAt
         dayClassesId
       }
-      name
+      username
+      firstName
+      lastName
       createdAt
       updatedAt
       classAttendeesId
+    }
+  }
+`;
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    createUser(input: $input, condition: $condition) {
+      id
+      username
+      firstName
+      lastName
+      jjBelt
+      llBelt
+      image
+      email
+      phone
+      enroll
+      renew
+      insta
+      hideEmail
+      hidePhone
+      freeze
+      freezeStart
+      freezeEnd
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      username
+      firstName
+      lastName
+      jjBelt
+      llBelt
+      image
+      email
+      phone
+      enroll
+      renew
+      insta
+      hideEmail
+      hidePhone
+      freeze
+      freezeStart
+      freezeEnd
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      username
+      firstName
+      lastName
+      jjBelt
+      llBelt
+      image
+      email
+      phone
+      enroll
+      renew
+      insta
+      hideEmail
+      hidePhone
+      freeze
+      freezeStart
+      freezeEnd
+      createdAt
+      updatedAt
     }
   }
 `;
