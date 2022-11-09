@@ -8,9 +8,7 @@ import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import { Class } from "./Class";
 
-export default function Day({ increment }) {
-  const [names, setNames] = useState([]);
-
+export default function Day({ increment, fetchDetails }) {
   function getDay() {
     let date = new Date();
     date.setDate(date.getDate() + increment);
@@ -18,50 +16,38 @@ export default function Day({ increment }) {
     return date.toLocaleDateString("default", { weekday: "long" });
   }
 
-  // useEffect(() => {
-  //   async function updateNames() {
-  //     let names = [];
+  async function handleDetails() {
+    // function fetchDetails(attendees, instructor, message, spotsAvailable, spotsTaken)
+    let students = [];
+    // let instructor = null;
+    // let message = null;
+    // let spotsAvailable = null;
+    // let spotsTaken = null;
 
-  //     let filter = {
-  //       classAttendeesId: {
-  //         eq: "0700-mon",
-  //       },
-  //     };
-
-  //     const monAttendees = await API.graphql({
-  //       query: queries.listAttendees,
-  //       variables: { filter: filter },
-  //     });
-
-  //     monAttendees.data.listAttendees.items.forEach((attendee) =>
-  //       names.push(attendee.name)
-  //     );
-
-  //     setNames(names);
-  //   }
-  //   updateNames();
-  // }, []);
-
-  function addName(name) {
-    setNames((prevNames) => {
-      return [...prevNames, name];
+    const classAttendees = await API.graphql({
+      query: queries.listAttendees,
+      variables: {
+        filter: {
+          classAttendeesId: {
+            eq: "0800-mon",
+          },
+        },
+      },
     });
-    console.log(names);
+
+    classAttendees.data.listAttendees.items.forEach((attendee) =>
+      students.push(attendee.firstName)
+    );
+
+    fetchDetails(students);
   }
 
   return (
     <div className={styles.slot}>
       <h1 className={styles.day}>{getDay()}</h1>
-      {names.map((name) => {
-        return (
-          <p key={uuidv4()} className={styles.name}>
-            {name}
-          </p>
-        );
-      })}
 
-      <button type="button" onClick={() => addName("John Doe")}>
-        Add name
+      <button type="button" onClick={() => handleDetails()}>
+        Fetch Data
       </button>
     </div>
   );

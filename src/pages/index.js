@@ -9,6 +9,7 @@ import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import DaySet from "../components/DaySet";
 import { useState, useEffect, useRef } from "react";
+import Details from "../components/Details";
 
 async function listAll() {
   let filter = {
@@ -67,6 +68,12 @@ async function getDays() {
 }
 
 export default function Home() {
+  let [names, setNames] = useState([]);
+
+  function fetchDetails(attendees) {
+    setNames(attendees);
+  }
+
   return (
     <div className="page-container">
       <div className="toolbar-container">
@@ -84,10 +91,14 @@ export default function Home() {
                 return ret;
               });
             }}
+            fetchDetails={fetchDetails}
           />
         </div>
         <div className="details-container">
           <h1>Details</h1>
+          {names.map((name) => {
+            return <p key={uuidv4()}>{name}</p>;
+          })}
         </div>
       </div>
 

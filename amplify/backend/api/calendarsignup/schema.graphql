@@ -4,7 +4,7 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 
 type Day @model {
   id: ID!
-  day: String!
+  day: String
   classes: [Class] @hasMany
   date: AWSDate
   open: Boolean
@@ -12,12 +12,12 @@ type Day @model {
 
 type Class @model {
   id: ID!
-  name: String!
+  name: String
   start: AWSTime
   end: AWSTime
   type: String
-  spotsAvailable: Int!
-  spotsTaken: Int!
+  spotsAvailable: Int
+  spotsTaken: Int
   available: Boolean
   day: Day @belongsTo
   attendees: [Attendee] @hasMany
@@ -28,27 +28,27 @@ type Class @model {
 type Attendee @model {
   id: ID!
   class: Class @belongsTo
-  username: String!
-  firstName: String!
-  lastName: String!
+  username: String
+  firstName: String
+  lastName: String
 }
 
 type User @model {
   id: ID!
-  username: String!
-  firstName: String!
-  lastName: String!
-  jjBelt: Int!
-  llBelt: Int!
+  username: String
+  firstName: String
+  lastName: String
+  jjBelt: Int
+  llBelt: Int
   image: String
-  email: String!
-  phone: String!
-  enroll: AWSDate!
-  renew: AWSDate!
+  email: String
+  phone: String
+  enroll: AWSDate
+  renew: AWSDate
   insta: String
   hideEmail: Boolean
   hidePhone: Boolean
-  freeze: Boolean!
+  freeze: Boolean
   freezeStart: AWSDate
   freezeEnd: AWSDate
 }
