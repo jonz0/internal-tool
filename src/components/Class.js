@@ -6,7 +6,7 @@ import * as queries from "../graphql/queries";
 import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import { Textarea } from "@chakra-ui/react";
-import styles from "../../styles/Signup.module.css";
+import styles from "../../styles/Home.module.css";
 
 export default function Class({ fetchDetails, c }) {
   async function handleDetails() {
@@ -36,9 +36,10 @@ export default function Class({ fetchDetails, c }) {
         className={styles.signupButton}
         colorScheme="blue"
         onClick={() => handleDetails()}
-        width="200px"
+        width="150px"
         height="50px"
         variant="outline"
+        fontSize="10pt"
       >
         {c.name} <br />
         {c.start.substring(0, 5)} - {c.end.substring(0, 5)}

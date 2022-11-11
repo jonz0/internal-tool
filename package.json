@@ -15,6 +15,7 @@
     "@chakra-ui/react": "^2.3.7",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@next/font": "^13.0.3",
     "aws-amplify": "^4.3.43",
     "aws-sdk": "^2.1246.0",
     "bootstrap": "^3.4.1",

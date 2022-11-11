@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import styles from "../../styles/Signup.module.css";
+import styles from "../../styles/Home.module.css";
 import { v4 as uuidv4 } from "uuid";
 import { API } from "aws-amplify";
 import * as queries from "../graphql/queries";
@@ -22,7 +22,7 @@ export default function Day({ increment, fetchDetails }) {
 
   return (
     <div className={styles.slot}>
-      <h1 className={styles.day}>{getDay()}</h1>
+      <p className={styles.day}>{getDay()}</p>
       <ClassSet
         day={getDay().toLowerCase()}
         fetchDetails={fetchDetails}

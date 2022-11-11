@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import styles from "../../styles/Signup.module.css";
+import styles from "../../styles/Home.module.css";
 import { v4 as uuidv4 } from "uuid";
 import { API } from "aws-amplify";
 import * as queries from "../graphql/queries";
