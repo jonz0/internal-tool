@@ -32,7 +32,8 @@ a {
   width: 100vw;
   height: 60px;
   background-color: gray;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
 }
 
 .toolkit {

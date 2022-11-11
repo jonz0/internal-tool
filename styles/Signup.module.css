@@ -6,4 +6,9 @@
 
 .day {
   font-size: 16pt;
+  margin-bottom: 20px;
+}
+
+.signupButton {
+  margin-bottom: 10px;
 }

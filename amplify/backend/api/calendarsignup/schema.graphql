@@ -16,9 +16,9 @@ type Class @model {
   start: AWSTime
   end: AWSTime
   type: String
-  spotsAvailable: Int
-  spotsTaken: Int
-  available: Boolean
+  maxSpots: Int
+  openSpots: Int
+  classOpen: Boolean
   day: Day @belongsTo
   attendees: [Attendee] @hasMany
   message: String

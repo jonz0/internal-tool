@@ -13,9 +13,9 @@ export const getDay = /* GraphQL */ `
           start
           end
           type
-          spotsAvailable
-          spotsTaken
-          available
+          maxSpots
+          openSpots
+          classOpen
           message
           instructor
           createdAt
@@ -61,9 +61,9 @@ export const getClass = /* GraphQL */ `
       start
       end
       type
-      spotsAvailable
-      spotsTaken
-      available
+      maxSpots
+      openSpots
+      classOpen
       day {
         id
         day
@@ -108,9 +108,9 @@ export const listClasses = /* GraphQL */ `
         start
         end
         type
-        spotsAvailable
-        spotsTaken
-        available
+        maxSpots
+        openSpots
+        classOpen
         day {
           id
           day
@@ -142,9 +142,9 @@ export const getAttendee = /* GraphQL */ `
         start
         end
         type
-        spotsAvailable
-        spotsTaken
-        available
+        maxSpots
+        openSpots
+        classOpen
         day {
           id
           day
@@ -186,9 +186,9 @@ export const listAttendees = /* GraphQL */ `
           start
           end
           type
-          spotsAvailable
-          spotsTaken
-          available
+          maxSpots
+          openSpots
+          classOpen
           message
           instructor
           createdAt

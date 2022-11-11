@@ -13,9 +13,9 @@ export const onCreateDay = /* GraphQL */ `
           start
           end
           type
-          spotsAvailable
-          spotsTaken
-          available
+          maxSpots
+          openSpots
+          classOpen
           message
           instructor
           createdAt
@@ -43,9 +43,9 @@ export const onUpdateDay = /* GraphQL */ `
           start
           end
           type
-          spotsAvailable
-          spotsTaken
-          available
+          maxSpots
+          openSpots
+          classOpen
           message
           instructor
           createdAt
@@ -73,9 +73,9 @@ export const onDeleteDay = /* GraphQL */ `
           start
           end
           type
-          spotsAvailable
-          spotsTaken
-          available
+          maxSpots
+          openSpots
+          classOpen
           message
           instructor
           createdAt
@@ -99,9 +99,9 @@ export const onCreateClass = /* GraphQL */ `
       start
       end
       type
-      spotsAvailable
-      spotsTaken
-      available
+      maxSpots
+      openSpots
+      classOpen
       day {
         id
         day
@@ -141,9 +141,9 @@ export const onUpdateClass = /* GraphQL */ `
       start
       end
       type
-      spotsAvailable
-      spotsTaken
-      available
+      maxSpots
+      openSpots
+      classOpen
       day {
         id
         day
@@ -183,9 +183,9 @@ export const onDeleteClass = /* GraphQL */ `
       start
       end
       type
-      spotsAvailable
-      spotsTaken
-      available
+      maxSpots
+      openSpots
+      classOpen
       day {
         id
         day
@@ -227,9 +227,9 @@ export const onCreateAttendee = /* GraphQL */ `
         start
         end
         type
-        spotsAvailable
-        spotsTaken
-        available
+        maxSpots
+        openSpots
+        classOpen
         day {
           id
           day
@@ -266,9 +266,9 @@ export const onUpdateAttendee = /* GraphQL */ `
         start
         end
         type
-        spotsAvailable
-        spotsTaken
-        available
+        maxSpots
+        openSpots
+        classOpen
         day {
           id
           day
@@ -305,9 +305,9 @@ export const onDeleteAttendee = /* GraphQL */ `
         start
         end
         type
-        spotsAvailable
-        spotsTaken
-        available
+        maxSpots
+        openSpots
+        classOpen
         day {
           id
           day
