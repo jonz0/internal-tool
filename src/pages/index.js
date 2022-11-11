@@ -13,12 +13,10 @@ import Class from "../components/Class";
 import Image from "next/image";
 
 export default function Home() {
-  const names = useRef([]);
+  const attendees = useRef([]);
 
-  function fetchDetails(attendees) {
-    console.log("fetching details...");
-    names.current = attendees;
-    console.log(names.current);
+  function changeAttendees(students) {
+    attendees.current = students;
   }
 
   return (
@@ -38,12 +36,12 @@ export default function Home() {
       </div>
       <div className="calendar-container">
         <div className="signup-container">
-          <DaySet fetchDetails={fetchDetails} />
+          <DaySet />
         </div>
         <div className={styles.vl}></div>
         <div className={styles.details}>
           <p className={styles.detailsHeader}>Details</p>
-          <Details attendees={names.current} />
+          <Details />
         </div>
       </div>
     </div>

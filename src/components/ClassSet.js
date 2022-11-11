@@ -9,7 +9,7 @@ import Day from "../components/Day";
 import Class from "../components/Class";
 import { resolve } from "styled-jsx/css";
 
-export default function ClassSet({ day, fetchDetails }) {
+export default function ClassSet({ day }) {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
@@ -36,6 +36,6 @@ export default function ClassSet({ day, fetchDetails }) {
   }
 
   return classes.map((c) => {
-    return <Class key={uuidv4()} c={c} fetchDetails={fetchDetails} />;
+    return <Class key={uuidv4()} c={c} />;
   });
 }

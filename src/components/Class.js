@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { API } from "aws-amplify";
@@ -8,42 +8,64 @@ import * as mutations from "../graphql/mutations";
 import { Textarea } from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css";
 
-export default function Class({ fetchDetails, c }) {
-  async function handleDetails() {
-    let students = [];
+export const DetailsContext = React.createContext();
 
-    const classAttendees = await API.graphql({
-      query: queries.listAttendees,
-      variables: {
-        filter: {
-          classAttendeesId: {
-            eq: c.id,
+export default function Class({ c }) {
+  const attendees = useRef([]);
+  const [details, setDetails] = useState([]);
+
+  useEffect(() => {
+    async function fetchAttendees() {
+      let students = [];
+
+      const classAttendees = await API.graphql({
+        query: queries.listAttendees,
+        variables: {
+          filter: {
+            classAttendeesId: {
+              eq: c.id,
+            },
           },
         },
-      },
-    });
+      });
 
-    classAttendees.data.listAttendees.items.forEach((attendee) =>
-      students.push(attendee.firstName)
-    );
+      // console.log(classAttendees.data.listAttendees.items);
 
-    fetchDetails(students);
+      classAttendees.data.listAttendees.items.forEach((attendee) =>
+        students.push(attendee.firstName)
+      );
+
+      students.forEach((student) => console.log(student));
+
+      attendees.current = students;
+      // console.log("students");
+      // console.log(students);
+      // console.log(typeof students);
+    }
+
+    fetchAttendees();
+  }, []);
+
+  function toggleDetails() {
+    setDetails(attendees.current);
   }
 
   return (
     <div>
-      <Button
-        className={styles.signupButton}
-        colorScheme="blue"
-        onClick={() => handleDetails()}
-        width="150px"
-        height="50px"
-        variant="outline"
-        fontSize="10pt"
-      >
-        {c.name} <br />
-        {c.start.substring(0, 5)} - {c.end.substring(0, 5)}
-      </Button>
+      <DetailsContext.Provider value={details}>
+        <Button
+          className={styles.signupButton}
+          colorScheme="blue"
+          onClick={toggleDetails}
+          width="150px"
+          height="50px"
+          variant="outline"
+          fontSize="10pt"
+        >
+          {c.name} <br />
+          {c.start.substring(0, 5)} - {c.end.substring(0, 5)}
+        </Button>
+      </DetailsContext.Provider>
     </div>
   );
 }
