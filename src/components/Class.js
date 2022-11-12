@@ -7,6 +7,7 @@ import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import { Textarea } from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css";
+import { useSelector, useDispatch } from "react-redux";
 
 export const DetailsContext = React.createContext();
 
