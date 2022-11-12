@@ -1,28 +1,23 @@
-import { useState, useEffect, useRef } from "react";
-import { DetailsContext } from "../components/Class";
+import { useState, useEffect, useRef, useContext } from "react";
+import { DetailsContext } from "./Class";
+
 import { Button, ButtonGroup } from "@chakra-ui/react";
 
 export default function Details() {
-  const [test, setTest] = useState([]);
+  const students = useContext(DetailsContext);
+  const [attendees, setATtendees] = useState([]);
   return (
-    <DetailsContext.Consumer>
-      {(details) => {
-        setTest(details);
-        console.log("test");
-        console.log(test);
-        return (
-          <Button
-            onClick={() => {
-              console.log(details);
-            }}
-          >
-            Button
-          </Button>
-        );
-        // values.map((name) => {
-        //   return <p key={uuidv4()}>{name}</p>;
-        // });
+    <Button
+      onClick={() => {
+        console.log("STUDENTS");
+        console.log(students);
       }}
-    </DetailsContext.Consumer>
+    >
+      STUDENTS
+    </Button>
   );
+
+  // return attendees.map((name) => {
+  //   return <p key={uuidv4()}>{name}</p>;
+  // });
 }

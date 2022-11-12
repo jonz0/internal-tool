@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { API } from "aws-amplify";
@@ -12,7 +12,7 @@ export const DetailsContext = React.createContext();
 
 export default function Class({ c }) {
   const attendees = useRef([]);
-  const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState();
 
   useEffect(() => {
     async function fetchAttendees() {
@@ -46,17 +46,18 @@ export default function Class({ c }) {
     fetchAttendees();
   }, []);
 
-  function toggleDetails() {
-    setDetails(attendees.current);
-  }
-
   return (
     <div>
       <DetailsContext.Provider value={details}>
         <Button
           className={styles.signupButton}
           colorScheme="blue"
-          onClick={toggleDetails}
+          onClick={() => {
+            console.log(attendees.current);
+            setDetails(attendees.current);
+            console.log("details");
+            console.log(details);
+          }}
           width="150px"
           height="50px"
           variant="outline"

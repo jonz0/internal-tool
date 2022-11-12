@@ -7,17 +7,15 @@ import * as queries from "../graphql/queries";
 import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import DaySet from "../components/DaySet";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import Details from "../components/Details";
 import Class from "../components/Class";
 import Image from "next/image";
+import { DetailsContext } from "../components/Class";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
 export default function Home() {
   const attendees = useRef([]);
-
-  function changeAttendees(students) {
-    attendees.current = students;
-  }
 
   return (
     <div className="page-container">
@@ -42,6 +40,14 @@ export default function Home() {
         <div className={styles.details}>
           <p className={styles.detailsHeader}>Details</p>
           <Details />
+          {/* <Button
+            onClick={() => {
+              console.log("STUDENTS");
+              console.log(students);
+            }}
+          >
+            STUDENTS
+          </Button> */}
         </div>
       </div>
     </div>
