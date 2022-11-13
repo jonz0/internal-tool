@@ -8,12 +8,12 @@ import * as mutations from "../graphql/mutations";
 import { Textarea } from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css";
 import { useSelector, useDispatch } from "react-redux";
-
-export const DetailsContext = React.createContext();
+import { setAttendees } from "../features/class/detailsSlice";
 
 export default function Class({ c }) {
   const attendees = useRef([]);
-  const [details, setDetails] = useState();
+  const att = useSelector((state) => state.attendees.value);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchAttendees() {
@@ -49,25 +49,18 @@ export default function Class({ c }) {
 
   return (
     <div>
-      <DetailsContext.Provider value={details}>
-        <Button
-          className={styles.signupButton}
-          colorScheme="blue"
-          onClick={() => {
-            console.log(attendees.current);
-            setDetails(attendees.current);
-            console.log("details");
-            console.log(details);
-          }}
-          width="150px"
-          height="50px"
-          variant="outline"
-          fontSize="10pt"
-        >
-          {c.name} <br />
-          {c.start.substring(0, 5)} - {c.end.substring(0, 5)}
-        </Button>
-      </DetailsContext.Provider>
+      <Button
+        className={styles.signupButton}
+        colorScheme="blue"
+        onClick={() => dispatch(setAttendees(attendees.current))}
+        width="150px"
+        height="50px"
+        variant="outline"
+        fontSize="10pt"
+      >
+        {c.name} <br />
+        {c.start.substring(0, 5)} - {c.end.substring(0, 5)}
+      </Button>
     </div>
   );
 }

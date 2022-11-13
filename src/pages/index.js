@@ -11,12 +11,9 @@ import { useState, useEffect, useRef, useContext } from "react";
 import Details from "../components/Details";
 import Class from "../components/Class";
 import Image from "next/image";
-import { DetailsContext } from "../components/Class";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 
 export default function Home() {
-  const attendees = useRef([]);
-
   return (
     <div className="page-container">
       <div className={styles.toolbar}>
