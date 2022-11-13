@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Day from "../components/Day";
@@ -12,29 +13,23 @@ import Details from "../components/Details";
 import Class from "../components/Class";
 import Image from "next/image";
 import { Button, ButtonGroup } from "@chakra-ui/react";
-import Toolbar from "../components/Toolbar";
 
-export default function Home() {
+export default function Toolbar() {
   return (
-    <div className="page-container">
-      <Toolbar />
-      <div className="calendar-container">
-        <div className="signup-container">
-          <DaySet />
-        </div>
-        <div className={styles.vl}></div>
-        <div className={styles.details}>
-          <p className={styles.detailsHeader}>Details</p>
-          <Details />
-          {/* <Button
-            onClick={() => {
-              console.log("STUDENTS");
-              console.log(students);
-            }}
-          >
-            STUDENTS
-          </Button> */}
-        </div>
+    <div className={styles.toolbar}>
+      <Image
+        src="/serao-transparent.png"
+        width="150"
+        height="150"
+        className={styles.serao}
+      />
+      <div className={styles.toolkit}>
+        <a href="/admin" className={styles.tools}>
+          Admin
+        </a>
+        <p className={styles.tools}>Home</p>
+        <p className={styles.tools}>Profile</p>
+        <p className={styles.tools}>Sign Out</p>
       </div>
     </div>
   );
