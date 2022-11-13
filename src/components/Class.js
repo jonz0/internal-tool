@@ -8,51 +8,64 @@ import * as mutations from "../graphql/mutations";
 import { Textarea } from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setAttendees } from "../features/class/detailsSlice";
+import { setDetails } from "../features/class/detailsSlice";
 
 export default function Class({ c }) {
-  const attendees = useRef([]);
-  const att = useSelector((state) => state.attendees.value);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    async function fetchAttendees() {
-      let students = [];
+  const details = useRef({
+    id: c.id,
+    name: c.name,
+    start: c.start,
+    end: c.end,
+    type: c.type,
+    maxSpots: c.maxSpots,
+    openSpots: c.openSpots,
+    classOpen: c.classOpen,
+    attendees: [],
+    message: c.message,
+    instructor: c.instructor,
+  });
 
-      const classAttendees = await API.graphql({
-        query: queries.listAttendees,
-        variables: {
-          filter: {
-            classAttendeesId: {
-              eq: c.id,
-            },
+  // const att = useSelector((state) => state.details.value);
+
+  useEffect(() => {
+    fetchDetails();
+  }, []);
+
+  async function fetchDetails() {
+    let students = [];
+
+    const classAttendees = await API.graphql({
+      query: queries.listAttendees,
+      variables: {
+        filter: {
+          classAttendeesId: {
+            eq: c.id,
           },
         },
-      });
+      },
+    });
 
-      // console.log(classAttendees.data.listAttendees.items);
+    classAttendees.data.listAttendees.items.forEach((attendee) =>
+      students.push(toTitleCase(attendee.firstName + " " + attendee.lastName))
+    );
 
-      classAttendees.data.listAttendees.items.forEach((attendee) =>
-        students.push(attendee.firstName)
-      );
+    details.current.attendees = students;
+  }
 
-      students.forEach((student) => console.log(student));
-
-      attendees.current = students;
-      // console.log("students");
-      // console.log(students);
-      // console.log(typeof students);
-    }
-
-    fetchAttendees();
-  }, []);
+  function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
 
   return (
     <div>
       <Button
         className={styles.signupButton}
         colorScheme="blue"
-        onClick={() => dispatch(setAttendees(attendees.current))}
+        onClick={() => dispatch(setDetails(details.current))}
         width="150px"
         height="50px"
         variant="outline"

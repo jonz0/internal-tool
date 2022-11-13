@@ -3,6 +3,6 @@ import detailsReducer from "../features/class/detailsSlice";
 
 export default configureStore({
   reducer: {
-    attendees: detailsReducer,
+    details: detailsReducer,
   },
 });

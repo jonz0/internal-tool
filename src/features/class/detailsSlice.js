@@ -3,10 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 export const classSlice = createSlice({
   name: "attendees",
   initialState: {
-    value: [],
+    value: {
+      id: "",
+      name: "",
+      start: "",
+      end: "",
+      type: "",
+      maxSpots: 0,
+      openSpots: 0,
+      classOpen: false,
+      attendees: [],
+      message: "",
+      instructor: "",
+    },
   },
   reducers: {
-    setAttendees: (state, action) => {
+    setDetails: (state, action) => {
       console.log("action");
       console.log(action.payload);
       state.value = action.payload;
@@ -15,6 +27,6 @@ export const classSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setAttendees } = classSlice.actions;
+export const { setDetails } = classSlice.actions;
 
 export default classSlice.reducer;

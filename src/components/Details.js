@@ -5,8 +5,21 @@ import { Button, ButtonGroup } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
 
 export default function Details() {
-  const attendees = useSelector((state) => state.attendees.value);
-  return attendees.map((name) => {
-    return <p key={uuidv4()}>{name}</p>;
-  });
+  const details = useSelector((state) => state.details.value);
+
+  return (
+    <div>
+      <p>Class: {details.name}</p>
+      <p>Instructor: {details.instructor}</p>
+      <p>Type: {details.type}</p>
+      <p>
+        Availability: {details.openSpots} out of {details.maxSpots}
+      </p>
+      <br />
+      <p>Attendees:</p>
+      {details.attendees.map((name) => (
+        <p key={uuidv4()}>{name}</p>
+      ))}
+    </div>
+  );
 }
