@@ -10,7 +10,7 @@ import Class from "./Class";
 import ClassSet from "./ClassSet";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 
-export default function Day({ increment }) {
+export default function Day({ increment, exclude }) {
   const [sessions, setSessions] = useState([]);
 
   function getDay() {
@@ -23,7 +23,7 @@ export default function Day({ increment }) {
   return (
     <div className={styles.slot}>
       <p className={styles.day}>{getDay()}</p>
-      <ClassSet day={getDay().toLowerCase()}></ClassSet>
+      <ClassSet day={getDay().toLowerCase()} exclude={exclude}></ClassSet>
     </div>
   );
 }

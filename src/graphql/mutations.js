@@ -16,6 +16,7 @@ export const createDay = /* GraphQL */ `
           start
           end
           type
+          age
           maxSpots
           openSpots
           classOpen
@@ -49,6 +50,7 @@ export const updateDay = /* GraphQL */ `
           start
           end
           type
+          age
           maxSpots
           openSpots
           classOpen
@@ -82,6 +84,7 @@ export const deleteDay = /* GraphQL */ `
           start
           end
           type
+          age
           maxSpots
           openSpots
           classOpen
@@ -111,6 +114,7 @@ export const createClass = /* GraphQL */ `
       start
       end
       type
+      age
       maxSpots
       openSpots
       classOpen
@@ -156,6 +160,7 @@ export const updateClass = /* GraphQL */ `
       start
       end
       type
+      age
       maxSpots
       openSpots
       classOpen
@@ -201,6 +206,7 @@ export const deleteClass = /* GraphQL */ `
       start
       end
       type
+      age
       maxSpots
       openSpots
       classOpen
@@ -248,6 +254,7 @@ export const createAttendee = /* GraphQL */ `
         start
         end
         type
+        age
         maxSpots
         openSpots
         classOpen
@@ -290,6 +297,7 @@ export const updateAttendee = /* GraphQL */ `
         start
         end
         type
+        age
         maxSpots
         openSpots
         classOpen
@@ -332,6 +340,7 @@ export const deleteAttendee = /* GraphQL */ `
         start
         end
         type
+        age
         maxSpots
         openSpots
         classOpen

@@ -13,6 +13,7 @@ export const getDay = /* GraphQL */ `
           start
           end
           type
+          age
           maxSpots
           openSpots
           classOpen
@@ -61,6 +62,7 @@ export const getClass = /* GraphQL */ `
       start
       end
       type
+      age
       maxSpots
       openSpots
       classOpen
@@ -108,6 +110,7 @@ export const listClasses = /* GraphQL */ `
         start
         end
         type
+        age
         maxSpots
         openSpots
         classOpen
@@ -142,6 +145,7 @@ export const getAttendee = /* GraphQL */ `
         start
         end
         type
+        age
         maxSpots
         openSpots
         classOpen
@@ -186,6 +190,7 @@ export const listAttendees = /* GraphQL */ `
           start
           end
           type
+          age
           maxSpots
           openSpots
           classOpen

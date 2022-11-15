@@ -16,6 +16,7 @@ type Class @model {
   start: AWSTime
   end: AWSTime
   type: String
+  age: String
   maxSpots: Int
   openSpots: Int
   classOpen: Boolean

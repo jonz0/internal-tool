@@ -9,7 +9,7 @@ import * as mutations from "../graphql/mutations";
 import Day from "../components/Day";
 import { resolve } from "styled-jsx/css";
 
-export default function DaySet() {
+export default function DaySet({ exclude }) {
   const [numDays, setNumDays] = useState(0);
 
   async function getDays() {
@@ -24,6 +24,6 @@ export default function DaySet() {
   });
 
   return Array.from(Array(numDays).keys()).map((day) => {
-    return <Day key={uuidv4()} increment={day} />;
+    return <Day key={uuidv4()} increment={day} exclude={exclude} />;
   });
 }

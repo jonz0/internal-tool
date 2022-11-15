@@ -11,7 +11,15 @@ import { useState, useEffect, useRef, useContext } from "react";
 import Details from "../components/Details";
 import Class from "../components/Class";
 import Image from "next/image";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import {
+  Button,
+  ButtonGroup,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+} from "@chakra-ui/react";
 import Toolbar from "../components/Toolbar";
 
 export default function Home() {
@@ -19,9 +27,25 @@ export default function Home() {
     <div className="page-container">
       <Toolbar />
       <div className="calendar-container">
-        <div className="signup-container">
-          <DaySet />
-        </div>
+        <Tabs variant="soft-rounded" colorScheme="purple">
+          <TabList>
+            <Tab>Adults</Tab>
+            <Tab>Kids</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <div className="signup-container">
+                <DaySet exclude="kids" />
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="signup-container">
+                <DaySet exclude="adults" />
+              </div>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
+
         <div className={styles.vl}></div>
         <div className={styles.details}>
           <p className={styles.detailsHeader}>Details</p>
