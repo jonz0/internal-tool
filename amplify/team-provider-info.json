@@ -19,6 +19,10 @@
         "S3Trigger5916beb7": {
           "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
           "s3Key": "amplify-builds/S3Trigger5916beb7-446a315a733546425939-build.zip"
+        },
+        "lambdatest": {
+          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
+          "s3Key": "amplify-builds/lambdatest-672b3755482f5a507233-build.zip"
         }
       },
       "api": {
