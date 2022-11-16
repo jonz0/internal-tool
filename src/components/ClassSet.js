@@ -24,6 +24,9 @@ export default function ClassSet({ day, exclude }) {
           dayClassesId: {
             eq: day,
           },
+          age: {
+            ne: exclude,
+          },
         },
       },
     });
@@ -33,13 +36,14 @@ export default function ClassSet({ day, exclude }) {
     });
 
     setClasses(sorted);
+    // console.log(day + " " + sorted.length);
   }
 
-  return classes.map((c) => {
-    if (exclude == c.age) {
-      return;
-    } else {
+  if (classes.length !== 0) {
+    return classes.map((c) => {
       return <Class key={uuidv4()} c={c} />;
-    }
-  });
+    });
+  } else {
+    return <Class key={uuidv4()} c={null} />;
+  }
 }

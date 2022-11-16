@@ -11,6 +11,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { setDetails } from "../features/class/detailsSlice";
 
 export default function Class({ c }) {
+  if (c == null) {
+    console.log("lol");
+    return (
+      <div>
+        <Button
+          className={styles.signupButton}
+          colorScheme="blue"
+          width="150px"
+          height="50px"
+          variant="outline"
+          fontSize="10pt"
+          isDisabled={true}
+        >
+          No Classes
+        </Button>
+      </div>
+    );
+  }
+
   const dispatch = useDispatch();
 
   const details = useRef({
