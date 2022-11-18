@@ -50,14 +50,6 @@ export default function Home() {
         <div className={styles.details}>
           <p className={styles.detailsHeader}>Details</p>
           <Details />
-          {/* <Button
-            onClick={() => {
-              console.log("STUDENTS");
-              console.log(students);
-            }}
-          >
-            STUDENTS
-          </Button> */}
         </div>
       </div>
     </div>

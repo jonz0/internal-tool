@@ -1,14 +1,34 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { DetailsContext } from "./Class";
-import { useSelector, useDispatch } from "react-redux";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
+import styles from "../../styles/Admin.module.css";
+import RemoveUser from "./RemoveUser";
+import { useSelector, useDispatch } from "react-redux";
+import { API } from "aws-amplify";
+import * as queries from "../graphql/queries";
+import * as subscriptions from "../graphql/subscriptions";
+import * as mutations from "../graphql/mutations";
 
-export default function Details() {
+export default function DetailsAdmin() {
   const details = useSelector((state) => state.details.value);
+  const removeStaging = useSelector((state) => state.removeStaging.value);
   const belts = ["⬜", "🟨", "🟧", "🟦", "🟪", "🟫", "⬛"];
   const awards = ["🥋", "🤼‍♂️", "🐯", "🥊"];
   const ranks = ["🥉", "🥈", "🥇"];
+
+  function removeStagedUsers() {
+    removeStaging.forEach(async (id) => {
+      const userToDelete = await API.graphql({
+        query: mutations.deleteAttendee,
+        variables: {
+          input: {
+            id: id,
+          },
+        },
+      });
+    });
+  }
 
   return (
     <div>
@@ -42,10 +62,19 @@ export default function Details() {
       </p>
 
       {details.attendees.map((attendee) => (
-        <p key={uuidv4()}>
-          {belts[attendee.jjbelt]} {attendee.jjbelt} {attendee.name}
-        </p>
+        <div className={styles.detailsContainer}>
+          <RemoveUser key={uuidv4()} attendee={attendee} />
+        </div>
       ))}
+
+      <Button
+        className={styles.removeButton}
+        colorScheme="blue"
+        size="sm"
+        onClick={removeStagedUsers}
+      >
+        Remove
+      </Button>
     </div>
   );
 }

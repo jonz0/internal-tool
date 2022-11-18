@@ -12,7 +12,6 @@ import { setDetails } from "../features/class/detailsSlice";
 
 export default function Class({ c }) {
   if (c == null) {
-    console.log("lol");
     return (
       <div>
         <Button
@@ -46,8 +45,6 @@ export default function Class({ c }) {
     instructor: c.instructor,
   });
 
-  // const att = useSelector((state) => state.details.value);
-
   useEffect(() => {
     fetchDetails();
   }, []);
@@ -67,7 +64,12 @@ export default function Class({ c }) {
     });
 
     classAttendees.data.listAttendees.items.forEach((attendee) =>
-      students.push(toTitleCase(attendee.firstName + " " + attendee.lastName))
+      students.push({
+        name: toTitleCase(attendee.firstName + " " + attendee.lastName),
+        jjbelt: attendee.jjbelt,
+        llbelt: attendee.llbelt,
+        id: attendee.id,
+      })
     );
 
     details.current.attendees = students;
