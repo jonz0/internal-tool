@@ -9,6 +9,10 @@ import * as mutations from "../graphql/mutations";
 import Day from "../components/Day";
 import { resolve } from "styled-jsx/css";
 
+function testFunction() {
+  return "test;";
+}
+
 export default function DaySet({ exclude }) {
   const [numDays, setNumDays] = useState(0);
 
