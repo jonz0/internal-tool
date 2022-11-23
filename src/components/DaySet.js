@@ -9,14 +9,8 @@ import * as mutations from "../graphql/mutations";
 import Day from "../components/Day";
 import { resolve } from "styled-jsx/css";
 
-function testFunction() {
-  return "test;";
-}
-
 export default function DaySet({ exclude }) {
   const [numDays, setNumDays] = useState(0);
-
-  // Test comment
 
   async function getDays() {
     const days = await API.graphql({
