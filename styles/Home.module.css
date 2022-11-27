@@ -130,34 +130,30 @@
   }
 } */
 
-.serao {
-  margin-left: 9vw;
-}
-
 .toolbar {
-  position: fixed;
-  left: 0;
+  position: inline-block;
   top: 0;
-  width: 100vw;
-  height: 100px;
-  background-color: rgb(111, 13, 168);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  height: 100vh;
+  flex: 0 0 auto;
+  padding-left: 40px;
+  padding-top: 40px;
+  width: 300px;
+  background-color: rgb(212, 212, 212);
+  flex-direction: column;
 }
 
 .toolkit {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 9vw;
+  flex-direction: column;
+  padding-top: 50px;
 }
 
 .tools {
-  color: white;
+  color: black;
   font-weight: 500;
   font-size: 14pt;
   margin-right: 20px;
+  margin-top: 10px;
   justify-content: right;
   font-family: "Georama", sans-serif;
 }

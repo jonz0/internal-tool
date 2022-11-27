@@ -27,15 +27,15 @@ a {
 
 .page-container {
   position: relative;
-  margin-top: 150px;
-  margin-left: 10vw;
   margin-right: 10vw;
+  display: flex;
+  flex-direction: row;
 }
 
 .calendar-container {
   display: flex;
   flex-direction: row;
-  height: 70vh;
+  width: 100%;
 }
 
 .signup-container {

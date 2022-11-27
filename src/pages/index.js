@@ -21,11 +21,13 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 import Toolbar from "../components/Toolbar";
+import Menu from "../components/Menu";
 
 export default function Home() {
   return (
     <div className="page-container">
-      <Toolbar />
+      <Menu />
+      {/* <Toolbar /> */}
       <div className="calendar-container">
         <Tabs variant="soft-rounded" colorScheme="purple">
           <TabList>
