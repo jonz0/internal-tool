@@ -22,7 +22,7 @@ import {
 } from "@chakra-ui/react";
 import Menu from "../components/Menu";
 
-export default function Home() {
+export default function Leaderboard() {
   return (
     <div className="page-container">
       <Menu />

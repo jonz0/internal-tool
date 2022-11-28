@@ -37,18 +37,6 @@ export default function Details() {
           </p>
         ))}
       </div>
-
-      {/* <p>Class: {details.name}</p>
-      <p>Instructor: {details.instructor}</p>
-      <p>Type: {details.type}</p>
-      <p>
-        Availability: {details.openSpots} out of {details.maxSpots}
-      </p>
-      <br />
-      <p>Attendees:</p>
-      {details.attendees.map((name) => (
-        <p key={uuidv4()}>{name}</p>
-      ))} */}
     </div>
   );
 }

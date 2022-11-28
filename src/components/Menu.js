@@ -25,15 +25,21 @@ export default function Menu() {
       <div className={styles.toolkit}>
         <div className={styles.tool}>
           <img src="/icons/HOME.svg" className={styles.toolIcon} />
-          <p className={styles.tools}>Classes</p>
+          <a href="/" className={styles.tools}>
+            Classes
+          </a>
         </div>
         <div className={styles.tool}>
           <img src="/icons/STATISTICS.svg" className={styles.toolIcon} />
-          <p className={styles.tools}>Profile</p>
+          <a href="/profile" className={styles.tools}>
+            Profile
+          </a>
         </div>
         <div className={styles.tool}>
           <img src="/icons/GRID.svg" className={styles.toolIcon} />
-          <p className={styles.tools}>Leaderboard</p>
+          <a href="/leaderboard" className={styles.tools}>
+            Leaderboard
+          </a>
         </div>
         <div className={styles.tool}>
           <img src="/icons/LOCK CLOSED.svg" className={styles.toolIcon} />
@@ -49,4 +55,3 @@ export default function Menu() {
     </div>
   );
 }
-3;

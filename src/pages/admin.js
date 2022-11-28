@@ -21,7 +21,7 @@ import {
   Tab,
   TabPanel,
 } from "@chakra-ui/react";
-import Toolbar from "../components/Toolbar";
+import Menu from "../components/Menu";
 
 async function buildDefaultSchema() {
   const newTodo = await API.graphql(
@@ -32,37 +32,33 @@ async function buildDefaultSchema() {
 export default function admin() {
   return (
     <div className="page-container">
-      <Toolbar />
+      <Menu />
       <div className="calendar-container">
-        <div className="admin-container">
-          <p className={styles.detailsHeader}>
-            Management Beta <br />
-            Skeleton basic UI
-          </p>
-          <Button onClick={buildDefaultSchema}>Build Default Schema</Button>
-          <br />
-          <Tabs variant="soft-rounded" colorScheme="purple">
-            <TabList>
-              <Tab>Adults</Tab>
-              <Tab>Kids</Tab>
-            </TabList>
-            <TabPanels>
-              <TabPanel>
-                <div className="signup-container">
-                  <DaySet exclude="kids" />
-                </div>
-              </TabPanel>
-              <TabPanel>
-                <div className="signup-container">
-                  <DaySet exclude="adults" />
-                </div>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-        </div>
-        <div className={styles.vl}></div>
+        <Tabs variant="soft-rounded" colorScheme="blue">
+          <TabList className="tab-list">
+            <Tab>Adults</Tab>
+            <Tab>Kids</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <div className="signup-container">
+                <DaySet exclude="kids" />
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="signup-container">
+                <DaySet exclude="adults" />
+              </div>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
+
+        {/* <div className={styles.hl}></div> */}
         <div className={styles.details}>
-          <p className={styles.detailsHeader}>Details</p>
+          <div className={styles.detailsHeaders}>
+            <p className={styles.detailsHeader}>Details</p>
+            <p className={styles.attendeesHeader}>Attendees</p>
+          </div>
           <DetailsAdmin />
         </div>
       </div>

@@ -31,50 +31,32 @@ export default function DetailsAdmin() {
   }
 
   return (
-    <div>
-      {/* <p>Class: {details.name}</p>
-      <p>Instructor: {details.instructor}</p>
-      <p>Type: {details.type}</p>
-      <p>
-        Availability: {details.openSpots} out of {details.maxSpots}
-      </p>
-      <br />
-      <p>Attendees:</p>
-      {details.attendees.map((name) => (
-        <p key={uuidv4()}>{name}</p>
-      ))} */}
+    <div className={styles.detailsContainer}>
+      <div className={styles.detailsLeft}>
+        <p>
+          <b>Class:</b> {details.name}
+        </p>
+        <p>
+          <b>Type:</b> {details.type}
+        </p>
+        <p>
+          <b>Instructor:</b> {details.instructor}
+        </p>
+        <p>
+          <b>Availability:</b> {details.openSpots} out of {details.maxSpots}
+        </p>
+        <p>
+          <b>Message:</b>
+        </p>
+      </div>
 
-      <p>
-        <b>Class:</b> {details.name}
-      </p>
-      <p>
-        <b>Instructor:</b> {details.instructor}
-      </p>
-      <p>
-        <b>Type:</b> {details.type}
-      </p>
-      <p>
-        <b>Availability:</b> {details.openSpots} out of {details.maxSpots}
-      </p>
-      <br />
-      <p>
-        <b>Attendees:</b>
-      </p>
-
-      {details.attendees.map((attendee) => (
-        <div className={styles.detailsContainer}>
-          <RemoveUser key={uuidv4()} attendee={attendee} />
-        </div>
-      ))}
-
-      <Button
-        className={styles.removeButton}
-        colorScheme="blue"
-        size="sm"
-        onClick={removeStagedUsers}
-      >
-        Remove
-      </Button>
+      <div className={styles.detailsRight}>
+        {details.attendees.map((attendee) => (
+          <div className={styles.detailsContainer}>
+            <RemoveUser key={uuidv4()} attendee={attendee} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -16,10 +16,6 @@ export default function RemoveUser({ attendee }) {
   const dispatch = useDispatch();
 
   async function addAttendeeToStaging() {
-    // const attendeeName = {
-    //   id: attendee.id,
-    // };
-
     dispatch(setToRemove(attendee.id));
   }
 
