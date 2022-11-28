@@ -34,8 +34,10 @@ a {
 
 .calendar-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
+  margin-left: 65px;
+  margin-top: 35px;
 }
 
 .signup-container {
@@ -43,5 +45,11 @@ a {
   flex-direction: row;
   overflow-y: auto;
   overflow-x: auto;
-  width: 60vw;
+  width: 68vw;
+  margin-top: 10px;
+  padding-bottom: 15px;
+}
+
+.tab-list {
+  margin-left: 5px;
 }

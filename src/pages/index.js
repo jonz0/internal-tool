@@ -29,8 +29,8 @@ export default function Home() {
       <Menu />
       {/* <Toolbar /> */}
       <div className="calendar-container">
-        <Tabs variant="soft-rounded" colorScheme="purple">
-          <TabList>
+        <Tabs variant="soft-rounded" colorScheme="blue">
+          <TabList className="tab-list">
             <Tab>Adults</Tab>
             <Tab>Kids</Tab>
           </TabList>
@@ -48,9 +48,12 @@ export default function Home() {
           </TabPanels>
         </Tabs>
 
-        <div className={styles.vl}></div>
+        {/* <div className={styles.hl}></div> */}
         <div className={styles.details}>
-          <p className={styles.detailsHeader}>Details</p>
+          <div className={styles.detailsHeaders}>
+            <p className={styles.detailsHeader}>Details</p>
+            <p className={styles.attendeesHeader}>Attendees</p>
+          </div>
           <Details />
         </div>
       </div>

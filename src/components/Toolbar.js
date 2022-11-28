@@ -19,14 +19,15 @@ export default function Toolbar() {
     <div className={styles.toolbar}>
       <Image
         src="/serao-transparent.png"
-        width="150"
-        height="150"
+        width="170"
+        height="170"
         className={styles.serao}
       />
       <div className={styles.toolkit}>
         <a href="/admin" className={styles.tools}>
           Admin
         </a>
+        <img src="../../public/icons/HOME.svg" />
         <p className={styles.tools}>Home</p>
         <p className={styles.tools}>Profile</p>
         <p className={styles.tools}>Sign Out</p>

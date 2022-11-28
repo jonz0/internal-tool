@@ -13,25 +13,40 @@ import Details from "./Details";
 import Class from "./Class";
 import Image from "next/image";
 import { Button, ButtonGroup } from "@chakra-ui/react";
-
 export default function Menu() {
   return (
     <div className={styles.toolbar}>
       <Image
         src="/serao-transparent-black.png"
-        width="90"
-        height="90"
+        width="120"
+        height="120"
         className={styles.serao}
       />
       <div className={styles.toolkit}>
-        <p className={styles.tools}>Classes</p>
-        <p className={styles.tools}>Profile</p>
-        <p className={styles.tools}>Leaderboard</p>
-        <a href="/admin" className={styles.tools}>
-          Admin
-        </a>
-        <p className={styles.tools}>Sign Out</p>
+        <div className={styles.tool}>
+          <img src="/icons/HOME.svg" className={styles.toolIcon} />
+          <p className={styles.tools}>Classes</p>
+        </div>
+        <div className={styles.tool}>
+          <img src="/icons/STATISTICS.svg" className={styles.toolIcon} />
+          <p className={styles.tools}>Profile</p>
+        </div>
+        <div className={styles.tool}>
+          <img src="/icons/GRID.svg" className={styles.toolIcon} />
+          <p className={styles.tools}>Leaderboard</p>
+        </div>
+        <div className={styles.tool}>
+          <img src="/icons/LOCK CLOSED.svg" className={styles.toolIcon} />
+          <a href="/admin" className={styles.tools}>
+            Admin
+          </a>
+        </div>
+        <div className={styles.tool}>
+          <img src="/icons/CLOSE.svg" className={styles.toolIcon} />
+          <p className={styles.tools}>Sign Out</p>
+        </div>
       </div>
     </div>
   );
 }
+3;

@@ -137,15 +137,17 @@
   flex: 0 0 auto;
   padding-left: 40px;
   padding-top: 40px;
-  width: 300px;
-  background-color: rgb(212, 212, 212);
+  width: 260px;
+  background-color: rgb(189, 219, 240);
   flex-direction: column;
+  box-shadow: 3px 0 5px 0px rgb(212, 212, 212);
 }
 
 .toolkit {
   display: flex;
   flex-direction: column;
   padding-top: 50px;
+  margin-left: -7px;
 }
 
 .tools {
@@ -158,18 +160,33 @@
   font-family: "Georama", sans-serif;
 }
 
-.vl {
-  border-left: 1px solid black;
-  margin-left: 30px;
-  height: 60vh;
+.tool {
+  display: flex;
+  flex-direction: row;
+}
+
+.toolIcon {
+  height: 32pt;
+  width: 32px;
+  margin-top: 2px;
+  margin-right: 15px;
+  align-self: center;
 }
 
 .details {
-  width: 20vw;
-  padding-left: 3vw;
+  padding-left: 15px;
+  margin-top: 20px;
 }
 
 .detailsHeader {
+  font-family: "Georama", sans-serif;
+  font-size: 17pt;
+  font-weight: 500;
+  margin-bottom: 20px;
+  width: 40%;
+}
+
+.attendeesHeader {
   font-family: "Georama", sans-serif;
   font-size: 17pt;
   font-weight: 500;
@@ -197,4 +214,18 @@
 
 .signupButton {
   margin-bottom: 10px;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.detailsLeft {
+  width: 40%;
+}
+
+.detailsHeaders {
+  display: flex;
+  flex-direction: row;
 }
