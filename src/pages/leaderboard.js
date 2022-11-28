@@ -23,39 +23,5 @@ import {
 import Menu from "../components/Menu";
 
 export default function Leaderboard() {
-  return (
-    <div className="page-container">
-      <Menu />
-      {/* <Toolbar /> */}
-      <div className="calendar-container">
-        <Tabs variant="soft-rounded" colorScheme="blue">
-          <TabList className="tab-list">
-            <Tab>Adults</Tab>
-            <Tab>Kids</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <div className="signup-container">
-                <DaySet exclude="kids" />
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="signup-container">
-                <DaySet exclude="adults" />
-              </div>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-
-        {/* <div className={styles.hl}></div> */}
-        <div className={styles.details}>
-          <div className={styles.detailsHeaders}>
-            <p className={styles.detailsHeader}>Details</p>
-            <p className={styles.attendeesHeader}>Attendees</p>
-          </div>
-          <Details />
-        </div>
-      </div>
-    </div>
-  );
+  return <div></div>;
 }

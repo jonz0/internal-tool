@@ -1,18 +1,6 @@
 import React from "react";
-import Head from "next/head";
-import styles from "../../styles/Home.module.css";
-import Day from "./Day";
-import { v4 as uuidv4 } from "uuid";
-import { API } from "aws-amplify";
-import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import DaySet from "./DaySet";
-import { useState, useEffect, useRef, useContext } from "react";
-import Details from "./Details";
-import Class from "./Class";
+import styles from "../../styles/Menu.module.css";
 import Image from "next/image";
-import { Button, ButtonGroup } from "@chakra-ui/react";
 export default function Menu() {
   return (
     <div className={styles.toolbar}>
