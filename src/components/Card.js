@@ -11,20 +11,32 @@ import { API } from "aws-amplify";
 import { setToRemove } from "../features/class/removeStaging";
 import Image from "next/image";
 
-export default function Card({ attendee }) {
-  const details = useSelector((state) => state.removeStaging.value);
-  const belts = ["⬜", "🟨", "🟧", "🟦", "🟪", "🟫", "⬛"];
+export default function Card({ index }) {
+  const awards = [
+    ["/gold-cup.png", "1st Place"],
+    ["/silver-cup.png", "2nd Place"],
+    ["/bronze-cup.png", "3rd Place"],
+    ["/karate.png", "Pajama Fans"],
+    ["/choke.png", "Oil Checkers"],
+    ["/kickboxing.png", "Van Damme"],
+  ];
 
   return (
     <div className={styles.card}>
-      <Image
-        src="/user-placeholder.jpeg"
-        width="70"
-        height="70"
-        className={styles.serao}
-      />
-      <p>Jackie Chan</p>
-      <p>Belts</p>
+      <p className={styles.subHeader}>{awards[index][1]}</p>
+      <div className={styles.cardContainer}>
+        <div className={styles.awardImages}>
+          <img src={awards[index][0]} className={styles.awardImage} />
+          <div className={styles.imageCropper}>
+            <img src="/user-placeholder.jpeg" className={styles.userImage} />
+          </div>
+        </div>
+
+        <div className={styles.cardContents}>
+          <p className={styles.content}>Jackie Chan</p>
+          <p className={styles.content}>900 Classes</p>
+        </div>
+      </div>
     </div>
   );
 }

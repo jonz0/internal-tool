@@ -30,34 +30,43 @@ export default function Leaderboard() {
 
       <div className={styles.boardContainer}>
         <div className={styles.titlesContainer}>
-          <div className={styles.adults}>
-            <Card />
-            <Card />
-            <Card />
+          <p className={styles.header}>Ranking - Adults</p>
+          <div className={styles.row}>
+            <Card index="0" />
+            <Card index="1" />
+            <Card index="2" />
           </div>
-          <div className={styles.kids}>
-            <Card />
-            <Card />
-            <Card />
+          <p className={styles.header}>Ranking - Kids</p>
+          <div className={styles.row}>
+            <Card index="0" />
+            <Card index="1" />
+            <Card index="2" />
+          </div>
+          <p className={styles.header}>Yearly Titles</p>
+          <div className={styles.row}>
+            <Card index="3" />
+            <Card index="4" />
+            <Card index="5" />
           </div>
         </div>
-        <div className={styles.new}>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
+
         <div className={styles.classLeaders}>
-          <h1>Attendance Leaderboard</h1>
-          <div className={styles.leader}>
-            <p>Leader 1</p>
+          <div classNAme={styles.headerTabs}>
+            <p className={styles.header}>Attendance Leaderboard</p>
           </div>
-          <div className={styles.leader}>
-            <p>Leader 2</p>
-          </div>
-          <div className={styles.leader}>
-            <p>Leader 3</p>
+
+          <div className={styles.leaderboard}>
+            <Tabs variant="soft-rounded" colorScheme="blue">
+              <div className={styles.leader}>
+                <p>Leader 1</p>
+              </div>
+              <div className={styles.leader}>
+                <p>Leader 2</p>
+              </div>
+              <div className={styles.leader}>
+                <p>Leader 3</p>
+              </div>
+            </Tabs>
           </div>
         </div>
       </div>

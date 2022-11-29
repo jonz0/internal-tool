@@ -1,39 +1,104 @@
 @import url("https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lustria&family=Readex+Pro:wght@200;300;400;500;600;700&display=swap");
 
 .card {
-  width: 130px;
-  height: 150px;
-  align-items: center;
-  justify-content: center;
-  align-items: center;
+  width: 150px;
+  height: 165px;
+  display: table-cell;
+  border-radius: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-right: 20px;
+  vertical-align: middle;
   text-align: center;
-  display: inline-block;
-  border: 3px solid #dbe4ed;
+}
+
+.header {
+  font-family: "Georama", sans-serif;
+  color: black;
+  font-weight: 600;
+  font-size: 14pt;
+}
+
+.subHeader {
+  color: black;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 11pt;
+}
+
+.content {
+  color: black;
+  font-size: 11pt;
+}
+
+.cardContainer {
+  align-self: center;
+  vertical-align: middle;
 }
 
 .boardContainer {
   margin-left: 65px;
   margin-top: 35px;
+  display: flex;
+  flex-direction: row;
 }
 
 .titlesContainer {
-  display: flex;
-  flex-direction: row;
   margin-bottom: 30px;
 }
 
 .adults {
   display: flex;
   flex-direction: row;
-}
-
-.kids {
-  display: flex;
-  flex-direction: row;
-}
-
-.new {
-  display: flex;
-  flex-direction: row;
   margin-bottom: 30px;
+}
+
+.row {
+  margin-bottom: 10px;
+  display: table;
+  border-spacing: 20px;
+  border-collapse: separate;
+  margin-top: -5px;
+  margin-left: -10px;
+}
+
+.classLeaders {
+  margin-left: 50px;
+}
+
+.cardContents {
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.awardImage {
+  width: 40px;
+  height: 40px;
+  align-self: center;
+  margin-right: 10px;
+}
+
+.imageCropper {
+  width: 55px;
+  height: 55px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.userImage {
+  display: inline;
+  margin: 0 auto;
+  width: auto;
+  width: 55px;
+  height: 55px;
+}
+
+.awardImages {
+  display: flex;
+  justify-content: center;
 }

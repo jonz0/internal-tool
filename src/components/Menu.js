@@ -29,6 +29,9 @@ export default function Menu() {
             Leaderboard
           </a>
         </div>
+
+        <hr className={styles.hl} />
+
         <div className={styles.tool}>
           <img src="/icons/LOCK CLOSED.svg" className={styles.toolIcon} />
           <a href="/admin" className={styles.tools}>

@@ -42,3 +42,14 @@
   margin-right: 15px;
   align-self: center;
 }
+
+.hl {
+  background: rgb(109, 109, 109);
+  color: rgb(109, 109, 109);
+  border-color: rgb(189, 219, 240);
+  height: 1px;
+  width: 80%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 5px;
+}
