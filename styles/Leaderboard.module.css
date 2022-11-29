@@ -9,6 +9,7 @@
   margin-right: 20px;
   vertical-align: middle;
   text-align: center;
+  margin-top: 10px;
 }
 
 .header {
@@ -62,7 +63,7 @@
 }
 
 .classLeaders {
-  margin-left: 50px;
+  margin-left: 80px;
 }
 
 .cardContents {
@@ -98,7 +99,32 @@
   height: 55px;
 }
 
+.rankImage {
+  display: inline;
+  margin: 0 auto;
+  width: auto;
+  width: 25px;
+  height: 25px;
+}
+
 .awardImages {
   display: flex;
   justify-content: center;
+}
+
+.rankHeader {
+  color: black;
+  margin-bottom: 10px;
+  font-size: 14pt;
+}
+
+.rankings {
+  margin-top: 150px;
+}
+
+.rankRow {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 30px;
+  width: 130%;
 }

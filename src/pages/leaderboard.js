@@ -22,6 +22,7 @@ import {
 } from "@chakra-ui/react";
 import Menu from "../components/Menu";
 import Card from "../components/Card";
+import Rankings from "../components/Rankings";
 
 export default function Leaderboard() {
   return (
@@ -51,23 +52,10 @@ export default function Leaderboard() {
         </div>
 
         <div className={styles.classLeaders}>
-          <div classNAme={styles.headerTabs}>
-            <p className={styles.header}>Attendance Leaderboard</p>
-          </div>
-
-          <div className={styles.leaderboard}>
-            <Tabs variant="soft-rounded" colorScheme="blue">
-              <div className={styles.leader}>
-                <p>Leader 1</p>
-              </div>
-              <div className={styles.leader}>
-                <p>Leader 2</p>
-              </div>
-              <div className={styles.leader}>
-                <p>Leader 3</p>
-              </div>
-            </Tabs>
-          </div>
+          <p className={styles.header} style={{ marginBottom: "20px" }}>
+            Attendance Leaderboard
+          </p>
+          <Rankings className={styles.rankings} />
         </div>
       </div>
     </div>
