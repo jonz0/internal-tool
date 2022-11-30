@@ -29,7 +29,8 @@
         "calendarsignup": {}
       },
       "storage": {
-        "calendarstorage": {}
+        "calendarstorage": {},
+        "dynamo4d300657": {}
       }
     }
   }

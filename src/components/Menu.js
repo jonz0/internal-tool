@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../styles/Menu.module.css";
 import Image from "next/image";
+import Progress from "./Progress";
 export default function Menu() {
   return (
     <div className={styles.toolbar}>
@@ -43,6 +44,7 @@ export default function Menu() {
           <p className={styles.tools}>Sign Out</p>
         </div>
       </div>
+      <Progress />
     </div>
   );
 }

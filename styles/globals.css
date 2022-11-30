@@ -26,30 +26,77 @@ a {
 }
 
 .page-container {
-  position: relative;
-  margin-right: 10vw;
   display: flex;
-  flex-direction: row;
-}
-
-.calendar-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-left: 65px;
-  margin-top: 35px;
-}
-
-.signup-container {
-  display: flex;
-  flex-direction: row;
-  overflow-y: auto;
-  overflow-x: auto;
-  width: 68vw;
-  margin-top: 10px;
-  padding-bottom: 15px;
+  max-height: 100vh;
 }
 
 .tab-list {
   margin-left: 5px;
+}
+
+/*
+ * react-circular-progressbar styles
+ * All of the styles in this file are configurable!
+ */
+
+.CircularProgressbar {
+  /*
+   * This fixes an issue where the CircularProgressbar svg has
+   * 0 width inside a "display: flex" container, and thus not visible.
+   */
+  width: 50%;
+  /*
+   * This fixes a centering issue with CircularProgressbarWithChildren:
+   * https://github.com/kevinsqi/react-circular-progressbar/issues/94
+   */
+  margin: 0 auto;
+}
+
+.CircularProgressbar .CircularProgressbar-path {
+  stroke: #c73e8e;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease 0s;
+}
+
+.CircularProgressbar .CircularProgressbar-trail {
+  stroke: #ffffff;
+  /* Used when trail is not full diameter, i.e. when props.circleRatio is set */
+  stroke-linecap: round;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  fill: #c73eb0;
+  font-size: 20px;
+  dominant-baseline: middle;
+  text-anchor: middle;
+}
+
+.CircularProgressbar .CircularProgressbar-background {
+  fill: #d6d6d6;
+}
+
+/*
+ * Sample background styles. Use these with e.g.:
+ *
+ *   <CircularProgressbar
+ *     className="CircularProgressbar-inverted"
+ *     background
+ *     percentage={50}
+ *   />
+ */
+.CircularProgressbar.CircularProgressbar-inverted
+  .CircularProgressbar-background {
+  fill: #3e98c7;
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {
+  fill: #fff;
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {
+  stroke: #fff;
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {
+  stroke: transparent;
 }

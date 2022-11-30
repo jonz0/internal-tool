@@ -135,6 +135,8 @@ export const createClass = /* GraphQL */ `
           username
           firstName
           lastName
+          jjbelt
+          llbelt
           createdAt
           updatedAt
           classAttendeesId
@@ -181,6 +183,8 @@ export const updateClass = /* GraphQL */ `
           username
           firstName
           lastName
+          jjbelt
+          llbelt
           createdAt
           updatedAt
           classAttendeesId
@@ -227,6 +231,8 @@ export const deleteClass = /* GraphQL */ `
           username
           firstName
           lastName
+          jjbelt
+          llbelt
           createdAt
           updatedAt
           classAttendeesId
@@ -278,6 +284,8 @@ export const createAttendee = /* GraphQL */ `
       username
       firstName
       lastName
+      jjbelt
+      llbelt
       createdAt
       updatedAt
       classAttendeesId
@@ -321,6 +329,8 @@ export const updateAttendee = /* GraphQL */ `
       username
       firstName
       lastName
+      jjbelt
+      llbelt
       createdAt
       updatedAt
       classAttendeesId
@@ -364,6 +374,8 @@ export const deleteAttendee = /* GraphQL */ `
       username
       firstName
       lastName
+      jjbelt
+      llbelt
       createdAt
       updatedAt
       classAttendeesId
@@ -393,6 +405,16 @@ export const createUser = /* GraphQL */ `
       freeze
       freezeStart
       freezeEnd
+      bjj2022jul
+      ll2022jul
+      bjj2022aug
+      ll2022aug
+      bjj2022sep
+      ll2022sep
+      bjj2022oct
+      ll2022oct
+      goal
+      progress
       createdAt
       updatedAt
     }
@@ -421,6 +443,16 @@ export const updateUser = /* GraphQL */ `
       freeze
       freezeStart
       freezeEnd
+      bjj2022jul
+      ll2022jul
+      bjj2022aug
+      ll2022aug
+      bjj2022sep
+      ll2022sep
+      bjj2022oct
+      ll2022oct
+      goal
+      progress
       createdAt
       updatedAt
     }
@@ -449,6 +481,16 @@ export const deleteUser = /* GraphQL */ `
       freeze
       freezeStart
       freezeEnd
+      bjj2022jul
+      ll2022jul
+      bjj2022aug
+      ll2022aug
+      bjj2022sep
+      ll2022sep
+      bjj2022oct
+      ll2022oct
+      goal
+      progress
       createdAt
       updatedAt
     }

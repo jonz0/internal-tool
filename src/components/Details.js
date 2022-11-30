@@ -33,7 +33,7 @@ export default function Details() {
       <div className={styles.detailsRight}>
         {details.attendees.map((attendee) => (
           <p key={uuidv4()}>
-            {belts[attendee.jjbelt]} {attendee.jjbelt} {attendee.name}
+            {belts[attendee.jjbelt]} {attendee.name}
           </p>
         ))}
       </div>

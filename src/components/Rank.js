@@ -21,9 +21,15 @@ export default function Rank({ rank, name }) {
   return (
     <div className={styles.rankRow} style={{ backgroundColor: color }}>
       <p className={styles.rankHeader}>{rank}</p>
-      <img src="/user-placeholder.jpeg" className={styles.rankImage} />
+      <div className={styles.rankUser}>
+        <div className={styles.imageCropperSmall}>
+          <img src="/user-placeholder.jpeg" className={styles.rankImage} />
+        </div>
+        <p style={{ marginLeft: "5px" }} className={styles.rankHeader}>
+          Jackie Chan
+        </p>
+      </div>
       <p className={styles.rankHeader}>🟪</p>
-      <p className={styles.rankHeader}>🟦</p>
       <p className={styles.rankHeader}>900 Classes</p>
     </div>
   );

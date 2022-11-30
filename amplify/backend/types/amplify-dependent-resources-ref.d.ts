@@ -29,6 +29,14 @@ export type AmplifyDependentResourcesAttributes = {
         "calendarstorage": {
             "BucketName": "string",
             "Region": "string"
+        },
+        "dynamo4d300657": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
         }
     }
 }

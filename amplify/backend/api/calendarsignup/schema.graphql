@@ -32,6 +32,8 @@ type Attendee @model {
   username: String
   firstName: String
   lastName: String
+  jjbelt: Int
+  llbelt: Int
 }
 
 type User @model {
@@ -52,4 +54,14 @@ type User @model {
   freeze: Boolean
   freezeStart: AWSDate
   freezeEnd: AWSDate
+  bjj2022jul: Int
+  ll2022jul: Int
+  bjj2022aug: Int
+  ll2022aug: Int
+  bjj2022sep: Int
+  ll2022sep: Int
+  bjj2022oct: Int
+  ll2022oct: Int
+  goal: Int
+  progress: Int
 }

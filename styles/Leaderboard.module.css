@@ -29,6 +29,7 @@
 .content {
   color: black;
   font-size: 11pt;
+  height: 100%;
 }
 
 .cardContainer {
@@ -91,6 +92,14 @@
   border-radius: 50%;
 }
 
+.imageCropperSmall {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
 .userImage {
   display: inline;
   margin: 0 auto;
@@ -105,6 +114,7 @@
   width: auto;
   width: 25px;
   height: 25px;
+  align-self: center;
 }
 
 .awardImages {
@@ -115,7 +125,7 @@
 .rankHeader {
   color: black;
   margin-bottom: 10px;
-  font-size: 14pt;
+  font-size: 11pt;
 }
 
 .rankings {
@@ -127,4 +137,13 @@
   grid-auto-flow: column;
   grid-gap: 30px;
   width: 130%;
+  align-content: center;
+  vertical-align: middle;
+  align-items: center;
+  justify-items: center;
+}
+
+.rankUser {
+  display: flex;
+  flex-direction: row;
 }

@@ -83,6 +83,8 @@ export const getClass = /* GraphQL */ `
           username
           firstName
           lastName
+          jjbelt
+          llbelt
           createdAt
           updatedAt
           classAttendeesId
@@ -169,6 +171,8 @@ export const getAttendee = /* GraphQL */ `
       username
       firstName
       lastName
+      jjbelt
+      llbelt
       createdAt
       updatedAt
       classAttendeesId
@@ -203,6 +207,8 @@ export const listAttendees = /* GraphQL */ `
         username
         firstName
         lastName
+        jjbelt
+        llbelt
         createdAt
         updatedAt
         classAttendeesId
@@ -231,6 +237,16 @@ export const getUser = /* GraphQL */ `
       freeze
       freezeStart
       freezeEnd
+      bjj2022jul
+      ll2022jul
+      bjj2022aug
+      ll2022aug
+      bjj2022sep
+      ll2022sep
+      bjj2022oct
+      ll2022oct
+      goal
+      progress
       createdAt
       updatedAt
     }
@@ -261,6 +277,16 @@ export const listUsers = /* GraphQL */ `
         freeze
         freezeStart
         freezeEnd
+        bjj2022jul
+        ll2022jul
+        bjj2022aug
+        ll2022aug
+        bjj2022sep
+        ll2022sep
+        bjj2022oct
+        ll2022oct
+        goal
+        progress
         createdAt
         updatedAt
       }
