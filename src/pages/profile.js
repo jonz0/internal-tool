@@ -21,11 +21,15 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 import Menu from "../components/Menu";
+import { AmplifyProvider, withAuthenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
 
-export default function Profile() {
+export default withAuthenticator(function Profile() {
   return (
-    <div className="page-container">
-      <Menu />
-    </div>
+    <AmplifyProvider>
+      <div className="page-container">
+        <Menu />
+      </div>
+    </AmplifyProvider>
   );
-}
+});

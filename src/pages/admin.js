@@ -22,6 +22,8 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 import Menu from "../components/Menu";
+import { AmplifyProvider, withAuthenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
 
 async function buildDefaultSchema() {
   const newTodo = await API.graphql(
@@ -29,33 +31,35 @@ async function buildDefaultSchema() {
   ); // equivalent to above example
 }
 
-export default function admin() {
+export default withAuthenticator(function admin() {
   return (
-    <div className="page-container">
-      <Menu />
-      <div className={styles.pageRight}>
-        <div className={styles.calendarContainer}>
-          <Tabs variant="soft-rounded" colorScheme="blue">
-            <TabList className="tab-list">
-              <Tab>Adults</Tab>
-              <Tab>Kids</Tab>
-            </TabList>
-            <TabPanels>
-              <TabPanel>
-                <div className={styles.signupContainer}>
-                  <DaySet exclude="kids" />
-                </div>
-              </TabPanel>
-              <TabPanel>
-                <div className={styles.signupContainer}>
-                  <DaySet exclude="adults" />
-                </div>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-          <DetailsAdmin />
+    <AmplifyProvider>
+      <div className="page-container">
+        <Menu />
+        <div className={styles.pageRight}>
+          <div className={styles.calendarContainer}>
+            <Tabs variant="soft-rounded" colorScheme="blue">
+              <TabList className="tab-list">
+                <Tab>Adults</Tab>
+                <Tab>Kids</Tab>
+              </TabList>
+              <TabPanels>
+                <TabPanel>
+                  <div className={styles.signupContainer}>
+                    <DaySet exclude="kids" />
+                  </div>
+                </TabPanel>
+                <TabPanel>
+                  <div className={styles.signupContainer}>
+                    <DaySet exclude="adults" />
+                  </div>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+            <DetailsAdmin />
+          </div>
         </div>
       </div>
-    </div>
+    </AmplifyProvider>
   );
-}
+});
