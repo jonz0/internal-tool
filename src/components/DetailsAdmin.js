@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { DetailsContext } from "./Class";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
-import styles from "../../styles/Admin.module.css";
+import styles from "../../styles/Home.module.css";
 import RemoveUser from "./RemoveUser";
 import { useSelector, useDispatch } from "react-redux";
 import { API } from "aws-amplify";
@@ -31,31 +31,41 @@ export default function DetailsAdmin() {
   }
 
   return (
-    <div className={styles.detailsContainer}>
-      <div className={styles.detailsLeft}>
-        <p>
-          <b>Class:</b> {details.name}
-        </p>
-        <p>
-          <b>Type:</b> {details.type}
-        </p>
-        <p>
-          <b>Instructor:</b> {details.instructor}
-        </p>
-        <p>
-          <b>Availability:</b> {details.openSpots} out of {details.maxSpots}
-        </p>
-        <p>
-          <b>Message:</b>
-        </p>
+    <div>
+      <div className={styles.details}>
+        <div className={styles.detailsHeaders}>
+          <p className={styles.detailsHeader}>Details</p>
+          <p className={styles.attendeesHeader}>Attendees</p>
+          <Button colorScheme="red" size="sm" style={{ marginLeft: "50px" }}>
+            Confirm Removals
+          </Button>
+        </div>
       </div>
 
-      <div className={styles.detailsRight}>
-        {details.attendees.map((attendee) => (
-          <div className={styles.detailsContainer}>
+      <div className={styles.detailsContainer}>
+        <div className={styles.detailsLeft}>
+          <p>
+            <b>Class:</b> {details.name}
+          </p>
+          <p>
+            <b>Type:</b> {details.type}
+          </p>
+          <p>
+            <b>Instructor:</b> {details.instructor}
+          </p>
+          <p>
+            <b>Availability:</b> {details.openSpots} out of {details.maxSpots}
+          </p>
+          <p>
+            <b>Message:</b>
+          </p>
+        </div>
+
+        <div className={styles.detailsRight}>
+          {details.attendees.map((attendee) => (
             <RemoveUser key={uuidv4()} attendee={attendee} />
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

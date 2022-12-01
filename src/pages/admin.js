@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
 
 import Head from "next/head";
-import styles from "../../styles/Admin.module.css";
+import styles from "../../styles/Home.module.css";
 import Day from "../components/Day";
 import { v4 as uuidv4 } from "uuid";
 import { API, graphqlOperation } from "aws-amplify";
@@ -33,32 +33,26 @@ export default function admin() {
   return (
     <div className="page-container">
       <Menu />
-      <div className="calendar-container">
-        <Tabs variant="soft-rounded" colorScheme="blue">
-          <TabList className="tab-list">
-            <Tab>Adults</Tab>
-            <Tab>Kids</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <div className="signup-container">
-                <DaySet exclude="kids" />
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="signup-container">
-                <DaySet exclude="adults" />
-              </div>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-
-        {/* <div className={styles.hl}></div> */}
-        <div className={styles.details}>
-          <div className={styles.detailsHeaders}>
-            <p className={styles.detailsHeader}>Details</p>
-            <p className={styles.attendeesHeader}>Attendees</p>
-          </div>
+      <div className={styles.pageRight}>
+        <div className={styles.calendarContainer}>
+          <Tabs variant="soft-rounded" colorScheme="blue">
+            <TabList className="tab-list">
+              <Tab>Adults</Tab>
+              <Tab>Kids</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <div className={styles.signupContainer}>
+                  <DaySet exclude="kids" />
+                </div>
+              </TabPanel>
+              <TabPanel>
+                <div className={styles.signupContainer}>
+                  <DaySet exclude="adults" />
+                </div>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
           <DetailsAdmin />
         </div>
       </div>

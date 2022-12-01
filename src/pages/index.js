@@ -47,12 +47,6 @@ export default function Home() {
             </TabPanels>
           </Tabs>
 
-          <div className={styles.details}>
-            <div className={styles.detailsHeaders}>
-              <p className={styles.detailsHeader}>Details</p>
-              <p className={styles.attendeesHeader}>Attendees</p>
-            </div>
-          </div>
           <Details />
         </div>
       </div>

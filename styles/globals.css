@@ -28,6 +28,7 @@ a {
 .page-container {
   display: flex;
   max-height: 100vh;
+  overflow: hidden;
 }
 
 .tab-list {
