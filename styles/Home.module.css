@@ -80,8 +80,9 @@
 
 .detailsContainer {
   display: flex;
-  height: 55%;
+  height: 40%;
   margin-left: 15px;
+  overflow: scroll;
 }
 
 .detailsLeft {
