@@ -2,6 +2,9 @@ import React from "react";
 import styles from "../../styles/Menu.module.css";
 import Image from "next/image";
 import Progress from "./Progress";
+import { AmplifyProvider, withAuthenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+import Amplify, { Auth } from "aws-amplify";
 export default function Menu() {
   return (
     <div className={styles.toolbar}>
@@ -41,7 +44,15 @@ export default function Menu() {
         </div>
         <div className={styles.tool}>
           <img src="/icons/CLOSE.svg" className={styles.toolIcon} />
-          <p className={styles.tools}>Sign Out</p>
+          <p
+            className={styles.tools}
+            onClick={() => {
+              console.log("signing out...");
+              Auth.signOut();
+            }}
+          >
+            Sign Out
+          </p>
         </div>
       </div>
       <Progress />

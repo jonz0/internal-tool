@@ -5,17 +5,20 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Lustria } from "@next/font/google";
 import { Provider } from "react-redux";
 import store from "../app/store";
+import { AmplifyProvider, withAuthenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+import { useSelector, useDispatch } from "react-redux";
 
 Amplify.configure(config);
 
-function MyApp({ Component, pageProps }) {
+export default withAuthenticator(function MyApp({ Component, pageProps }) {
   return (
-    <Provider store={store}>
-      <ChakraProvider>
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </Provider>
+    <AmplifyProvider>
+      <Provider store={store}>
+        <ChakraProvider>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </Provider>
+    </AmplifyProvider>
   );
-}
-
-export default MyApp;
+});

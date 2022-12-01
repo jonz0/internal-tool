@@ -23,45 +23,41 @@ import {
 import Menu from "../components/Menu";
 import Card from "../components/Card";
 import Rankings from "../components/Rankings";
-import { AmplifyProvider, withAuthenticator } from "@aws-amplify/ui-react";
-import "@aws-amplify/ui-react/styles.css";
 
-export default withAuthenticator(function Leaderboard() {
+export default function Leaderboard() {
   return (
-    <AmplifyProvider>
-      <div className="page-container">
-        <Menu />
+    <div className="page-container">
+      <Menu />
 
-        <div className={styles.boardContainer}>
-          <div className={styles.titlesContainer}>
-            <p className={styles.header}>Ranking - Adults</p>
-            <div className={styles.row}>
-              <Card index="0" />
-              <Card index="1" />
-              <Card index="2" />
-            </div>
-            <p className={styles.header}>Ranking - Kids</p>
-            <div className={styles.row}>
-              <Card index="0" />
-              <Card index="1" />
-              <Card index="2" />
-            </div>
-            <p className={styles.header}>Yearly Titles</p>
-            <div className={styles.row}>
-              <Card index="3" />
-              <Card index="4" />
-              <Card index="5" />
-            </div>
+      <div className={styles.boardContainer}>
+        <div className={styles.titlesContainer}>
+          <p className={styles.header}>Ranking - Adults</p>
+          <div className={styles.row}>
+            <Card index="0" />
+            <Card index="1" />
+            <Card index="2" />
           </div>
-
-          <div className={styles.classLeaders}>
-            <p className={styles.header} style={{ marginBottom: "20px" }}>
-              Attendance Leaderboard
-            </p>
-            <Rankings className={styles.rankings} />
+          <p className={styles.header}>Ranking - Kids</p>
+          <div className={styles.row}>
+            <Card index="0" />
+            <Card index="1" />
+            <Card index="2" />
+          </div>
+          <p className={styles.header}>Yearly Titles</p>
+          <div className={styles.row}>
+            <Card index="3" />
+            <Card index="4" />
+            <Card index="5" />
           </div>
         </div>
+
+        <div className={styles.classLeaders}>
+          <p className={styles.header} style={{ marginBottom: "20px" }}>
+            Attendance Leaderboard
+          </p>
+          <Rankings className={styles.rankings} />
+        </div>
       </div>
-    </AmplifyProvider>
+    </div>
   );
-});
+}
