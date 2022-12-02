@@ -9,7 +9,7 @@ import {
   Card,
 } from "@aws-amplify/ui-react";
 
-function Login({ signOut }) {
+export default function Login({ signOut }) {
   return (
     <View className="App">
       <Card>
@@ -24,5 +24,3 @@ function Login({ signOut }) {
     </View>
   );
 }
-
-export default withAuthenticator(Login);
