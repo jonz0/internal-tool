@@ -22,6 +22,7 @@ import {
 import "@aws-amplify/ui-react/styles.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as mutations from "../graphql/mutations";
+import { useState } from "react";
 
 Amplify.configure(config);
 
@@ -55,14 +56,7 @@ const components = {
     Header() {
       const { tokens } = useTheme();
 
-      return (
-        <Heading
-          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
-          level={3}
-        >
-          Sign in to your account
-        </Heading>
-      );
+      return <Heading level={3}>Sign in to your account</Heading>;
     },
     Footer() {
       const { toResetPassword } = useAuthenticator();
@@ -86,14 +80,7 @@ const components = {
     Header() {
       const { tokens } = useTheme();
 
-      return (
-        <Heading
-          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
-          level={3}
-        >
-          Create a new account
-        </Heading>
-      );
+      return <Heading level={3}>Create a new account</Heading>;
     },
     Footer() {
       const { toSignIn } = useAuthenticator();
@@ -115,34 +102,20 @@ const components = {
   ConfirmSignUp: {
     Header() {
       const { tokens } = useTheme();
-      return (
-        <Heading
-          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
-          level={3}
-        >
-          Enter Information:
-        </Heading>
-      );
+      return <Heading level={3}>Enter Information:</Heading>;
     },
-    Footer() {
-      return <Text>Footer Information</Text>;
-    },
+    // Footer() {
+    //   return <Text>Footer Information</Text>;
+    // },
   },
   SetupTOTP: {
     Header() {
       const { tokens } = useTheme();
-      return (
-        <Heading
-          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
-          level={3}
-        >
-          Enter Information:
-        </Heading>
-      );
+      return <Heading level={3}>Enter Information:</Heading>;
     },
-    Footer() {
-      return <Text>Footer Information</Text>;
-    },
+    // Footer() {
+    //   return <Text>Footer Information</Text>;
+    // },
   },
   ConfirmSignIn: {
     Header() {
@@ -156,9 +129,9 @@ const components = {
         </Heading>
       );
     },
-    Footer() {
-      return <Text>Footer Information</Text>;
-    },
+    // Footer() {
+    //   return <Text>Footer Information</Text>;
+    // },
   },
   ResetPassword: {
     Header() {
@@ -172,9 +145,9 @@ const components = {
         </Heading>
       );
     },
-    Footer() {
-      return <Text>Footer Information</Text>;
-    },
+    // Footer() {
+    //   return <Text>Footer Information</Text>;
+    // },
   },
   ConfirmResetPassword: {
     Header() {
@@ -188,9 +161,9 @@ const components = {
         </Heading>
       );
     },
-    Footer() {
-      return <Text>Footer Information</Text>;
-    },
+    // Footer() {
+    //   return <Text>Footer Information</Text>;
+    // },
   },
 };
 
@@ -252,24 +225,53 @@ const formFields = {
   },
 };
 
-const services = {
-  async handleConfirmSignUp(formData) {
-    let { username, code } = formData;
-    // custom username
-    // username = username.toLowerCase();
-    // attributes.email = attributes.email.toLowerCase();
-    try {
-      console.log("trying...");
-      await Auth.confirmSignUp(username, code);
-      console.log("did we get here?");
-    } catch (error) {
-      console.log("FAILURE!");
-      return Auth.confirmSignUp(username, code);
-    }
-  },
-};
-
 export default (function MyApp({ Component, pageProps }) {
+  const [userEmail, setUserEmail] = useState("");
+
+  const services = {
+    async handleSignUp(formData) {
+      let { username, password, attributes } = formData;
+      // custom username
+      setUserEmail(attributes.email.toLowerCase());
+
+      return Auth.signUp({
+        username,
+        password,
+        attributes,
+        autoSignIn: {
+          enabled: true,
+        },
+      });
+    },
+
+    async handleConfirmSignUp(formData) {
+      let { username, code } = formData;
+      // custom username
+      // username = username.toLowerCase();
+      // attributes.email = attributes.email.toLowerCase();
+      try {
+        console.log("trying...");
+        await Auth.confirmSignUp(username, code);
+
+        const userDetails = {
+          id: username,
+          username: username,
+          email: userEmail,
+          jjBelt: 0,
+          llBelt: 0,
+        };
+
+        const newUser = await API.graphql({
+          query: mutations.createUser,
+          variables: { input: userDetails },
+        });
+      } catch (error) {
+        console.log("FAILURE!");
+        return Auth.confirmSignUp(username, code);
+      }
+    },
+  };
+
   return (
     <Authenticator
       formFields={formFields}
