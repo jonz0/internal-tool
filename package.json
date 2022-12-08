@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "updateAppsyncOperations": "amplify api gql-compile && amplify codegen && babel src/graphql --config-file ./babel.config.json -d ./amplify/backend/function/<defaultLayer>/opt/graphql/"
   },
   "dependencies": {
     "@aws-amplify/core": "^4.7.12",
@@ -37,6 +38,9 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
     "@redux-devtools/core": "^3.13.1",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.0"

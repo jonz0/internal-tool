@@ -23,6 +23,12 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
+        },
+        "calendarsignuplayer3c47e882": {
+            "Arn": "string"
+        },
+        "calendarsignupdefaultLayer": {
+            "Arn": "string"
         }
     },
     "storage": {
