@@ -1,0 +1,14 @@
+{
+  "permissions": {},
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "apiAmplifylayerguideGraphqlapiendpointoutput",
+      "environmentVariableName": "API_AMPLIFYLAYERGUIDE_GRAPHQLAPIENDPOINTOUTPUT"
+    },
+    {
+      "cloudFormationParameterName": "apiAmplifylayerguideGraphqlapikeyoutput",
+      "environmentVariableName": "API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT"
+    }
+  ]
+}

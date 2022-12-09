@@ -24,8 +24,12 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "calendarsignuplayer3c47e882": {
-            "Arn": "string"
+        "testFunction2": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string",
+            "CloudWatchEventRule": "string"
         },
         "calendarsignupdefaultLayer": {
             "Arn": "string"
@@ -34,14 +38,6 @@ export type AmplifyDependentResourcesAttributes = {
     "storage": {
         "calendarstorage": {
             "BucketName": "string",
-            "Region": "string"
-        },
-        "dynamo4d300657": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
             "Region": "string"
         }
     }
