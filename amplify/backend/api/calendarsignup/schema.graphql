@@ -1,10 +1,10 @@
 # This "input" configures a global authorization rule to enable public access to
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
-
+input AMPLIFY {
+  globalAuthRule: AuthRule = { allow: public }
+} # FOR TESTING ONLY!
 type Day @model {
   id: ID!
-  day: String
   classes: [Class] @hasMany
   date: AWSDate
   open: Boolean
@@ -54,14 +54,6 @@ type User @model {
   freeze: Boolean
   freezeStart: AWSDate
   freezeEnd: AWSDate
-  bjj2022jul: Int
-  ll2022jul: Int
-  bjj2022aug: Int
-  ll2022aug: Int
-  bjj2022sep: Int
-  ll2022sep: Int
-  bjj2022oct: Int
-  ll2022oct: Int
   goal: Int
   progress: Int
 }

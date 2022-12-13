@@ -5,7 +5,6 @@ export const onCreateDay = /* GraphQL */ `
   subscription OnCreateDay($filter: ModelSubscriptionDayFilterInput) {
     onCreateDay(filter: $filter) {
       id
-      day
       classes {
         items {
           id
@@ -36,7 +35,6 @@ export const onUpdateDay = /* GraphQL */ `
   subscription OnUpdateDay($filter: ModelSubscriptionDayFilterInput) {
     onUpdateDay(filter: $filter) {
       id
-      day
       classes {
         items {
           id
@@ -67,7 +65,6 @@ export const onDeleteDay = /* GraphQL */ `
   subscription OnDeleteDay($filter: ModelSubscriptionDayFilterInput) {
     onDeleteDay(filter: $filter) {
       id
-      day
       classes {
         items {
           id
@@ -108,7 +105,6 @@ export const onCreateClass = /* GraphQL */ `
       classOpen
       day {
         id
-        day
         classes {
           nextToken
         }
@@ -153,7 +149,6 @@ export const onUpdateClass = /* GraphQL */ `
       classOpen
       day {
         id
-        day
         classes {
           nextToken
         }
@@ -198,7 +193,6 @@ export const onDeleteClass = /* GraphQL */ `
       classOpen
       day {
         id
-        day
         classes {
           nextToken
         }
@@ -245,7 +239,6 @@ export const onCreateAttendee = /* GraphQL */ `
         classOpen
         day {
           id
-          day
           date
           open
           createdAt
@@ -287,7 +280,6 @@ export const onUpdateAttendee = /* GraphQL */ `
         classOpen
         day {
           id
-          day
           date
           open
           createdAt
@@ -329,7 +321,6 @@ export const onDeleteAttendee = /* GraphQL */ `
         classOpen
         day {
           id
-          day
           date
           open
           createdAt
@@ -375,14 +366,6 @@ export const onCreateUser = /* GraphQL */ `
       freeze
       freezeStart
       freezeEnd
-      bjj2022jul
-      ll2022jul
-      bjj2022aug
-      ll2022aug
-      bjj2022sep
-      ll2022sep
-      bjj2022oct
-      ll2022oct
       goal
       progress
       createdAt
@@ -410,14 +393,6 @@ export const onUpdateUser = /* GraphQL */ `
       freeze
       freezeStart
       freezeEnd
-      bjj2022jul
-      ll2022jul
-      bjj2022aug
-      ll2022aug
-      bjj2022sep
-      ll2022sep
-      bjj2022oct
-      ll2022oct
       goal
       progress
       createdAt
@@ -445,14 +420,6 @@ export const onDeleteUser = /* GraphQL */ `
       freeze
       freezeStart
       freezeEnd
-      bjj2022jul
-      ll2022jul
-      bjj2022aug
-      ll2022aug
-      bjj2022sep
-      ll2022sep
-      bjj2022oct
-      ll2022oct
       goal
       progress
       createdAt

@@ -5,7 +5,6 @@ export const getDay = /* GraphQL */ `
   query GetDay($id: ID!) {
     getDay(id: $id) {
       id
-      day
       classes {
         items {
           id
@@ -41,7 +40,6 @@ export const listDays = /* GraphQL */ `
     listDays(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        day
         classes {
           nextToken
         }
@@ -68,7 +66,6 @@ export const getClass = /* GraphQL */ `
       classOpen
       day {
         id
-        day
         classes {
           nextToken
         }
@@ -118,7 +115,6 @@ export const listClasses = /* GraphQL */ `
         classOpen
         day {
           id
-          day
           date
           open
           createdAt
@@ -153,7 +149,6 @@ export const getAttendee = /* GraphQL */ `
         classOpen
         day {
           id
-          day
           date
           open
           createdAt
@@ -237,14 +232,6 @@ export const getUser = /* GraphQL */ `
       freeze
       freezeStart
       freezeEnd
-      bjj2022jul
-      ll2022jul
-      bjj2022aug
-      ll2022aug
-      bjj2022sep
-      ll2022sep
-      bjj2022oct
-      ll2022oct
       goal
       progress
       createdAt
@@ -277,14 +264,6 @@ export const listUsers = /* GraphQL */ `
         freeze
         freezeStart
         freezeEnd
-        bjj2022jul
-        ll2022jul
-        bjj2022aug
-        ll2022aug
-        bjj2022sep
-        ll2022sep
-        bjj2022oct
-        ll2022oct
         goal
         progress
         createdAt

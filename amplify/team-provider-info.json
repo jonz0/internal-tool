@@ -27,8 +27,21 @@
         "testFunction1": {},
         "calendarsignupnextLayer": {},
         "testFunction": {
+          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
+          "s3Key": "amplify-builds/testFunction-476a7943347747397167-build.zip",
           "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
           "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy"
+        },
+        "calendarsignupnewLayer": {
+          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
+          "s3Key": "amplify-builds/calendarsignupnewLayer-LambdaLayerVersionb7b69d8e-build.zip"
+        },
+        "dailySweep": {
+          "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
+          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy",
+          "secretsPathAmplifyAppId": "dv1hj4egrjuo2",
+          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
+          "s3Key": "amplify-builds/dailySweep-6f6c4c737466632b3445-build.zip"
         }
       },
       "api": {
