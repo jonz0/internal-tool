@@ -398,6 +398,19 @@ export const createUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
+      userMonths {
+        items {
+          id
+          year
+          month
+          jj
+          ll
+          createdAt
+          updatedAt
+          userUserMonthsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -428,6 +441,19 @@ export const updateUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
+      userMonths {
+        items {
+          id
+          year
+          month
+          jj
+          ll
+          createdAt
+          updatedAt
+          userUserMonthsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -458,8 +484,150 @@ export const deleteUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
+      userMonths {
+        items {
+          id
+          year
+          month
+          jj
+          ll
+          createdAt
+          updatedAt
+          userUserMonthsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
+    }
+  }
+`;
+export const createUserMonths = /* GraphQL */ `
+  mutation CreateUserMonths(
+    $input: CreateUserMonthsInput!
+    $condition: ModelUserMonthsConditionInput
+  ) {
+    createUserMonths(input: $input, condition: $condition) {
+      id
+      user {
+        id
+        username
+        firstName
+        lastName
+        jjBelt
+        llBelt
+        image
+        email
+        phone
+        enroll
+        renew
+        insta
+        hideEmail
+        hidePhone
+        freeze
+        freezeStart
+        freezeEnd
+        goal
+        progress
+        userMonths {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      year
+      month
+      jj
+      ll
+      createdAt
+      updatedAt
+      userUserMonthsId
+    }
+  }
+`;
+export const updateUserMonths = /* GraphQL */ `
+  mutation UpdateUserMonths(
+    $input: UpdateUserMonthsInput!
+    $condition: ModelUserMonthsConditionInput
+  ) {
+    updateUserMonths(input: $input, condition: $condition) {
+      id
+      user {
+        id
+        username
+        firstName
+        lastName
+        jjBelt
+        llBelt
+        image
+        email
+        phone
+        enroll
+        renew
+        insta
+        hideEmail
+        hidePhone
+        freeze
+        freezeStart
+        freezeEnd
+        goal
+        progress
+        userMonths {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      year
+      month
+      jj
+      ll
+      createdAt
+      updatedAt
+      userUserMonthsId
+    }
+  }
+`;
+export const deleteUserMonths = /* GraphQL */ `
+  mutation DeleteUserMonths(
+    $input: DeleteUserMonthsInput!
+    $condition: ModelUserMonthsConditionInput
+  ) {
+    deleteUserMonths(input: $input, condition: $condition) {
+      id
+      user {
+        id
+        username
+        firstName
+        lastName
+        jjBelt
+        llBelt
+        image
+        email
+        phone
+        enroll
+        renew
+        insta
+        hideEmail
+        hidePhone
+        freeze
+        freezeStart
+        freezeEnd
+        goal
+        progress
+        userMonths {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      year
+      month
+      jj
+      ll
+      createdAt
+      updatedAt
+      userUserMonthsId
     }
   }
 `;

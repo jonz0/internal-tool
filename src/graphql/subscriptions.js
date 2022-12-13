@@ -368,6 +368,19 @@ export const onCreateUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
+      userMonths {
+        items {
+          id
+          year
+          month
+          jj
+          ll
+          createdAt
+          updatedAt
+          userUserMonthsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -395,6 +408,19 @@ export const onUpdateUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
+      userMonths {
+        items {
+          id
+          year
+          month
+          jj
+          ll
+          createdAt
+          updatedAt
+          userUserMonthsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -422,8 +448,147 @@ export const onDeleteUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
+      userMonths {
+        items {
+          id
+          year
+          month
+          jj
+          ll
+          createdAt
+          updatedAt
+          userUserMonthsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
+    }
+  }
+`;
+export const onCreateUserMonths = /* GraphQL */ `
+  subscription OnCreateUserMonths(
+    $filter: ModelSubscriptionUserMonthsFilterInput
+  ) {
+    onCreateUserMonths(filter: $filter) {
+      id
+      user {
+        id
+        username
+        firstName
+        lastName
+        jjBelt
+        llBelt
+        image
+        email
+        phone
+        enroll
+        renew
+        insta
+        hideEmail
+        hidePhone
+        freeze
+        freezeStart
+        freezeEnd
+        goal
+        progress
+        userMonths {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      year
+      month
+      jj
+      ll
+      createdAt
+      updatedAt
+      userUserMonthsId
+    }
+  }
+`;
+export const onUpdateUserMonths = /* GraphQL */ `
+  subscription OnUpdateUserMonths(
+    $filter: ModelSubscriptionUserMonthsFilterInput
+  ) {
+    onUpdateUserMonths(filter: $filter) {
+      id
+      user {
+        id
+        username
+        firstName
+        lastName
+        jjBelt
+        llBelt
+        image
+        email
+        phone
+        enroll
+        renew
+        insta
+        hideEmail
+        hidePhone
+        freeze
+        freezeStart
+        freezeEnd
+        goal
+        progress
+        userMonths {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      year
+      month
+      jj
+      ll
+      createdAt
+      updatedAt
+      userUserMonthsId
+    }
+  }
+`;
+export const onDeleteUserMonths = /* GraphQL */ `
+  subscription OnDeleteUserMonths(
+    $filter: ModelSubscriptionUserMonthsFilterInput
+  ) {
+    onDeleteUserMonths(filter: $filter) {
+      id
+      user {
+        id
+        username
+        firstName
+        lastName
+        jjBelt
+        llBelt
+        image
+        email
+        phone
+        enroll
+        renew
+        insta
+        hideEmail
+        hidePhone
+        freeze
+        freezeStart
+        freezeEnd
+        goal
+        progress
+        userMonths {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      year
+      month
+      jj
+      ll
+      createdAt
+      updatedAt
+      userUserMonthsId
     }
   }
 `;

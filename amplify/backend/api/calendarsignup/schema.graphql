@@ -27,7 +27,7 @@ type Class @model {
 }
 
 type Attendee @model {
-  id: ID!
+  id: ID
   class: Class @belongsTo
   username: String
   firstName: String
@@ -56,4 +56,17 @@ type User @model {
   freezeEnd: AWSDate
   goal: Int
   progress: Int
+  userMonths: [UserMonths] @hasMany
+  classesTotal: Int
+  jjTotal: Int
+  llTotal: Int
+}
+
+type UserMonths @model {
+  id: ID!
+  user: User @belongsTo
+  year: Int
+  month: Int
+  jj: Int
+  ll: Int
 }

@@ -234,6 +234,19 @@ export const getUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
+      userMonths {
+        items {
+          id
+          year
+          month
+          jj
+          ll
+          createdAt
+          updatedAt
+          userUserMonthsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -266,8 +279,95 @@ export const listUsers = /* GraphQL */ `
         freezeEnd
         goal
         progress
+        userMonths {
+          nextToken
+        }
         createdAt
         updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getUserMonths = /* GraphQL */ `
+  query GetUserMonths($id: ID!) {
+    getUserMonths(id: $id) {
+      id
+      user {
+        id
+        username
+        firstName
+        lastName
+        jjBelt
+        llBelt
+        image
+        email
+        phone
+        enroll
+        renew
+        insta
+        hideEmail
+        hidePhone
+        freeze
+        freezeStart
+        freezeEnd
+        goal
+        progress
+        userMonths {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      year
+      month
+      jj
+      ll
+      createdAt
+      updatedAt
+      userUserMonthsId
+    }
+  }
+`;
+export const listUserMonths = /* GraphQL */ `
+  query ListUserMonths(
+    $filter: ModelUserMonthsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserMonths(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        user {
+          id
+          username
+          firstName
+          lastName
+          jjBelt
+          llBelt
+          image
+          email
+          phone
+          enroll
+          renew
+          insta
+          hideEmail
+          hidePhone
+          freeze
+          freezeStart
+          freezeEnd
+          goal
+          progress
+          createdAt
+          updatedAt
+        }
+        year
+        month
+        jj
+        ll
+        createdAt
+        updatedAt
+        userUserMonthsId
       }
       nextToken
     }
