@@ -53,12 +53,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "testFunction2",
+            "testFunction",
             {
               "Fn::Join": [
                 "",
                 [
-                  "testFunction2",
+                  "testFunction",
                   "-",
                   {
                     "Ref": "env"
@@ -101,12 +101,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "calendarsignupLambdaRole4285c27d",
+            "calendarsignupLambdaRole0839f9d6",
             {
               "Fn::Join": [
                 "",
                 [
-                  "calendarsignupLambdaRole4285c27d",
+                  "calendarsignupLambdaRole0839f9d6",
                   "-",
                   {
                     "Ref": "env"

@@ -25,15 +25,10 @@
           "s3Key": "amplify-builds/lambdatest-672b3755482f5a507233-build.zip"
         },
         "testFunction1": {},
-        "testFunction2": {
+        "calendarsignupnextLayer": {},
+        "testFunction": {
           "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
-          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy",
-          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-          "s3Key": "amplify-builds/testFunction2-414e4449536644784839-build.zip"
-        },
-        "calendarsignupdefaultLayer": {
-          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-          "s3Key": "amplify-builds/calendarsignupdefaultLayer-LambdaLayerVersion3dbd5793-build.zip"
+          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy"
         }
       },
       "api": {
