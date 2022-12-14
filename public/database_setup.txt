@@ -1,0 +1,200 @@
+
+
+mutation MyMutation {
+  createAttendee(input: {id: "jordan", firstName: "Jordan", lastName: "Banholzer", username: "jordan", jjbelt: 0, llbelt: 0, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "spencer", firstName: "Spencer", lastName: "Choi", username: "spencer", jjbelt: 3, llbelt: 3, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "christine", firstName: "Christine", lastName: "Tran", username: "christine", jjbelt: 0, llbelt: 0, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "natalie", firstName: "Natalie", lastName: "Abal", username: "natalie", jjbelt: 0, llbelt: 1, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "wen", firstName: "Wen", lastName: "Ong", username: "wen", jjbelt: 3, llbelt: 2, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "pian", firstName: "Pian", lastName: "Pawakapan", username: "pian", jjbelt: 0, llbelt: 1, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "giovanni", firstName: "Giovanni", lastName: "Ribeiro", username: "giovanni", jjbelt: 3, llbelt: 3, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "lucas", firstName: "Lucas", lastName: "Costa", username: "lucas", jjbelt: 5, llbelt: 4, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "christian", firstName: "Christian", lastName: "Luong", username: "christian", jjbelt: 4, llbelt: 3, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "vijay", firstName: "Vijay", lastName: "Pottathil", username: "vijay", jjbelt: 3, llbelt: 3, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "michael", firstName: "Michael", lastName: "Marczi", username: "michael", jjbelt: 0, llbelt: 1, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "joshua", firstName: "Joshua", lastName: "Diaz", username: "joshua", jjbelt: 0, llbelt: 2, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "jermy", firstName: "Jermy", lastName: "Chamo", username: "jermy", jjbelt: 0, llbelt: 2, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "murilo", firstName: "Murilo", lastName: "De Melo", username: "murilo", jjbelt: 0, llbelt: 1, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "abraham", firstName: "Abraham", lastName: "Macayan", username: "abraham", jjbelt: 5, llbelt: 5, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {id: "vincent", firstName: "Vincent", lastName: "Shields", username: "vincent", jjbelt: 5, llbelt: 4, classAttendeesId: "0700-mon"}) {
+    id
+  }
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mutation MyMutation {
+  createUser(input: {firstName: "Joshua", lastName: "Diaz", jjbelt: 0, llbelt: 2, username: "joshua", id: "joshua"}) {
+    id
+  }
+}
+
+
+mutation MyMutation {
+  createUser(input: {firstName: "Jordan", lastName: "Banholzer", jjbelt: 0, llbelt: 0, username: "jordan", id: "jordan"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Wen", lastName: "Ong", jjbelt: 3, llbelt: 3, username: "wen", id: "wen"}) {
+    id
+  }
+}
+
+
+mutation MyMutation {
+  createUser(input: {firstName: "Christine", lastName: "Tran", jjbelt: 0, llbelt: 0, username: "christine", id: "christine"}) {
+    id
+  }
+}
+
+
+mutation MyMutation {
+  createUser(input: {firstName: "Natalie", lastName: "Abal", jjbelt: 0, llbelt: 1, username: "natalie", id: "natalie"}) {
+    id
+  }
+}
+
+
+mutation MyMutation {
+  createUser(input: {firstName: "Pian", lastName: "Pawakapan", jjbelt: 0, llbelt: 1, username: "pian", id: "pian"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Spencer", lastName: "Choi", jjbelt: 3, llbelt: 2, username: "spencer", id: "spencer"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Giovanni", lastName: "Ribeiro", jjbelt: 3, llbelt: 3, username: "giovanni", id: "giovanni"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Lucas", lastName: "Costa", jjbelt: 5, llbelt: 4, username: "lucas", id: "lucas"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Vijay", lastName: "Pottathil", jjbelt: 3, llbelt: 3, username: "vijay", id: "vijay"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Vincent", lastName: "Shields", jjbelt: 5, llbelt: 4, username: "vincent", id: "vincent"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Murilo", lastName: "de Melo", jjbelt: 0, llbelt: 1, username: "murilo", id: "murilo"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Abraham", lastName: "Macayan", jjbelt: 0, llbelt: 2, username: "abraham", id: "abraham"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Jermy", lastName: "Chamo", jjbelt: 0, llbelt: 2, username: "jermy", id: "jermy"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Christian", lastName: "Luong", jjbelt: 4, llbelt: 3, username: "christian", id: "christian"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Michael", lastName: "Marczi", jjbelt: 0, llbelt: 2, username: "michael", id: "michael"}) {
+    id
+  }
+}
