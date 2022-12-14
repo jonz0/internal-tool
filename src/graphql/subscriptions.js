@@ -353,8 +353,8 @@ export const onCreateUser = /* GraphQL */ `
       username
       firstName
       lastName
-      jjBelt
-      llBelt
+      jjbelt
+      llbelt
       image
       email
       phone
@@ -368,6 +368,7 @@ export const onCreateUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
+      classesTotal
       userMonths {
         items {
           id
@@ -375,6 +376,7 @@ export const onCreateUser = /* GraphQL */ `
           month
           jj
           ll
+          kb
           createdAt
           updatedAt
           userUserMonthsId
@@ -393,8 +395,8 @@ export const onUpdateUser = /* GraphQL */ `
       username
       firstName
       lastName
-      jjBelt
-      llBelt
+      jjbelt
+      llbelt
       image
       email
       phone
@@ -408,6 +410,7 @@ export const onUpdateUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
+      classesTotal
       userMonths {
         items {
           id
@@ -415,6 +418,7 @@ export const onUpdateUser = /* GraphQL */ `
           month
           jj
           ll
+          kb
           createdAt
           updatedAt
           userUserMonthsId
@@ -433,8 +437,8 @@ export const onDeleteUser = /* GraphQL */ `
       username
       firstName
       lastName
-      jjBelt
-      llBelt
+      jjbelt
+      llbelt
       image
       email
       phone
@@ -448,6 +452,7 @@ export const onDeleteUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
+      classesTotal
       userMonths {
         items {
           id
@@ -455,6 +460,7 @@ export const onDeleteUser = /* GraphQL */ `
           month
           jj
           ll
+          kb
           createdAt
           updatedAt
           userUserMonthsId
@@ -466,19 +472,19 @@ export const onDeleteUser = /* GraphQL */ `
     }
   }
 `;
-export const onCreateUserMonths = /* GraphQL */ `
-  subscription OnCreateUserMonths(
-    $filter: ModelSubscriptionUserMonthsFilterInput
+export const onCreateUserMonth = /* GraphQL */ `
+  subscription OnCreateUserMonth(
+    $filter: ModelSubscriptionUserMonthFilterInput
   ) {
-    onCreateUserMonths(filter: $filter) {
+    onCreateUserMonth(filter: $filter) {
       id
       user {
         id
         username
         firstName
         lastName
-        jjBelt
-        llBelt
+        jjbelt
+        llbelt
         image
         email
         phone
@@ -492,6 +498,7 @@ export const onCreateUserMonths = /* GraphQL */ `
         freezeEnd
         goal
         progress
+        classesTotal
         userMonths {
           nextToken
         }
@@ -502,25 +509,26 @@ export const onCreateUserMonths = /* GraphQL */ `
       month
       jj
       ll
+      kb
       createdAt
       updatedAt
       userUserMonthsId
     }
   }
 `;
-export const onUpdateUserMonths = /* GraphQL */ `
-  subscription OnUpdateUserMonths(
-    $filter: ModelSubscriptionUserMonthsFilterInput
+export const onUpdateUserMonth = /* GraphQL */ `
+  subscription OnUpdateUserMonth(
+    $filter: ModelSubscriptionUserMonthFilterInput
   ) {
-    onUpdateUserMonths(filter: $filter) {
+    onUpdateUserMonth(filter: $filter) {
       id
       user {
         id
         username
         firstName
         lastName
-        jjBelt
-        llBelt
+        jjbelt
+        llbelt
         image
         email
         phone
@@ -534,6 +542,7 @@ export const onUpdateUserMonths = /* GraphQL */ `
         freezeEnd
         goal
         progress
+        classesTotal
         userMonths {
           nextToken
         }
@@ -544,25 +553,26 @@ export const onUpdateUserMonths = /* GraphQL */ `
       month
       jj
       ll
+      kb
       createdAt
       updatedAt
       userUserMonthsId
     }
   }
 `;
-export const onDeleteUserMonths = /* GraphQL */ `
-  subscription OnDeleteUserMonths(
-    $filter: ModelSubscriptionUserMonthsFilterInput
+export const onDeleteUserMonth = /* GraphQL */ `
+  subscription OnDeleteUserMonth(
+    $filter: ModelSubscriptionUserMonthFilterInput
   ) {
-    onDeleteUserMonths(filter: $filter) {
+    onDeleteUserMonth(filter: $filter) {
       id
       user {
         id
         username
         firstName
         lastName
-        jjBelt
-        llBelt
+        jjbelt
+        llbelt
         image
         email
         phone
@@ -576,6 +586,7 @@ export const onDeleteUserMonths = /* GraphQL */ `
         freezeEnd
         goal
         progress
+        classesTotal
         userMonths {
           nextToken
         }
@@ -586,6 +597,7 @@ export const onDeleteUserMonths = /* GraphQL */ `
       month
       jj
       ll
+      kb
       createdAt
       updatedAt
       userUserMonthsId

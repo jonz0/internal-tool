@@ -219,8 +219,8 @@ export const getUser = /* GraphQL */ `
       username
       firstName
       lastName
-      jjBelt
-      llBelt
+      jjbelt
+      llbelt
       image
       email
       phone
@@ -234,6 +234,7 @@ export const getUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
+      classesTotal
       userMonths {
         items {
           id
@@ -241,6 +242,7 @@ export const getUser = /* GraphQL */ `
           month
           jj
           ll
+          kb
           createdAt
           updatedAt
           userUserMonthsId
@@ -264,8 +266,8 @@ export const listUsers = /* GraphQL */ `
         username
         firstName
         lastName
-        jjBelt
-        llBelt
+        jjbelt
+        llbelt
         image
         email
         phone
@@ -279,6 +281,7 @@ export const listUsers = /* GraphQL */ `
         freezeEnd
         goal
         progress
+        classesTotal
         userMonths {
           nextToken
         }
@@ -289,17 +292,17 @@ export const listUsers = /* GraphQL */ `
     }
   }
 `;
-export const getUserMonths = /* GraphQL */ `
-  query GetUserMonths($id: ID!) {
-    getUserMonths(id: $id) {
+export const getUserMonth = /* GraphQL */ `
+  query GetUserMonth($id: ID!) {
+    getUserMonth(id: $id) {
       id
       user {
         id
         username
         firstName
         lastName
-        jjBelt
-        llBelt
+        jjbelt
+        llbelt
         image
         email
         phone
@@ -313,6 +316,7 @@ export const getUserMonths = /* GraphQL */ `
         freezeEnd
         goal
         progress
+        classesTotal
         userMonths {
           nextToken
         }
@@ -323,6 +327,7 @@ export const getUserMonths = /* GraphQL */ `
       month
       jj
       ll
+      kb
       createdAt
       updatedAt
       userUserMonthsId
@@ -331,7 +336,7 @@ export const getUserMonths = /* GraphQL */ `
 `;
 export const listUserMonths = /* GraphQL */ `
   query ListUserMonths(
-    $filter: ModelUserMonthsFilterInput
+    $filter: ModelUserMonthFilterInput
     $limit: Int
     $nextToken: String
   ) {
@@ -343,8 +348,8 @@ export const listUserMonths = /* GraphQL */ `
           username
           firstName
           lastName
-          jjBelt
-          llBelt
+          jjbelt
+          llbelt
           image
           email
           phone
@@ -358,6 +363,7 @@ export const listUserMonths = /* GraphQL */ `
           freezeEnd
           goal
           progress
+          classesTotal
           createdAt
           updatedAt
         }
@@ -365,6 +371,7 @@ export const listUserMonths = /* GraphQL */ `
         month
         jj
         ll
+        kb
         createdAt
         updatedAt
         userUserMonthsId

@@ -263,7 +263,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "getUserMonths",
+          "name" : "getUserMonth",
           "description" : null,
           "args" : [ {
             "name" : "id",
@@ -281,7 +281,7 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserMonths",
+            "name" : "UserMonth",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -294,7 +294,7 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserMonthsFilterInput",
+              "name" : "ModelUserMonthFilterInput",
               "ofType" : null
             },
             "defaultValue" : null
@@ -319,7 +319,7 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "ModelUserMonthsConnection",
+            "name" : "ModelUserMonthConnection",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -1928,7 +1928,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "jjBelt",
+          "name" : "jjbelt",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -1939,7 +1939,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "llBelt",
+          "name" : "llbelt",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -2093,6 +2093,17 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
+          "name" : "classesTotal",
+          "description" : null,
+          "args" : [ ],
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Int",
+            "ofType" : null
+          },
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        }, {
           "name" : "userMonths",
           "description" : null,
           "args" : [ {
@@ -2100,7 +2111,7 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserMonthsFilterInput",
+              "name" : "ModelUserMonthFilterInput",
               "ofType" : null
             },
             "defaultValue" : null
@@ -2134,7 +2145,7 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "ModelUserMonthsConnection",
+            "name" : "ModelUserMonthConnection",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -2176,7 +2187,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "OBJECT",
-        "name" : "ModelUserMonthsConnection",
+        "name" : "ModelUserMonthConnection",
         "description" : null,
         "fields" : [ {
           "name" : "items",
@@ -2190,7 +2201,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "OBJECT",
-                "name" : "UserMonths",
+                "name" : "UserMonth",
                 "ofType" : null
               }
             }
@@ -2215,7 +2226,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "OBJECT",
-        "name" : "UserMonths",
+        "name" : "UserMonth",
         "description" : null,
         "fields" : [ {
           "name" : "id",
@@ -2288,6 +2299,17 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
+          "name" : "kb",
+          "description" : null,
+          "args" : [ ],
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Int",
+            "ofType" : null
+          },
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        }, {
           "name" : "createdAt",
           "description" : null,
           "args" : [ ],
@@ -2335,7 +2357,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "ModelUserMonthsFilterInput",
+        "name" : "ModelUserMonthFilterInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -2384,6 +2406,15 @@
           },
           "defaultValue" : null
         }, {
+          "name" : "kb",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelIntInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
           "name" : "and",
           "description" : null,
           "type" : {
@@ -2391,7 +2422,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserMonthsFilterInput",
+              "name" : "ModelUserMonthFilterInput",
               "ofType" : null
             }
           },
@@ -2404,7 +2435,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserMonthsFilterInput",
+              "name" : "ModelUserMonthFilterInput",
               "ofType" : null
             }
           },
@@ -2414,7 +2445,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelUserMonthsFilterInput",
+            "name" : "ModelUserMonthFilterInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -2512,7 +2543,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "jjBelt",
+          "name" : "jjbelt",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2521,7 +2552,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "llBelt",
+          "name" : "llbelt",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2639,6 +2670,15 @@
           "defaultValue" : null
         }, {
           "name" : "progress",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelIntInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "classesTotal",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -3086,7 +3126,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "createUserMonths",
+          "name" : "createUserMonth",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -3096,7 +3136,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "CreateUserMonthsInput",
+                "name" : "CreateUserMonthInput",
                 "ofType" : null
               }
             },
@@ -3106,20 +3146,20 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserMonthsConditionInput",
+              "name" : "ModelUserMonthConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserMonths",
+            "name" : "UserMonth",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "updateUserMonths",
+          "name" : "updateUserMonth",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -3129,7 +3169,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "UpdateUserMonthsInput",
+                "name" : "UpdateUserMonthInput",
                 "ofType" : null
               }
             },
@@ -3139,20 +3179,20 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserMonthsConditionInput",
+              "name" : "ModelUserMonthConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserMonths",
+            "name" : "UserMonth",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "deleteUserMonths",
+          "name" : "deleteUserMonth",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -3162,7 +3202,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "DeleteUserMonthsInput",
+                "name" : "DeleteUserMonthInput",
                 "ofType" : null
               }
             },
@@ -3172,14 +3212,14 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserMonthsConditionInput",
+              "name" : "ModelUserMonthConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserMonths",
+            "name" : "UserMonth",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -4062,7 +4102,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "jjBelt",
+          "name" : "jjbelt",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -4071,7 +4111,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "llBelt",
+          "name" : "llbelt",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -4189,6 +4229,15 @@
           "defaultValue" : null
         }, {
           "name" : "progress",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Int",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "classesTotal",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -4233,7 +4282,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "jjBelt",
+          "name" : "jjbelt",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -4242,7 +4291,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "llBelt",
+          "name" : "llbelt",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -4360,6 +4409,15 @@
           "defaultValue" : null
         }, {
           "name" : "progress",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelIntInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "classesTotal",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -4452,7 +4510,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "jjBelt",
+          "name" : "jjbelt",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -4461,7 +4519,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "llBelt",
+          "name" : "llbelt",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -4586,6 +4644,15 @@
             "ofType" : null
           },
           "defaultValue" : null
+        }, {
+          "name" : "classesTotal",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Int",
+            "ofType" : null
+          },
+          "defaultValue" : null
         } ],
         "interfaces" : null,
         "enumValues" : null,
@@ -4614,7 +4681,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "CreateUserMonthsInput",
+        "name" : "CreateUserMonthInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -4663,6 +4730,15 @@
           },
           "defaultValue" : null
         }, {
+          "name" : "kb",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Int",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
           "name" : "userUserMonthsId",
           "description" : null,
           "type" : {
@@ -4677,7 +4753,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "ModelUserMonthsConditionInput",
+        "name" : "ModelUserMonthConditionInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -4717,6 +4793,15 @@
           },
           "defaultValue" : null
         }, {
+          "name" : "kb",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelIntInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
           "name" : "and",
           "description" : null,
           "type" : {
@@ -4724,7 +4809,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserMonthsConditionInput",
+              "name" : "ModelUserMonthConditionInput",
               "ofType" : null
             }
           },
@@ -4737,7 +4822,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserMonthsConditionInput",
+              "name" : "ModelUserMonthConditionInput",
               "ofType" : null
             }
           },
@@ -4747,7 +4832,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelUserMonthsConditionInput",
+            "name" : "ModelUserMonthConditionInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -4766,7 +4851,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "UpdateUserMonthsInput",
+        "name" : "UpdateUserMonthInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -4819,6 +4904,15 @@
           },
           "defaultValue" : null
         }, {
+          "name" : "kb",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Int",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
           "name" : "userUserMonthsId",
           "description" : null,
           "type" : {
@@ -4833,7 +4927,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "DeleteUserMonthsInput",
+        "name" : "DeleteUserMonthInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -5098,61 +5192,61 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onCreateUserMonths",
+          "name" : "onCreateUserMonth",
           "description" : null,
           "args" : [ {
             "name" : "filter",
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelSubscriptionUserMonthsFilterInput",
+              "name" : "ModelSubscriptionUserMonthFilterInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserMonths",
+            "name" : "UserMonth",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onUpdateUserMonths",
+          "name" : "onUpdateUserMonth",
           "description" : null,
           "args" : [ {
             "name" : "filter",
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelSubscriptionUserMonthsFilterInput",
+              "name" : "ModelSubscriptionUserMonthFilterInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserMonths",
+            "name" : "UserMonth",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onDeleteUserMonths",
+          "name" : "onDeleteUserMonth",
           "description" : null,
           "args" : [ {
             "name" : "filter",
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelSubscriptionUserMonthsFilterInput",
+              "name" : "ModelSubscriptionUserMonthFilterInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserMonths",
+            "name" : "UserMonth",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -5876,7 +5970,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "jjBelt",
+          "name" : "jjbelt",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -5885,7 +5979,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "llBelt",
+          "name" : "llbelt",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -6011,6 +6105,15 @@
           },
           "defaultValue" : null
         }, {
+          "name" : "classesTotal",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelSubscriptionIntInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
           "name" : "and",
           "description" : null,
           "type" : {
@@ -6042,7 +6145,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "ModelSubscriptionUserMonthsFilterInput",
+        "name" : "ModelSubscriptionUserMonthFilterInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -6091,6 +6194,15 @@
           },
           "defaultValue" : null
         }, {
+          "name" : "kb",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelSubscriptionIntInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
           "name" : "and",
           "description" : null,
           "type" : {
@@ -6098,7 +6210,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelSubscriptionUserMonthsFilterInput",
+              "name" : "ModelSubscriptionUserMonthFilterInput",
               "ofType" : null
             }
           },
@@ -6111,7 +6223,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelSubscriptionUserMonthsFilterInput",
+              "name" : "ModelSubscriptionUserMonthFilterInput",
               "ofType" : null
             }
           },
@@ -7217,14 +7329,6 @@
         "onFragment" : false,
         "onField" : false
       }, {
-        "name" : "aws_oidc",
-        "description" : "Tells the service this field/object has access authorized by an OIDC token.",
-        "locations" : [ "OBJECT", "FIELD_DEFINITION" ],
-        "args" : [ ],
-        "onOperation" : false,
-        "onFragment" : false,
-        "onField" : false
-      }, {
         "name" : "deprecated",
         "description" : null,
         "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
@@ -7238,6 +7342,14 @@
           },
           "defaultValue" : "\"No longer supported\""
         } ],
+        "onOperation" : false,
+        "onFragment" : false,
+        "onField" : false
+      }, {
+        "name" : "aws_oidc",
+        "description" : "Tells the service this field/object has access authorized by an OIDC token.",
+        "locations" : [ "OBJECT", "FIELD_DEFINITION" ],
+        "args" : [ ],
         "onOperation" : false,
         "onFragment" : false,
         "onField" : false

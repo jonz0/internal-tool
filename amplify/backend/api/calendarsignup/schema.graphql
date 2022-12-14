@@ -41,8 +41,8 @@ type User @model {
   username: String
   firstName: String
   lastName: String
-  jjBelt: Int
-  llBelt: Int
+  jjbelt: Int
+  llbelt: Int
   image: String
   email: String
   phone: String
@@ -56,17 +56,16 @@ type User @model {
   freezeEnd: AWSDate
   goal: Int
   progress: Int
-  userMonths: [UserMonths] @hasMany
   classesTotal: Int
-  jjTotal: Int
-  llTotal: Int
+  userMonths: [UserMonth] @hasMany
 }
 
-type UserMonths @model {
+type UserMonth @model {
   id: ID!
   user: User @belongsTo
   year: Int
   month: Int
   jj: Int
   ll: Int
+  kb: Int
 }
