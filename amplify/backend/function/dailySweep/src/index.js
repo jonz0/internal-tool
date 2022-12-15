@@ -51,8 +51,6 @@ exports.handler = async (event) => {
   let date_yday = new Date(date_today.setDate(date_today.getDate() - 1));
   let date_nextw = new Date(date_today.setDate(date_today.getDate() + 6));
 
-  console.log("wingmusauce: " + date_nextw.getFullYear());
-
   let day_yday = ("0" + date_yday.getDate()).slice(-2);
   let month_yday = ("0" + (date_yday.getMonth() + 1)).slice(-2);
   let year_yday = date_yday.getFullYear();

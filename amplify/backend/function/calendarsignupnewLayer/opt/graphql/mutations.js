@@ -1,13 +1,25 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+  value: true,
 });
-exports.updateUser = exports.updateDay = exports.updateClass = exports.updateAttendee = exports.deleteUser = exports.deleteDay = exports.deleteClass = exports.deleteAttendee = exports.createUser = exports.createDay = exports.createClass = exports.createAttendee = void 0;
+exports.updateUser =
+  exports.updateDay =
+  exports.updateClass =
+  exports.updateAttendee =
+  exports.deleteUser =
+  exports.deleteDay =
+  exports.deleteClass =
+  exports.deleteAttendee =
+  exports.createUser =
+  exports.createDay =
+  exports.createClass =
+  exports.createAttendee =
+    void 0;
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-const createDay = /* GraphQL */`
+const createDay = /* GraphQL */ `
   mutation CreateDay(
     $input: CreateDayInput!
     $condition: ModelDayConditionInput
@@ -42,7 +54,7 @@ const createDay = /* GraphQL */`
   }
 `;
 exports.createDay = createDay;
-const updateDay = /* GraphQL */`
+const updateDay = /* GraphQL */ `
   mutation UpdateDay(
     $input: UpdateDayInput!
     $condition: ModelDayConditionInput
@@ -77,7 +89,7 @@ const updateDay = /* GraphQL */`
   }
 `;
 exports.updateDay = updateDay;
-const deleteDay = /* GraphQL */`
+const deleteDay = /* GraphQL */ `
   mutation DeleteDay(
     $input: DeleteDayInput!
     $condition: ModelDayConditionInput
@@ -112,7 +124,7 @@ const deleteDay = /* GraphQL */`
   }
 `;
 exports.deleteDay = deleteDay;
-const createClass = /* GraphQL */`
+const createClass = /* GraphQL */ `
   mutation CreateClass(
     $input: CreateClassInput!
     $condition: ModelClassConditionInput
@@ -161,7 +173,7 @@ const createClass = /* GraphQL */`
   }
 `;
 exports.createClass = createClass;
-const updateClass = /* GraphQL */`
+const updateClass = /* GraphQL */ `
   mutation UpdateClass(
     $input: UpdateClassInput!
     $condition: ModelClassConditionInput
@@ -210,7 +222,7 @@ const updateClass = /* GraphQL */`
   }
 `;
 exports.updateClass = updateClass;
-const deleteClass = /* GraphQL */`
+const deleteClass = /* GraphQL */ `
   mutation DeleteClass(
     $input: DeleteClassInput!
     $condition: ModelClassConditionInput
@@ -259,7 +271,7 @@ const deleteClass = /* GraphQL */`
   }
 `;
 exports.deleteClass = deleteClass;
-const createAttendee = /* GraphQL */`
+const createAttendee = /* GraphQL */ `
   mutation CreateAttendee(
     $input: CreateAttendeeInput!
     $condition: ModelAttendeeConditionInput
@@ -305,7 +317,7 @@ const createAttendee = /* GraphQL */`
   }
 `;
 exports.createAttendee = createAttendee;
-const updateAttendee = /* GraphQL */`
+const updateAttendee = /* GraphQL */ `
   mutation UpdateAttendee(
     $input: UpdateAttendeeInput!
     $condition: ModelAttendeeConditionInput
@@ -351,7 +363,7 @@ const updateAttendee = /* GraphQL */`
   }
 `;
 exports.updateAttendee = updateAttendee;
-const deleteAttendee = /* GraphQL */`
+const deleteAttendee = /* GraphQL */ `
   mutation DeleteAttendee(
     $input: DeleteAttendeeInput!
     $condition: ModelAttendeeConditionInput
@@ -397,7 +409,7 @@ const deleteAttendee = /* GraphQL */`
   }
 `;
 exports.deleteAttendee = deleteAttendee;
-const createUser = /* GraphQL */`
+const createUser = /* GraphQL */ `
   mutation CreateUser(
     $input: CreateUserInput!
     $condition: ModelUserConditionInput
@@ -407,8 +419,8 @@ const createUser = /* GraphQL */`
       username
       firstName
       lastName
-      jjBelt
-      llBelt
+      jjbelt
+      llbelt
       image
       email
       phone
@@ -420,14 +432,6 @@ const createUser = /* GraphQL */`
       freeze
       freezeStart
       freezeEnd
-      bjj2022jul
-      ll2022jul
-      bjj2022aug
-      ll2022aug
-      bjj2022sep
-      ll2022sep
-      bjj2022oct
-      ll2022oct
       goal
       progress
       createdAt
@@ -436,7 +440,7 @@ const createUser = /* GraphQL */`
   }
 `;
 exports.createUser = createUser;
-const updateUser = /* GraphQL */`
+const updateUser = /* GraphQL */ `
   mutation UpdateUser(
     $input: UpdateUserInput!
     $condition: ModelUserConditionInput
@@ -475,7 +479,7 @@ const updateUser = /* GraphQL */`
   }
 `;
 exports.updateUser = updateUser;
-const deleteUser = /* GraphQL */`
+const deleteUser = /* GraphQL */ `
   mutation DeleteUser(
     $input: DeleteUserInput!
     $condition: ModelUserConditionInput

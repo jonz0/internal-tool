@@ -12,51 +12,121 @@ Amplify Params - DO NOT EDIT */
 const appsyncUrl = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIENDPOINTOUTPUT;
 const apiKey = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT;
 
-const { request } = require("/opt/appsyncRequest");
-const { createDay } = require("/opt/graphql/mutations");
-const { listDays } = require("/opt/graphql/queries");
+const { createUserMonth } = require("../../../../../src/graphql/mutations");
+const { request } = require("/opt/appSyncRequest");
+const { createUserMonth, updateUserMonth } = require("/opt/graphql/mutations");
+const { listAttendees } = require("/opt/graphql/queries");
 
 exports.handler = async (event) => {
-  try {
-    // create a TODO with AWS_IAM auth
-    // var result = await request(
-    //   {
-    //     query: createDay,
-    //     variables: {
-    //       input: {
-    //         day: 'flunday',
-    //         id: 'flunday',
-    //       },
-    //     },
-    //   },
-    //   appsyncUrl
-    // )
-    // console.log('iam results:', result)
+  let date_today = new Date();
+  let date_yday = new Date(date_today.setDate(date_today.getDate() - 1));
+  let day_yday = ("0" + date_yday.getDate()).slice(-2);
+  let month_yday = ("0" + (date_yday.getMonth() + 1)).slice(-2);
+  let year_yday = date_yday.getFullYear();
+  let date_yday_AWS = year_yday + "-" + month_yday + "-" + day_yday;
+  let userMonthPrefix = month_yday + "-" + year_yday + "-";
 
-    // Now, retrieve all TODOs using API_KEY auth
-    var result = await request(
+  try {
+    var getAttendees = await request(
       {
-        query: listDays,
-        operationName: "listDays",
+        query: listAttendees,
+        variables: {
+          filter: { classAttendeesId: { eq: "0700-mon" } },
+        },
       },
       appsyncUrl,
       apiKey
     );
-    console.log("api key results", result);
+
+    getAttendees.data.listAttendees.items.forEach(async (item) => {
+      try {
+        if (item.class.type == "gi") {
+          var getNumberClasses = await request(
+            {
+              query: getUserMonth,
+              variables: {
+                input: {
+                  id: "99dc5d1b-fa80-4e3a-856d-b2231c305774"
+                },
+              },
+            },
+            appsyncUrl,
+            apiKey
+          );
+          var reviseUserMonth = await request(
+            {
+              query: updateUserMonth,
+              variables: {
+                input: {
+                  id: userMonthPrefix + item.username,
+                  jj: ,
+                },
+              },
+            },
+            appsyncUrl,
+            apiKey
+          );
+        } else if (item.class.type == "nogi") {
+          
+        } else if (item.class.type == "kb") {
+          
+        }
+      } catch (error) {
+        if (item.class.type == "gi") {
+          var makeUserMonth = await request(
+            {
+              query: createUserMonth,
+              variables: {
+                input: {
+                  month: month_yday,
+                  year: year_yday,
+                  userUserMonthsId: item.username,
+                  id: userMonthPrefix + item.username,
+                  jj: 1,
+                },
+              },
+            },
+            appsyncUrl,
+            apiKey
+          );
+        } else if (item.class.type == "nogi") {
+          var makeUserMonth = await request(
+            {
+              query: createUserMonth,
+              variables: {
+                input: {
+                  month: month_yday,
+                  year: year_yday,
+                  userUserMonthsId: item.username,
+                  id: userMonthPrefix + item.username,
+                  ll: 1,
+                },
+              },
+            },
+            appsyncUrl,
+            apiKey
+          );
+        } else if (item.class.type == "kb") {
+          var makeUserMonth = await request(
+            {
+              query: createUserMonth,
+              variables: {
+                input: {
+                  month: month_yday,
+                  year: year_yday,
+                  userUserMonthsId: item.username,
+                  id: userMonthPrefix + item.username,
+                  kb: 1,
+                },
+              },
+            },
+            appsyncUrl,
+            apiKey
+          );
+        }
+      }
+    });
   } catch (error) {
     console.log(error);
   }
 };
-
-// exports.handler = async (event) => {
-//   console.log(`EVENT: ${JSON.stringify(event)}`);
-//   return {
-//     statusCode: 200,
-//     //  Uncomment below to enable CORS requests
-//     //  headers: {
-//     //      "Access-Control-Allow-Origin": "*",
-//     //      "Access-Control-Allow-Headers": "*"
-//     //  },
-//     body: JSON.stringify("Hello from Lambda!"),
-//   };
-// };

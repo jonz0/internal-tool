@@ -1,13 +1,25 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+  value: true,
 });
-exports.onUpdateUser = exports.onUpdateDay = exports.onUpdateClass = exports.onUpdateAttendee = exports.onDeleteUser = exports.onDeleteDay = exports.onDeleteClass = exports.onDeleteAttendee = exports.onCreateUser = exports.onCreateDay = exports.onCreateClass = exports.onCreateAttendee = void 0;
+exports.onUpdateUser =
+  exports.onUpdateDay =
+  exports.onUpdateClass =
+  exports.onUpdateAttendee =
+  exports.onDeleteUser =
+  exports.onDeleteDay =
+  exports.onDeleteClass =
+  exports.onDeleteAttendee =
+  exports.onCreateUser =
+  exports.onCreateDay =
+  exports.onCreateClass =
+  exports.onCreateAttendee =
+    void 0;
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-const onCreateDay = /* GraphQL */`
+const onCreateDay = /* GraphQL */ `
   subscription OnCreateDay($filter: ModelSubscriptionDayFilterInput) {
     onCreateDay(filter: $filter) {
       id
@@ -39,7 +51,7 @@ const onCreateDay = /* GraphQL */`
   }
 `;
 exports.onCreateDay = onCreateDay;
-const onUpdateDay = /* GraphQL */`
+const onUpdateDay = /* GraphQL */ `
   subscription OnUpdateDay($filter: ModelSubscriptionDayFilterInput) {
     onUpdateDay(filter: $filter) {
       id
@@ -71,7 +83,7 @@ const onUpdateDay = /* GraphQL */`
   }
 `;
 exports.onUpdateDay = onUpdateDay;
-const onDeleteDay = /* GraphQL */`
+const onDeleteDay = /* GraphQL */ `
   subscription OnDeleteDay($filter: ModelSubscriptionDayFilterInput) {
     onDeleteDay(filter: $filter) {
       id
@@ -103,7 +115,7 @@ const onDeleteDay = /* GraphQL */`
   }
 `;
 exports.onDeleteDay = onDeleteDay;
-const onCreateClass = /* GraphQL */`
+const onCreateClass = /* GraphQL */ `
   subscription OnCreateClass($filter: ModelSubscriptionClassFilterInput) {
     onCreateClass(filter: $filter) {
       id
@@ -149,7 +161,7 @@ const onCreateClass = /* GraphQL */`
   }
 `;
 exports.onCreateClass = onCreateClass;
-const onUpdateClass = /* GraphQL */`
+const onUpdateClass = /* GraphQL */ `
   subscription OnUpdateClass($filter: ModelSubscriptionClassFilterInput) {
     onUpdateClass(filter: $filter) {
       id
@@ -195,7 +207,7 @@ const onUpdateClass = /* GraphQL */`
   }
 `;
 exports.onUpdateClass = onUpdateClass;
-const onDeleteClass = /* GraphQL */`
+const onDeleteClass = /* GraphQL */ `
   subscription OnDeleteClass($filter: ModelSubscriptionClassFilterInput) {
     onDeleteClass(filter: $filter) {
       id
@@ -241,7 +253,7 @@ const onDeleteClass = /* GraphQL */`
   }
 `;
 exports.onDeleteClass = onDeleteClass;
-const onCreateAttendee = /* GraphQL */`
+const onCreateAttendee = /* GraphQL */ `
   subscription OnCreateAttendee($filter: ModelSubscriptionAttendeeFilterInput) {
     onCreateAttendee(filter: $filter) {
       id
@@ -284,7 +296,7 @@ const onCreateAttendee = /* GraphQL */`
   }
 `;
 exports.onCreateAttendee = onCreateAttendee;
-const onUpdateAttendee = /* GraphQL */`
+const onUpdateAttendee = /* GraphQL */ `
   subscription OnUpdateAttendee($filter: ModelSubscriptionAttendeeFilterInput) {
     onUpdateAttendee(filter: $filter) {
       id
@@ -327,7 +339,7 @@ const onUpdateAttendee = /* GraphQL */`
   }
 `;
 exports.onUpdateAttendee = onUpdateAttendee;
-const onDeleteAttendee = /* GraphQL */`
+const onDeleteAttendee = /* GraphQL */ `
   subscription OnDeleteAttendee($filter: ModelSubscriptionAttendeeFilterInput) {
     onDeleteAttendee(filter: $filter) {
       id
@@ -370,7 +382,7 @@ const onDeleteAttendee = /* GraphQL */`
   }
 `;
 exports.onDeleteAttendee = onDeleteAttendee;
-const onCreateUser = /* GraphQL */`
+const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
     onCreateUser(filter: $filter) {
       id
@@ -390,14 +402,6 @@ const onCreateUser = /* GraphQL */`
       freeze
       freezeStart
       freezeEnd
-      bjj2022jul
-      ll2022jul
-      bjj2022aug
-      ll2022aug
-      bjj2022sep
-      ll2022sep
-      bjj2022oct
-      ll2022oct
       goal
       progress
       createdAt
@@ -406,15 +410,15 @@ const onCreateUser = /* GraphQL */`
   }
 `;
 exports.onCreateUser = onCreateUser;
-const onUpdateUser = /* GraphQL */`
+const onUpdateUser = /* GraphQL */ `
   subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
     onUpdateUser(filter: $filter) {
       id
       username
       firstName
       lastName
-      jjBelt
-      llBelt
+      jjbelt
+      llbelt
       image
       email
       phone
@@ -426,14 +430,6 @@ const onUpdateUser = /* GraphQL */`
       freeze
       freezeStart
       freezeEnd
-      bjj2022jul
-      ll2022jul
-      bjj2022aug
-      ll2022aug
-      bjj2022sep
-      ll2022sep
-      bjj2022oct
-      ll2022oct
       goal
       progress
       createdAt
@@ -442,15 +438,15 @@ const onUpdateUser = /* GraphQL */`
   }
 `;
 exports.onUpdateUser = onUpdateUser;
-const onDeleteUser = /* GraphQL */`
+const onDeleteUser = /* GraphQL */ `
   subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
     onDeleteUser(filter: $filter) {
       id
       username
       firstName
       lastName
-      jjBelt
-      llBelt
+      jjbelt
+      llbelt
       image
       email
       phone
@@ -462,14 +458,6 @@ const onDeleteUser = /* GraphQL */`
       freeze
       freezeStart
       freezeEnd
-      bjj2022jul
-      ll2022jul
-      bjj2022aug
-      ll2022aug
-      bjj2022sep
-      ll2022sep
-      bjj2022oct
-      ll2022oct
       goal
       progress
       createdAt
