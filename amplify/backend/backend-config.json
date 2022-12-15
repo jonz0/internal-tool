@@ -51,38 +51,38 @@
       "providerPlugin": "awscloudformation",
       "build": true
     },
-    "testFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "calendarsignupnewLayer",
-          "attributes": [
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "dailySweep": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "calendarsignupnewLayer",
-          "attributes": [
-            "Arn"
-          ]
-        }
-      ]
-    },
     "calendarsignupnewLayer": {
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer",
       "build": true
+    },
+    "rotateDates": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "calendarsignupnewLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "updateClassCount": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "calendarsignupnewLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "storage": {

@@ -57,12 +57,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "testFunction",
+            "rotateDates",
             {
               "Fn::Join": [
                 "",
                 [
-                  "testFunction",
+                  "rotateDates",
                   "-",
                   {
                     "Ref": "env"
@@ -109,12 +109,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "calendarsignupLambdaRoleba7f8158",
+            "calendarsignupLambdaRole7293ab02",
             {
               "Fn::Join": [
                 "",
                 [
-                  "calendarsignupLambdaRoleba7f8158",
+                  "calendarsignupLambdaRole7293ab02",
                   "-",
                   {
                     "Ref": "env"

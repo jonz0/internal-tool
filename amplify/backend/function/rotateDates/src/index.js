@@ -1,39 +1,19 @@
-/*
-Use the following code to retrieve configured secrets from SSM:
-
-const aws = require('aws-sdk');
-
-const { Parameters } = await (new aws.SSM())
-  .getParameters({
-    Names: ["testSecret"].map(secretName => process.env[secretName]),
-    WithDecryption: true,
-  })
-  .promise();
-
-Parameters will be of the form { Name: 'secretName', Value: 'secretValue', ... }[]
-*/
 /* Amplify Params - DO NOT EDIT
 	ENV
 	REGION
 	API_AMPLIFYLAYERGUIDE_GRAPHQLAPIENDPOINTOUTPUT
-	API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT
 Amplify Params - DO NOT EDIT */
 
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
+
 const appsyncUrl = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIENDPOINTOUTPUT;
 const apiKey = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT;
 
 const { request } = require("/opt/appSyncRequest");
 const { updateDay } = require("/opt/graphql/mutations");
 const { getUser } = require("/opt/graphql/queries");
-
-/**
- * DailySweep should accomplish two goals:
- *     Update the dates of the preceeding and week-after days, and
- *     Update the profiles of each attendee in the previous day
- */
 
 exports.handler = async (event) => {
   const weekday = [
@@ -63,7 +43,6 @@ exports.handler = async (event) => {
 
   try {
     // Update the dates of the preceeding and week-after days
-
     var changeDays = await request(
       {
         query: updateDay,
@@ -77,8 +56,6 @@ exports.handler = async (event) => {
       appsyncUrl,
       apiKey
     );
-
-    // Update the profiles of each attendee in the previous day
   } catch (error) {
     console.log(error);
   }

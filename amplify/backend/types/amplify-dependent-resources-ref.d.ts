@@ -24,22 +24,22 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "testFunction": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string",
-            "CloudWatchEventRule": "string"
-        },
-        "dailySweep": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string",
-            "CloudWatchEventRule": "string"
-        },
         "calendarsignupnewLayer": {
             "Arn": "string"
+        },
+        "rotateDates": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string",
+            "CloudWatchEventRule": "string"
+        },
+        "updateClassCount": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string",
+            "CloudWatchEventRule": "string"
         }
     },
     "storage": {

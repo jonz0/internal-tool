@@ -18,8 +18,5 @@
       "cloudFormationParameterName": "apiAmplifylayerguideGraphqlapikeyoutput",
       "environmentVariableName": "API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT"
     }
-  ],
-  "secretNames": [
-    "testSecret"
   ]
 }
