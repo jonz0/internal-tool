@@ -40,7 +40,7 @@ exports.handler = async (event) => {
 
     getAttendees.data.listAttendees.items.forEach(async (item) => {
       try {
-        if (item.class.type == "gi") {
+        if (item.class.type == "jj") {
           var getNumberClasses = await request(
             {
               query: getUserMonth,
@@ -66,13 +66,13 @@ exports.handler = async (event) => {
             appsyncUrl,
             apiKey
           );
-        } else if (item.class.type == "nogi") {
+        } else if (item.class.type == "ll") {
           
         } else if (item.class.type == "kb") {
           
         }
       } catch (error) {
-        if (item.class.type == "gi") {
+        if (item.class.type == "jj") {
           var makeUserMonth = await request(
             {
               query: createUserMonth,
@@ -89,7 +89,7 @@ exports.handler = async (event) => {
             appsyncUrl,
             apiKey
           );
-        } else if (item.class.type == "nogi") {
+        } else if (item.class.type == "ll") {
           var makeUserMonth = await request(
             {
               query: createUserMonth,
