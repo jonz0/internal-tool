@@ -32,12 +32,17 @@
         },
         "rotateDates": {
           "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
-          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy"
+          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy",
+          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
+          "s3Key": "amplify-builds/rotateDates-4d7445536b4730306f68-build.zip"
         },
         "updateClassCount": {
           "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
-          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy"
-        }
+          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy",
+          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
+          "s3Key": "amplify-builds/updateClassCount-7247547542727571766a-build.zip"
+        },
+        "dailySweep": {}
       },
       "api": {
         "calendarsignup": {}
