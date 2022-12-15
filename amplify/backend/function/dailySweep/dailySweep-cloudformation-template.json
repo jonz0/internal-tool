@@ -16,13 +16,17 @@
     "s3Key": {
       "Type": "String"
     },
+    "secretsPathAmplifyAppId": {
+      "Type": "String"
+    },
+    "functioncalendarsignupnewLayerArn": {
+      "Type": "String",
+      "Default": "functioncalendarsignupnewLayerArn"
+    },
     "apiAmplifylayerguideGraphqlapiendpointoutput": {
       "Type": "String"
     },
     "apiAmplifylayerguideGraphqlapikeyoutput": {
-      "Type": "String"
-    },
-    "secretsPathAmplifyAppId": {
       "Type": "String"
     }
   },
@@ -79,12 +83,6 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "API_AMPLIFYLAYERGUIDE_GRAPHQLAPIENDPOINTOUTPUT": {
-              "Ref": "apiAmplifylayerguideGraphqlapiendpointoutput"
-            },
-            "API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT": {
-              "Ref": "apiAmplifylayerguideGraphqlapikeyoutput"
-            },
             "testSecret": {
               "Fn::Join": [
                 "",
@@ -106,6 +104,12 @@
                   "testSecret"
                 ]
               ]
+            },
+            "API_AMPLIFYLAYERGUIDE_GRAPHQLAPIENDPOINTOUTPUT": {
+              "Ref": "apiAmplifylayerguideGraphqlapiendpointoutput"
+            },
+            "API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT": {
+              "Ref": "apiAmplifylayerguideGraphqlapikeyoutput"
             }
           }
         },
@@ -116,7 +120,11 @@
           ]
         },
         "Runtime": "nodejs14.x",
-        "Layers": [],
+        "Layers": [
+          {
+            "Ref": "functioncalendarsignupnewLayerArn"
+          }
+        ],
         "Timeout": 25
       }
     },

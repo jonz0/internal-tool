@@ -3,193 +3,214 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.listUsers = exports.listDays = exports.listClasses = exports.listAttendees = exports.getUser = exports.getDay = exports.getClass = exports.getAttendee = void 0;
+exports.listUsers = exports.listUserMonths = exports.listDays = exports.listClasses = exports.listAttendees = exports.getUserMonth = exports.getUser = exports.getDay = exports.getClass = exports.getAttendee = void 0;
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-const getDay = /* GraphQL */`
-  query GetDay($id: ID!) {
-    getDay(id: $id) {
-      id
-      day
-      classes {
-        items {
-          id
-          name
-          start
-          end
-          type
-          age
-          maxSpots
-          openSpots
-          classOpen
-          message
-          instructor
+const getAttendee = /* GraphQL */`
+  query GetAttendee($id: ID!) {
+    getAttendee(id: $id) {
+      class {
+        age
+        attendees {
+          nextToken
+        }
+        classOpen
+        createdAt
+        day {
           createdAt
+          date
+          id
+          open
           updatedAt
-          dayClassesId
+        }
+        dayClassesId
+        end
+        id
+        instructor
+        maxSpots
+        message
+        name
+        openSpots
+        start
+        type
+        updatedAt
+      }
+      classAttendeesId
+      createdAt
+      firstName
+      id
+      jjbelt
+      lastName
+      llbelt
+      updatedAt
+      username
+    }
+  }
+`;
+exports.getAttendee = getAttendee;
+const getClass = /* GraphQL */`
+  query GetClass($id: ID!) {
+    getClass(id: $id) {
+      age
+      attendees {
+        items {
+          classAttendeesId
+          createdAt
+          firstName
+          id
+          jjbelt
+          lastName
+          llbelt
+          updatedAt
+          username
         }
         nextToken
       }
-      date
-      open
+      classOpen
       createdAt
+      day {
+        classes {
+          nextToken
+        }
+        createdAt
+        date
+        id
+        open
+        updatedAt
+      }
+      dayClassesId
+      end
+      id
+      instructor
+      maxSpots
+      message
+      name
+      openSpots
+      start
+      type
+      updatedAt
+    }
+  }
+`;
+exports.getClass = getClass;
+const getDay = /* GraphQL */`
+  query GetDay($id: ID!) {
+    getDay(id: $id) {
+      classes {
+        items {
+          age
+          classOpen
+          createdAt
+          dayClassesId
+          end
+          id
+          instructor
+          maxSpots
+          message
+          name
+          openSpots
+          start
+          type
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      date
+      id
+      open
       updatedAt
     }
   }
 `;
 exports.getDay = getDay;
-const listDays = /* GraphQL */`
-  query ListDays(
-    $filter: ModelDayFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listDays(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        day
-        classes {
-          nextToken
-        }
-        date
-        open
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-exports.listDays = listDays;
-const getClass = /* GraphQL */`
-  query GetClass($id: ID!) {
-    getClass(id: $id) {
+const getUser = /* GraphQL */`
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      classesTotal
+      createdAt
+      email
+      enroll
+      firstName
+      freeze
+      freezeEnd
+      freezeStart
+      goal
+      hideEmail
+      hidePhone
       id
-      name
-      start
-      end
-      type
-      age
-      maxSpots
-      openSpots
-      classOpen
-      day {
-        id
-        day
-        classes {
-          nextToken
-        }
-        date
-        open
-        createdAt
-        updatedAt
-      }
-      attendees {
+      image
+      insta
+      jjbelt
+      lastName
+      llbelt
+      phone
+      progress
+      renew
+      updatedAt
+      userMonths {
         items {
-          id
-          username
-          firstName
-          lastName
-          jjbelt
-          llbelt
           createdAt
+          id
+          jj
+          kb
+          ll
+          month
           updatedAt
-          classAttendeesId
+          userUserMonthsId
+          year
         }
         nextToken
       }
-      message
-      instructor
-      createdAt
-      updatedAt
-      dayClassesId
-    }
-  }
-`;
-exports.getClass = getClass;
-const listClasses = /* GraphQL */`
-  query ListClasses(
-    $filter: ModelClassFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listClasses(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        start
-        end
-        type
-        age
-        maxSpots
-        openSpots
-        classOpen
-        day {
-          id
-          day
-          date
-          open
-          createdAt
-          updatedAt
-        }
-        attendees {
-          nextToken
-        }
-        message
-        instructor
-        createdAt
-        updatedAt
-        dayClassesId
-      }
-      nextToken
-    }
-  }
-`;
-exports.listClasses = listClasses;
-const getAttendee = /* GraphQL */`
-  query GetAttendee($id: ID!) {
-    getAttendee(id: $id) {
-      id
-      class {
-        id
-        name
-        start
-        end
-        type
-        age
-        maxSpots
-        openSpots
-        classOpen
-        day {
-          id
-          day
-          date
-          open
-          createdAt
-          updatedAt
-        }
-        attendees {
-          nextToken
-        }
-        message
-        instructor
-        createdAt
-        updatedAt
-        dayClassesId
-      }
       username
-      firstName
-      lastName
-      jjbelt
-      llbelt
-      createdAt
-      updatedAt
-      classAttendeesId
     }
   }
 `;
-exports.getAttendee = getAttendee;
+exports.getUser = getUser;
+const getUserMonth = /* GraphQL */`
+  query GetUserMonth($id: ID!) {
+    getUserMonth(id: $id) {
+      createdAt
+      id
+      jj
+      kb
+      ll
+      month
+      updatedAt
+      user {
+        classesTotal
+        createdAt
+        email
+        enroll
+        firstName
+        freeze
+        freezeEnd
+        freezeStart
+        goal
+        hideEmail
+        hidePhone
+        id
+        image
+        insta
+        jjbelt
+        lastName
+        llbelt
+        phone
+        progress
+        renew
+        updatedAt
+        userMonths {
+          nextToken
+        }
+        username
+      }
+      userUserMonthsId
+      year
+    }
+  }
+`;
+exports.getUserMonth = getUserMonth;
 const listAttendees = /* GraphQL */`
   query ListAttendees(
     $filter: ModelAttendeeFilterInput
@@ -198,73 +219,144 @@ const listAttendees = /* GraphQL */`
   ) {
     listAttendees(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        id
         class {
-          id
-          name
-          start
-          end
-          type
           age
-          maxSpots
-          openSpots
           classOpen
-          message
-          instructor
           createdAt
-          updatedAt
           dayClassesId
+          end
+          id
+          instructor
+          maxSpots
+          message
+          name
+          openSpots
+          start
+          type
+          updatedAt
         }
-        username
-        firstName
-        lastName
-        jjbelt
-        llbelt
-        createdAt
-        updatedAt
         classAttendeesId
+        createdAt
+        firstName
+        id
+        jjbelt
+        lastName
+        llbelt
+        updatedAt
+        username
       }
       nextToken
     }
   }
 `;
 exports.listAttendees = listAttendees;
-const getUser = /* GraphQL */`
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
-      id
-      username
-      firstName
-      lastName
-      jjBelt
-      llBelt
-      image
-      email
-      phone
-      enroll
-      renew
-      insta
-      hideEmail
-      hidePhone
-      freeze
-      freezeStart
-      freezeEnd
-      bjj2022jul
-      ll2022jul
-      bjj2022aug
-      ll2022aug
-      bjj2022sep
-      ll2022sep
-      bjj2022oct
-      ll2022oct
-      goal
-      progress
-      createdAt
-      updatedAt
+const listClasses = /* GraphQL */`
+  query ListClasses(
+    $filter: ModelClassFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listClasses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        age
+        attendees {
+          nextToken
+        }
+        classOpen
+        createdAt
+        day {
+          createdAt
+          date
+          id
+          open
+          updatedAt
+        }
+        dayClassesId
+        end
+        id
+        instructor
+        maxSpots
+        message
+        name
+        openSpots
+        start
+        type
+        updatedAt
+      }
+      nextToken
     }
   }
 `;
-exports.getUser = getUser;
+exports.listClasses = listClasses;
+const listDays = /* GraphQL */`
+  query ListDays(
+    $filter: ModelDayFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listDays(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        classes {
+          nextToken
+        }
+        createdAt
+        date
+        id
+        open
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+exports.listDays = listDays;
+const listUserMonths = /* GraphQL */`
+  query ListUserMonths(
+    $filter: ModelUserMonthFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserMonths(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        createdAt
+        id
+        jj
+        kb
+        ll
+        month
+        updatedAt
+        user {
+          classesTotal
+          createdAt
+          email
+          enroll
+          firstName
+          freeze
+          freezeEnd
+          freezeStart
+          goal
+          hideEmail
+          hidePhone
+          id
+          image
+          insta
+          jjbelt
+          lastName
+          llbelt
+          phone
+          progress
+          renew
+          updatedAt
+          username
+        }
+        userUserMonthsId
+        year
+      }
+      nextToken
+    }
+  }
+`;
+exports.listUserMonths = listUserMonths;
 const listUsers = /* GraphQL */`
   query ListUsers(
     $filter: ModelUserFilterInput
@@ -273,35 +365,31 @@ const listUsers = /* GraphQL */`
   ) {
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        id
-        username
-        firstName
-        lastName
-        jjBelt
-        llBelt
-        image
+        classesTotal
+        createdAt
         email
-        phone
         enroll
-        renew
-        insta
+        firstName
+        freeze
+        freezeEnd
+        freezeStart
+        goal
         hideEmail
         hidePhone
-        freeze
-        freezeStart
-        freezeEnd
-        bjj2022jul
-        ll2022jul
-        bjj2022aug
-        ll2022aug
-        bjj2022sep
-        ll2022sep
-        bjj2022oct
-        ll2022oct
-        goal
+        id
+        image
+        insta
+        jjbelt
+        lastName
+        llbelt
+        phone
         progress
-        createdAt
+        renew
         updatedAt
+        userMonths {
+          nextToken
+        }
+        username
       }
       nextToken
     }

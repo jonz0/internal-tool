@@ -1,520 +1,666 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true,
+  value: true
 });
-exports.updateUser =
-  exports.updateDay =
-  exports.updateClass =
-  exports.updateAttendee =
-  exports.deleteUser =
-  exports.deleteDay =
-  exports.deleteClass =
-  exports.deleteAttendee =
-  exports.createUser =
-  exports.createDay =
-  exports.createClass =
-  exports.createAttendee =
-    void 0;
+exports.updateUserMonth = exports.updateUser = exports.updateDay = exports.updateClass = exports.updateAttendee = exports.deleteUserMonth = exports.deleteUser = exports.deleteDay = exports.deleteClass = exports.deleteAttendee = exports.createUserMonth = exports.createUser = exports.createDay = exports.createClass = exports.createAttendee = void 0;
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-const createDay = /* GraphQL */ `
-  mutation CreateDay(
-    $input: CreateDayInput!
-    $condition: ModelDayConditionInput
+const createAttendee = /* GraphQL */`
+  mutation CreateAttendee(
+    $condition: ModelAttendeeConditionInput
+    $input: CreateAttendeeInput!
   ) {
-    createDay(input: $input, condition: $condition) {
-      id
-      day
-      classes {
-        items {
-          id
-          name
-          start
-          end
-          type
-          age
-          maxSpots
-          openSpots
-          classOpen
-          message
-          instructor
+    createAttendee(condition: $condition, input: $input) {
+      class {
+        age
+        attendees {
+          nextToken
+        }
+        classOpen
+        createdAt
+        day {
           createdAt
+          date
+          id
+          open
           updatedAt
-          dayClassesId
+        }
+        dayClassesId
+        end
+        id
+        instructor
+        maxSpots
+        message
+        name
+        openSpots
+        start
+        type
+        updatedAt
+      }
+      classAttendeesId
+      createdAt
+      firstName
+      id
+      jjbelt
+      lastName
+      llbelt
+      updatedAt
+      username
+    }
+  }
+`;
+exports.createAttendee = createAttendee;
+const createClass = /* GraphQL */`
+  mutation CreateClass(
+    $condition: ModelClassConditionInput
+    $input: CreateClassInput!
+  ) {
+    createClass(condition: $condition, input: $input) {
+      age
+      attendees {
+        items {
+          classAttendeesId
+          createdAt
+          firstName
+          id
+          jjbelt
+          lastName
+          llbelt
+          updatedAt
+          username
         }
         nextToken
       }
-      date
-      open
+      classOpen
       createdAt
+      day {
+        classes {
+          nextToken
+        }
+        createdAt
+        date
+        id
+        open
+        updatedAt
+      }
+      dayClassesId
+      end
+      id
+      instructor
+      maxSpots
+      message
+      name
+      openSpots
+      start
+      type
+      updatedAt
+    }
+  }
+`;
+exports.createClass = createClass;
+const createDay = /* GraphQL */`
+  mutation CreateDay(
+    $condition: ModelDayConditionInput
+    $input: CreateDayInput!
+  ) {
+    createDay(condition: $condition, input: $input) {
+      classes {
+        items {
+          age
+          classOpen
+          createdAt
+          dayClassesId
+          end
+          id
+          instructor
+          maxSpots
+          message
+          name
+          openSpots
+          start
+          type
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      date
+      id
+      open
       updatedAt
     }
   }
 `;
 exports.createDay = createDay;
-const updateDay = /* GraphQL */ `
-  mutation UpdateDay(
-    $input: UpdateDayInput!
-    $condition: ModelDayConditionInput
+const createUser = /* GraphQL */`
+  mutation CreateUser(
+    $condition: ModelUserConditionInput
+    $input: CreateUserInput!
   ) {
-    updateDay(input: $input, condition: $condition) {
+    createUser(condition: $condition, input: $input) {
+      classesTotal
+      createdAt
+      email
+      enroll
+      firstName
+      freeze
+      freezeEnd
+      freezeStart
+      goal
+      hideEmail
+      hidePhone
       id
-      day
-      classes {
+      image
+      insta
+      jjbelt
+      lastName
+      llbelt
+      phone
+      progress
+      renew
+      updatedAt
+      userMonths {
         items {
-          id
-          name
-          start
-          end
-          type
-          age
-          maxSpots
-          openSpots
-          classOpen
-          message
-          instructor
           createdAt
+          id
+          jj
+          kb
+          ll
+          month
           updatedAt
-          dayClassesId
+          userUserMonthsId
+          year
         }
         nextToken
       }
-      date
-      open
+      username
+    }
+  }
+`;
+exports.createUser = createUser;
+const createUserMonth = /* GraphQL */`
+  mutation CreateUserMonth(
+    $condition: ModelUserMonthConditionInput
+    $input: CreateUserMonthInput!
+  ) {
+    createUserMonth(condition: $condition, input: $input) {
       createdAt
+      id
+      jj
+      kb
+      ll
+      month
+      updatedAt
+      user {
+        classesTotal
+        createdAt
+        email
+        enroll
+        firstName
+        freeze
+        freezeEnd
+        freezeStart
+        goal
+        hideEmail
+        hidePhone
+        id
+        image
+        insta
+        jjbelt
+        lastName
+        llbelt
+        phone
+        progress
+        renew
+        updatedAt
+        userMonths {
+          nextToken
+        }
+        username
+      }
+      userUserMonthsId
+      year
+    }
+  }
+`;
+exports.createUserMonth = createUserMonth;
+const deleteAttendee = /* GraphQL */`
+  mutation DeleteAttendee(
+    $condition: ModelAttendeeConditionInput
+    $input: DeleteAttendeeInput!
+  ) {
+    deleteAttendee(condition: $condition, input: $input) {
+      class {
+        age
+        attendees {
+          nextToken
+        }
+        classOpen
+        createdAt
+        day {
+          createdAt
+          date
+          id
+          open
+          updatedAt
+        }
+        dayClassesId
+        end
+        id
+        instructor
+        maxSpots
+        message
+        name
+        openSpots
+        start
+        type
+        updatedAt
+      }
+      classAttendeesId
+      createdAt
+      firstName
+      id
+      jjbelt
+      lastName
+      llbelt
+      updatedAt
+      username
+    }
+  }
+`;
+exports.deleteAttendee = deleteAttendee;
+const deleteClass = /* GraphQL */`
+  mutation DeleteClass(
+    $condition: ModelClassConditionInput
+    $input: DeleteClassInput!
+  ) {
+    deleteClass(condition: $condition, input: $input) {
+      age
+      attendees {
+        items {
+          classAttendeesId
+          createdAt
+          firstName
+          id
+          jjbelt
+          lastName
+          llbelt
+          updatedAt
+          username
+        }
+        nextToken
+      }
+      classOpen
+      createdAt
+      day {
+        classes {
+          nextToken
+        }
+        createdAt
+        date
+        id
+        open
+        updatedAt
+      }
+      dayClassesId
+      end
+      id
+      instructor
+      maxSpots
+      message
+      name
+      openSpots
+      start
+      type
       updatedAt
     }
   }
 `;
-exports.updateDay = updateDay;
-const deleteDay = /* GraphQL */ `
+exports.deleteClass = deleteClass;
+const deleteDay = /* GraphQL */`
   mutation DeleteDay(
-    $input: DeleteDayInput!
     $condition: ModelDayConditionInput
+    $input: DeleteDayInput!
   ) {
-    deleteDay(input: $input, condition: $condition) {
-      id
-      day
+    deleteDay(condition: $condition, input: $input) {
       classes {
         items {
-          id
-          name
-          start
-          end
-          type
           age
-          maxSpots
-          openSpots
           classOpen
-          message
-          instructor
           createdAt
-          updatedAt
           dayClassesId
+          end
+          id
+          instructor
+          maxSpots
+          message
+          name
+          openSpots
+          start
+          type
+          updatedAt
         }
         nextToken
       }
-      date
-      open
       createdAt
+      date
+      id
+      open
       updatedAt
     }
   }
 `;
 exports.deleteDay = deleteDay;
-const createClass = /* GraphQL */ `
-  mutation CreateClass(
-    $input: CreateClassInput!
-    $condition: ModelClassConditionInput
-  ) {
-    createClass(input: $input, condition: $condition) {
-      id
-      name
-      start
-      end
-      type
-      age
-      maxSpots
-      openSpots
-      classOpen
-      day {
-        id
-        day
-        classes {
-          nextToken
-        }
-        date
-        open
-        createdAt
-        updatedAt
-      }
-      attendees {
-        items {
-          id
-          username
-          firstName
-          lastName
-          jjbelt
-          llbelt
-          createdAt
-          updatedAt
-          classAttendeesId
-        }
-        nextToken
-      }
-      message
-      instructor
-      createdAt
-      updatedAt
-      dayClassesId
-    }
-  }
-`;
-exports.createClass = createClass;
-const updateClass = /* GraphQL */ `
-  mutation UpdateClass(
-    $input: UpdateClassInput!
-    $condition: ModelClassConditionInput
-  ) {
-    updateClass(input: $input, condition: $condition) {
-      id
-      name
-      start
-      end
-      type
-      age
-      maxSpots
-      openSpots
-      classOpen
-      day {
-        id
-        day
-        classes {
-          nextToken
-        }
-        date
-        open
-        createdAt
-        updatedAt
-      }
-      attendees {
-        items {
-          id
-          username
-          firstName
-          lastName
-          jjbelt
-          llbelt
-          createdAt
-          updatedAt
-          classAttendeesId
-        }
-        nextToken
-      }
-      message
-      instructor
-      createdAt
-      updatedAt
-      dayClassesId
-    }
-  }
-`;
-exports.updateClass = updateClass;
-const deleteClass = /* GraphQL */ `
-  mutation DeleteClass(
-    $input: DeleteClassInput!
-    $condition: ModelClassConditionInput
-  ) {
-    deleteClass(input: $input, condition: $condition) {
-      id
-      name
-      start
-      end
-      type
-      age
-      maxSpots
-      openSpots
-      classOpen
-      day {
-        id
-        day
-        classes {
-          nextToken
-        }
-        date
-        open
-        createdAt
-        updatedAt
-      }
-      attendees {
-        items {
-          id
-          username
-          firstName
-          lastName
-          jjbelt
-          llbelt
-          createdAt
-          updatedAt
-          classAttendeesId
-        }
-        nextToken
-      }
-      message
-      instructor
-      createdAt
-      updatedAt
-      dayClassesId
-    }
-  }
-`;
-exports.deleteClass = deleteClass;
-const createAttendee = /* GraphQL */ `
-  mutation CreateAttendee(
-    $input: CreateAttendeeInput!
-    $condition: ModelAttendeeConditionInput
-  ) {
-    createAttendee(input: $input, condition: $condition) {
-      id
-      class {
-        id
-        name
-        start
-        end
-        type
-        age
-        maxSpots
-        openSpots
-        classOpen
-        day {
-          id
-          day
-          date
-          open
-          createdAt
-          updatedAt
-        }
-        attendees {
-          nextToken
-        }
-        message
-        instructor
-        createdAt
-        updatedAt
-        dayClassesId
-      }
-      username
-      firstName
-      lastName
-      jjbelt
-      llbelt
-      createdAt
-      updatedAt
-      classAttendeesId
-    }
-  }
-`;
-exports.createAttendee = createAttendee;
-const updateAttendee = /* GraphQL */ `
-  mutation UpdateAttendee(
-    $input: UpdateAttendeeInput!
-    $condition: ModelAttendeeConditionInput
-  ) {
-    updateAttendee(input: $input, condition: $condition) {
-      id
-      class {
-        id
-        name
-        start
-        end
-        type
-        age
-        maxSpots
-        openSpots
-        classOpen
-        day {
-          id
-          day
-          date
-          open
-          createdAt
-          updatedAt
-        }
-        attendees {
-          nextToken
-        }
-        message
-        instructor
-        createdAt
-        updatedAt
-        dayClassesId
-      }
-      username
-      firstName
-      lastName
-      jjbelt
-      llbelt
-      createdAt
-      updatedAt
-      classAttendeesId
-    }
-  }
-`;
-exports.updateAttendee = updateAttendee;
-const deleteAttendee = /* GraphQL */ `
-  mutation DeleteAttendee(
-    $input: DeleteAttendeeInput!
-    $condition: ModelAttendeeConditionInput
-  ) {
-    deleteAttendee(input: $input, condition: $condition) {
-      id
-      class {
-        id
-        name
-        start
-        end
-        type
-        age
-        maxSpots
-        openSpots
-        classOpen
-        day {
-          id
-          day
-          date
-          open
-          createdAt
-          updatedAt
-        }
-        attendees {
-          nextToken
-        }
-        message
-        instructor
-        createdAt
-        updatedAt
-        dayClassesId
-      }
-      username
-      firstName
-      lastName
-      jjbelt
-      llbelt
-      createdAt
-      updatedAt
-      classAttendeesId
-    }
-  }
-`;
-exports.deleteAttendee = deleteAttendee;
-const createUser = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
-      id
-      username
-      firstName
-      lastName
-      jjbelt
-      llbelt
-      image
-      email
-      phone
-      enroll
-      renew
-      insta
-      hideEmail
-      hidePhone
-      freeze
-      freezeStart
-      freezeEnd
-      goal
-      progress
-      createdAt
-      updatedAt
-    }
-  }
-`;
-exports.createUser = createUser;
-const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    updateUser(input: $input, condition: $condition) {
-      id
-      username
-      firstName
-      lastName
-      jjBelt
-      llBelt
-      image
-      email
-      phone
-      enroll
-      renew
-      insta
-      hideEmail
-      hidePhone
-      freeze
-      freezeStart
-      freezeEnd
-      bjj2022jul
-      ll2022jul
-      bjj2022aug
-      ll2022aug
-      bjj2022sep
-      ll2022sep
-      bjj2022oct
-      ll2022oct
-      goal
-      progress
-      createdAt
-      updatedAt
-    }
-  }
-`;
-exports.updateUser = updateUser;
-const deleteUser = /* GraphQL */ `
+const deleteUser = /* GraphQL */`
   mutation DeleteUser(
-    $input: DeleteUserInput!
     $condition: ModelUserConditionInput
+    $input: DeleteUserInput!
   ) {
-    deleteUser(input: $input, condition: $condition) {
-      id
-      username
-      firstName
-      lastName
-      jjBelt
-      llBelt
-      image
+    deleteUser(condition: $condition, input: $input) {
+      classesTotal
+      createdAt
       email
-      phone
       enroll
-      renew
-      insta
+      firstName
+      freeze
+      freezeEnd
+      freezeStart
+      goal
       hideEmail
       hidePhone
-      freeze
-      freezeStart
-      freezeEnd
-      bjj2022jul
-      ll2022jul
-      bjj2022aug
-      ll2022aug
-      bjj2022sep
-      ll2022sep
-      bjj2022oct
-      ll2022oct
-      goal
+      id
+      image
+      insta
+      jjbelt
+      lastName
+      llbelt
+      phone
       progress
-      createdAt
+      renew
       updatedAt
+      userMonths {
+        items {
+          createdAt
+          id
+          jj
+          kb
+          ll
+          month
+          updatedAt
+          userUserMonthsId
+          year
+        }
+        nextToken
+      }
+      username
     }
   }
 `;
 exports.deleteUser = deleteUser;
+const deleteUserMonth = /* GraphQL */`
+  mutation DeleteUserMonth(
+    $condition: ModelUserMonthConditionInput
+    $input: DeleteUserMonthInput!
+  ) {
+    deleteUserMonth(condition: $condition, input: $input) {
+      createdAt
+      id
+      jj
+      kb
+      ll
+      month
+      updatedAt
+      user {
+        classesTotal
+        createdAt
+        email
+        enroll
+        firstName
+        freeze
+        freezeEnd
+        freezeStart
+        goal
+        hideEmail
+        hidePhone
+        id
+        image
+        insta
+        jjbelt
+        lastName
+        llbelt
+        phone
+        progress
+        renew
+        updatedAt
+        userMonths {
+          nextToken
+        }
+        username
+      }
+      userUserMonthsId
+      year
+    }
+  }
+`;
+exports.deleteUserMonth = deleteUserMonth;
+const updateAttendee = /* GraphQL */`
+  mutation UpdateAttendee(
+    $condition: ModelAttendeeConditionInput
+    $input: UpdateAttendeeInput!
+  ) {
+    updateAttendee(condition: $condition, input: $input) {
+      class {
+        age
+        attendees {
+          nextToken
+        }
+        classOpen
+        createdAt
+        day {
+          createdAt
+          date
+          id
+          open
+          updatedAt
+        }
+        dayClassesId
+        end
+        id
+        instructor
+        maxSpots
+        message
+        name
+        openSpots
+        start
+        type
+        updatedAt
+      }
+      classAttendeesId
+      createdAt
+      firstName
+      id
+      jjbelt
+      lastName
+      llbelt
+      updatedAt
+      username
+    }
+  }
+`;
+exports.updateAttendee = updateAttendee;
+const updateClass = /* GraphQL */`
+  mutation UpdateClass(
+    $condition: ModelClassConditionInput
+    $input: UpdateClassInput!
+  ) {
+    updateClass(condition: $condition, input: $input) {
+      age
+      attendees {
+        items {
+          classAttendeesId
+          createdAt
+          firstName
+          id
+          jjbelt
+          lastName
+          llbelt
+          updatedAt
+          username
+        }
+        nextToken
+      }
+      classOpen
+      createdAt
+      day {
+        classes {
+          nextToken
+        }
+        createdAt
+        date
+        id
+        open
+        updatedAt
+      }
+      dayClassesId
+      end
+      id
+      instructor
+      maxSpots
+      message
+      name
+      openSpots
+      start
+      type
+      updatedAt
+    }
+  }
+`;
+exports.updateClass = updateClass;
+const updateDay = /* GraphQL */`
+  mutation UpdateDay(
+    $condition: ModelDayConditionInput
+    $input: UpdateDayInput!
+  ) {
+    updateDay(condition: $condition, input: $input) {
+      classes {
+        items {
+          age
+          classOpen
+          createdAt
+          dayClassesId
+          end
+          id
+          instructor
+          maxSpots
+          message
+          name
+          openSpots
+          start
+          type
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      date
+      id
+      open
+      updatedAt
+    }
+  }
+`;
+exports.updateDay = updateDay;
+const updateUser = /* GraphQL */`
+  mutation UpdateUser(
+    $condition: ModelUserConditionInput
+    $input: UpdateUserInput!
+  ) {
+    updateUser(condition: $condition, input: $input) {
+      classesTotal
+      createdAt
+      email
+      enroll
+      firstName
+      freeze
+      freezeEnd
+      freezeStart
+      goal
+      hideEmail
+      hidePhone
+      id
+      image
+      insta
+      jjbelt
+      lastName
+      llbelt
+      phone
+      progress
+      renew
+      updatedAt
+      userMonths {
+        items {
+          createdAt
+          id
+          jj
+          kb
+          ll
+          month
+          updatedAt
+          userUserMonthsId
+          year
+        }
+        nextToken
+      }
+      username
+    }
+  }
+`;
+exports.updateUser = updateUser;
+const updateUserMonth = /* GraphQL */`
+  mutation UpdateUserMonth(
+    $condition: ModelUserMonthConditionInput
+    $input: UpdateUserMonthInput!
+  ) {
+    updateUserMonth(condition: $condition, input: $input) {
+      createdAt
+      id
+      jj
+      kb
+      ll
+      month
+      updatedAt
+      user {
+        classesTotal
+        createdAt
+        email
+        enroll
+        firstName
+        freeze
+        freezeEnd
+        freezeStart
+        goal
+        hideEmail
+        hidePhone
+        id
+        image
+        insta
+        jjbelt
+        lastName
+        llbelt
+        phone
+        progress
+        renew
+        updatedAt
+        userMonths {
+          nextToken
+        }
+        username
+      }
+      userUserMonthsId
+      year
+    }
+  }
+`;
+exports.updateUserMonth = updateUserMonth;

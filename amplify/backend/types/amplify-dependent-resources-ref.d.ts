@@ -24,9 +24,6 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "calendarsignupnewLayer": {
-            "Arn": "string"
-        },
         "testFunction": {
             "Name": "string",
             "Arn": "string",
@@ -40,6 +37,9 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string",
             "CloudWatchEventRule": "string"
+        },
+        "calendarsignupnewLayer": {
+            "Arn": "string"
         }
     },
     "storage": {

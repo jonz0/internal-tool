@@ -32,16 +32,16 @@
           "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
           "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy"
         },
-        "calendarsignupnewLayer": {
-          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-          "s3Key": "amplify-builds/calendarsignupnewLayer-LambdaLayerVersion92339e72-build.zip"
-        },
         "dailySweep": {
-          "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
-          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy",
           "secretsPathAmplifyAppId": "dv1hj4egrjuo2",
           "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-          "s3Key": "amplify-builds/dailySweep-494c594b662b6e4a7376-build.zip"
+          "s3Key": "amplify-builds/dailySweep-494c594b662b6e4a7376-build.zip",
+          "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
+          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy"
+        },
+        "calendarsignupnewLayer": {
+          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
+          "s3Key": "amplify-builds/calendarsignupnewLayer-LambdaLayerVersionbc38c4b8-build.zip"
         }
       },
       "api": {
