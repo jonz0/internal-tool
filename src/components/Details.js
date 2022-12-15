@@ -13,9 +13,10 @@ export default function Details() {
   const classType = details.type;
 
   function getBelt(attendee) {
-    if (classType == "gi") {
+    if (classType == "jj") {
+      console.log(attendee.jjbelt);
       return belts[attendee.jjbelt];
-    } else if (classType == "nogi") {
+    } else if (classType == "ll") {
       return belts[attendee.llbelt];
     }
   }

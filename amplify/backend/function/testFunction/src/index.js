@@ -12,10 +12,13 @@ Amplify Params - DO NOT EDIT */
 const appsyncUrl = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIENDPOINTOUTPUT;
 const apiKey = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT;
 
-const { createUserMonth } = require("../../../../../src/graphql/mutations");
 const { request } = require("/opt/appSyncRequest");
-const { createUserMonth, updateUserMonth } = require("/opt/graphql/mutations");
-const { listAttendees } = require("/opt/graphql/queries");
+const { updateUserMonth, createUserMonth } = require("/opt/graphql/mutations");
+const {
+  listAttendees,
+  getUserMonth,
+  listUserMonths,
+} = require("/opt/graphql/queries");
 
 exports.handler = async (event) => {
   let date_today = new Date();
@@ -39,15 +42,38 @@ exports.handler = async (event) => {
     );
 
     getAttendees.data.listAttendees.items.forEach(async (item) => {
-      try {
+      var getNumberClasses = await request(
+        {
+          query: getUserMonth,
+          variables: {
+            id: userMonthPrefix + item.username,
+          },
+        },
+        appsyncUrl,
+        apiKey
+      );
+
+      if (getNumberClasses.data.getUserMonth !== null) {
         if (item.class.type == "jj") {
+          var reviseUserMonth = await request(
+            {
+              query: updateUserMonth,
+              variables: {
+                input: {
+                  id: userMonthPrefix + item.username,
+                  jj: getNumberClasses.data.getUserMonth.jj + 1,
+                },
+              },
+            },
+            appsyncUrl,
+            apiKey
+          );
+        } else if (item.class.type == "ll") {
           var getNumberClasses = await request(
             {
               query: getUserMonth,
               variables: {
-                input: {
-                  id: "99dc5d1b-fa80-4e3a-856d-b2231c305774"
-                },
+                id: userMonthPrefix + item.username,
               },
             },
             appsyncUrl,
@@ -59,19 +85,39 @@ exports.handler = async (event) => {
               variables: {
                 input: {
                   id: userMonthPrefix + item.username,
-                  jj: ,
+                  ll: getNumberClasses.data.getUserMonth.ll + 1,
                 },
               },
             },
             appsyncUrl,
             apiKey
           );
-        } else if (item.class.type == "ll") {
-          
         } else if (item.class.type == "kb") {
-          
+          var getNumberClasses = await request(
+            {
+              query: getUserMonth,
+              variables: {
+                id: userMonthPrefix + item.username,
+              },
+            },
+            appsyncUrl,
+            apiKey
+          );
+          var reviseUserMonth = await request(
+            {
+              query: updateUserMonth,
+              variables: {
+                input: {
+                  id: userMonthPrefix + item.username,
+                  kb: getNumberClasses.data.getUserMonth.kb + 1,
+                },
+              },
+            },
+            appsyncUrl,
+            apiKey
+          );
         }
-      } catch (error) {
+      } else {
         if (item.class.type == "jj") {
           var makeUserMonth = await request(
             {
@@ -83,6 +129,8 @@ exports.handler = async (event) => {
                   userUserMonthsId: item.username,
                   id: userMonthPrefix + item.username,
                   jj: 1,
+                  ll: 0,
+                  kb: 0,
                 },
               },
             },
@@ -99,7 +147,9 @@ exports.handler = async (event) => {
                   year: year_yday,
                   userUserMonthsId: item.username,
                   id: userMonthPrefix + item.username,
+                  jj: 0,
                   ll: 1,
+                  kb: 0,
                 },
               },
             },
@@ -116,6 +166,8 @@ exports.handler = async (event) => {
                   year: year_yday,
                   userUserMonthsId: item.username,
                   id: userMonthPrefix + item.username,
+                  jj: 0,
+                  ll: 0,
                   kb: 1,
                 },
               },

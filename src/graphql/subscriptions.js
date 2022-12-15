@@ -20,21 +20,14 @@ export const onCreateDay = /* GraphQL */ `
           instructor
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           dayClassesId
         }
         nextToken
-        startedAt
       }
       date
       open
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -57,21 +50,14 @@ export const onUpdateDay = /* GraphQL */ `
           instructor
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           dayClassesId
         }
         nextToken
-        startedAt
       }
       date
       open
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -94,21 +80,14 @@ export const onDeleteDay = /* GraphQL */ `
           instructor
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           dayClassesId
         }
         nextToken
-        startedAt
       }
       date
       open
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -128,15 +107,11 @@ export const onCreateClass = /* GraphQL */ `
         id
         classes {
           nextToken
-          startedAt
         }
         date
         open
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       attendees {
         items {
@@ -148,21 +123,14 @@ export const onCreateClass = /* GraphQL */ `
           llbelt
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           classAttendeesId
         }
         nextToken
-        startedAt
       }
       message
       instructor
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       dayClassesId
     }
   }
@@ -183,15 +151,11 @@ export const onUpdateClass = /* GraphQL */ `
         id
         classes {
           nextToken
-          startedAt
         }
         date
         open
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       attendees {
         items {
@@ -203,21 +167,14 @@ export const onUpdateClass = /* GraphQL */ `
           llbelt
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           classAttendeesId
         }
         nextToken
-        startedAt
       }
       message
       instructor
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       dayClassesId
     }
   }
@@ -238,15 +195,11 @@ export const onDeleteClass = /* GraphQL */ `
         id
         classes {
           nextToken
-          startedAt
         }
         date
         open
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       attendees {
         items {
@@ -258,21 +211,14 @@ export const onDeleteClass = /* GraphQL */ `
           llbelt
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           classAttendeesId
         }
         nextToken
-        startedAt
       }
       message
       instructor
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       dayClassesId
     }
   }
@@ -297,21 +243,14 @@ export const onCreateAttendee = /* GraphQL */ `
           open
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         attendees {
           nextToken
-          startedAt
         }
         message
         instructor
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         dayClassesId
       }
       username
@@ -321,9 +260,6 @@ export const onCreateAttendee = /* GraphQL */ `
       llbelt
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       classAttendeesId
     }
   }
@@ -348,21 +284,14 @@ export const onUpdateAttendee = /* GraphQL */ `
           open
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         attendees {
           nextToken
-          startedAt
         }
         message
         instructor
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         dayClassesId
       }
       username
@@ -372,9 +301,6 @@ export const onUpdateAttendee = /* GraphQL */ `
       llbelt
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       classAttendeesId
     }
   }
@@ -399,21 +325,14 @@ export const onDeleteAttendee = /* GraphQL */ `
           open
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         attendees {
           nextToken
-          startedAt
         }
         message
         instructor
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         dayClassesId
       }
       username
@@ -423,9 +342,6 @@ export const onDeleteAttendee = /* GraphQL */ `
       llbelt
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       classAttendeesId
     }
   }
@@ -463,19 +379,12 @@ export const onCreateUser = /* GraphQL */ `
           kb
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           userUserMonthsId
         }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -512,19 +421,12 @@ export const onUpdateUser = /* GraphQL */ `
           kb
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           userUserMonthsId
         }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -561,19 +463,12 @@ export const onDeleteUser = /* GraphQL */ `
           kb
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           userUserMonthsId
         }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -606,13 +501,9 @@ export const onCreateUserMonth = /* GraphQL */ `
         classesTotal
         userMonths {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       year
       month
@@ -621,9 +512,6 @@ export const onCreateUserMonth = /* GraphQL */ `
       kb
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       userUserMonthsId
     }
   }
@@ -657,13 +545,9 @@ export const onUpdateUserMonth = /* GraphQL */ `
         classesTotal
         userMonths {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       year
       month
@@ -672,9 +556,6 @@ export const onUpdateUserMonth = /* GraphQL */ `
       kb
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       userUserMonthsId
     }
   }
@@ -708,13 +589,9 @@ export const onDeleteUserMonth = /* GraphQL */ `
         classesTotal
         userMonths {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       year
       month
@@ -723,9 +600,6 @@ export const onDeleteUserMonth = /* GraphQL */ `
       kb
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       userUserMonthsId
     }
   }

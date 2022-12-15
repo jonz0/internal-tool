@@ -28,7 +28,7 @@
         "calendarsignupnextLayer": {},
         "testFunction": {
           "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-          "s3Key": "amplify-builds/testFunction-6f7a4e797649476d504d-build.zip",
+          "s3Key": "amplify-builds/testFunction-763451365949616e314d-build.zip",
           "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
           "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy"
         },
