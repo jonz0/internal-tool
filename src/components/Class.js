@@ -81,6 +81,33 @@ export default function Class({ c }) {
     });
   }
 
+  function halfDayFormat(hour) {
+    return ((hour + 11) % 12) + 1;
+  }
+
+  function getSuffix(hours) {
+    return hours <= 12 ? "am" : "pm";
+  }
+
+  function getRangeReadable(classData) {
+    let startHour = parseInt(classData.start.slice(0, 2));
+    let endHour = parseInt(classData.end.slice(0, 2));
+    let startMinutes = parseInt(classData.start.slice(3, 5));
+    let endMinutes = parseInt(classData.end.slice(3, 5));
+
+    let startRange =
+      halfDayFormat(startHour) +
+      (startMinutes == 0 ? "" : ":" + startMinutes) +
+      (getSuffix(startHour) == getSuffix(endHour) ? "" : getSuffix(startHour));
+
+    let endRange =
+      halfDayFormat(endHour) +
+      (endMinutes == 0 ? "" : ":" + endMinutes) +
+      getSuffix(endHour);
+
+    return startRange + " - " + endRange;
+  }
+
   return (
     <div>
       <Button
@@ -93,7 +120,8 @@ export default function Class({ c }) {
         fontSize="10pt"
       >
         {c.name} <br />
-        {c.start.substring(0, 5)} - {c.end.substring(0, 5)}
+        {getRangeReadable(c)}
+        {/* {getTimeReadable(c.start)} - {getTimeReadable(c.end)} */}
       </Button>
     </div>
   );

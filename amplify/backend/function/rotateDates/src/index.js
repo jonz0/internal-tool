@@ -27,9 +27,9 @@ exports.handler = async (event) => {
   ];
 
   // Get the current date and find the preceeding and week-after days
-  let date_today = new Date();
-  let date_yday = new Date(date_today.setDate(date_today.getDate() - 1));
-  let date_nextw = new Date(date_today.setDate(date_today.getDate() + 6));
+
+  let date_yday = new Date(new Date().setDate(new Date().getDate() - 1));
+  let date_nextw = new Date(new Date().setDate(new Date().getDate() + 6));
 
   let day_yday = ("0" + date_yday.getDate()).slice(-2);
   let month_yday = ("0" + (date_yday.getMonth() + 1)).slice(-2);
@@ -43,6 +43,7 @@ exports.handler = async (event) => {
 
   try {
     // Update the dates of the preceeding and week-after days
+    console.log("test", date_nextw_AWS);
     var changeDays = await request(
       {
         query: updateDay,

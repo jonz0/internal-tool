@@ -13,11 +13,16 @@ const appsyncUrl = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIENDPOINTOUTPUT;
 const apiKey = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT;
 
 const { request } = require("/opt/appSyncRequest");
-const { updateUserMonth, createUserMonth } = require("/opt/graphql/mutations");
+const {
+  updateUserMonth,
+  createUserMonth,
+  deleteAttendee,
+} = require("/opt/graphql/mutations");
 const {
   listAttendees,
   getUserMonth,
   listUserMonths,
+  listClasses,
 } = require("/opt/graphql/queries");
 
 exports.handler = async (event) => {
@@ -29,156 +34,199 @@ exports.handler = async (event) => {
   let date_yday_AWS = year_yday + "-" + month_yday + "-" + day_yday;
   let userMonthPrefix = month_yday + "-" + year_yday + "-";
 
-  try {
-    var getAttendees = await request(
-      {
-        query: listAttendees,
-        variables: {
-          filter: { classAttendeesId: { eq: "0700-mon" } },
-        },
-      },
-      appsyncUrl,
-      apiKey
-    );
+  const weekday = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ];
 
-    getAttendees.data.listAttendees.items.forEach(async (item) => {
-      var getNumberClasses = await request(
+  let yday =
+    weekday[new Date(new Date().setDate(new Date().getDate() - 1)).getDay()];
+
+  var getClasses = await request(
+    {
+      query: listClasses,
+      variables: {
+        filter: { dayClassesId: { eq: yday } },
+      },
+    },
+    appsyncUrl,
+    apiKey
+  );
+
+  getClasses.data.listClasses.items.forEach(async (classObj) => {
+    try {
+      var getAttendees = await request(
         {
-          query: getUserMonth,
+          query: listAttendees,
           variables: {
-            id: userMonthPrefix + item.username,
+            filter: { classAttendeesId: { eq: classObj.id } },
           },
         },
         appsyncUrl,
         apiKey
       );
 
-      if (getNumberClasses.data.getUserMonth !== null) {
-        if (item.class.type == "jj") {
-          var reviseUserMonth = await request(
-            {
-              query: updateUserMonth,
-              variables: {
-                input: {
-                  id: userMonthPrefix + item.username,
-                  jj: getNumberClasses.data.getUserMonth.jj + 1,
+      getAttendees.data.listAttendees.items.forEach(async (item) => {
+        var getNumberClasses = await request(
+          {
+            query: getUserMonth,
+            variables: {
+              id: userMonthPrefix + item.username,
+            },
+          },
+          appsyncUrl,
+          apiKey
+        );
+
+        if (getNumberClasses.data.getUserMonth !== null) {
+          if (item.class.type == "jj") {
+            var reviseUserMonth = await request(
+              {
+                query: updateUserMonth,
+                variables: {
+                  input: {
+                    id: userMonthPrefix + item.username,
+                    jj: getNumberClasses.data.getUserMonth.jj + 1,
+                  },
                 },
               },
-            },
-            appsyncUrl,
-            apiKey
-          );
-        } else if (item.class.type == "ll") {
-          var getNumberClasses = await request(
-            {
-              query: getUserMonth,
-              variables: {
-                id: userMonthPrefix + item.username,
-              },
-            },
-            appsyncUrl,
-            apiKey
-          );
-          var reviseUserMonth = await request(
-            {
-              query: updateUserMonth,
-              variables: {
-                input: {
+              appsyncUrl,
+              apiKey
+            );
+            console.log("successful update on user:", item.username);
+          } else if (item.class.type == "ll") {
+            var getNumberClasses = await request(
+              {
+                query: getUserMonth,
+                variables: {
                   id: userMonthPrefix + item.username,
-                  ll: getNumberClasses.data.getUserMonth.ll + 1,
                 },
               },
-            },
-            appsyncUrl,
-            apiKey
-          );
-        } else if (item.class.type == "kb") {
-          var getNumberClasses = await request(
-            {
-              query: getUserMonth,
-              variables: {
-                id: userMonthPrefix + item.username,
-              },
-            },
-            appsyncUrl,
-            apiKey
-          );
-          var reviseUserMonth = await request(
-            {
-              query: updateUserMonth,
-              variables: {
-                input: {
-                  id: userMonthPrefix + item.username,
-                  kb: getNumberClasses.data.getUserMonth.kb + 1,
+              appsyncUrl,
+              apiKey
+            );
+            var reviseUserMonth = await request(
+              {
+                query: updateUserMonth,
+                variables: {
+                  input: {
+                    id: userMonthPrefix + item.username,
+                    ll: getNumberClasses.data.getUserMonth.ll + 1,
+                  },
                 },
               },
-            },
-            appsyncUrl,
-            apiKey
-          );
+              appsyncUrl,
+              apiKey
+            );
+          } else if (item.class.type == "kb") {
+            var getNumberClasses = await request(
+              {
+                query: getUserMonth,
+                variables: {
+                  id: userMonthPrefix + item.username,
+                },
+              },
+              appsyncUrl,
+              apiKey
+            );
+            var reviseUserMonth = await request(
+              {
+                query: updateUserMonth,
+                variables: {
+                  input: {
+                    id: userMonthPrefix + item.username,
+                    kb: getNumberClasses.data.getUserMonth.kb + 1,
+                  },
+                },
+              },
+              appsyncUrl,
+              apiKey
+            );
+          }
+        } else {
+          if (item.class.type == "jj") {
+            var makeUserMonth = await request(
+              {
+                query: createUserMonth,
+                variables: {
+                  input: {
+                    month: month_yday,
+                    year: year_yday,
+                    userUserMonthsId: item.username,
+                    id: userMonthPrefix + item.username,
+                    jj: 1,
+                    ll: 0,
+                    kb: 0,
+                  },
+                },
+              },
+              appsyncUrl,
+              apiKey
+            );
+          } else if (item.class.type == "ll") {
+            var makeUserMonth = await request(
+              {
+                query: createUserMonth,
+                variables: {
+                  input: {
+                    month: month_yday,
+                    year: year_yday,
+                    userUserMonthsId: item.username,
+                    id: userMonthPrefix + item.username,
+                    jj: 0,
+                    ll: 1,
+                    kb: 0,
+                  },
+                },
+              },
+              appsyncUrl,
+              apiKey
+            );
+          } else if (item.class.type == "kb") {
+            var makeUserMonth = await request(
+              {
+                query: createUserMonth,
+                variables: {
+                  input: {
+                    month: month_yday,
+                    year: year_yday,
+                    userUserMonthsId: item.username,
+                    id: userMonthPrefix + item.username,
+                    jj: 0,
+                    ll: 0,
+                    kb: 1,
+                  },
+                },
+              },
+              appsyncUrl,
+              apiKey
+            );
+          }
         }
-      } else {
-        if (item.class.type == "jj") {
-          var makeUserMonth = await request(
-            {
-              query: createUserMonth,
-              variables: {
-                input: {
-                  month: month_yday,
-                  year: year_yday,
-                  userUserMonthsId: item.username,
-                  id: userMonthPrefix + item.username,
-                  jj: 1,
-                  ll: 0,
-                  kb: 0,
-                },
+
+        // Once the Attendee's UserMonth is updated or created, delete the attendee.
+        var removeAttendee = await request(
+          {
+            query: deleteAttendee,
+            variables: {
+              input: {
+                id: item.class.id + "-" + item.username,
               },
             },
-            appsyncUrl,
-            apiKey
-          );
-        } else if (item.class.type == "ll") {
-          var makeUserMonth = await request(
-            {
-              query: createUserMonth,
-              variables: {
-                input: {
-                  month: month_yday,
-                  year: year_yday,
-                  userUserMonthsId: item.username,
-                  id: userMonthPrefix + item.username,
-                  jj: 0,
-                  ll: 1,
-                  kb: 0,
-                },
-              },
-            },
-            appsyncUrl,
-            apiKey
-          );
-        } else if (item.class.type == "kb") {
-          var makeUserMonth = await request(
-            {
-              query: createUserMonth,
-              variables: {
-                input: {
-                  month: month_yday,
-                  year: year_yday,
-                  userUserMonthsId: item.username,
-                  id: userMonthPrefix + item.username,
-                  jj: 0,
-                  ll: 0,
-                  kb: 1,
-                },
-              },
-            },
-            appsyncUrl,
-            apiKey
-          );
-        }
-      }
-    });
-  } catch (error) {
-    console.log(error);
-  }
+          },
+          appsyncUrl,
+          apiKey
+        );
+
+        console.log("successful deletion of user:", item.username);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
 };
