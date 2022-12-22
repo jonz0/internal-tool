@@ -28,7 +28,7 @@ import "@aws-amplify/ui-react/styles.css";
 import { Redirect, Route } from "react-router-dom";
 import Router from "next/router";
 
-export default withAuthenticator(function Home() {
+export default function Home() {
   return (
     <AmplifyProvider>
       <div className="page-container">
@@ -60,4 +60,4 @@ export default withAuthenticator(function Home() {
       </div>
     </AmplifyProvider>
   );
-});
+}

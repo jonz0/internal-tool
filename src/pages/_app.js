@@ -23,40 +23,23 @@ import "@aws-amplify/ui-react/styles.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as mutations from "../graphql/mutations";
 import { useState } from "react";
+import styles from "../../styles/Home.module.css";
 
 Amplify.configure(config);
 
 const components = {
-  Header() {
-    const { tokens } = useTheme();
-
-    return (
-      <View textAlign="center" padding={tokens.space.large}>
-        <Image
-          alt="Amplify logo"
-          src="https://docs.amplify.aws/assets/logo-dark.svg"
-        />
-      </View>
-    );
-  },
-
-  Footer() {
-    const { tokens } = useTheme();
-
-    return (
-      <View textAlign="center" padding={tokens.space.large}>
-        <Text color={tokens.colors.neutral[80]}>
-          &copy; All Rights Reserved
-        </Text>
-      </View>
-    );
-  },
-
   SignIn: {
     Header() {
       const { tokens } = useTheme();
 
-      return <Heading level={3}>Sign in to your account</Heading>;
+      return (
+        <Heading
+          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
+          level={3}
+        >
+          Sign in to your account
+        </Heading>
+      );
     },
     Footer() {
       const { toResetPassword } = useAuthenticator();
@@ -80,7 +63,14 @@ const components = {
     Header() {
       const { tokens } = useTheme();
 
-      return <Heading level={3}>Create a new account</Heading>;
+      return (
+        <Heading
+          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
+          level={3}
+        >
+          Create a new account
+        </Heading>
+      );
     },
     Footer() {
       const { toSignIn } = useAuthenticator();
@@ -273,16 +263,16 @@ export default (function MyApp({ Component, pageProps }) {
   };
 
   return (
-    <Authenticator
-      formFields={formFields}
-      components={components}
-      services={services}
-    >
-      <Provider store={store}>
-        <ChakraProvider>
-          <Component {...pageProps} />
-        </ChakraProvider>
-      </Provider>
-    </Authenticator>
+    // <Authenticator
+    //   formFields={formFields}
+    //   components={components}
+    //   services={services}
+    // >
+    <Provider store={store}>
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </Provider>
+    // </Authenticator>
   );
 });

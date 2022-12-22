@@ -105,6 +105,7 @@ export default function Class({ c }) {
       (endMinutes == 0 ? "" : ":" + endMinutes) +
       getSuffix(endHour);
 
+
     return startRange + " - " + endRange;
   }
 
