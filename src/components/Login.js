@@ -25,34 +25,14 @@ var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
 // ES Modules, e.g. transpiling with Babel
 import { CognitoUserAttribute, CognitoUser } from "amazon-cognito-identity-js";
 
-export default function Signup() {
+export default function Login() {
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [first, setFirst] = useState("");
-  const [last, setLast] = useState("");
 
   var attributeList = [];
 
   function onSubmit(event) {
     event.preventDefault();
-
-    var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute({
-      Name: "email",
-      Value: email,
-    });
-
-    var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute({
-      Name: "custom:firstname",
-      Value: first,
-    });
-
-    var attributeLast = new AmazonCognitoIdentity.CognitoUserAttribute({
-      Name: "custom:lastname",
-      Value: last,
-    });
-
-    attributeList.push(attributeEmail, attributeFirst, attributeLast);
 
     UserPool.signUp(username, password, attributeList, null, (err, data) => {
       if (err) {
@@ -80,43 +60,16 @@ export default function Signup() {
             <Stack spacing="5">
               <form onSubmit={onSubmit}>
                 <FormControl>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel htmlFor="email">Username</FormLabel>
                   <Input
                     id="username"
-                    type="text"
+                    type="username"
                     value={username}
                     onChange={(event) => {
                       setUsername(event.target.value);
                     }}
                   />
-                  <FormLabel>Email</FormLabel>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(event) => {
-                      setEmail(event.target.value);
-                    }}
-                  />
-                  <FormLabel>First name</FormLabel>
-                  <Input
-                    id="firstname"
-                    type="text"
-                    value={first}
-                    onChange={(event) => {
-                      setFirst(event.target.value);
-                    }}
-                  />
-                  <FormLabel>Last name</FormLabel>
-                  <Input
-                    id="lastname"
-                    type="text"
-                    value={last}
-                    onChange={(event) => {
-                      setLast(event.target.value);
-                    }}
-                  />
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel htmlFor="password">Password</FormLabel>
                   <Input
                     id="password"
                     type="password"
