@@ -1,0 +1,80 @@
+.signupContainer {
+  background-color: black;
+  height: 100vh;
+  position: relative;
+}
+
+.authBox {
+  width: 500px;
+  background-color: rgba(179, 179, 179, 0.188);
+  border-radius: 5px;
+}
+
+.coverImg {
+  height: 100%;
+  background-position: center;
+  object-fit: cover;
+  -webkit-filter: brightness(30%);
+  filter: brightness(30%);
+}
+
+.input {
+  margin-bottom: 15px;
+}
+
+.seraoLogo {
+  margin-bottom: 20px;
+  width: 250px;
+  height: auto;
+  top: 0;
+  bottom: 0;
+  margin: auto 0 auto;
+}
+
+.formContainer {
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+}
+
+.namesContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.loginFace {
+  height: 530px;
+  width: 900px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.vl {
+  background-color: white;
+  margin-left: 76px;
+  margin-right: 76px;
+  width: 1px;
+  height: 100%;
+}
+
+.formHeader {
+  font-size: 24pt;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.forgotPw {
+  margin: 20px 0 20px;
+  align-self: center;
+}
+
+.submitButtons {
+  margin-bottom: 20px;
+}
