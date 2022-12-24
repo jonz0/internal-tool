@@ -1,28 +1,16 @@
-import Signup from "../components/Signup";
-import Login from "../components/Login";
+import SignupForm from "./SignupForm";
+import LoginForm from "./LoginForm";
 import UserPool from "../UserPool";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import styles from "../../styles/Signup.module.css";
 import Image from "next/image";
 
-export default function TestSignup() {
+export default function AuthPage() {
   return (
     <div className={styles.signupContainer}>
-      <Image
-        src="/lucas-serao.jpeg"
-        layout="fill"
-        objectFit="contain"
-        width="10000"
-        height="10000"
-        className={styles.coverImg}
-      />
+      <div layout="fill" objectFit="contain" className={styles.coverImg} />
       <div className={styles.loginFace}>
-        <Image
-          src="/serao-transparent-white.png"
-          width="10000"
-          height="10000"
-          className={styles.seraoLogo}
-        />
+        <img src="/serao-transparent-white.png" className={styles.seraoLogo} />
         <div className={styles.vl}></div>
         <div className={styles.authBox}>
           <Tabs
@@ -38,10 +26,10 @@ export default function TestSignup() {
             </TabList>
             <TabPanels>
               <TabPanel>
-                <Login />
+                <LoginForm />
               </TabPanel>
               <TabPanel>
-                <Signup />
+                <SignupForm />
               </TabPanel>
             </TabPanels>
           </Tabs>

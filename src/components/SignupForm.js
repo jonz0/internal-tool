@@ -29,7 +29,7 @@ import styles from "../../styles/Signup.module.css";
 import Image from "next/image";
 import VerifyForm from "./VerifyForm";
 
-export default function Signup() {
+export default function SignupForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");

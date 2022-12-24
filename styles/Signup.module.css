@@ -10,10 +10,13 @@
   border-radius: 5px;
 }
 
-.coverImg {
-  height: 100%;
-  background-position: center;
-  object-fit: cover;
+div.coverImg {
+  background-image: url("/lucas-serao.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
   -webkit-filter: brightness(30%);
   filter: brightness(30%);
 }

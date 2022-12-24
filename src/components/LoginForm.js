@@ -31,7 +31,7 @@ import styles from "../../styles/Signup.module.css";
 import Image from "next/image";
 import * as AWS from "aws-sdk/global";
 
-export default function Login() {
+export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
@@ -143,13 +143,13 @@ export default function Login() {
               </Button>
             </div>
           </FormControl>
+          {alert && (
+            <Alert status="error" color="black">
+              <AlertIcon />
+              Incorrect user and password information.
+            </Alert>
+          )}
         </form>
-        {alert && (
-          <Alert status="error" color="black">
-            <AlertIcon />
-            Incorrect user and password information.
-          </Alert>
-        )}
       </div>
     </div>
   );
