@@ -31,25 +31,68 @@ import { CodeDeploy } from "aws-sdk";
 
 export default function VerifyForm(user) {
   const [code, setCode] = useState("");
+  const [alert, setAlert] = useState(false);
+  const [alertText, setAlertText] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [resent, setResent] = useState(false);
+
+  var userData = {
+    Username: user.user,
+    Pool: UserPool,
+  };
+
+  var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
 
   function onSubmit(event) {
     event.preventDefault();
+    setAlert(false);
+    setResent(false);
     console.log(user.user);
     console.log(code);
 
-    var userData = {
-      Username: user.user,
-      Pool: UserPool,
-    };
-
-    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-
     cognitoUser.confirmRegistration(code, true, function (err, result) {
-      if (err) {
-        console.log(err.message || JSON.stringify(err));
+      if (code.length < 1) {
+        setAlertText("Please enter a verification code.");
+        setAlert(true);
         return;
       }
+
+      if (err) {
+        if (err.message.startsWith("Attempt limit exceeded")) {
+          setAlertText("Attempt limit exceeded. Please try after some time.");
+          setAlert(true);
+        } else if (err.message.startsWith("Invalid verification code")) {
+          setAlertText("Invalid verification code provided.");
+          setAlert(true);
+        } else {
+          setAlertText(
+            "Error verifying your account. Please try again or call us!"
+          );
+          setAlert(true);
+        }
+      }
+
       console.log("call result: " + result);
+    });
+  }
+
+  function resend() {
+    setAlert(false);
+    setResent(false);
+    cognitoUser.resendConfirmationCode(function (err, result) {
+      if (err) {
+        if (err.message.startsWith("Attempt limit exceeded")) {
+          setAlertText("Attempt limit exceeded. Please try after some time.");
+          setAlert(true);
+        } else {
+          setAlertText("Error resending code. Please try again or call us!");
+          setAlert(true);
+        }
+      }
+
+      if (result !== null) {
+        setResent(true);
+      }
     });
   }
 
@@ -80,8 +123,48 @@ export default function VerifyForm(user) {
           >
             Confirm
           </Button>
+          <Button
+            mt={4}
+            colorScheme="red"
+            style={{ marginLeft: "8px" }}
+            onClick={resend}
+          >
+            Resend Code
+          </Button>
         </FormControl>
       </form>
+      {alert && (
+        <Alert
+          status="error"
+          color="black"
+          fontSize="sm"
+          className={styles.alert}
+        >
+          <AlertIcon />
+          {alertText}
+        </Alert>
+      )}
+      {success && (
+        <Alert
+          status="success"
+          color="black"
+          fontSize="sm"
+          className={styles.alert}
+        >
+          <AlertIcon />
+          Your new account has been verified and is awaiting approval.
+        </Alert>
+      )}
+      {resent && (
+        <Alert
+          status="info"
+          color="black"
+          fontSize="sm"
+          className={styles.alert}
+        >
+          <AlertIcon />A new verification code has been sent to your email.
+        </Alert>
+      )}
     </div>
   );
 }

@@ -14,6 +14,7 @@ import * as AWS from "aws-sdk/global";
 import { useRouter } from "next/router";
 import { setSession } from "../features/class/sessionSlice";
 import { useDispatch } from "react-redux";
+import ForgotForm from "./ForgotForm";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -21,6 +22,7 @@ export default function LoginForm() {
   const [alert, setAlert] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
+  const [forgot, setForgot] = useState(false);
 
   function onSubmit(event) {
     event.preventDefault();
@@ -127,77 +129,94 @@ export default function LoginForm() {
     UserPool.getCurrentUser().signOut();
   }
 
+  function forgotPw() {
+    setForgot(true);
+  }
+
   return (
     <div>
       <div className={styles.formContainer}>
-        <p className={styles.formHeader}>Welcome!</p>
-        <form onSubmit={onSubmit}>
-          <FormControl>
-            <Input
-              id="username"
-              type="username"
-              value={username}
-              onChange={(event) => {
-                setUsername(event.target.value);
-              }}
-              className={styles.input}
-              color="white"
-              placeholder="Username"
-              _placeholder={{ color: "inherit" }}
-              autoComplete="off"
-              size="sm"
-            />
-            <Input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
-              className={styles.input}
-              color="white"
-              placeholder="Password"
-              _placeholder={{ color: "inherit" }}
-              autoComplete="off"
-              size="sm"
-            />
-            <div className={styles.submitButtons}>
-              <Button
-                mt={4}
-                colorScheme="teal"
-                type="submit"
-                style={{ marginRight: "8px" }}
-              >
-                Log in
-              </Button>
-              <Button mt={4} colorScheme="red" style={{ marginLeft: "8px" }}>
-                Forgot Password
-              </Button>
-            </div>
-            <Button
-              mt={4}
-              colorScheme="teal"
-              style={{ marginRight: "8px" }}
-              onClick={debug}
-            >
-              Debug
-            </Button>
-            <Button
-              mt={4}
-              colorScheme="teal"
-              style={{ marginRight: "8px" }}
-              onClick={logout}
-            >
-              Logout
-            </Button>
-          </FormControl>
-          {alert && (
-            <Alert status="error" color="black">
-              <AlertIcon />
-              Incorrect user and password information.
-            </Alert>
-          )}
-        </form>
+        {forgot && <ForgotForm />}
+        {!forgot && (
+          <div>
+            <p className={styles.formHeader}>Welcome!</p>
+            <form onSubmit={onSubmit}>
+              <FormControl>
+                <Input
+                  id="username"
+                  type="username"
+                  value={username}
+                  onChange={(event) => {
+                    setUsername(event.target.value);
+                  }}
+                  className={styles.input}
+                  color="white"
+                  placeholder="Username"
+                  _placeholder={{ color: "inherit" }}
+                  autoComplete="off"
+                  size="sm"
+                />
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
+                  className={styles.input}
+                  color="white"
+                  placeholder="Password"
+                  _placeholder={{ color: "inherit" }}
+                  autoComplete="off"
+                  size="sm"
+                />
+                <Button
+                  mt={4}
+                  colorScheme="teal"
+                  type="submit"
+                  style={{ marginRight: "8px" }}
+                >
+                  Log in
+                </Button>
+                <Button
+                  mt={4}
+                  colorScheme="red"
+                  style={{ marginLeft: "8px" }}
+                  onClick={forgotPw}
+                >
+                  Forgot Password
+                </Button>
+                <Button
+                  mt={4}
+                  colorScheme="teal"
+                  style={{ marginRight: "8px" }}
+                  onClick={debug}
+                >
+                  Debug
+                </Button>
+                <Button
+                  mt={4}
+                  colorScheme="teal"
+                  style={{ marginRight: "8px" }}
+                  onClick={logout}
+                >
+                  Logout
+                </Button>
+              </FormControl>
+              {alert && (
+                <Alert
+                  status="error"
+                  color="black"
+                  fontSize="sm"
+                  className={styles.alert}
+                >
+                  <AlertIcon />
+                  Incorrect user and password information.
+                </Alert>
+              )}
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );

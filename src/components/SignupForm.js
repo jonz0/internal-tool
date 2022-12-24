@@ -37,13 +37,15 @@ export default function SignupForm() {
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [alert, setAlert] = useState(false);
-  const [success, setSuccess] = useState(false);
   const [verifying, setVerifying] = useState(false);
+  const [alertText, setAlertText] = useState("");
 
   var attributeList = [];
 
   function onSubmit(event) {
     event.preventDefault();
+    setAlert(false);
+    setAlertText("");
 
     var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute({
       Name: "email",
@@ -63,9 +65,26 @@ export default function SignupForm() {
     attributeList.push(attributeEmail, attributeFirst, attributeLast);
 
     UserPool.signUp(username, password, attributeList, null, (err, data) => {
-      if (err) {
-        console.log(err);
+      if (
+        username.length < 1 ||
+        password.length < 1 ||
+        email.length < 1 ||
+        first.length < 1 ||
+        last.length < 1 ||
+        phone.length < 1
+      ) {
         setAlert(true);
+        setAlertText("Please fill out all fields to sign up");
+        setVerifying(false);
+        return;
+      }
+
+      if (err) {
+        if (err.message.includes("'password' failed to satisfy"));
+        setAlert(true);
+        setAlertText(
+          "Passwords must contain at least 8 characters with one letter and number."
+        );
         setVerifying(false);
       } else {
         setAlert(false);
@@ -183,15 +202,14 @@ export default function SignupForm() {
               </FormControl>
             </form>
             {alert && (
-              <Alert status="error" color="black">
+              <Alert
+                status="error"
+                color="black"
+                className={styles.alert}
+                fontSize="sm"
+              >
                 <AlertIcon />
-                Alert Text
-              </Alert>
-            )}
-            {success && (
-              <Alert status="success" color="black">
-                <AlertIcon />
-                Your new account has been created and is awaiting approval.
+                {alertText}
               </Alert>
             )}
           </div>
