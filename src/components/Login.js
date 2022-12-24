@@ -20,7 +20,6 @@ import {
   AlertDescription,
 } from "@chakra-ui/react";
 import UserPool from "../UserPool";
-import { PasswordField } from "./PasswordField";
 // When using loose Javascript files:
 // Modules, e.g. Webpack:
 var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
@@ -30,22 +29,69 @@ var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
 import { CognitoUserAttribute, CognitoUser } from "amazon-cognito-identity-js";
 import styles from "../../styles/Signup.module.css";
 import Image from "next/image";
+import * as AWS from "aws-sdk/global";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
 
-  var attributeList = [];
-
   function onSubmit(event) {
     event.preventDefault();
 
-    UserPool.signUp(username, password, attributeList, null, (err, data) => {
-      if (err) {
-        console.log(err);
-      }
-      console.log(data);
+    var authenticationData = {
+      Username: username,
+      Password: password,
+    };
+
+    var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
+      authenticationData
+    );
+
+    var userData = {
+      Username: username,
+      Pool: UserPool,
+    };
+
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+
+    cognitoUser.authenticateUser(authenticationDetails, {
+      onSuccess: function (result) {
+        var accessToken = result.getAccessToken().getJwtToken();
+
+        //POTENTIAL: Region needs to be set if not already set previously elsewhere.
+        //POTENTIAL: Region needs to be set if not already set previously elsewhere.
+        AWS.config.region = "us-west-1";
+
+        AWS.config.update({
+          region: "us-west-1", //Here add you region
+        });
+
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+          IdentityPoolId: "us-west-1:38d464a7-1d45-4f28-b400-621e4d4e5631", // your identity pool id here
+          Logins: {
+            // Change the key below according to the specific region your user pool is in.
+            "cognito-idp.us-west-1.amazonaws.com/us-west-1_R2escFqfm": result
+              .getIdToken()
+              .getJwtToken(),
+          },
+        });
+
+        //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+        AWS.config.credentials.refresh((error) => {
+          if (error) {
+            console.error(error);
+          } else {
+            // Instantiate aws sdk service objects now that the credentials have been updated.
+            // example: var s3 = new AWS.S3();
+            console.log("Successfully logged!");
+          }
+        });
+      },
+
+      onFailure: function (err) {
+        console.log(err.message || JSON.stringify(err));
+      },
     });
   }
 
@@ -67,6 +113,7 @@ export default function Login() {
               placeholder="Username"
               _placeholder={{ color: "inherit" }}
               autoComplete="off"
+              size="sm"
             />
             <Input
               id="password"
@@ -80,6 +127,7 @@ export default function Login() {
               placeholder="Password"
               _placeholder={{ color: "inherit" }}
               autoComplete="off"
+              size="sm"
             />
             <div className={styles.submitButtons}>
               <Button
@@ -88,7 +136,7 @@ export default function Login() {
                 type="submit"
                 style={{ marginRight: "8px" }}
               >
-                Submit
+                Log in
               </Button>
               <Button mt={4} colorScheme="red" style={{ marginLeft: "8px" }}>
                 Forgot Password
