@@ -1,24 +1,5 @@
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  Container,
-  Divider,
-  FormControl,
-  FormLabel,
-  Heading,
-  HStack,
-  Input,
-  Stack,
-  Text,
-  useBreakpointValue,
-  useColorModeValue,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from "@chakra-ui/react";
+import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
 import UserPool from "../UserPool";
 // When using loose Javascript files:
 // Modules, e.g. Webpack:
@@ -30,11 +11,16 @@ import { CognitoUserAttribute, CognitoUser } from "amazon-cognito-identity-js";
 import styles from "../../styles/Signup.module.css";
 import Image from "next/image";
 import * as AWS from "aws-sdk/global";
+import { useRouter } from "next/router";
+import { setSession } from "../features/class/sessionSlice";
+import { useDispatch } from "react-redux";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
+  const router = useRouter();
+  const dispatch = useDispatch();
 
   function onSubmit(event) {
     event.preventDefault();
@@ -85,6 +71,23 @@ export default function LoginForm() {
             // Instantiate aws sdk service objects now that the credentials have been updated.
             // example: var s3 = new AWS.S3();
             console.log("Successfully logged!");
+
+            const currentUser = UserPool.getCurrentUser();
+
+            if (currentUser != null) {
+              currentUser.getSession(function (err, session) {
+                if (err) {
+                  console.log(err.message || JSON.stringify(err));
+                  return;
+                }
+                dispatch(
+                  setSession({
+                    valid: true,
+                    username: UserPool.getCurrentUser().getUsername(),
+                  })
+                );
+              });
+            }
           }
         });
       },
@@ -93,6 +96,35 @@ export default function LoginForm() {
         console.log(err.message || JSON.stringify(err));
       },
     });
+  }
+
+  function debug() {
+    console.log("debugging...");
+    const currentUser = UserPool.getCurrentUser();
+
+    if (currentUser != null) {
+      currentUser.getSession(function (err, session) {
+        if (err) {
+          console.log(err.message || JSON.stringify(err));
+          return;
+        }
+        console.log("session validity: " + session.isValid());
+
+        // AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        //   IdentityPoolId: "us-west-1:38d464a7-1d45-4f28-b400-621e4d4e5631", // your identity pool id here
+        //   Logins: {
+        //     // Change the key below according to the specific region your user pool is in.
+        //     "cognito-idp.us-west-1.amazonaws.com/us-west-1_R2escFqfm": session
+        //       .getIdToken()
+        //       .getJwtToken(),
+        //   },
+        // });
+      });
+    }
+  }
+
+  function logout() {
+    UserPool.getCurrentUser().signOut();
   }
 
   return (
@@ -142,6 +174,22 @@ export default function LoginForm() {
                 Forgot Password
               </Button>
             </div>
+            <Button
+              mt={4}
+              colorScheme="teal"
+              style={{ marginRight: "8px" }}
+              onClick={debug}
+            >
+              Debug
+            </Button>
+            <Button
+              mt={4}
+              colorScheme="teal"
+              style={{ marginRight: "8px" }}
+              onClick={logout}
+            >
+              Logout
+            </Button>
           </FormControl>
           {alert && (
             <Alert status="error" color="black">

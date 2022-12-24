@@ -42,11 +42,11 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <ChakraProvider>
-      <AuthWrapper>
-        <Provider store={store}>
+      <Provider store={store}>
+        <AuthWrapper>
           <Component {...pageProps} />
-        </Provider>
-      </AuthWrapper>
+        </AuthWrapper>
+      </Provider>
     </ChakraProvider>
   );
 }

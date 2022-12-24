@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const stagingSlice = createSlice({
-  name: "removeStaging",
+  name: "staging",
   initialState: {
     value: [],
   },
