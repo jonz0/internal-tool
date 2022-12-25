@@ -92,22 +92,23 @@ export default function LoginForm() {
             // Instantiate aws sdk service objects now that the credentials have been updated.
             // example: var s3 = new AWS.S3();
             console.log("Successfully logged!");
+            window.location.reload();
 
-            const currentUser = UserPool.getCurrentUser();
+            // const currentUser = UserPool.getCurrentUser();
 
-            if (currentUser != null) {
-              currentUser.getSession(function (err, session) {
-                if (err) {
-                  console.log(err.message);
-                }
-                dispatch(
-                  setSession({
-                    valid: true,
-                    username: UserPool.getCurrentUser().getUsername(),
-                  })
-                );
-              });
-            }
+            // if (currentUser != null) {
+            //   currentUser.getSession(function (err, session) {
+            //     if (err) {
+            //       console.log(err.message);
+            //     }
+            //     dispatch(
+            //       setSession({
+            //         valid: true,
+            //         username: UserPool.getCurrentUser().getUsername(),
+            //       })
+            //     );
+            //   });
+            // }
           }
         });
       },

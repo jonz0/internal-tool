@@ -13,33 +13,6 @@ import AuthWrapper from "../components/AuthWrapper";
 Amplify.configure(config);
 
 export default function MyApp({ Component, pageProps }) {
-  // async handleConfirmSignUp(formData) {
-  //   let { username, code } = formData;
-  //   // custom username
-  //   // username = username.toLowerCase();
-  //   // attributes.email = attributes.email.toLowerCase();
-  //   try {
-  //     console.log("trying...");
-  //     await Auth.confirmSignUp(username, code);
-
-  //     const userDetails = {
-  //       id: username,
-  //       username: username,
-  //       email: userEmail,
-  //       jjBelt: 0,
-  //       llBelt: 0,
-  //     };
-
-  //     const newUser = await API.graphql({
-  //       query: mutations.createUser,
-  //       variables: { input: userDetails },
-  //     });
-  //   } catch (error) {
-  //     console.log("FAILURE!");
-  //     return Auth.confirmSignUp(username, code);
-  //   }
-  // },
-
   return (
     <ChakraProvider>
       <Provider store={store}>

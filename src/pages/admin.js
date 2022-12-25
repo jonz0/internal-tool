@@ -29,6 +29,18 @@ async function buildDefaultSchema() {
   ); // equivalent to above example
 }
 
+// const userDetails = {
+//   id: username,
+//   username: username,
+//   email: userEmail,
+//   jjBelt: 0,
+//   llBelt: 0,
+// };
+
+// const newUser = await API.graphql({
+//   query: mutations.createUser,
+//   variables: { input: userDetails },
+// });
 export default function admin() {
   return (
     <div className="page-container">
