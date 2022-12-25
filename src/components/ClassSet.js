@@ -3,11 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { API } from "aws-amplify";
 import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import Day from "../components/Day";
 import Class from "../components/Class";
-import { resolve } from "styled-jsx/css";
 
 export default function ClassSet({ day, exclude }) {
   const [classes, setClasses] = useState([]);

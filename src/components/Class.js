@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
 
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { API } from "aws-amplify";
 import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import { Textarea } from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setDetails } from "../features/class/detailsSlice";

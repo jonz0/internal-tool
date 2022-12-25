@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import AuthPage from "./AuthPage";
 import { useRouter } from "next/router";
 var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
-var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
 import UserPool from "../UserPool";
 
 // ES Modules, e.g. transpiling with Babel
