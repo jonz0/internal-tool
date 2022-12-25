@@ -19,11 +19,11 @@
         "calendarsignupcalendarsignuplayer": {},
         "calendarsignupnewLayer": {
           "deploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
-          "s3Key": "amplify-builds/calendarsignupnewLayer-LambdaLayerVersion8f975661-build.zip"
+          "s3Key": "amplify-builds/calendarsignupnewLayer-LambdaLayerVersion5e5f0acb-build.zip"
         },
         "rotateDays": {
           "deploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
-          "s3Key": "amplify-builds/rotateDays-58485558543972336d61-build.zip",
+          "s3Key": "amplify-builds/rotateDays-624555516e3978662b6c-build.zip",
           "apiAmplifylayerguideGraphqlapiendpointoutput": "https://olfdu24ggfdn5lzf4jrj3vhogy.appsync-api.us-west-1.amazonaws.com/graphql",
           "apiAmplifylayerguideGraphqlapikeyoutput": "da2-imkyftuvizbxzh2falmcpla4le"
         },

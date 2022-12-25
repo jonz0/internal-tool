@@ -1,13 +1,28 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+  value: true,
 });
-exports.syncUsers = exports.syncUserMonths = exports.syncDays = exports.syncClasses = exports.syncAttendees = exports.listUsers = exports.listUserMonths = exports.listDays = exports.listClasses = exports.listAttendees = exports.getUserMonth = exports.getUser = exports.getDay = exports.getClass = exports.getAttendee = void 0;
+exports.syncUsers =
+  exports.syncUserMonths =
+  exports.syncDays =
+  exports.syncClasses =
+  exports.syncAttendees =
+  exports.listUsers =
+  exports.listUserMonths =
+  exports.listDays =
+  exports.listClasses =
+  exports.listAttendees =
+  exports.getUserMonth =
+  exports.getUser =
+  exports.getDay =
+  exports.getClass =
+  exports.getAttendee =
+    void 0;
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-const getDay = /* GraphQL */`
+const getDay = /* GraphQL */ `
   query GetDay($id: ID!) {
     getDay(id: $id) {
       id
@@ -26,9 +41,6 @@ const getDay = /* GraphQL */`
           instructor
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           dayClassesId
         }
         nextToken
@@ -38,14 +50,11 @@ const getDay = /* GraphQL */`
       open
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 exports.getDay = getDay;
-const listDays = /* GraphQL */`
+const listDays = /* GraphQL */ `
   query ListDays(
     $filter: ModelDayFilterInput
     $limit: Int
@@ -62,9 +71,6 @@ const listDays = /* GraphQL */`
         open
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
       startedAt
@@ -72,7 +78,7 @@ const listDays = /* GraphQL */`
   }
 `;
 exports.listDays = listDays;
-const syncDays = /* GraphQL */`
+const syncDays = /* GraphQL */ `
   query SyncDays(
     $filter: ModelDayFilterInput
     $limit: Int
@@ -95,9 +101,6 @@ const syncDays = /* GraphQL */`
         open
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
       startedAt
@@ -105,7 +108,7 @@ const syncDays = /* GraphQL */`
   }
 `;
 exports.syncDays = syncDays;
-const getClass = /* GraphQL */`
+const getClass = /* GraphQL */ `
   query GetClass($id: ID!) {
     getClass(id: $id) {
       id
@@ -127,9 +130,6 @@ const getClass = /* GraphQL */`
         open
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       attendees {
         items {
@@ -141,9 +141,6 @@ const getClass = /* GraphQL */`
           llbelt
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           classAttendeesId
         }
         nextToken
@@ -153,15 +150,12 @@ const getClass = /* GraphQL */`
       instructor
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       dayClassesId
     }
   }
 `;
 exports.getClass = getClass;
-const listClasses = /* GraphQL */`
+const listClasses = /* GraphQL */ `
   query ListClasses(
     $filter: ModelClassFilterInput
     $limit: Int
@@ -184,9 +178,6 @@ const listClasses = /* GraphQL */`
           open
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         attendees {
           nextToken
@@ -196,9 +187,6 @@ const listClasses = /* GraphQL */`
         instructor
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         dayClassesId
       }
       nextToken
@@ -207,7 +195,7 @@ const listClasses = /* GraphQL */`
   }
 `;
 exports.listClasses = listClasses;
-const syncClasses = /* GraphQL */`
+const syncClasses = /* GraphQL */ `
   query SyncClasses(
     $filter: ModelClassFilterInput
     $limit: Int
@@ -236,9 +224,6 @@ const syncClasses = /* GraphQL */`
           open
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         attendees {
           nextToken
@@ -248,9 +233,6 @@ const syncClasses = /* GraphQL */`
         instructor
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         dayClassesId
       }
       nextToken
@@ -259,7 +241,7 @@ const syncClasses = /* GraphQL */`
   }
 `;
 exports.syncClasses = syncClasses;
-const getAttendee = /* GraphQL */`
+const getAttendee = /* GraphQL */ `
   query GetAttendee($id: ID!) {
     getAttendee(id: $id) {
       id
@@ -279,9 +261,6 @@ const getAttendee = /* GraphQL */`
           open
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         attendees {
           nextToken
@@ -291,9 +270,6 @@ const getAttendee = /* GraphQL */`
         instructor
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         dayClassesId
       }
       username
@@ -303,15 +279,12 @@ const getAttendee = /* GraphQL */`
       llbelt
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       classAttendeesId
     }
   }
 `;
 exports.getAttendee = getAttendee;
-const listAttendees = /* GraphQL */`
+const listAttendees = /* GraphQL */ `
   query ListAttendees(
     $filter: ModelAttendeeFilterInput
     $limit: Int
@@ -334,9 +307,6 @@ const listAttendees = /* GraphQL */`
           instructor
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           dayClassesId
         }
         username
@@ -346,9 +316,6 @@ const listAttendees = /* GraphQL */`
         llbelt
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         classAttendeesId
       }
       nextToken
@@ -357,7 +324,7 @@ const listAttendees = /* GraphQL */`
   }
 `;
 exports.listAttendees = listAttendees;
-const syncAttendees = /* GraphQL */`
+const syncAttendees = /* GraphQL */ `
   query SyncAttendees(
     $filter: ModelAttendeeFilterInput
     $limit: Int
@@ -386,9 +353,6 @@ const syncAttendees = /* GraphQL */`
           instructor
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           dayClassesId
         }
         username
@@ -398,9 +362,6 @@ const syncAttendees = /* GraphQL */`
         llbelt
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         classAttendeesId
       }
       nextToken
@@ -409,7 +370,7 @@ const syncAttendees = /* GraphQL */`
   }
 `;
 exports.syncAttendees = syncAttendees;
-const getUser = /* GraphQL */`
+const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
@@ -443,9 +404,6 @@ const getUser = /* GraphQL */`
           kb
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           userUserMonthsId
         }
         nextToken
@@ -453,14 +411,11 @@ const getUser = /* GraphQL */`
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 exports.getUser = getUser;
-const listUsers = /* GraphQL */`
+const listUsers = /* GraphQL */ `
   query ListUsers(
     $filter: ModelUserFilterInput
     $limit: Int
@@ -495,9 +450,6 @@ const listUsers = /* GraphQL */`
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
       startedAt
@@ -505,7 +457,7 @@ const listUsers = /* GraphQL */`
   }
 `;
 exports.listUsers = listUsers;
-const syncUsers = /* GraphQL */`
+const syncUsers = /* GraphQL */ `
   query SyncUsers(
     $filter: ModelUserFilterInput
     $limit: Int
@@ -546,9 +498,6 @@ const syncUsers = /* GraphQL */`
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
       startedAt
@@ -556,7 +505,7 @@ const syncUsers = /* GraphQL */`
   }
 `;
 exports.syncUsers = syncUsers;
-const getUserMonth = /* GraphQL */`
+const getUserMonth = /* GraphQL */ `
   query GetUserMonth($id: ID!) {
     getUserMonth(id: $id) {
       id
@@ -588,9 +537,6 @@ const getUserMonth = /* GraphQL */`
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       year
       month
@@ -599,15 +545,12 @@ const getUserMonth = /* GraphQL */`
       kb
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       userUserMonthsId
     }
   }
 `;
 exports.getUserMonth = getUserMonth;
-const listUserMonths = /* GraphQL */`
+const listUserMonths = /* GraphQL */ `
   query ListUserMonths(
     $filter: ModelUserMonthFilterInput
     $limit: Int
@@ -640,9 +583,6 @@ const listUserMonths = /* GraphQL */`
           active
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         year
         month
@@ -651,9 +591,6 @@ const listUserMonths = /* GraphQL */`
         kb
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         userUserMonthsId
       }
       nextToken
@@ -662,7 +599,7 @@ const listUserMonths = /* GraphQL */`
   }
 `;
 exports.listUserMonths = listUserMonths;
-const syncUserMonths = /* GraphQL */`
+const syncUserMonths = /* GraphQL */ `
   query SyncUserMonths(
     $filter: ModelUserMonthFilterInput
     $limit: Int
@@ -701,9 +638,6 @@ const syncUserMonths = /* GraphQL */`
           active
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         year
         month
@@ -712,9 +646,6 @@ const syncUserMonths = /* GraphQL */`
         kb
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         userUserMonthsId
       }
       nextToken

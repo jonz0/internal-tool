@@ -20,21 +20,14 @@ export const getDay = /* GraphQL */ `
           instructor
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           dayClassesId
         }
         nextToken
-        startedAt
       }
       date
       open
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -49,50 +42,13 @@ export const listDays = /* GraphQL */ `
         id
         classes {
           nextToken
-          startedAt
         }
         date
         open
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncDays = /* GraphQL */ `
-  query SyncDays(
-    $filter: ModelDayFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncDays(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        classes {
-          nextToken
-          startedAt
-        }
-        date
-        open
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -112,15 +68,11 @@ export const getClass = /* GraphQL */ `
         id
         classes {
           nextToken
-          startedAt
         }
         date
         open
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       attendees {
         items {
@@ -132,21 +84,14 @@ export const getClass = /* GraphQL */ `
           llbelt
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           classAttendeesId
         }
         nextToken
-        startedAt
       }
       message
       instructor
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       dayClassesId
     }
   }
@@ -174,76 +119,17 @@ export const listClasses = /* GraphQL */ `
           open
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         attendees {
           nextToken
-          startedAt
         }
         message
         instructor
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         dayClassesId
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncClasses = /* GraphQL */ `
-  query SyncClasses(
-    $filter: ModelClassFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncClasses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        start
-        end
-        type
-        age
-        maxSpots
-        openSpots
-        classOpen
-        day {
-          id
-          date
-          open
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        attendees {
-          nextToken
-          startedAt
-        }
-        message
-        instructor
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        dayClassesId
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -267,21 +153,14 @@ export const getAttendee = /* GraphQL */ `
           open
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         attendees {
           nextToken
-          startedAt
         }
         message
         instructor
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         dayClassesId
       }
       username
@@ -291,9 +170,6 @@ export const getAttendee = /* GraphQL */ `
       llbelt
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       classAttendeesId
     }
   }
@@ -321,9 +197,6 @@ export const listAttendees = /* GraphQL */ `
           instructor
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           dayClassesId
         }
         username
@@ -333,64 +206,9 @@ export const listAttendees = /* GraphQL */ `
         llbelt
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         classAttendeesId
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncAttendees = /* GraphQL */ `
-  query SyncAttendees(
-    $filter: ModelAttendeeFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncAttendees(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        class {
-          id
-          name
-          start
-          end
-          type
-          age
-          maxSpots
-          openSpots
-          classOpen
-          message
-          instructor
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          dayClassesId
-        }
-        username
-        firstName
-        lastName
-        jjbelt
-        llbelt
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        classAttendeesId
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -428,19 +246,12 @@ export const getUser = /* GraphQL */ `
           kb
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           userUserMonthsId
         }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -475,66 +286,11 @@ export const listUsers = /* GraphQL */ `
         active
         userMonths {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncUsers = /* GraphQL */ `
-  query SyncUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncUsers(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        username
-        firstName
-        lastName
-        jjbelt
-        llbelt
-        image
-        email
-        phone
-        enroll
-        renew
-        insta
-        hideEmail
-        hidePhone
-        freeze
-        freezeStart
-        freezeEnd
-        goal
-        progress
-        classesTotal
-        active
-        userMonths {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -566,13 +322,9 @@ export const getUserMonth = /* GraphQL */ `
         active
         userMonths {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       year
       month
@@ -581,9 +333,6 @@ export const getUserMonth = /* GraphQL */ `
       kb
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       userUserMonthsId
     }
   }
@@ -621,9 +370,6 @@ export const listUserMonths = /* GraphQL */ `
           active
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         year
         month
@@ -632,73 +378,9 @@ export const listUserMonths = /* GraphQL */ `
         kb
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         userUserMonthsId
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncUserMonths = /* GraphQL */ `
-  query SyncUserMonths(
-    $filter: ModelUserMonthFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncUserMonths(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        user {
-          id
-          username
-          firstName
-          lastName
-          jjbelt
-          llbelt
-          image
-          email
-          phone
-          enroll
-          renew
-          insta
-          hideEmail
-          hidePhone
-          freeze
-          freezeStart
-          freezeEnd
-          goal
-          progress
-          classesTotal
-          active
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        year
-        month
-        jj
-        ll
-        kb
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        userUserMonthsId
-      }
-      nextToken
-      startedAt
     }
   }
 `;

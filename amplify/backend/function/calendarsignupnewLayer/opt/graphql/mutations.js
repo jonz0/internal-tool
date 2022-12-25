@@ -1,13 +1,28 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+  value: true,
 });
-exports.updateUserMonth = exports.updateUser = exports.updateDay = exports.updateClass = exports.updateAttendee = exports.deleteUserMonth = exports.deleteUser = exports.deleteDay = exports.deleteClass = exports.deleteAttendee = exports.createUserMonth = exports.createUser = exports.createDay = exports.createClass = exports.createAttendee = void 0;
+exports.updateUserMonth =
+  exports.updateUser =
+  exports.updateDay =
+  exports.updateClass =
+  exports.updateAttendee =
+  exports.deleteUserMonth =
+  exports.deleteUser =
+  exports.deleteDay =
+  exports.deleteClass =
+  exports.deleteAttendee =
+  exports.createUserMonth =
+  exports.createUser =
+  exports.createDay =
+  exports.createClass =
+  exports.createAttendee =
+    void 0;
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-const createDay = /* GraphQL */`
+const createDay = /* GraphQL */ `
   mutation CreateDay(
     $input: CreateDayInput!
     $condition: ModelDayConditionInput
@@ -29,9 +44,7 @@ const createDay = /* GraphQL */`
           instructor
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+
           dayClassesId
         }
         nextToken
@@ -41,14 +54,11 @@ const createDay = /* GraphQL */`
       open
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 exports.createDay = createDay;
-const updateDay = /* GraphQL */`
+const updateDay = /* GraphQL */ `
   mutation UpdateDay(
     $input: UpdateDayInput!
     $condition: ModelDayConditionInput
@@ -70,9 +80,7 @@ const updateDay = /* GraphQL */`
           instructor
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+
           dayClassesId
         }
         nextToken
@@ -82,14 +90,11 @@ const updateDay = /* GraphQL */`
       open
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 exports.updateDay = updateDay;
-const deleteDay = /* GraphQL */`
+const deleteDay = /* GraphQL */ `
   mutation DeleteDay(
     $input: DeleteDayInput!
     $condition: ModelDayConditionInput
@@ -111,9 +116,7 @@ const deleteDay = /* GraphQL */`
           instructor
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+
           dayClassesId
         }
         nextToken
@@ -123,14 +126,11 @@ const deleteDay = /* GraphQL */`
       open
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 exports.deleteDay = deleteDay;
-const createClass = /* GraphQL */`
+const createClass = /* GraphQL */ `
   mutation CreateClass(
     $input: CreateClassInput!
     $condition: ModelClassConditionInput
@@ -155,9 +155,6 @@ const createClass = /* GraphQL */`
         open
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       attendees {
         items {
@@ -169,9 +166,7 @@ const createClass = /* GraphQL */`
           llbelt
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+
           classAttendeesId
         }
         nextToken
@@ -181,15 +176,13 @@ const createClass = /* GraphQL */`
       instructor
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+
       dayClassesId
     }
   }
 `;
 exports.createClass = createClass;
-const updateClass = /* GraphQL */`
+const updateClass = /* GraphQL */ `
   mutation UpdateClass(
     $input: UpdateClassInput!
     $condition: ModelClassConditionInput
@@ -214,9 +207,6 @@ const updateClass = /* GraphQL */`
         open
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       attendees {
         items {
@@ -228,9 +218,7 @@ const updateClass = /* GraphQL */`
           llbelt
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+
           classAttendeesId
         }
         nextToken
@@ -240,15 +228,13 @@ const updateClass = /* GraphQL */`
       instructor
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+
       dayClassesId
     }
   }
 `;
 exports.updateClass = updateClass;
-const deleteClass = /* GraphQL */`
+const deleteClass = /* GraphQL */ `
   mutation DeleteClass(
     $input: DeleteClassInput!
     $condition: ModelClassConditionInput
@@ -273,9 +259,6 @@ const deleteClass = /* GraphQL */`
         open
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       attendees {
         items {
@@ -287,9 +270,7 @@ const deleteClass = /* GraphQL */`
           llbelt
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+
           classAttendeesId
         }
         nextToken
@@ -299,15 +280,13 @@ const deleteClass = /* GraphQL */`
       instructor
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+
       dayClassesId
     }
   }
 `;
 exports.deleteClass = deleteClass;
-const createAttendee = /* GraphQL */`
+const createAttendee = /* GraphQL */ `
   mutation CreateAttendee(
     $input: CreateAttendeeInput!
     $condition: ModelAttendeeConditionInput
@@ -330,9 +309,6 @@ const createAttendee = /* GraphQL */`
           open
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         attendees {
           nextToken
@@ -342,9 +318,7 @@ const createAttendee = /* GraphQL */`
         instructor
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+
         dayClassesId
       }
       username
@@ -354,15 +328,13 @@ const createAttendee = /* GraphQL */`
       llbelt
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+
       classAttendeesId
     }
   }
 `;
 exports.createAttendee = createAttendee;
-const updateAttendee = /* GraphQL */`
+const updateAttendee = /* GraphQL */ `
   mutation UpdateAttendee(
     $input: UpdateAttendeeInput!
     $condition: ModelAttendeeConditionInput
@@ -385,9 +357,6 @@ const updateAttendee = /* GraphQL */`
           open
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         attendees {
           nextToken
@@ -397,9 +366,7 @@ const updateAttendee = /* GraphQL */`
         instructor
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+
         dayClassesId
       }
       username
@@ -409,15 +376,13 @@ const updateAttendee = /* GraphQL */`
       llbelt
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+
       classAttendeesId
     }
   }
 `;
 exports.updateAttendee = updateAttendee;
-const deleteAttendee = /* GraphQL */`
+const deleteAttendee = /* GraphQL */ `
   mutation DeleteAttendee(
     $input: DeleteAttendeeInput!
     $condition: ModelAttendeeConditionInput
@@ -440,9 +405,6 @@ const deleteAttendee = /* GraphQL */`
           open
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         attendees {
           nextToken
@@ -452,9 +414,7 @@ const deleteAttendee = /* GraphQL */`
         instructor
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+
         dayClassesId
       }
       username
@@ -464,15 +424,13 @@ const deleteAttendee = /* GraphQL */`
       llbelt
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+
       classAttendeesId
     }
   }
 `;
 exports.deleteAttendee = deleteAttendee;
-const createUser = /* GraphQL */`
+const createUser = /* GraphQL */ `
   mutation CreateUser(
     $input: CreateUserInput!
     $condition: ModelUserConditionInput
@@ -509,9 +467,7 @@ const createUser = /* GraphQL */`
           kb
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+
           userUserMonthsId
         }
         nextToken
@@ -519,14 +475,11 @@ const createUser = /* GraphQL */`
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 exports.createUser = createUser;
-const updateUser = /* GraphQL */`
+const updateUser = /* GraphQL */ `
   mutation UpdateUser(
     $input: UpdateUserInput!
     $condition: ModelUserConditionInput
@@ -563,9 +516,7 @@ const updateUser = /* GraphQL */`
           kb
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+
           userUserMonthsId
         }
         nextToken
@@ -573,14 +524,11 @@ const updateUser = /* GraphQL */`
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 exports.updateUser = updateUser;
-const deleteUser = /* GraphQL */`
+const deleteUser = /* GraphQL */ `
   mutation DeleteUser(
     $input: DeleteUserInput!
     $condition: ModelUserConditionInput
@@ -617,9 +565,7 @@ const deleteUser = /* GraphQL */`
           kb
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+
           userUserMonthsId
         }
         nextToken
@@ -627,14 +573,11 @@ const deleteUser = /* GraphQL */`
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 exports.deleteUser = deleteUser;
-const createUserMonth = /* GraphQL */`
+const createUserMonth = /* GraphQL */ `
   mutation CreateUserMonth(
     $input: CreateUserMonthInput!
     $condition: ModelUserMonthConditionInput
@@ -669,9 +612,6 @@ const createUserMonth = /* GraphQL */`
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       year
       month
@@ -680,15 +620,13 @@ const createUserMonth = /* GraphQL */`
       kb
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+
       userUserMonthsId
     }
   }
 `;
 exports.createUserMonth = createUserMonth;
-const updateUserMonth = /* GraphQL */`
+const updateUserMonth = /* GraphQL */ `
   mutation UpdateUserMonth(
     $input: UpdateUserMonthInput!
     $condition: ModelUserMonthConditionInput
@@ -723,9 +661,6 @@ const updateUserMonth = /* GraphQL */`
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       year
       month
@@ -734,15 +669,13 @@ const updateUserMonth = /* GraphQL */`
       kb
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+
       userUserMonthsId
     }
   }
 `;
 exports.updateUserMonth = updateUserMonth;
-const deleteUserMonth = /* GraphQL */`
+const deleteUserMonth = /* GraphQL */ `
   mutation DeleteUserMonth(
     $input: DeleteUserMonthInput!
     $condition: ModelUserMonthConditionInput
@@ -777,9 +710,6 @@ const deleteUserMonth = /* GraphQL */`
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       year
       month
@@ -788,9 +718,7 @@ const deleteUserMonth = /* GraphQL */`
       kb
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+
       userUserMonthsId
     }
   }
