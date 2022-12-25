@@ -1,25 +1,14 @@
 import { useState } from "react";
 import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
 import UserPool from "../UserPool";
-// When using loose Javascript files:
-// Modules, e.g. Webpack:
 var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
-var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
-
-// ES Modules, e.g. transpiling with Babel
-import { CognitoUserAttribute, CognitoUser } from "amazon-cognito-identity-js";
 import styles from "../../styles/Signup.module.css";
-import Image from "next/image";
-import { CodeDeploy } from "aws-sdk";
-import { PasswordField } from "@aws-amplify/ui-react";
-
 export default function ForgotForm({ setForgot, setSuccess }) {
   const [username, setUsername] = useState("");
   const [code, setCode] = useState("");
   const [newpass, setNewpass] = useState("");
   const [alert, setAlert] = useState(false);
   const [alertText, setAlertText] = useState("");
-  const [resent, setResent] = useState(false);
   const [entering, setEntering] = useState(true);
   const [verifying, setVerifying] = useState(false);
 
@@ -60,7 +49,7 @@ export default function ForgotForm({ setForgot, setSuccess }) {
     });
   }
 
-  function verify() {
+  function reset() {
     resetAlerts();
 
     if (code.length < 1) {
@@ -201,7 +190,7 @@ export default function ForgotForm({ setForgot, setSuccess }) {
               colorScheme="blue"
               type="submit"
               className={styles.submitButtons}
-              onClick={verify}
+              onClick={reset}
               style={{ marginLeft: "8px" }}
             >
               Reset Password

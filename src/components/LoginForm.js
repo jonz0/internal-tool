@@ -1,18 +1,10 @@
 import { useState } from "react";
 import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
 import UserPool from "../UserPool";
-// When using loose Javascript files:
-// Modules, e.g. Webpack:
 var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
-var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
-
-// ES Modules, e.g. transpiling with Babel
-import { CognitoUserAttribute, CognitoUser } from "amazon-cognito-identity-js";
 import styles from "../../styles/Signup.module.css";
-import Image from "next/image";
 import * as AWS from "aws-sdk/global";
 import { useRouter } from "next/router";
-import { setSession } from "../features/class/sessionSlice";
 import { useDispatch } from "react-redux";
 import ForgotForm from "./ForgotForm";
 
