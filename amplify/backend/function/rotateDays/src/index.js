@@ -11,7 +11,7 @@ Amplify Params - DO NOT EDIT */
 const appsyncUrl = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIENDPOINTOUTPUT;
 const apiKey = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT;
 
-const { request } = require("/opt/appSyncRequest");
+const { request } = require("/opt/appsyncRequest");
 const { updateDay } = require("/opt/graphql/mutations");
 const { getUser } = require("/opt/graphql/queries");
 

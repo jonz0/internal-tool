@@ -6,28 +6,11 @@ export type AmplifyDependentResourcesAttributes = {
             "GraphQLAPIEndpointOutput": "string"
         }
     },
-    "auth": {
-        "calendarsignup54ecf769": {
-            "IdentityPoolId": "string",
-            "IdentityPoolName": "string",
-            "UserPoolId": "string",
-            "UserPoolArn": "string",
-            "UserPoolName": "string",
-            "AppClientIDWeb": "string",
-            "AppClientID": "string"
-        }
-    },
     "function": {
-        "S3Trigger5916beb7": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
         "calendarsignupnewLayer": {
             "Arn": "string"
         },
-        "rotateDates": {
+        "rotateDays": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -41,18 +24,12 @@ export type AmplifyDependentResourcesAttributes = {
             "LambdaExecutionRole": "string",
             "CloudWatchEventRule": "string"
         },
-        "addMonthlyUsers": {
+        "updateMonthlyUsers": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string",
             "CloudWatchEventRule": "string"
-        }
-    },
-    "storage": {
-        "calendarstorage": {
-            "BucketName": "string",
-            "Region": "string"
         }
     }
 }

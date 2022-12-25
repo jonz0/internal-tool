@@ -1,61 +1,44 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-calendarsignup-dev-170522-authRole",
-      "UnauthRoleArn": "arn:aws:iam::671643402861:role/amplify-calendarsignup-dev-170522-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::671643402861:role/amplify-calendarsignup-dev-170522-authRole",
+      "AuthRoleName": "amplify-calendarsignup-dev-20052-authRole",
+      "UnauthRoleArn": "arn:aws:iam::671643402861:role/amplify-calendarsignup-dev-20052-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::671643402861:role/amplify-calendarsignup-dev-20052-authRole",
       "Region": "us-west-1",
-      "DeploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-      "UnauthRoleName": "amplify-calendarsignup-dev-170522-unauthRole",
-      "StackName": "amplify-calendarsignup-dev-170522",
-      "StackId": "arn:aws:cloudformation:us-west-1:671643402861:stack/amplify-calendarsignup-dev-170522/6c895920-5f01-11ed-88dd-0647b41002c3",
-      "AmplifyAppId": "dv1hj4egrjuo2"
+      "DeploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
+      "UnauthRoleName": "amplify-calendarsignup-dev-20052-unauthRole",
+      "StackName": "amplify-calendarsignup-dev-20052",
+      "StackId": "arn:aws:cloudformation:us-west-1:671643402861:stack/amplify-calendarsignup-dev-20052/053af440-843b-11ed-a467-022522f720f7",
+      "AmplifyAppId": "d1nr2dt5dv6kaj"
     },
     "categories": {
-      "auth": {
-        "calendarsignup54ecf769": {}
-      },
-      "function": {
-        "S3Trigger5916beb7": {
-          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-          "s3Key": "amplify-builds/S3Trigger5916beb7-446a315a733546425939-build.zip"
-        },
-        "lambdatest": {
-          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-          "s3Key": "amplify-builds/lambdatest-672b3755482f5a507233-build.zip"
-        },
-        "testFunction1": {},
-        "calendarsignupnextLayer": {},
-        "calendarsignupnewLayer": {
-          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-          "s3Key": "amplify-builds/calendarsignupnewLayer-LambdaLayerVersionbc38c4b8-build.zip"
-        },
-        "rotateDates": {
-          "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
-          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy",
-          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-          "s3Key": "amplify-builds/rotateDates-74346976334961476269-build.zip"
-        },
-        "updateClassCount": {
-          "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
-          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy",
-          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-          "s3Key": "amplify-builds/updateClassCount-416b354c766e6f502b2f-build.zip"
-        },
-        "dailySweep": {},
-        "addMonthlyUsers": {
-          "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
-          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy\t",
-          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
-          "s3Key": "amplify-builds/addMonthlyUsers-4651747468714d6b4256-build.zip"
-        }
-      },
       "api": {
         "calendarsignup": {}
       },
-      "storage": {
-        "calendarstorage": {},
-        "dynamo4d300657": {}
+      "function": {
+        "calendarsignupcalendarsignuplayer": {},
+        "calendarsignupnewLayer": {
+          "deploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
+          "s3Key": "amplify-builds/calendarsignupnewLayer-LambdaLayerVersion8f975661-build.zip"
+        },
+        "rotateDays": {
+          "deploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
+          "s3Key": "amplify-builds/rotateDays-58485558543972336d61-build.zip",
+          "apiAmplifylayerguideGraphqlapiendpointoutput": "https://olfdu24ggfdn5lzf4jrj3vhogy.appsync-api.us-west-1.amazonaws.com/graphql",
+          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-imkyftuvizbxzh2falmcpla4le"
+        },
+        "updateClassCount": {
+          "deploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
+          "s3Key": "amplify-builds/updateClassCount-564862315454464d5566-build.zip",
+          "apiAmplifylayerguideGraphqlapiendpointoutput": "https://olfdu24ggfdn5lzf4jrj3vhogy.appsync-api.us-west-1.amazonaws.com/graphql",
+          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-imkyftuvizbxzh2falmcpla4le"
+        },
+        "updateMonthlyUsers": {
+          "deploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
+          "s3Key": "amplify-builds/updateMonthlyUsers-4e2f75546c786558724d-build.zip",
+          "apiAmplifylayerguideGraphqlapiendpointoutput": "https://olfdu24ggfdn5lzf4jrj3vhogy.appsync-api.us-west-1.amazonaws.com/graphql",
+          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-imkyftuvizbxzh2falmcpla4le"
+        }
       }
     }
   }

@@ -1,0 +1,706 @@
+type Attendee {
+	id: ID
+	class: Class
+	username: String
+	firstName: String
+	lastName: String
+	jjbelt: Int
+	llbelt: Int
+	createdAt: AWSDateTime!
+	updatedAt: AWSDateTime!
+	classAttendeesId: ID
+}
+
+type Class {
+	id: ID!
+	name: String
+	start: AWSTime
+	end: AWSTime
+	type: String
+	age: String
+	maxSpots: Int
+	openSpots: Int
+	classOpen: Boolean
+	day: Day
+	attendees(
+		filter: ModelAttendeeFilterInput,
+		sortDirection: ModelSortDirection,
+		limit: Int,
+		nextToken: String
+	): ModelAttendeeConnection
+	message: String
+	instructor: String
+	createdAt: AWSDateTime!
+	updatedAt: AWSDateTime!
+	dayClassesId: ID
+}
+
+input CreateAttendeeInput {
+	id: ID
+	username: String
+	firstName: String
+	lastName: String
+	jjbelt: Int
+	llbelt: Int
+	classAttendeesId: ID
+}
+
+input CreateClassInput {
+	id: ID
+	name: String
+	start: AWSTime
+	end: AWSTime
+	type: String
+	age: String
+	maxSpots: Int
+	openSpots: Int
+	classOpen: Boolean
+	message: String
+	instructor: String
+	dayClassesId: ID
+}
+
+input CreateDayInput {
+	id: ID
+	date: AWSDate
+	open: Boolean
+}
+
+input CreateUserInput {
+	id: ID
+	username: String
+	firstName: String
+	lastName: String
+	jjbelt: Int
+	llbelt: Int
+	image: String
+	email: String
+	phone: String
+	enroll: AWSDate
+	renew: AWSDate
+	insta: String
+	hideEmail: Boolean
+	hidePhone: Boolean
+	freeze: Boolean
+	freezeStart: AWSDate
+	freezeEnd: AWSDate
+	goal: Int
+	progress: Int
+	classesTotal: Int
+}
+
+input CreateUserMonthInput {
+	id: ID
+	year: Int
+	month: Int
+	jj: Int
+	ll: Int
+	kb: Int
+	userUserMonthsId: ID
+}
+
+type Day {
+	id: ID!
+	classes(
+		filter: ModelClassFilterInput,
+		sortDirection: ModelSortDirection,
+		limit: Int,
+		nextToken: String
+	): ModelClassConnection
+	date: AWSDate
+	open: Boolean
+	createdAt: AWSDateTime!
+	updatedAt: AWSDateTime!
+}
+
+input DeleteAttendeeInput {
+	id: ID!
+}
+
+input DeleteClassInput {
+	id: ID!
+}
+
+input DeleteDayInput {
+	id: ID!
+}
+
+input DeleteUserInput {
+	id: ID!
+}
+
+input DeleteUserMonthInput {
+	id: ID!
+}
+
+input ModelAttendeeConditionInput {
+	username: ModelStringInput
+	firstName: ModelStringInput
+	lastName: ModelStringInput
+	jjbelt: ModelIntInput
+	llbelt: ModelIntInput
+	and: [ModelAttendeeConditionInput]
+	or: [ModelAttendeeConditionInput]
+	not: ModelAttendeeConditionInput
+	classAttendeesId: ModelIDInput
+}
+
+type ModelAttendeeConnection {
+	items: [Attendee]!
+	nextToken: String
+}
+
+input ModelAttendeeFilterInput {
+	id: ModelIDInput
+	username: ModelStringInput
+	firstName: ModelStringInput
+	lastName: ModelStringInput
+	jjbelt: ModelIntInput
+	llbelt: ModelIntInput
+	and: [ModelAttendeeFilterInput]
+	or: [ModelAttendeeFilterInput]
+	not: ModelAttendeeFilterInput
+	classAttendeesId: ModelIDInput
+}
+
+enum ModelAttributeTypes {
+	binary
+	binarySet
+	bool
+	list
+	map
+	number
+	numberSet
+	string
+	stringSet
+	_null
+}
+
+input ModelBooleanInput {
+	ne: Boolean
+	eq: Boolean
+	attributeExists: Boolean
+	attributeType: ModelAttributeTypes
+}
+
+input ModelClassConditionInput {
+	name: ModelStringInput
+	start: ModelStringInput
+	end: ModelStringInput
+	type: ModelStringInput
+	age: ModelStringInput
+	maxSpots: ModelIntInput
+	openSpots: ModelIntInput
+	classOpen: ModelBooleanInput
+	message: ModelStringInput
+	instructor: ModelStringInput
+	and: [ModelClassConditionInput]
+	or: [ModelClassConditionInput]
+	not: ModelClassConditionInput
+	dayClassesId: ModelIDInput
+}
+
+type ModelClassConnection {
+	items: [Class]!
+	nextToken: String
+}
+
+input ModelClassFilterInput {
+	id: ModelIDInput
+	name: ModelStringInput
+	start: ModelStringInput
+	end: ModelStringInput
+	type: ModelStringInput
+	age: ModelStringInput
+	maxSpots: ModelIntInput
+	openSpots: ModelIntInput
+	classOpen: ModelBooleanInput
+	message: ModelStringInput
+	instructor: ModelStringInput
+	and: [ModelClassFilterInput]
+	or: [ModelClassFilterInput]
+	not: ModelClassFilterInput
+	dayClassesId: ModelIDInput
+}
+
+input ModelDayConditionInput {
+	date: ModelStringInput
+	open: ModelBooleanInput
+	and: [ModelDayConditionInput]
+	or: [ModelDayConditionInput]
+	not: ModelDayConditionInput
+}
+
+type ModelDayConnection {
+	items: [Day]!
+	nextToken: String
+}
+
+input ModelDayFilterInput {
+	id: ModelIDInput
+	date: ModelStringInput
+	open: ModelBooleanInput
+	and: [ModelDayFilterInput]
+	or: [ModelDayFilterInput]
+	not: ModelDayFilterInput
+}
+
+input ModelFloatInput {
+	ne: Float
+	eq: Float
+	le: Float
+	lt: Float
+	ge: Float
+	gt: Float
+	between: [Float]
+	attributeExists: Boolean
+	attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+	ne: ID
+	eq: ID
+	le: ID
+	lt: ID
+	ge: ID
+	gt: ID
+	contains: ID
+	notContains: ID
+	between: [ID]
+	beginsWith: ID
+	attributeExists: Boolean
+	attributeType: ModelAttributeTypes
+	size: ModelSizeInput
+}
+
+input ModelIntInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	between: [Int]
+	attributeExists: Boolean
+	attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	between: [Int]
+}
+
+enum ModelSortDirection {
+	ASC
+	DESC
+}
+
+input ModelStringInput {
+	ne: String
+	eq: String
+	le: String
+	lt: String
+	ge: String
+	gt: String
+	contains: String
+	notContains: String
+	between: [String]
+	beginsWith: String
+	attributeExists: Boolean
+	attributeType: ModelAttributeTypes
+	size: ModelSizeInput
+}
+
+input ModelSubscriptionAttendeeFilterInput {
+	id: ModelSubscriptionIDInput
+	username: ModelSubscriptionStringInput
+	firstName: ModelSubscriptionStringInput
+	lastName: ModelSubscriptionStringInput
+	jjbelt: ModelSubscriptionIntInput
+	llbelt: ModelSubscriptionIntInput
+	and: [ModelSubscriptionAttendeeFilterInput]
+	or: [ModelSubscriptionAttendeeFilterInput]
+}
+
+input ModelSubscriptionBooleanInput {
+	ne: Boolean
+	eq: Boolean
+}
+
+input ModelSubscriptionClassFilterInput {
+	id: ModelSubscriptionIDInput
+	name: ModelSubscriptionStringInput
+	start: ModelSubscriptionStringInput
+	end: ModelSubscriptionStringInput
+	type: ModelSubscriptionStringInput
+	age: ModelSubscriptionStringInput
+	maxSpots: ModelSubscriptionIntInput
+	openSpots: ModelSubscriptionIntInput
+	classOpen: ModelSubscriptionBooleanInput
+	message: ModelSubscriptionStringInput
+	instructor: ModelSubscriptionStringInput
+	and: [ModelSubscriptionClassFilterInput]
+	or: [ModelSubscriptionClassFilterInput]
+}
+
+input ModelSubscriptionDayFilterInput {
+	id: ModelSubscriptionIDInput
+	date: ModelSubscriptionStringInput
+	open: ModelSubscriptionBooleanInput
+	and: [ModelSubscriptionDayFilterInput]
+	or: [ModelSubscriptionDayFilterInput]
+}
+
+input ModelSubscriptionFloatInput {
+	ne: Float
+	eq: Float
+	le: Float
+	lt: Float
+	ge: Float
+	gt: Float
+	between: [Float]
+	in: [Float]
+	notIn: [Float]
+}
+
+input ModelSubscriptionIDInput {
+	ne: ID
+	eq: ID
+	le: ID
+	lt: ID
+	ge: ID
+	gt: ID
+	contains: ID
+	notContains: ID
+	between: [ID]
+	beginsWith: ID
+	in: [ID]
+	notIn: [ID]
+}
+
+input ModelSubscriptionIntInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	between: [Int]
+	in: [Int]
+	notIn: [Int]
+}
+
+input ModelSubscriptionStringInput {
+	ne: String
+	eq: String
+	le: String
+	lt: String
+	ge: String
+	gt: String
+	contains: String
+	notContains: String
+	between: [String]
+	beginsWith: String
+	in: [String]
+	notIn: [String]
+}
+
+input ModelSubscriptionUserFilterInput {
+	id: ModelSubscriptionIDInput
+	username: ModelSubscriptionStringInput
+	firstName: ModelSubscriptionStringInput
+	lastName: ModelSubscriptionStringInput
+	jjbelt: ModelSubscriptionIntInput
+	llbelt: ModelSubscriptionIntInput
+	image: ModelSubscriptionStringInput
+	email: ModelSubscriptionStringInput
+	phone: ModelSubscriptionStringInput
+	enroll: ModelSubscriptionStringInput
+	renew: ModelSubscriptionStringInput
+	insta: ModelSubscriptionStringInput
+	hideEmail: ModelSubscriptionBooleanInput
+	hidePhone: ModelSubscriptionBooleanInput
+	freeze: ModelSubscriptionBooleanInput
+	freezeStart: ModelSubscriptionStringInput
+	freezeEnd: ModelSubscriptionStringInput
+	goal: ModelSubscriptionIntInput
+	progress: ModelSubscriptionIntInput
+	classesTotal: ModelSubscriptionIntInput
+	and: [ModelSubscriptionUserFilterInput]
+	or: [ModelSubscriptionUserFilterInput]
+}
+
+input ModelSubscriptionUserMonthFilterInput {
+	id: ModelSubscriptionIDInput
+	year: ModelSubscriptionIntInput
+	month: ModelSubscriptionIntInput
+	jj: ModelSubscriptionIntInput
+	ll: ModelSubscriptionIntInput
+	kb: ModelSubscriptionIntInput
+	and: [ModelSubscriptionUserMonthFilterInput]
+	or: [ModelSubscriptionUserMonthFilterInput]
+}
+
+input ModelUserConditionInput {
+	username: ModelStringInput
+	firstName: ModelStringInput
+	lastName: ModelStringInput
+	jjbelt: ModelIntInput
+	llbelt: ModelIntInput
+	image: ModelStringInput
+	email: ModelStringInput
+	phone: ModelStringInput
+	enroll: ModelStringInput
+	renew: ModelStringInput
+	insta: ModelStringInput
+	hideEmail: ModelBooleanInput
+	hidePhone: ModelBooleanInput
+	freeze: ModelBooleanInput
+	freezeStart: ModelStringInput
+	freezeEnd: ModelStringInput
+	goal: ModelIntInput
+	progress: ModelIntInput
+	classesTotal: ModelIntInput
+	and: [ModelUserConditionInput]
+	or: [ModelUserConditionInput]
+	not: ModelUserConditionInput
+}
+
+type ModelUserConnection {
+	items: [User]!
+	nextToken: String
+}
+
+input ModelUserFilterInput {
+	id: ModelIDInput
+	username: ModelStringInput
+	firstName: ModelStringInput
+	lastName: ModelStringInput
+	jjbelt: ModelIntInput
+	llbelt: ModelIntInput
+	image: ModelStringInput
+	email: ModelStringInput
+	phone: ModelStringInput
+	enroll: ModelStringInput
+	renew: ModelStringInput
+	insta: ModelStringInput
+	hideEmail: ModelBooleanInput
+	hidePhone: ModelBooleanInput
+	freeze: ModelBooleanInput
+	freezeStart: ModelStringInput
+	freezeEnd: ModelStringInput
+	goal: ModelIntInput
+	progress: ModelIntInput
+	classesTotal: ModelIntInput
+	and: [ModelUserFilterInput]
+	or: [ModelUserFilterInput]
+	not: ModelUserFilterInput
+}
+
+input ModelUserMonthConditionInput {
+	year: ModelIntInput
+	month: ModelIntInput
+	jj: ModelIntInput
+	ll: ModelIntInput
+	kb: ModelIntInput
+	and: [ModelUserMonthConditionInput]
+	or: [ModelUserMonthConditionInput]
+	not: ModelUserMonthConditionInput
+	userUserMonthsId: ModelIDInput
+}
+
+type ModelUserMonthConnection {
+	items: [UserMonth]!
+	nextToken: String
+}
+
+input ModelUserMonthFilterInput {
+	id: ModelIDInput
+	year: ModelIntInput
+	month: ModelIntInput
+	jj: ModelIntInput
+	ll: ModelIntInput
+	kb: ModelIntInput
+	and: [ModelUserMonthFilterInput]
+	or: [ModelUserMonthFilterInput]
+	not: ModelUserMonthFilterInput
+	userUserMonthsId: ModelIDInput
+}
+
+type Mutation {
+	createDay(input: CreateDayInput!, condition: ModelDayConditionInput): Day
+	updateDay(input: UpdateDayInput!, condition: ModelDayConditionInput): Day
+	deleteDay(input: DeleteDayInput!, condition: ModelDayConditionInput): Day
+	createClass(input: CreateClassInput!, condition: ModelClassConditionInput): Class
+	updateClass(input: UpdateClassInput!, condition: ModelClassConditionInput): Class
+	deleteClass(input: DeleteClassInput!, condition: ModelClassConditionInput): Class
+	createAttendee(input: CreateAttendeeInput!, condition: ModelAttendeeConditionInput): Attendee
+	updateAttendee(input: UpdateAttendeeInput!, condition: ModelAttendeeConditionInput): Attendee
+	deleteAttendee(input: DeleteAttendeeInput!, condition: ModelAttendeeConditionInput): Attendee
+	createUser(input: CreateUserInput!, condition: ModelUserConditionInput): User
+	updateUser(input: UpdateUserInput!, condition: ModelUserConditionInput): User
+	deleteUser(input: DeleteUserInput!, condition: ModelUserConditionInput): User
+	createUserMonth(input: CreateUserMonthInput!, condition: ModelUserMonthConditionInput): UserMonth
+	updateUserMonth(input: UpdateUserMonthInput!, condition: ModelUserMonthConditionInput): UserMonth
+	deleteUserMonth(input: DeleteUserMonthInput!, condition: ModelUserMonthConditionInput): UserMonth
+}
+
+type Query {
+	getDay(id: ID!): Day
+	listDays(filter: ModelDayFilterInput, limit: Int, nextToken: String): ModelDayConnection
+	getClass(id: ID!): Class
+	listClasses(filter: ModelClassFilterInput, limit: Int, nextToken: String): ModelClassConnection
+	getAttendee(id: ID!): Attendee
+	listAttendees(filter: ModelAttendeeFilterInput, limit: Int, nextToken: String): ModelAttendeeConnection
+	getUser(id: ID!): User
+	listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection
+	getUserMonth(id: ID!): UserMonth
+	listUserMonths(filter: ModelUserMonthFilterInput, limit: Int, nextToken: String): ModelUserMonthConnection
+}
+
+type Subscription {
+	onCreateDay(filter: ModelSubscriptionDayFilterInput): Day
+		@aws_subscribe(mutations: ["createDay"])
+	onUpdateDay(filter: ModelSubscriptionDayFilterInput): Day
+		@aws_subscribe(mutations: ["updateDay"])
+	onDeleteDay(filter: ModelSubscriptionDayFilterInput): Day
+		@aws_subscribe(mutations: ["deleteDay"])
+	onCreateClass(filter: ModelSubscriptionClassFilterInput): Class
+		@aws_subscribe(mutations: ["createClass"])
+	onUpdateClass(filter: ModelSubscriptionClassFilterInput): Class
+		@aws_subscribe(mutations: ["updateClass"])
+	onDeleteClass(filter: ModelSubscriptionClassFilterInput): Class
+		@aws_subscribe(mutations: ["deleteClass"])
+	onCreateAttendee(filter: ModelSubscriptionAttendeeFilterInput): Attendee
+		@aws_subscribe(mutations: ["createAttendee"])
+	onUpdateAttendee(filter: ModelSubscriptionAttendeeFilterInput): Attendee
+		@aws_subscribe(mutations: ["updateAttendee"])
+	onDeleteAttendee(filter: ModelSubscriptionAttendeeFilterInput): Attendee
+		@aws_subscribe(mutations: ["deleteAttendee"])
+	onCreateUser(filter: ModelSubscriptionUserFilterInput): User
+		@aws_subscribe(mutations: ["createUser"])
+	onUpdateUser(filter: ModelSubscriptionUserFilterInput): User
+		@aws_subscribe(mutations: ["updateUser"])
+	onDeleteUser(filter: ModelSubscriptionUserFilterInput): User
+		@aws_subscribe(mutations: ["deleteUser"])
+	onCreateUserMonth(filter: ModelSubscriptionUserMonthFilterInput): UserMonth
+		@aws_subscribe(mutations: ["createUserMonth"])
+	onUpdateUserMonth(filter: ModelSubscriptionUserMonthFilterInput): UserMonth
+		@aws_subscribe(mutations: ["updateUserMonth"])
+	onDeleteUserMonth(filter: ModelSubscriptionUserMonthFilterInput): UserMonth
+		@aws_subscribe(mutations: ["deleteUserMonth"])
+}
+
+input UpdateAttendeeInput {
+	id: ID!
+	username: String
+	firstName: String
+	lastName: String
+	jjbelt: Int
+	llbelt: Int
+	classAttendeesId: ID
+}
+
+input UpdateClassInput {
+	id: ID!
+	name: String
+	start: AWSTime
+	end: AWSTime
+	type: String
+	age: String
+	maxSpots: Int
+	openSpots: Int
+	classOpen: Boolean
+	message: String
+	instructor: String
+	dayClassesId: ID
+}
+
+input UpdateDayInput {
+	id: ID!
+	date: AWSDate
+	open: Boolean
+}
+
+input UpdateUserInput {
+	id: ID!
+	username: String
+	firstName: String
+	lastName: String
+	jjbelt: Int
+	llbelt: Int
+	image: String
+	email: String
+	phone: String
+	enroll: AWSDate
+	renew: AWSDate
+	insta: String
+	hideEmail: Boolean
+	hidePhone: Boolean
+	freeze: Boolean
+	freezeStart: AWSDate
+	freezeEnd: AWSDate
+	goal: Int
+	progress: Int
+	classesTotal: Int
+}
+
+input UpdateUserMonthInput {
+	id: ID!
+	year: Int
+	month: Int
+	jj: Int
+	ll: Int
+	kb: Int
+	userUserMonthsId: ID
+}
+
+type User {
+	id: ID!
+	username: String
+	firstName: String
+	lastName: String
+	jjbelt: Int
+	llbelt: Int
+	image: String
+	email: String
+	phone: String
+	enroll: AWSDate
+	renew: AWSDate
+	insta: String
+	hideEmail: Boolean
+	hidePhone: Boolean
+	freeze: Boolean
+	freezeStart: AWSDate
+	freezeEnd: AWSDate
+	active: Boolean
+	goal: Int
+	progress: Int
+	classesTotal: Int
+	userMonths(
+		filter: ModelUserMonthFilterInput,
+		sortDirection: ModelSortDirection,
+		limit: Int,
+		nextToken: String
+	): ModelUserMonthConnection
+	createdAt: AWSDateTime!
+	updatedAt: AWSDateTime!
+}
+
+type UserMonth {
+	id: ID!
+	user: User
+	year: Int
+	month: Int
+	jj: Int
+	ll: Int
+	kb: Int
+	createdAt: AWSDateTime!
+	updatedAt: AWSDateTime!
+	userUserMonthsId: ID
+}

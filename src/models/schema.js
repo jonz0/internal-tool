@@ -21,7 +21,9 @@ export const schema = {
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "dayClassesId"
+                        "associatedWith": [
+                            "dayClassesId"
+                        ]
                     }
                 },
                 "date": {
@@ -140,7 +142,9 @@ export const schema = {
                     "attributes": [],
                     "association": {
                         "connectionType": "BELONGS_TO",
-                        "targetName": "dayClassesId"
+                        "targetNames": [
+                            "dayClassesId"
+                        ]
                     }
                 },
                 "attendees": {
@@ -154,7 +158,9 @@ export const schema = {
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "classAttendeesId"
+                        "associatedWith": [
+                            "classAttendeesId"
+                        ]
                     }
                 },
                 "message": {
@@ -186,6 +192,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": [],
                     "isReadOnly": true
+                },
+                "dayClassesId": {
+                    "name": "dayClassesId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -217,7 +230,9 @@ export const schema = {
                     "attributes": [],
                     "association": {
                         "connectionType": "BELONGS_TO",
-                        "targetName": "classAttendeesId"
+                        "targetNames": [
+                            "classAttendeesId"
+                        ]
                     }
                 },
                 "username": {
@@ -270,6 +285,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": [],
                     "isReadOnly": true
+                },
+                "classAttendeesId": {
+                    "name": "classAttendeesId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -424,6 +446,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "active": {
+                    "name": "active",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "userMonths": {
                     "name": "userMonths",
                     "isArray": true,
@@ -435,7 +464,9 @@ export const schema = {
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "userUserMonthsId"
+                        "associatedWith": [
+                            "userUserMonthsId"
+                        ]
                     }
                 },
                 "createdAt": {
@@ -484,7 +515,9 @@ export const schema = {
                     "attributes": [],
                     "association": {
                         "connectionType": "BELONGS_TO",
-                        "targetName": "userUserMonthsId"
+                        "targetNames": [
+                            "userUserMonthsId"
+                        ]
                     }
                 },
                 "year": {
@@ -537,6 +570,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": [],
                     "isReadOnly": true
+                },
+                "userUserMonthsId": {
+                    "name": "userUserMonthsId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -552,5 +592,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.2",
-    "version": "f80e679c78ea4742a40163cf62e88154"
+    "version": "b1772a6cdb4fd9c48575109fcc52bcfc"
 };

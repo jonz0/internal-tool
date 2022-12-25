@@ -16,10 +16,6 @@
     "s3Key": {
       "Type": "String"
     },
-    "functioncalendarsignupnewLayerArn": {
-      "Type": "String",
-      "Default": "functioncalendarsignupnewLayerArn"
-    },
     "apicalendarsignupGraphQLAPIIdOutput": {
       "Type": "String",
       "Default": "apicalendarsignupGraphQLAPIIdOutput"
@@ -31,6 +27,10 @@
     "apicalendarsignupGraphQLAPIKeyOutput": {
       "Type": "String",
       "Default": "apicalendarsignupGraphQLAPIKeyOutput"
+    },
+    "functioncalendarsignupnewLayerArn": {
+      "Type": "String",
+      "Default": "functioncalendarsignupnewLayerArn"
     },
     "apiAmplifylayerguideGraphqlapiendpointoutput": {
       "Type": "String"
@@ -69,12 +69,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "addMonthlyUsers",
+            "updateMonthlyUsers",
             {
               "Fn::Join": [
                 "",
                 [
-                  "addMonthlyUsers",
+                  "updateMonthlyUsers",
                   "-",
                   {
                     "Ref": "env"
@@ -130,12 +130,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "calendarsignupLambdaRoleb2d70cfd",
+            "calendarsignupLambdaRole4b18f345",
             {
               "Fn::Join": [
                 "",
                 [
-                  "calendarsignupLambdaRoleb2d70cfd",
+                  "calendarsignupLambdaRole4b18f345",
                   "-",
                   {
                     "Ref": "env"
@@ -202,45 +202,6 @@
                 ]
               }
             }
-          ]
-        }
-      }
-    },
-    "CloudWatchEvent": {
-      "Type": "AWS::Events::Rule",
-      "Properties": {
-        "Description": "Schedule rule for Lambda",
-        "ScheduleExpression": {
-          "Ref": "CloudWatchRule"
-        },
-        "State": "ENABLED",
-        "Targets": [
-          {
-            "Arn": {
-              "Fn::GetAtt": [
-                "LambdaFunction",
-                "Arn"
-              ]
-            },
-            "Id": {
-              "Ref": "LambdaFunction"
-            }
-          }
-        ]
-      }
-    },
-    "PermissionForEventsToInvokeLambda": {
-      "Type": "AWS::Lambda::Permission",
-      "Properties": {
-        "FunctionName": {
-          "Ref": "LambdaFunction"
-        },
-        "Action": "lambda:InvokeFunction",
-        "Principal": "events.amazonaws.com",
-        "SourceArn": {
-          "Fn::GetAtt": [
-            "CloudWatchEvent",
-            "Arn"
           ]
         }
       }
@@ -328,6 +289,45 @@
                 }
               ]
             }
+          ]
+        }
+      }
+    },
+    "CloudWatchEvent": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "Description": "Schedule rule for Lambda",
+        "ScheduleExpression": {
+          "Ref": "CloudWatchRule"
+        },
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": [
+                "LambdaFunction",
+                "Arn"
+              ]
+            },
+            "Id": {
+              "Ref": "LambdaFunction"
+            }
+          }
+        ]
+      }
+    },
+    "PermissionForEventsToInvokeLambda": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "LambdaFunction"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "CloudWatchEvent",
+            "Arn"
           ]
         }
       }

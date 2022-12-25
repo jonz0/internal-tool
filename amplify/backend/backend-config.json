@@ -10,8 +10,8 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2023-12-15T19:02:52.572Z",
-              "description": "apiKey"
+              "apiKeyExpirationDate": "2023-12-25T10:01:54.106Z",
+              "description": ""
             }
           },
           "additionalAuthenticationProviders": []
@@ -19,72 +19,13 @@
       }
     }
   },
-  "auth": {
-    "calendarsignup54ecf769": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false,
-      "frontendAuthConfig": {
-        "socialProviders": [],
-        "usernameAttributes": [],
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": []
-        },
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
-      }
-    }
-  },
   "function": {
-    "S3Trigger5916beb7": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
-      "build": true
-    },
     "calendarsignupnewLayer": {
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer",
       "build": true
     },
-    "rotateDates": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "calendarsignupnewLayer",
-          "attributes": [
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "updateClassCount": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "calendarsignupnewLayer",
-          "attributes": [
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "addMonthlyUsers": {
+    "rotateDays": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
@@ -106,20 +47,49 @@
           ]
         }
       ]
-    }
-  },
-  "storage": {
-    "calendarstorage": {
-      "service": "S3",
+    },
+    "updateClassCount": {
+      "build": true,
       "providerPlugin": "awscloudformation",
+      "service": "Lambda",
       "dependsOn": [
         {
-          "category": "function",
-          "resourceName": "S3Trigger5916beb7",
+          "category": "api",
+          "resourceName": "calendarsignup",
           "attributes": [
-            "Name",
-            "Arn",
-            "LambdaExecutionRole"
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "calendarsignupnewLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "updateMonthlyUsers": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "calendarsignup",
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "calendarsignupnewLayer",
+          "attributes": [
+            "Arn"
           ]
         }
       ]

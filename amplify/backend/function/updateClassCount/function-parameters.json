@@ -1,5 +1,13 @@
 {
-  "permissions": {},
+  "permissions": {
+    "api": {
+      "calendarsignup": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    }
+  },
   "lambdaLayers": [
     {
       "type": "ProjectLayer",
