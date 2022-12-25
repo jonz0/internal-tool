@@ -42,7 +42,13 @@
           "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
           "s3Key": "amplify-builds/updateClassCount-416b354c766e6f502b2f-build.zip"
         },
-        "dailySweep": {}
+        "dailySweep": {},
+        "addMonthlyUsers": {
+          "apiAmplifylayerguideGraphqlapiendpointoutput": "https://irudeytgs5g45n6cnvlv6vglcy.appsync-api.us-west-1.amazonaws.com/graphql",
+          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-42jjuu53ejdorl7dcljw4driqy\t",
+          "deploymentBucketName": "amplify-calendarsignup-dev-170522-deployment",
+          "s3Key": "amplify-builds/addMonthlyUsers-4651747468714d6b4256-build.zip"
+        }
       },
       "api": {
         "calendarsignup": {}

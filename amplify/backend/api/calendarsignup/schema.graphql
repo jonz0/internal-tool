@@ -58,6 +58,7 @@ type User @model {
   progress: Int
   classesTotal: Int
   userMonths: [UserMonth] @hasMany
+  active: Boolean
 }
 
 type UserMonth @model {
