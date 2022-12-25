@@ -38,13 +38,12 @@ export default function ForgotForm({ setForgot, setSuccess }) {
       onFailure: function (err) {
         if (err.message.includes("Attempt limit exceeded")) {
           setAlertText("Attempt limit exceeded. Please try after some time.");
-          setAlert(true);
         } else {
           setAlertText(
             "Error sending a verification code. Please try after some time."
           );
-          setAlert(true);
         }
+        setAlert(true);
       },
     });
   }
@@ -66,12 +65,9 @@ export default function ForgotForm({ setForgot, setSuccess }) {
       onFailure(err) {
         if (err.message.includes("Attempt limit exceeded")) {
           setAlertText("Attempt limit exceeded. Please try after some time.");
-          setAlert(true);
         } else if (err.message.includes("Invalid verification code")) {
           setAlertText("Invalid verification code provided.");
-          setAlert(true);
         } else if (err.message.includes("'password' failed to satisfy")) {
-          setAlert(true);
           setAlertText(
             "Passwords must contain at least 8 characters with one letter and number."
           );
@@ -80,8 +76,8 @@ export default function ForgotForm({ setForgot, setSuccess }) {
           setAlertText(
             "Error resetting your password. Please try again or call us!"
           );
-          setAlert(true);
         }
+        setAlert(true);
         return;
       },
       onSuccess() {

@@ -14,8 +14,6 @@ export default function LoginForm() {
   const [alert, setAlert] = useState(false);
   const [success, setSuccess] = useState(false);
   const [alertText, setAlertText] = useState("");
-  const router = useRouter();
-  const dispatch = useDispatch();
   const [forgot, setForgot] = useState(false);
 
   function resetAlerts() {
@@ -75,52 +73,30 @@ export default function LoginForm() {
           },
         });
 
-        //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
         AWS.config.credentials.refresh((error) => {
           if (error) {
             setAlertText("Error logging in. Please try again after some time.");
             setAlert(true);
           } else {
-            // Instantiate aws sdk service objects now that the credentials have been updated.
-            // example: var s3 = new AWS.S3();
             console.log("Successfully logged!");
             window.location.reload();
-
-            // const currentUser = UserPool.getCurrentUser();
-
-            // if (currentUser != null) {
-            //   currentUser.getSession(function (err, session) {
-            //     if (err) {
-            //       console.log(err.message);
-            //     }
-            //     dispatch(
-            //       setSession({
-            //         valid: true,
-            //         username: UserPool.getCurrentUser().getUsername(),
-            //       })
-            //     );
-            //   });
-            // }
           }
         });
       },
       onFailure: function (err) {
         if (err.message.includes("Incorrect username or password")) {
           setAlertText("Incorrect username or password.");
-          setAlert(true);
         } else if (err.message.includes("Attempt limit exceeded")) {
           setAlertText("Attempt limit exceeded. Please try after some time.");
-          setAlert(true);
         } else if (err.message.includes("User is not confirmed")) {
           setAlertText(
             "User is awaiting email verification or admin approval."
           );
-          setAlert(true);
         } else {
           console.log(err.message);
           setAlertText("Error logging in. Please try again after some time.");
-          setAlert(true);
         }
+        setAlert(true);
       },
     });
   }

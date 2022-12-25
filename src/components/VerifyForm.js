@@ -36,8 +36,8 @@ export default function VerifyForm({ user, setVerifying, setSuccess }) {
       if (err) {
         if (err.message.includes("Attempt limit exceeded")) {
           setAlertText("Attempt limit exceeded. Please try after some time.");
-          setAlert(true);
         }
+        setAlert(true);
         return;
       }
     });

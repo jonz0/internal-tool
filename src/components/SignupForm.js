@@ -65,19 +65,18 @@ export default function SignupForm() {
       ) {
         setAlert(true);
         setAlertText("Please fill out all fields to sign up");
-        setVerifying(false);
         return;
       }
 
       if (err) {
         if (err.message.includes("'password' failed to satisfy")) {
-          setAlert(true);
           setAlertText(
             "Passwords must contain at least 8 characters with one letter and number."
           );
         } else {
           console.log(err.message);
         }
+        setAlert(true);
       }
 
       resetAlerts();
