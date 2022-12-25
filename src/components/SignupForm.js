@@ -1,22 +1,5 @@
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  Container,
-  Divider,
-  FormControl,
-  FormLabel,
-  Heading,
-  HStack,
-  Input,
-  Stack,
-  Text,
-  useBreakpointValue,
-  useColorModeValue,
-  Alert,
-  AlertIcon,
-} from "@chakra-ui/react";
+import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
 import UserPool from "../UserPool";
 // When using loose Javascript files:
 // Modules, e.g. Webpack:
@@ -37,15 +20,29 @@ export default function SignupForm() {
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [alert, setAlert] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [verifying, setVerifying] = useState(false);
   const [alertText, setAlertText] = useState("");
+
+  function resetFields() {
+    setEmail("");
+    setPhone("");
+    setPassword("");
+    setUsername("");
+    setFirst("");
+    setLast("");
+  }
+
+  function resetAlerts() {
+    setAlert(false);
+    setAlertText("");
+  }
 
   var attributeList = [];
 
   function onSubmit(event) {
     event.preventDefault();
-    setAlert(false);
-    setAlertText("");
+    resetAlerts();
 
     var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute({
       Name: "email",
@@ -80,24 +77,32 @@ export default function SignupForm() {
       }
 
       if (err) {
-        if (err.message.includes("'password' failed to satisfy"));
-        setAlert(true);
-        setAlertText(
-          "Passwords must contain at least 8 characters with one letter and number."
-        );
-        setVerifying(false);
-      } else {
-        setAlert(false);
-        setVerifying(true);
+        if (err.message.includes("'password' failed to satisfy")) {
+          setAlert(true);
+          setAlertText(
+            "Passwords must contain at least 8 characters with one letter and number."
+          );
+        } else {
+          console.log(err.message);
+        }
       }
-      console.log(data);
+
+      resetAlerts();
+      resetFields();
+      setVerifying(true);
     });
   }
 
   return (
     <div>
       <div className={styles.formContainer}>
-        {verifying && <VerifyForm user={username} />}
+        {verifying && (
+          <VerifyForm
+            user={username}
+            setVerifying={setVerifying}
+            setSuccess={setSuccess}
+          />
+        )}
         {!verifying && (
           <div>
             <p className={styles.formHeader}>Start Training Here:</p>
@@ -193,7 +198,7 @@ export default function SignupForm() {
                 />
                 <Button
                   mt={4}
-                  colorScheme="teal"
+                  colorScheme="blue"
                   type="submit"
                   className={styles.submitButtons}
                 >
@@ -210,6 +215,17 @@ export default function SignupForm() {
               >
                 <AlertIcon />
                 {alertText}
+              </Alert>
+            )}
+            {success && (
+              <Alert
+                status="success"
+                color="black"
+                fontSize="sm"
+                className={styles.alert}
+              >
+                <AlertIcon />
+                Your new account has been verified and is awaiting approval.
               </Alert>
             )}
           </div>

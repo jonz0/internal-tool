@@ -6,26 +6,7 @@ import { AmplifyProvider, withAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import Amplify, { Auth } from "aws-amplify";
 import UserPool from "../UserPool";
-import {
-  Box,
-  Button,
-  Checkbox,
-  Container,
-  Divider,
-  FormControl,
-  FormLabel,
-  Heading,
-  HStack,
-  Input,
-  Stack,
-  Text,
-  useBreakpointValue,
-  useColorModeValue,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 export default function Menu() {
   const currentUser = UserPool.getCurrentUser();
 
@@ -50,10 +31,10 @@ export default function Menu() {
         });
 
         AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-          IdentityPoolId: "us-west-1:38d464a7-1d45-4f28-b400-621e4d4e5631", // your identity pool id here
+          IdentityPoolId: "us-west-1:cd6ae6a6-edde-450e-90b2-c54f0be36980", // your identity pool id here
           Logins: {
             // Change the key below according to the specific region your user pool is in.
-            "cognito-idp.us-west-1.amazonaws.com/us-west-1_R2escFqfm": session
+            "cognito-idp.us-west-1.amazonaws.com/us-west-1_490MiqgjE": session
               .getIdToken()
               .getJwtToken(),
           },
@@ -117,14 +98,14 @@ export default function Menu() {
           >
             Sign Out
           </p>
-          <Button
+          {/* <Button
             mt={4}
             colorScheme="teal"
             style={{ marginRight: "8px" }}
             onClick={debug}
           >
             Debug
-          </Button>
+          </Button> */}
         </div>
       </div>
       <Progress />

@@ -1,22 +1,5 @@
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  Container,
-  Divider,
-  FormControl,
-  FormLabel,
-  Heading,
-  HStack,
-  Input,
-  Stack,
-  Text,
-  useBreakpointValue,
-  useColorModeValue,
-  Alert,
-  AlertIcon,
-} from "@chakra-ui/react";
+import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
 import UserPool from "../UserPool";
 // When using loose Javascript files:
 // Modules, e.g. Webpack:
@@ -28,56 +11,98 @@ import { CognitoUserAttribute, CognitoUser } from "amazon-cognito-identity-js";
 import styles from "../../styles/Signup.module.css";
 import Image from "next/image";
 import { CodeDeploy } from "aws-sdk";
+import { PasswordField } from "@aws-amplify/ui-react";
 
-export default function ForgotForm(user) {
+export default function ForgotForm({ setForgot, setSuccess }) {
   const [username, setUsername] = useState("");
   const [code, setCode] = useState("");
+  const [newpass, setNewpass] = useState("");
   const [alert, setAlert] = useState(false);
   const [alertText, setAlertText] = useState("");
-  const [success, setSuccess] = useState(false);
   const [resent, setResent] = useState(false);
   const [entering, setEntering] = useState(true);
   const [verifying, setVerifying] = useState(false);
-  const [resetting, setResetting] = useState(false);
 
-  function resend() {
+  let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
+    Username: username,
+    Pool: UserPool,
+  });
+
+  function resetAlerts() {
     setAlert(false);
+    setAlertText("");
   }
 
   function sendCode() {
+    resetAlerts();
     if (username.length < 1) {
+      setAlertText("Please enter an account username.");
       setAlert(true);
-      setAlertText("Please enter a username to verify.");
-    } else {
+      return;
     }
-
-    var cognitoUser = new AmazonCognitoIdentity.CognitoUser({
-      Username: username,
-      Pool: UserPool,
-    });
 
     cognitoUser.forgotPassword({
       onSuccess: function (result) {
-        console.log("call result: " + result);
         setEntering(false);
         setVerifying(true);
       },
       onFailure: function (err) {
-        console.log(err);
-        return;
+        if (err.message.includes("Attempt limit exceeded")) {
+          setAlertText("Attempt limit exceeded. Please try after some time.");
+          setAlert(true);
+        } else {
+          setAlertText(
+            "Error sending a verification code. Please try after some time."
+          );
+          setAlert(true);
+        }
       },
-      // inputVerificationCode() {
-      //   // this is optional, and likely won't be implemented as in AWS's example (i.e, prompt to get info)
-      //   var verificationCode = prompt("Please input verification code ", "");
-      //   var newPassword = prompt("Enter new password ", "");
-      //   cognitoUser.confirmPassword(verificationCode, newPassword, this);
-      // },
     });
   }
 
   function verify() {
-    setVerifying(false);
-    setResetting(true);
+    resetAlerts();
+
+    if (code.length < 1) {
+      setAlertText("Please enter a verification code.");
+      setAlert(true);
+      return;
+    } else if (newpass.length < 1) {
+      setAlertText("Please enter a new password.");
+      setAlert(true);
+      return;
+    }
+
+    cognitoUser.confirmPassword(code, newpass, {
+      onFailure(err) {
+        if (err.message.includes("Attempt limit exceeded")) {
+          setAlertText("Attempt limit exceeded. Please try after some time.");
+          setAlert(true);
+        } else if (err.message.includes("Invalid verification code")) {
+          setAlertText("Invalid verification code provided.");
+          setAlert(true);
+        } else if (err.message.includes("'password' failed to satisfy")) {
+          setAlert(true);
+          setAlertText(
+            "Passwords must contain at least 8 characters with one letter and number."
+          );
+        } else {
+          console.log(err.message);
+          setAlertText(
+            "Error resetting your password. Please try again or call us!"
+          );
+          setAlert(true);
+        }
+        return;
+      },
+      onSuccess() {
+        resetAlerts();
+        setEntering(false);
+        setVerifying(false);
+        setForgot(false);
+        setSuccess(true);
+      },
+    });
   }
 
   return (
@@ -103,9 +128,23 @@ export default function ForgotForm(user) {
             <Button
               mt={4}
               colorScheme="teal"
+              className={styles.submitButtons}
+              onClick={() => {
+                resetAlerts();
+                setVerifying(false);
+                setForgot.setForgot(false);
+              }}
+              style={{ marginRight: "8px" }}
+            >
+              Back
+            </Button>
+            <Button
+              mt={4}
+              colorScheme="blue"
               type="submit"
               className={styles.submitButtons}
               onClick={sendCode}
+              style={{ marginLeft: "8px" }}
             >
               Send Verification Code
             </Button>
@@ -130,27 +169,12 @@ export default function ForgotForm(user) {
               autoComplete="off"
               size="sm"
             />
-            <Button
-              mt={4}
-              colorScheme="teal"
-              type="submit"
-              className={styles.submitButtons}
-              onClick={verify}
-            >
-              Verify Account
-            </Button>
-          </FormControl>
-        </div>
-      )}
-      {resetting && (
-        <div>
-          <FormControl>
             <Input
               id="verification"
-              type="text"
-              value={code}
+              type="password"
+              value={newpass}
               onChange={(event) => {
-                setCode(event.target.value);
+                setNewpass(event.target.value);
               }}
               className={styles.input}
               color="white"
@@ -162,9 +186,23 @@ export default function ForgotForm(user) {
             <Button
               mt={4}
               colorScheme="teal"
+              className={styles.submitButtons}
+              onClick={() => {
+                resetAlerts();
+                setVerifying(false);
+                setEntering(true);
+              }}
+              style={{ marginRight: "8px" }}
+            >
+              Back
+            </Button>
+            <Button
+              mt={4}
+              colorScheme="blue"
               type="submit"
               className={styles.submitButtons}
               onClick={verify}
+              style={{ marginLeft: "8px" }}
             >
               Reset Password
             </Button>
@@ -180,27 +218,6 @@ export default function ForgotForm(user) {
         >
           <AlertIcon />
           {alertText}
-        </Alert>
-      )}
-      {success && (
-        <Alert
-          status="success"
-          color="black"
-          fontSize="sm"
-          className={styles.alert}
-        >
-          <AlertIcon />
-          Your new account has been verified and is awaiting approval.
-        </Alert>
-      )}
-      {resent && (
-        <Alert
-          status="info"
-          color="black"
-          fontSize="sm"
-          className={styles.alert}
-        >
-          <AlertIcon />A new verification code has been sent to your email.
         </Alert>
       )}
     </div>

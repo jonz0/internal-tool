@@ -43,7 +43,7 @@ div.coverImg {
 .namesContainer {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 16px;
 }
 
 .loginFace {

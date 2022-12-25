@@ -1,22 +1,5 @@
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  Container,
-  Divider,
-  FormControl,
-  FormLabel,
-  Heading,
-  HStack,
-  Input,
-  Stack,
-  Text,
-  useBreakpointValue,
-  useColorModeValue,
-  Alert,
-  AlertIcon,
-} from "@chakra-ui/react";
+import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
 import UserPool from "../UserPool";
 // When using loose Javascript files:
 // Modules, e.g. Webpack:
@@ -29,26 +12,27 @@ import styles from "../../styles/Signup.module.css";
 import Image from "next/image";
 import { CodeDeploy } from "aws-sdk";
 
-export default function VerifyForm(user) {
+export default function VerifyForm({ user, setVerifying, setSuccess }) {
   const [code, setCode] = useState("");
   const [alert, setAlert] = useState(false);
   const [alertText, setAlertText] = useState("");
-  const [success, setSuccess] = useState(false);
   const [resent, setResent] = useState(false);
 
+  function resetAlerts() {
+    setAlert(false);
+    setAlertText("");
+  }
+
   var userData = {
-    Username: user.user,
+    Username: user,
     Pool: UserPool,
   };
 
   var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
 
-  function onSubmit(event) {
+  function onSubmit() {
     event.preventDefault();
-    setAlert(false);
-    setResent(false);
-    console.log(user.user);
-    console.log(code);
+    resetAlerts();
 
     cognitoUser.confirmRegistration(code, true, function (err, result) {
       if (code.length < 1) {
@@ -58,36 +42,31 @@ export default function VerifyForm(user) {
       }
 
       if (err) {
-        if (err.message.startsWith("Attempt limit exceeded")) {
+        if (err.message.includes("Attempt limit exceeded")) {
           setAlertText("Attempt limit exceeded. Please try after some time.");
           setAlert(true);
-        } else if (err.message.startsWith("Invalid verification code")) {
-          setAlertText("Invalid verification code provided.");
-          setAlert(true);
-        } else {
-          setAlertText(
-            "Error verifying your account. Please try again or call us!"
-          );
-          setAlert(true);
         }
+        return;
       }
-
-      console.log("call result: " + result);
     });
+
+    setSuccess(true);
+    setVerifying(false);
   }
 
   function resend() {
-    setAlert(false);
+    resetAlerts();
     setResent(false);
     cognitoUser.resendConfirmationCode(function (err, result) {
       if (err) {
-        if (err.message.startsWith("Attempt limit exceeded")) {
+        if (err.message.includes("Attempt limit exceeded")) {
           setAlertText("Attempt limit exceeded. Please try after some time.");
           setAlert(true);
         } else {
           setAlertText("Error resending code. Please try again or call us!");
           setAlert(true);
         }
+        return;
       }
 
       if (result !== null) {
@@ -117,9 +96,10 @@ export default function VerifyForm(user) {
           />
           <Button
             mt={4}
-            colorScheme="teal"
+            colorScheme="blue"
             type="submit"
             className={styles.submitButtons}
+            style={{ marginRight: "8px" }}
           >
             Confirm
           </Button>
@@ -142,17 +122,6 @@ export default function VerifyForm(user) {
         >
           <AlertIcon />
           {alertText}
-        </Alert>
-      )}
-      {success && (
-        <Alert
-          status="success"
-          color="black"
-          fontSize="sm"
-          className={styles.alert}
-        >
-          <AlertIcon />
-          Your new account has been verified and is awaiting approval.
         </Alert>
       )}
       {resent && (

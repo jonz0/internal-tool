@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function AuthPage() {
   return (
     <div className={styles.signupContainer}>
-      <div layout="fill" objectFit="contain" className={styles.coverImg} />
+      <div layout="fill" className={styles.coverImg} />
       <div className={styles.loginFace}>
         <img src="/serao-transparent-white.png" className={styles.seraoLogo} />
         <div className={styles.vl}></div>
