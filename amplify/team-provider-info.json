@@ -49,7 +49,7 @@
           "apiAmplifylayerguideGraphqlapiendpointoutput": "https://olfdu24ggfdn5lzf4jrj3vhogy.appsync-api.us-west-1.amazonaws.com/graphql",
           "apiAmplifylayerguideGraphqlapikeyoutput": "da2-imkyftuvizbxzh2falmcpla4le",
           "deploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
-          "s3Key": "amplify-builds/updateActiveUsers-456d446570614a7a4d53-build.zip"
+          "s3Key": "amplify-builds/updateActiveUsers-66704b6e385373785835-build.zip"
         }
       }
     }
