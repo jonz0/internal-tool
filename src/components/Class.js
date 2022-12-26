@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
-
+import { useEffect, useRef, useState, useContext } from "react";
 import { Button } from "@chakra-ui/react";
 import { API } from "aws-amplify";
 import * as queries from "../graphql/queries";

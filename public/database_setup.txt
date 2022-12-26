@@ -253,108 +253,76 @@ mutation MyMutation {
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "monday", id: "0700-mon", name: "Jiu-Jitsu", openSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "monday", id: "0700-mon", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "monday", id: "1230-mon", name: "Jiu-Jitsu", openSpots: 40, start: "12:30:00.000", end: "13:30:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "monday", id: "1230-mon", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "12:30:00.000", end: "13:30:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "kids", dayClassesId: "monday", id: "1700-mon", name: "Kids Jr (No-Gi)", openSpots: 40, start: "17:00:00.000", end: "18:00:00.000", type: "ll", classOpen: true}) {
+  createClass(input: {age: "kids", dayClassesId: "monday", id: "1700-mon", name: "Kids Jr (No-Gi)", openSpots: 40, maxSpots: 40, start: "17:00:00.000", end: "18:00:00.000", type: "ll", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "monday", id: "1800-mon", name: "Jiu-Jitsu", openSpots: 40, start: "18:00:00.000", end: "19:00:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "monday", id: "1800-mon", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "18:00:00.000", end: "19:00:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "monday", id: "1900-mon", name: "Jiu-Jitsu", openSpots: 40, start: "19:00:00.000", end: "20:00:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "monday", id: "1900-mon", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "19:00:00.000", end: "20:00:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "monday", id: "2030-mon", name: "Kickboxing", openSpots: 40, start: "20:30:00.000", end: "21:30:00.000", type: "kb", classOpen: true}) {
-    id
-  }
-}
-
---
-
-
-mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "tuesday", id: "0700-tue", name: "Luta Livre", openSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "ll", classOpen: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "tuesday", id: "1230-tue", name: "Luta Livre", openSpots: 40, start: "12:30:00.000", end: "13:30:00.000", type: "ll", classOpen: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createClass(input: {age: "kids", dayClassesId: "tuesday", id: "1700-tue", name: "Little Champion (No-Gi)", openSpots: 40, start: "17:00:00.000", end: "18:00:00.000", type: "ll", classOpen: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "tuesday", id: "1800-tue", name: "Jiu-Jitsu", openSpots: 40, start: "18:00:00.000", end: "19:00:00.000", type: "jj", classOpen: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "tuesday", id: "1900-tue", name: "Luta Livre", openSpots: 40, start: "19:00:00.000", end: "20:00:00.000", type: "ll", classOpen: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "tuesday", id: "2030-tue", name: "Kickboxing", openSpots: 40, start: "20:30:00.000", end: "21:30:00.000", type: "kb", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "monday", id: "2030-mon", name: "Kickboxing", openSpots: 40, maxSpots: 40, start: "20:30:00.000", end: "21:30:00.000", type: "kb", classOpen: true}) {
     id
   }
 }
 
 --
 
+
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "wednesday", id: "0700-wed", name: "Jiu-Jitsu", openSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "tuesday", id: "0700-tue", name: "Luta Livre", openSpots: 40, maxSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "ll", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "wednesday", id: "1230-wed", name: "Jiu-Jitsu", openSpots: 40, start: "12:30:00.000", end: "13:30:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "tuesday", id: "1230-tue", name: "Luta Livre", openSpots: 40, maxSpots: 40, start: "12:30:00.000", end: "13:30:00.000", type: "ll", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "kids", dayClassesId: "wednesday", id: "1700-wed", name: "Kids Jr (Gi)", openSpots: 40, start: "17:00:00.000", end: "17:40:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "kids", dayClassesId: "tuesday", id: "1700-tue", name: "Little Champion (No-Gi)", openSpots: 40, maxSpots: 40, start: "17:00:00.000", end: "18:00:00.000", type: "ll", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "wednesday", id: "1800-wed", name: "Jiu-Jitsu", openSpots: 40, start: "18:00:00.000", end: "19:00:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "tuesday", id: "1800-tue", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "18:00:00.000", end: "19:00:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "wednesday", id: "1900-wed", name: "Jiu-Jitsu", openSpots: 40, start: "19:00:00.000", end: "20:00:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "tuesday", id: "1900-tue", name: "Luta Livre", openSpots: 40, maxSpots: 40, start: "19:00:00.000", end: "20:00:00.000", type: "ll", classOpen: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createClass(input: {age: "adults", dayClassesId: "tuesday", id: "2030-tue", name: "Kickboxing", openSpots: 40, maxSpots: 40, start: "20:30:00.000", end: "21:30:00.000", type: "kb", classOpen: true}) {
     id
   }
 }
@@ -362,37 +330,31 @@ mutation MyMutation {
 --
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "thursday", id: "0700-thu", name: "Luta Livre", openSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "ll", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "wednesday", id: "0700-wed", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "thursday", id: "1230-thu", name: "Luta Livre", openSpots: 40, start: "12:30:00.000", end: "13:30:00.000", type: "ll", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "wednesday", id: "1230-wed", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "12:30:00.000", end: "13:30:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "kids", dayClassesId: "thursday", id: "1700-thu", name: "Little Champion (Gi)", openSpots: 40, start: "17:00:00.000", end: "18:00:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "kids", dayClassesId: "wednesday", id: "1700-wed", name: "Kids Jr (Gi)", openSpots: 40, maxSpots: 40, start: "17:00:00.000", end: "17:40:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "thursday", id: "1800-thu", name: "Jiu-Jitsu", openSpots: 40, start: "18:00:00.000", end: "19:00:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "wednesday", id: "1800-wed", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "18:00:00.000", end: "19:00:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "thursday", id: "1900-thu", name: "Luta Livre", openSpots: 40, start: "19:00:00.000", end: "20:00:00.000", type: "ll", classOpen: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "thursday", id: "2030-thu", name: "Kickboxing", openSpots: 40, start: "20:30:00.000", end: "21:30:00.000", type: "kb", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "wednesday", id: "1900-wed", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "19:00:00.000", end: "20:00:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
@@ -400,57 +362,37 @@ mutation MyMutation {
 --
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "friday", id: "0700-fri", name: "Jiu-Jitsu", openSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "thursday", id: "0700-thu", name: "Luta Livre", openSpots: 40, maxSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "ll", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "friday", id: "1230-fri", name: "Jiu-Jitsu", openSpots: 40, start: "12:30:00.000", end: "13:30:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "thursday", id: "1230-thu", name: "Luta Livre", openSpots: 40, maxSpots: 40, start: "12:30:00.000", end: "13:30:00.000", type: "ll", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "kids", dayClassesId: "friday", id: "1620-fri", name: "Little Champion (No-Gi)", openSpots: 40, start: "16:20:00.000", end: "17:00:00.000", type: "ll", classOpen: true}) {
+  createClass(input: {age: "kids", dayClassesId: "thursday", id: "1700-thu", name: "Little Champion (Gi)", openSpots: 40, maxSpots: 40, start: "17:00:00.000", end: "18:00:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "kids", dayClassesId: "friday", id: "1700-fri", name: "Kids Jr (No-Gi)", openSpots: 40, start: "17:00:00.000", end: "17:40:00.000", type: "ll", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "thursday", id: "1800-thu", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "18:00:00.000", end: "19:00:00.000", type: "jj", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "friday", id: "1800-fri", name: "Luta Livre", openSpots: 40, start: "18:00:00.000", end: "19:00:00.000", type: "ll", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "thursday", id: "1900-thu", name: "Luta Livre", openSpots: 40, maxSpots: 40, start: "19:00:00.000", end: "20:00:00.000", type: "ll", classOpen: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "friday", id: "1930-fri", name: "Kickboxing", openSpots: 40, start: "19:30:00.000", end: "20:30:00.000", type: "kb", classOpen: true}) {
-    id
-  }
-}
-
---
-
-mutation MyMutation {
-  createClass(input: {age: "kids", dayClassesId: "saturday", id: "1020-sat", name: "Little Champion (Gi)", openSpots: 40, start: "10:20:00.000", end: "11:00:00.000", type: "jj", classOpen: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createClass(input: {age: "kids", dayClassesId: "saturday", id: "1100-sat", name: "Kids Jr (Gi)", openSpots: 40, start: "11:00:00.000", end: "11:40:00.000", type: "jj", classOpen: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "saturday", id: "1200-sat", name: "Luta Livre", openSpots: 40, start: "12:00:00.000", end: "13:00:00.000", type: "ll", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "thursday", id: "2030-thu", name: "Kickboxing", openSpots: 40, maxSpots: 40, start: "20:30:00.000", end: "21:30:00.000", type: "kb", classOpen: true}) {
     id
   }
 }
@@ -458,7 +400,65 @@ mutation MyMutation {
 --
 
 mutation MyMutation {
-  createClass(input: {age: "adults", dayClassesId: "sunday", id: "0700-sun", name: "Secret Training (Gi)", openSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "jj", classOpen: true}) {
+  createClass(input: {age: "adults", dayClassesId: "friday", id: "0700-fri", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "jj", classOpen: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createClass(input: {age: "adults", dayClassesId: "friday", id: "1230-fri", name: "Jiu-Jitsu", openSpots: 40, maxSpots: 40, start: "12:30:00.000", end: "13:30:00.000", type: "jj", classOpen: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createClass(input: {age: "kids", dayClassesId: "friday", id: "1620-fri", name: "Little Champion (No-Gi)", openSpots: 40, maxSpots: 40, start: "16:20:00.000", end: "17:00:00.000", type: "ll", classOpen: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createClass(input: {age: "kids", dayClassesId: "friday", id: "1700-fri", name: "Kids Jr (No-Gi)", openSpots: 40, maxSpots: 40, start: "17:00:00.000", end: "17:40:00.000", type: "ll", classOpen: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createClass(input: {age: "adults", dayClassesId: "friday", id: "1800-fri", name: "Luta Livre", openSpots: 40, maxSpots: 40, start: "18:00:00.000", end: "19:00:00.000", type: "ll", classOpen: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createClass(input: {age: "adults", dayClassesId: "friday", id: "1930-fri", name: "Kickboxing", openSpots: 40, maxSpots: 40, start: "19:30:00.000", end: "20:30:00.000", type: "kb", classOpen: true}) {
+    id
+  }
+}
+
+--
+
+mutation MyMutation {
+  createClass(input: {age: "kids", dayClassesId: "saturday", id: "1020-sat", name: "Little Champion (Gi)", openSpots: 40, maxSpots: 40, start: "10:20:00.000", end: "11:00:00.000", type: "jj", classOpen: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createClass(input: {age: "kids", dayClassesId: "saturday", id: "1100-sat", name: "Kids Jr (Gi)", openSpots: 40, maxSpots: 40, start: "11:00:00.000", end: "11:40:00.000", type: "jj", classOpen: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createClass(input: {age: "adults", dayClassesId: "saturday", id: "1200-sat", name: "Luta Livre", openSpots: 40, maxSpots: 40, start: "12:00:00.000", end: "13:00:00.000", type: "ll", classOpen: true}) {
+    id
+  }
+}
+
+--
+
+mutation MyMutation {
+  createClass(input: {age: "adults", dayClassesId: "sunday", id: "0700-sun", name: "Secret Training (Gi)", openSpots: 40, maxSpots: 40, start: "07:00:00.000", end: "08:00:00.000", type: "jj", classOpen: true}) {
     id
   }
 }

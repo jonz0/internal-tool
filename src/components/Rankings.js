@@ -1,13 +1,6 @@
-import React from "react";
 import { useState, useEffect, useRef } from "react";
-import styles from "../../styles/Leaderboard.module.css";
-import { v4 as uuidv4 } from "uuid";
 import { API } from "aws-amplify";
 import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import Day from "./Day";
-import { resolve } from "styled-jsx/css";
 import Rank from "../components/Rank";
 
 export default function Rankings({ exclude }) {

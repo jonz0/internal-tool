@@ -3,6 +3,10 @@ import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
 import UserPool from "../UserPool";
 var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 import styles from "../../styles/Signup.module.css";
+import { API } from "aws-amplify";
+import * as queries from "../graphql/queries";
+import * as subscriptions from "../graphql/subscriptions";
+import * as mutations from "../graphql/mutations";
 
 export default function VerifyForm({ user, setVerifying, setSuccess }) {
   const [code, setCode] = useState("");
@@ -10,13 +14,16 @@ export default function VerifyForm({ user, setVerifying, setSuccess }) {
   const [alertText, setAlertText] = useState("");
   const [resent, setResent] = useState(false);
 
+  console.log("here");
+  console.log(user);
+
   function resetAlerts() {
     setAlert(false);
     setAlertText("");
   }
 
   var userData = {
-    Username: user,
+    Username: user.username,
     Pool: UserPool,
   };
 
@@ -44,6 +51,7 @@ export default function VerifyForm({ user, setVerifying, setSuccess }) {
 
     setSuccess(true);
     setVerifying(false);
+    createUser();
   }
 
   function resend() {
@@ -64,6 +72,23 @@ export default function VerifyForm({ user, setVerifying, setSuccess }) {
       if (result !== null) {
         setResent(true);
       }
+    });
+  }
+
+  async function createUser() {
+    const newUser = await API.graphql({
+      query: mutations.createUser,
+      variables: {
+        input: {
+          id: user.username,
+          username: user.username,
+          email: user.email,
+          phone: user.phone,
+          firstName: user.first,
+          lastName: user.last,
+          active: false,
+        },
+      },
     });
   }
 

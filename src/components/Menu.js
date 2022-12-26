@@ -1,49 +1,19 @@
-import React from "react";
 import styles from "../../styles/Menu.module.css";
 import Image from "next/image";
 import Progress from "./Progress";
-import { AmplifyProvider, withAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-import Amplify, { Auth } from "aws-amplify";
 import UserPool from "../UserPool";
 import { Button } from "@chakra-ui/react";
+import {
+  CognitoIdentityProviderClient,
+  ListUsersCommand,
+} from "@aws-sdk/client-cognito-identity-provider";
+
 export default function Menu() {
   const currentUser = UserPool.getCurrentUser();
 
-  function debug() {
+  async function debug() {
     console.log("debugging...");
-
-    if (currentUser != null) {
-      currentUser.getSession(function (err, session) {
-        if (err) {
-          console.log(err.message || JSON.stringify(err));
-          return;
-        }
-        console.log("session validity: " + session.isValid());
-
-        // NOTE: getSession must be called to authenticate user before calling getUserAttributes
-        currentUser.getUserAttributes(function (err, attributes) {
-          if (err) {
-            // Handle error
-          } else {
-            // Do something with attributes
-          }
-        });
-
-        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-          IdentityPoolId: "us-west-1:cd6ae6a6-edde-450e-90b2-c54f0be36980", // your identity pool id here
-          Logins: {
-            // Change the key below according to the specific region your user pool is in.
-            "cognito-idp.us-west-1.amazonaws.com/us-west-1_490MiqgjE": session
-              .getIdToken()
-              .getJwtToken(),
-          },
-        });
-
-        // Instantiate aws sdk service objects now that the credentials have been updated.
-        // example: var s3 = new AWS.S3();
-      });
-    }
   }
 
   return (
@@ -98,15 +68,16 @@ export default function Menu() {
           >
             Sign Out
           </p>
-          {/* <Button
-            mt={4}
-            colorScheme="teal"
-            style={{ marginRight: "8px" }}
-            onClick={debug}
-          >
-            Debug
-          </Button> */}
         </div>
+        <Button
+          mt={4}
+          colorScheme="teal"
+          style={{ marginRight: "8px" }}
+          onClick={debug}
+          width="140px"
+        >
+          Debug
+        </Button>
       </div>
       <Progress />
     </div>

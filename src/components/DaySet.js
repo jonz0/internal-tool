@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Home.module.css";
 import { v4 as uuidv4 } from "uuid";

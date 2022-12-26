@@ -16,6 +16,7 @@ export default function SignupForm() {
   const [success, setSuccess] = useState(false);
   const [verifying, setVerifying] = useState(false);
   const [alertText, setAlertText] = useState("");
+  const [userData, setUserData] = useState({});
 
   function resetFields() {
     setEmail("");
@@ -82,6 +83,15 @@ export default function SignupForm() {
       resetAlerts();
       resetFields();
       setVerifying(true);
+      setUserData({
+        id: username,
+        username: username,
+        email: email,
+        phone: phone,
+        first: first,
+        last: last,
+        active: false,
+      });
     });
   }
 
@@ -90,7 +100,7 @@ export default function SignupForm() {
       <div className={styles.formContainer}>
         {verifying && (
           <VerifyForm
-            user={username}
+            user={userData}
             setVerifying={setVerifying}
             setSuccess={setSuccess}
           />
