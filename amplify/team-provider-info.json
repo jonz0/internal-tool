@@ -23,21 +23,27 @@
         },
         "rotateDays": {
           "deploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
-          "s3Key": "amplify-builds/rotateDays-624555516e3978662b6c-build.zip",
+          "s3Key": "amplify-builds/rotateDays-6e4e37546c4a306e5758-build.zip",
           "apiAmplifylayerguideGraphqlapiendpointoutput": "https://olfdu24ggfdn5lzf4jrj3vhogy.appsync-api.us-west-1.amazonaws.com/graphql",
           "apiAmplifylayerguideGraphqlapikeyoutput": "da2-imkyftuvizbxzh2falmcpla4le"
         },
         "updateClassCount": {
           "deploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
-          "s3Key": "amplify-builds/updateClassCount-564862315454464d5566-build.zip",
+          "s3Key": "amplify-builds/updateClassCount-5171476454784f4a5564-build.zip",
           "apiAmplifylayerguideGraphqlapiendpointoutput": "https://olfdu24ggfdn5lzf4jrj3vhogy.appsync-api.us-west-1.amazonaws.com/graphql",
           "apiAmplifylayerguideGraphqlapikeyoutput": "da2-imkyftuvizbxzh2falmcpla4le"
         },
         "updateMonthlyUsers": {
           "deploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
-          "s3Key": "amplify-builds/updateMonthlyUsers-4e2f75546c786558724d-build.zip",
+          "s3Key": "amplify-builds/updateMonthlyUsers-647153514f6e64704f65-build.zip",
           "apiAmplifylayerguideGraphqlapiendpointoutput": "https://olfdu24ggfdn5lzf4jrj3vhogy.appsync-api.us-west-1.amazonaws.com/graphql",
           "apiAmplifylayerguideGraphqlapikeyoutput": "da2-imkyftuvizbxzh2falmcpla4le"
+        },
+        "removeAttendees": {
+          "apiAmplifylayerguideGraphqlapiendpointoutput": "https://olfdu24ggfdn5lzf4jrj3vhogy.appsync-api.us-west-1.amazonaws.com/graphql",
+          "apiAmplifylayerguideGraphqlapikeyoutput": "da2-imkyftuvizbxzh2falmcpla4le",
+          "deploymentBucketName": "amplify-calendarsignup-dev-20052-deployment",
+          "s3Key": "amplify-builds/removeAttendees-72526d54676f6d4c3832-build.zip"
         }
       }
     }

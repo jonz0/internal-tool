@@ -1,28 +1,13 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true,
+  value: true
 });
-exports.onUpdateUserMonth =
-  exports.onUpdateUser =
-  exports.onUpdateDay =
-  exports.onUpdateClass =
-  exports.onUpdateAttendee =
-  exports.onDeleteUserMonth =
-  exports.onDeleteUser =
-  exports.onDeleteDay =
-  exports.onDeleteClass =
-  exports.onDeleteAttendee =
-  exports.onCreateUserMonth =
-  exports.onCreateUser =
-  exports.onCreateDay =
-  exports.onCreateClass =
-  exports.onCreateAttendee =
-    void 0;
+exports.onUpdateUserMonth = exports.onUpdateUser = exports.onUpdateDay = exports.onUpdateClass = exports.onUpdateAttendee = exports.onDeleteUserMonth = exports.onDeleteUser = exports.onDeleteDay = exports.onDeleteClass = exports.onDeleteAttendee = exports.onCreateUserMonth = exports.onCreateUser = exports.onCreateDay = exports.onCreateClass = exports.onCreateAttendee = void 0;
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-const onCreateDay = /* GraphQL */ `
+const onCreateDay = /* GraphQL */`
   subscription OnCreateDay($filter: ModelSubscriptionDayFilterInput) {
     onCreateDay(filter: $filter) {
       id
@@ -41,6 +26,9 @@ const onCreateDay = /* GraphQL */ `
           instructor
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
           dayClassesId
         }
         nextToken
@@ -50,11 +38,14 @@ const onCreateDay = /* GraphQL */ `
       open
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
 exports.onCreateDay = onCreateDay;
-const onUpdateDay = /* GraphQL */ `
+const onUpdateDay = /* GraphQL */`
   subscription OnUpdateDay($filter: ModelSubscriptionDayFilterInput) {
     onUpdateDay(filter: $filter) {
       id
@@ -73,6 +64,9 @@ const onUpdateDay = /* GraphQL */ `
           instructor
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
           dayClassesId
         }
         nextToken
@@ -82,11 +76,14 @@ const onUpdateDay = /* GraphQL */ `
       open
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
 exports.onUpdateDay = onUpdateDay;
-const onDeleteDay = /* GraphQL */ `
+const onDeleteDay = /* GraphQL */`
   subscription OnDeleteDay($filter: ModelSubscriptionDayFilterInput) {
     onDeleteDay(filter: $filter) {
       id
@@ -105,6 +102,9 @@ const onDeleteDay = /* GraphQL */ `
           instructor
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
           dayClassesId
         }
         nextToken
@@ -114,11 +114,14 @@ const onDeleteDay = /* GraphQL */ `
       open
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
 exports.onDeleteDay = onDeleteDay;
-const onCreateClass = /* GraphQL */ `
+const onCreateClass = /* GraphQL */`
   subscription OnCreateClass($filter: ModelSubscriptionClassFilterInput) {
     onCreateClass(filter: $filter) {
       id
@@ -140,6 +143,9 @@ const onCreateClass = /* GraphQL */ `
         open
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       attendees {
         items {
@@ -151,6 +157,9 @@ const onCreateClass = /* GraphQL */ `
           llbelt
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
           classAttendeesId
         }
         nextToken
@@ -160,12 +169,15 @@ const onCreateClass = /* GraphQL */ `
       instructor
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       dayClassesId
     }
   }
 `;
 exports.onCreateClass = onCreateClass;
-const onUpdateClass = /* GraphQL */ `
+const onUpdateClass = /* GraphQL */`
   subscription OnUpdateClass($filter: ModelSubscriptionClassFilterInput) {
     onUpdateClass(filter: $filter) {
       id
@@ -187,6 +199,9 @@ const onUpdateClass = /* GraphQL */ `
         open
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       attendees {
         items {
@@ -198,6 +213,9 @@ const onUpdateClass = /* GraphQL */ `
           llbelt
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
           classAttendeesId
         }
         nextToken
@@ -207,12 +225,15 @@ const onUpdateClass = /* GraphQL */ `
       instructor
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       dayClassesId
     }
   }
 `;
 exports.onUpdateClass = onUpdateClass;
-const onDeleteClass = /* GraphQL */ `
+const onDeleteClass = /* GraphQL */`
   subscription OnDeleteClass($filter: ModelSubscriptionClassFilterInput) {
     onDeleteClass(filter: $filter) {
       id
@@ -234,6 +255,9 @@ const onDeleteClass = /* GraphQL */ `
         open
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       attendees {
         items {
@@ -245,6 +269,9 @@ const onDeleteClass = /* GraphQL */ `
           llbelt
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
           classAttendeesId
         }
         nextToken
@@ -254,12 +281,15 @@ const onDeleteClass = /* GraphQL */ `
       instructor
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       dayClassesId
     }
   }
 `;
 exports.onDeleteClass = onDeleteClass;
-const onCreateAttendee = /* GraphQL */ `
+const onCreateAttendee = /* GraphQL */`
   subscription OnCreateAttendee($filter: ModelSubscriptionAttendeeFilterInput) {
     onCreateAttendee(filter: $filter) {
       id
@@ -279,6 +309,9 @@ const onCreateAttendee = /* GraphQL */ `
           open
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
         attendees {
           nextToken
@@ -288,6 +321,9 @@ const onCreateAttendee = /* GraphQL */ `
         instructor
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         dayClassesId
       }
       username
@@ -297,12 +333,15 @@ const onCreateAttendee = /* GraphQL */ `
       llbelt
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       classAttendeesId
     }
   }
 `;
 exports.onCreateAttendee = onCreateAttendee;
-const onUpdateAttendee = /* GraphQL */ `
+const onUpdateAttendee = /* GraphQL */`
   subscription OnUpdateAttendee($filter: ModelSubscriptionAttendeeFilterInput) {
     onUpdateAttendee(filter: $filter) {
       id
@@ -322,6 +361,9 @@ const onUpdateAttendee = /* GraphQL */ `
           open
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
         attendees {
           nextToken
@@ -331,6 +373,9 @@ const onUpdateAttendee = /* GraphQL */ `
         instructor
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         dayClassesId
       }
       username
@@ -340,12 +385,15 @@ const onUpdateAttendee = /* GraphQL */ `
       llbelt
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       classAttendeesId
     }
   }
 `;
 exports.onUpdateAttendee = onUpdateAttendee;
-const onDeleteAttendee = /* GraphQL */ `
+const onDeleteAttendee = /* GraphQL */`
   subscription OnDeleteAttendee($filter: ModelSubscriptionAttendeeFilterInput) {
     onDeleteAttendee(filter: $filter) {
       id
@@ -365,6 +413,9 @@ const onDeleteAttendee = /* GraphQL */ `
           open
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
         attendees {
           nextToken
@@ -374,6 +425,9 @@ const onDeleteAttendee = /* GraphQL */ `
         instructor
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         dayClassesId
       }
       username
@@ -383,12 +437,15 @@ const onDeleteAttendee = /* GraphQL */ `
       llbelt
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       classAttendeesId
     }
   }
 `;
 exports.onDeleteAttendee = onDeleteAttendee;
-const onCreateUser = /* GraphQL */ `
+const onCreateUser = /* GraphQL */`
   subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
     onCreateUser(filter: $filter) {
       id
@@ -422,6 +479,9 @@ const onCreateUser = /* GraphQL */ `
           kb
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
           userUserMonthsId
         }
         nextToken
@@ -429,11 +489,14 @@ const onCreateUser = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
 exports.onCreateUser = onCreateUser;
-const onUpdateUser = /* GraphQL */ `
+const onUpdateUser = /* GraphQL */`
   subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
     onUpdateUser(filter: $filter) {
       id
@@ -467,6 +530,9 @@ const onUpdateUser = /* GraphQL */ `
           kb
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
           userUserMonthsId
         }
         nextToken
@@ -474,11 +540,14 @@ const onUpdateUser = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
 exports.onUpdateUser = onUpdateUser;
-const onDeleteUser = /* GraphQL */ `
+const onDeleteUser = /* GraphQL */`
   subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
     onDeleteUser(filter: $filter) {
       id
@@ -512,6 +581,9 @@ const onDeleteUser = /* GraphQL */ `
           kb
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
           userUserMonthsId
         }
         nextToken
@@ -519,11 +591,14 @@ const onDeleteUser = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
 exports.onDeleteUser = onDeleteUser;
-const onCreateUserMonth = /* GraphQL */ `
+const onCreateUserMonth = /* GraphQL */`
   subscription OnCreateUserMonth(
     $filter: ModelSubscriptionUserMonthFilterInput
   ) {
@@ -557,6 +632,9 @@ const onCreateUserMonth = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       year
       month
@@ -565,12 +643,15 @@ const onCreateUserMonth = /* GraphQL */ `
       kb
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       userUserMonthsId
     }
   }
 `;
 exports.onCreateUserMonth = onCreateUserMonth;
-const onUpdateUserMonth = /* GraphQL */ `
+const onUpdateUserMonth = /* GraphQL */`
   subscription OnUpdateUserMonth(
     $filter: ModelSubscriptionUserMonthFilterInput
   ) {
@@ -604,6 +685,9 @@ const onUpdateUserMonth = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       year
       month
@@ -612,12 +696,15 @@ const onUpdateUserMonth = /* GraphQL */ `
       kb
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       userUserMonthsId
     }
   }
 `;
 exports.onUpdateUserMonth = onUpdateUserMonth;
-const onDeleteUserMonth = /* GraphQL */ `
+const onDeleteUserMonth = /* GraphQL */`
   subscription OnDeleteUserMonth(
     $filter: ModelSubscriptionUserMonthFilterInput
   ) {
@@ -651,6 +738,9 @@ const onDeleteUserMonth = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       year
       month
@@ -659,6 +749,9 @@ const onDeleteUserMonth = /* GraphQL */ `
       kb
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       userUserMonthsId
     }
   }

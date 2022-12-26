@@ -44,6 +44,7 @@ const createDay = /* GraphQL */ `
           instructor
           createdAt
           updatedAt
+
           dayClassesId
         }
         nextToken
@@ -79,6 +80,7 @@ const updateDay = /* GraphQL */ `
           instructor
           createdAt
           updatedAt
+
           dayClassesId
         }
         nextToken
@@ -114,6 +116,7 @@ const deleteDay = /* GraphQL */ `
           instructor
           createdAt
           updatedAt
+
           dayClassesId
         }
         nextToken
@@ -163,6 +166,7 @@ const createClass = /* GraphQL */ `
           llbelt
           createdAt
           updatedAt
+
           classAttendeesId
         }
         nextToken
@@ -172,6 +176,7 @@ const createClass = /* GraphQL */ `
       instructor
       createdAt
       updatedAt
+
       dayClassesId
     }
   }
@@ -213,6 +218,7 @@ const updateClass = /* GraphQL */ `
           llbelt
           createdAt
           updatedAt
+
           classAttendeesId
         }
         nextToken
@@ -222,6 +228,7 @@ const updateClass = /* GraphQL */ `
       instructor
       createdAt
       updatedAt
+
       dayClassesId
     }
   }
@@ -263,6 +270,7 @@ const deleteClass = /* GraphQL */ `
           llbelt
           createdAt
           updatedAt
+
           classAttendeesId
         }
         nextToken
@@ -272,6 +280,7 @@ const deleteClass = /* GraphQL */ `
       instructor
       createdAt
       updatedAt
+
       dayClassesId
     }
   }
@@ -309,6 +318,7 @@ const createAttendee = /* GraphQL */ `
         instructor
         createdAt
         updatedAt
+
         dayClassesId
       }
       username
@@ -318,6 +328,7 @@ const createAttendee = /* GraphQL */ `
       llbelt
       createdAt
       updatedAt
+
       classAttendeesId
     }
   }
@@ -355,6 +366,7 @@ const updateAttendee = /* GraphQL */ `
         instructor
         createdAt
         updatedAt
+
         dayClassesId
       }
       username
@@ -364,6 +376,7 @@ const updateAttendee = /* GraphQL */ `
       llbelt
       createdAt
       updatedAt
+
       classAttendeesId
     }
   }
@@ -401,6 +414,7 @@ const deleteAttendee = /* GraphQL */ `
         instructor
         createdAt
         updatedAt
+
         dayClassesId
       }
       username
@@ -410,6 +424,7 @@ const deleteAttendee = /* GraphQL */ `
       llbelt
       createdAt
       updatedAt
+
       classAttendeesId
     }
   }
@@ -452,6 +467,7 @@ const createUser = /* GraphQL */ `
           kb
           createdAt
           updatedAt
+
           userUserMonthsId
         }
         nextToken
@@ -500,6 +516,7 @@ const updateUser = /* GraphQL */ `
           kb
           createdAt
           updatedAt
+
           userUserMonthsId
         }
         nextToken
@@ -548,6 +565,7 @@ const deleteUser = /* GraphQL */ `
           kb
           createdAt
           updatedAt
+
           userUserMonthsId
         }
         nextToken
@@ -602,6 +620,7 @@ const createUserMonth = /* GraphQL */ `
       kb
       createdAt
       updatedAt
+
       userUserMonthsId
     }
   }
@@ -650,6 +669,7 @@ const updateUserMonth = /* GraphQL */ `
       kb
       createdAt
       updatedAt
+
       userUserMonthsId
     }
   }
@@ -698,6 +718,7 @@ const deleteUserMonth = /* GraphQL */ `
       kb
       createdAt
       updatedAt
+
       userUserMonthsId
     }
   }
