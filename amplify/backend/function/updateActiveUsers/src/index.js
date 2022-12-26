@@ -16,35 +16,38 @@ const appsyncUrl = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIENDPOINTOUTPUT;
 const apiKey = process.env.API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT;
 
 const { request } = require("/opt/appsyncRequest");
-const { deleteAttendee } = require("/opt/graphql/mutations");
-const { listAttendees } = require("/opt/graphql/queries");
+const { updateUser } = require("/opt/graphql/mutations");
+const { listUsers } = require("/opt/graphql/queries");
 
-const weekday = ["-sun", "-mon", "-tue", "-wed", "-thu", "-fri", "-sat"];
-const yday =
-  weekday[new Date(new Date().setDate(new Date().getDate() - 1)).getDay()];
+const date_today = new Date();
+const AWSdate_today = date_today.toISOString().split("T")[0];
 
 exports.handler = async (event) => {
   try {
-    const getAttendees = await request(
+    const getUsers = await request(
       {
-        query: listAttendees,
+        query: listUsers,
         variables: {
-          filter: { classAttendeesId: { contains: yday } },
+          filter: {
+            renew: { eq: AWSdate_today },
+            active: { eq: true },
+          },
         },
       },
       appsyncUrl,
       apiKey
     );
 
-    getAttendees.data.listAttendees.items.forEach(async (item) => {
-      console.log("deleting attendee:", item.id);
+    getUsers.data.listUsers.items.forEach(async (item) => {
+      console.log("updating user", item.id);
 
-      const removeAttendee = await request(
+      const deactivate = await request(
         {
-          query: deleteAttendee,
+          query: updateUser,
           variables: {
             input: {
               id: item.id,
+              active: false,
             },
           },
         },

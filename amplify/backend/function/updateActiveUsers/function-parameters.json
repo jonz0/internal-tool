@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "api": {
+      "calendarsignup": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "calendarsignupnewLayer",
+      "env": "dev",
+      "version": "Always choose latest version",
+      "isLatestVersionSelected": true
+    }
+  ],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "apiAmplifylayerguideGraphqlapiendpointoutput",
+      "environmentVariableName": "API_AMPLIFYLAYERGUIDE_GRAPHQLAPIENDPOINTOUTPUT"
+    },
+    {
+      "cloudFormationParameterName": "apiAmplifylayerguideGraphqlapikeyoutput",
+      "environmentVariableName": "API_AMPLIFYLAYERGUIDE_GRAPHQLAPIKEYOUTPUT"
+    }
+  ]
+}

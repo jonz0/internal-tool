@@ -79,7 +79,7 @@ exports.handler = async (event) => {
 
         switch (item.class.type) {
           case "jj":
-            const reviseUserMonth = await request(
+            let reviseUserJJ = await request(
               {
                 query: updateUserMonth,
                 variables: {
@@ -94,7 +94,7 @@ exports.handler = async (event) => {
             );
             console.log("successful update on user:", item.username);
           case "ll":
-            const reviseUserMonth = await request(
+            let reviseUserLL = await request(
               {
                 query: updateUserMonth,
                 variables: {
@@ -109,7 +109,7 @@ exports.handler = async (event) => {
             );
             console.log("successful update on user:", item.username);
           case "kb":
-            const reviseUserMonth = await request(
+            let reviseUserKB = await request(
               {
                 query: updateUserMonth,
                 variables: {
