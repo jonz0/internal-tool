@@ -15,6 +15,7 @@ import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import styles from "../../styles/Profile.module.css";
 import { useForm } from "react-hook-form";
+import FileUpload from "./FileUpload";
 
 export default function UserData() {
   const [hour, setHours] = useState({
