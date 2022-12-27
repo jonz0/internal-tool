@@ -14,8 +14,11 @@ import * as queries from "../graphql/queries";
 import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import styles from "../../styles/Profile.module.css";
-import FileUpload from "./FileUpload";
 import { useForm } from "react-hook-form";
+import { Group, Text, useMantineTheme } from "@mantine/core";
+import { IconUpload, IconPhoto, IconX } from "@tabler/icons";
+import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from "@mantine/dropzone";
+import FileUpload from "./FileUpload";
 
 export default function UserData() {
   const [hour, setHours] = useState({
@@ -44,27 +47,11 @@ export default function UserData() {
 
   useEffect(() => {}, []);
 
-  const {
-    handleSubmit,
-    register,
-    setError,
-    control,
-    formState: { errors, isSubmitting },
-  } = useForm();
-
   return (
     <div>
       <p className={styles.header}>My Profile</p>
       <Avatar name="Dan Abrahmov" src="/user-placeholder.jpeg" />
-      <FileUpload
-        name="avatar"
-        acceptedFileTypes="image/*"
-        isRequired={true}
-        placeholder="Your avatar"
-        control={control}
-      >
-        Upload Profile Picture
-      </FileUpload>
+      <FileUpload />
       <FormControl>
         <div className={styles.namesContainer}>
           <div>

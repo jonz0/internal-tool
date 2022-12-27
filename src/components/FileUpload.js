@@ -1,66 +1,20 @@
-import {
-  Input,
-  FormControl,
-  FormLabel,
-  InputGroup,
-  InputLeftElement,
-  FormErrorMessage,
-  Icon,
-} from "@chakra-ui/react";
-import { FiFile } from "react-icons/fi";
-import { useController } from "react-hook-form";
-import { useRef } from "react";
+import { useState } from "react";
+import { FileButton, Button, Group, Text } from "@mantine/core";
 
-export const FileUpload = ({
-  name,
-  placeholder,
-  acceptedFileTypes,
-  control,
-  children,
-  isRequired = false,
-}) => {
-  const inputRef = useRef();
-  const {
-    field: { ref, onChange, value, ...inputProps },
-    fieldState: { invalid, isTouched, isDirty },
-  } = useController({
-    name,
-    control,
-    rules: { required: isRequired },
-  });
-
+export default function FileUpload() {
+  const [file, setFile] = useState<File | null>(null);
   return (
-    <FormControl isInvalid={invalid} isRequired>
-      <FormLabel htmlFor="writeUpFile">{children}</FormLabel>
-      <InputGroup>
-        <InputLeftElement pointerEvents="none">
-          <Icon as={FiFile} />
-        </InputLeftElement>
-        <input
-          type="file"
-          onChange={(e) => onChange(e.target.files[0])}
-          accept={acceptedFileTypes}
-          name={name}
-          ref={inputRef}
-          {...inputProps}
-          style={{ display: "none" }}
-        />
-        <Input
-          placeholder={placeholder || "Your file ..."}
-          onClick={() => inputRef.current.click()}
-          // onChange={(e) => {}}
-          readOnly={true}
-          value={(value && value.name) || ""}
-        />
-      </InputGroup>
-      <FormErrorMessage>{invalid}</FormErrorMessage>
-    </FormControl>
+    <>
+      <Group position="center">
+        <FileButton onChange={setFile} accept="image/png,image/jpeg">
+          {(props) => <Button {...props}>Upload image</Button>}
+        </FileButton>
+      </Group>
+      {file && (
+        <Text size="sm" align="center" mt="sm">
+          Picked file: {file.name}
+        </Text>
+      )}
+    </>
   );
-};
-
-FileUpload.defaultProps = {
-  acceptedFileTypes: "",
-  allowMultipleFiles: false,
-};
-
-export default FileUpload;
+}
