@@ -49,8 +49,6 @@ type User @model {
   enroll: AWSDate
   renew: AWSDate
   insta: String
-  hideEmail: Boolean
-  hidePhone: Boolean
   freeze: Boolean
   freezeStart: AWSDate
   freezeEnd: AWSDate

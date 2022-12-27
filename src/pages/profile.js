@@ -6,18 +6,20 @@ import Card from "../components/Card";
 
 export default function Profile() {
   return (
-    <div className={styles.profileContainer}>
+    <div className="page-container">
       <Menu />
-      <div className={styles.profileLeft}>
-        <EditProfile />
-      </div>
-      <div className={styles.profileRight}>
-        <div className={styles.statusCards}>
-          <Card index="0" />
-          <Card index="1" />
+      <div className={styles.profileContainer}>
+        <div className={styles.profileLeft}>
+          <EditProfile />
         </div>
-        <div className={styles.progressChart}>
-          <ProgressChart />
+        <div className={styles.profileRight}>
+          <div className={styles.statusCards}>
+            <Card index="0" />
+            <Card index="1" />
+          </div>
+          <div className={styles.progressChart}>
+            <ProgressChart />
+          </div>
         </div>
       </div>
     </div>

@@ -1,10 +1,21 @@
 import { useState, useEffect } from "react";
-import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
+import {
+  Button,
+  FormControl,
+  Input,
+  Avatar,
+  AvatarBadge,
+  AvatarGroup,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
 import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "../graphql/queries";
 import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import styles from "../../styles/Profile.module.css";
+import FileUpload from "./FileUpload";
+import { useForm } from "react-hook-form";
 
 export default function UserData() {
   const [hour, setHours] = useState({
@@ -33,93 +44,111 @@ export default function UserData() {
 
   useEffect(() => {}, []);
 
+  const {
+    handleSubmit,
+    register,
+    setError,
+    control,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
   return (
     <div>
+      <p className={styles.header}>My Profile</p>
+      <Avatar name="Dan Abrahmov" src="/user-placeholder.jpeg" />
+      <FileUpload
+        name="avatar"
+        acceptedFileTypes="image/*"
+        isRequired={true}
+        placeholder="Your avatar"
+        control={control}
+      >
+        Upload Profile Picture
+      </FileUpload>
       <FormControl>
+        <div className={styles.namesContainer}>
+          <div>
+            <label className={styles.label}>First Name</label>
+            <Input
+              id="firstname"
+              type="text"
+              // value={first}
+              // onChange={(event) => {
+              //   setFirst(event.target.value);
+              // }}
+              className={styles.input}
+              color="grey"
+              placeholder="First Name"
+              _placeholder={{ color: "inherit" }}
+              autoComplete="off"
+              size="sm"
+            />
+          </div>
+          <div>
+            <label className={styles.label}>Last Name</label>
+            <Input
+              id="lastname"
+              type="text"
+              // value={last}
+              // onChange={(event) => {
+              //   setLast(event.target.value);
+              // }}
+              className={styles.input}
+              color="grey"
+              placeholder="Last Name"
+              _placeholder={{ color: "inherit" }}
+              autoComplete="off"
+              size="sm"
+            />
+          </div>
+        </div>
+        <div className={styles.namesContainer}>
+          <div>
+            <label className={styles.label}>Email address</label>
+            <Input
+              id="email"
+              type="text"
+              // value={first}
+              // onChange={(event) => {
+              //   setFirst(event.target.value);
+              // }}
+              className={styles.input}
+              color="grey"
+              placeholder="Email address"
+              _placeholder={{ color: "inherit" }}
+              autoComplete="off"
+              size="sm"
+            />
+          </div>
+          <div>
+            <label className={styles.label}>Phone</label>
+            <Input
+              id="phone"
+              type="text"
+              // value={last}
+              // onChange={(event) => {
+              //   setLast(event.target.value);
+              // }}
+              className={styles.input}
+              color="grey"
+              placeholder="Phone"
+              _placeholder={{ color: "inherit" }}
+              autoComplete="off"
+              size="sm"
+            />
+          </div>
+        </div>
+        <label className={styles.label}>Instagram</label>
         <Input
-          id="username"
+          id="instagram"
           type="text"
-          // value={username}
-          // onChange={(event) => {
-          //   setUsername(event.target.value);
-          // }}
-          className={styles.input}
-          color="grey"
-          placeholder="Username"
-          _placeholder={{ color: "inherit" }}
-          autoComplete="off"
-          size="sm"
-        />
-        <div className={styles.namesContainer}>
-          <Input
-            id="firstname"
-            type="text"
-            // value={first}
-            // onChange={(event) => {
-            //   setFirst(event.target.value);
-            // }}
-            className={styles.input}
-            color="grey"
-            placeholder="First Name"
-            _placeholder={{ color: "inherit" }}
-            autoComplete="off"
-            size="sm"
-          />
-          <Input
-            id="lastname"
-            type="text"
-            // value={last}
-            // onChange={(event) => {
-            //   setLast(event.target.value);
-            // }}
-            className={styles.input}
-            color="grey"
-            placeholder="Last Name"
-            _placeholder={{ color: "inherit" }}
-            autoComplete="off"
-            size="sm"
-          />
-        </div>
-        <div className={styles.namesContainer}>
-          <Input
-            id="email"
-            type="email"
-            // value={email}
-            // onChange={(event) => {
-            //   setEmail(event.target.value);
-            // }}
-            className={styles.input}
-            color="grey"
-            placeholder="Email"
-            _placeholder={{ color: "inherit" }}
-            autoComplete="off"
-            size="sm"
-          />
-          <Input
-            id="phone"
-            type="tel"
-            // value={phone}
-            // onChange={(event) => {
-            //   setPhone(event.target.value);
-            // }}
-            className={styles.input}
-            color="grey"
-            placeholder="Phone"
-            _placeholder={{ color: "inherit" }}
-            autoComplete="off"
-            size="sm"
-          />
-        </div>
-        <Input
-          id="password"
-          type="password"
           // value={password}
           // onChange={(event) => {
           //   setPassword(event.target.value);
           // }}
           className={styles.input}
           color="grey"
-          placeholder="Password"
+          placeholder="Instagram"
           _placeholder={{ color: "inherit" }}
           autoComplete="off"
           size="sm"
@@ -127,10 +156,20 @@ export default function UserData() {
         <Button
           mt={4}
           colorScheme="blue"
-          type="submit"
           className={styles.submitButtons}
+          size="sm"
+          style={{ marginRight: "6px" }}
         >
           Sign up
+        </Button>
+        <Button
+          mt={4}
+          colorScheme="red"
+          className={styles.submitButtons}
+          size="sm"
+          style={{ marginLeft: "6px" }}
+        >
+          Reset Password
         </Button>
       </FormControl>
     </div>

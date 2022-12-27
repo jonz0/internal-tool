@@ -391,8 +391,6 @@ export const createUser = /* GraphQL */ `
       enroll
       renew
       insta
-      hideEmail
-      hidePhone
       freeze
       freezeStart
       freezeEnd
@@ -437,8 +435,6 @@ export const updateUser = /* GraphQL */ `
       enroll
       renew
       insta
-      hideEmail
-      hidePhone
       freeze
       freezeStart
       freezeEnd
@@ -483,8 +479,6 @@ export const deleteUser = /* GraphQL */ `
       enroll
       renew
       insta
-      hideEmail
-      hidePhone
       freeze
       freezeStart
       freezeEnd
@@ -531,8 +525,6 @@ export const createUserMonth = /* GraphQL */ `
         enroll
         renew
         insta
-        hideEmail
-        hidePhone
         freeze
         freezeStart
         freezeEnd
@@ -577,8 +569,6 @@ export const updateUserMonth = /* GraphQL */ `
         enroll
         renew
         insta
-        hideEmail
-        hidePhone
         freeze
         freezeStart
         freezeEnd
@@ -623,8 +613,6 @@ export const deleteUserMonth = /* GraphQL */ `
         enroll
         renew
         insta
-        hideEmail
-        hidePhone
         freeze
         freezeStart
         freezeEnd

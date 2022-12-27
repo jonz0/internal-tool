@@ -227,8 +227,6 @@ export const getUser = /* GraphQL */ `
       enroll
       renew
       insta
-      hideEmail
-      hidePhone
       freeze
       freezeStart
       freezeEnd
@@ -275,8 +273,6 @@ export const listUsers = /* GraphQL */ `
         enroll
         renew
         insta
-        hideEmail
-        hidePhone
         freeze
         freezeStart
         freezeEnd
@@ -311,8 +307,6 @@ export const getUserMonth = /* GraphQL */ `
         enroll
         renew
         insta
-        hideEmail
-        hidePhone
         freeze
         freezeStart
         freezeEnd
@@ -359,8 +353,6 @@ export const listUserMonths = /* GraphQL */ `
           enroll
           renew
           insta
-          hideEmail
-          hidePhone
           freeze
           freezeStart
           freezeEnd
