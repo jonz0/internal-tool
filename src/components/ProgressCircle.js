@@ -1,7 +1,7 @@
 import styles from "../../styles/Menu.module.css";
 import { CircularProgressbar } from "react-circular-progressbar";
 
-export default function Progress({ index }) {
+export default function ProgressCircle({ index }) {
   const progress = 12;
   const goal = 20;
   const percentage = (progress / goal) * 100;

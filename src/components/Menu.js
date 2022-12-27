@@ -1,6 +1,6 @@
 import styles from "../../styles/Menu.module.css";
 import Image from "next/image";
-import Progress from "./Progress";
+import ProgressCircle from "./ProgressCircle";
 import "@aws-amplify/ui-react/styles.css";
 import UserPool from "../UserPool";
 import { Button } from "@chakra-ui/react";
@@ -79,7 +79,7 @@ export default function Menu() {
           Debug
         </Button>
       </div>
-      <Progress />
+      <ProgressCircle />
     </div>
   );
 }
