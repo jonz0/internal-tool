@@ -13,18 +13,16 @@ export default function Card({ index }) {
   return (
     <div className={styles.card}>
       <p className={styles.subHeader}>{awards[index][1]}</p>
-      <div className={styles.cardContainer}>
-        <div className={styles.awardImages}>
-          <img src={awards[index][0]} className={styles.awardImage} />
-          <div className={styles.imageCropper}>
-            <img src="/user-placeholder.jpeg" className={styles.userImage} />
-          </div>
+      <div className={styles.awardImages}>
+        <img src={awards[index][0]} className={styles.awardImage} />
+        <div className={styles.imageCropper}>
+          <img src="/user-placeholder.jpeg" className={styles.userImage} />
         </div>
+      </div>
 
-        <div className={styles.cardContents}>
-          <p className={styles.content}>Jackie Chan</p>
-          <p className={styles.content}>900 Classes</p>
-        </div>
+      <div className={styles.cardContents}>
+        <p className={styles.content}>Jackie Chan</p>
+        <p className={styles.content}>900 Classes</p>
       </div>
     </div>
   );

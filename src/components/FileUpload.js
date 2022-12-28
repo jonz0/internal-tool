@@ -1,24 +1,20 @@
 import {
-    Input,
     FormControl,
     FormLabel,
     InputGroup,
-    InputLeftElement,
     FormErrorMessage,
-    Icon,
+    Button
   } from "@chakra-ui/react";
-  import { FiFile } from "react-icons/fi";
   import { useController } from "react-hook-form";
   import { useRef } from "react";
+  import styles from "../../styles/Profile.module.css";
   
-  export const FileUpload = ({
+  export default function FileUpload ({
     name,
-    placeholder,
     acceptedFileTypes,
     control,
     children,
-    isRequired = false,
-  }) => {
+  }) {
     const inputRef = useRef();
     const {
       field: { ref, onChange, value, ...inputProps },
@@ -26,16 +22,13 @@ import {
     } = useController({
       name,
       control,
-      rules: { required: isRequired },
+      rules: { required: false },
     });
   
     return (
-      <FormControl isInvalid={invalid} isRequired>
+      <FormControl isInvalid={invalid}>
         <FormLabel htmlFor="writeUpFile">{children}</FormLabel>
         <InputGroup>
-          <InputLeftElement pointerEvents="none">
-            <Icon as={FiFile} />
-          </InputLeftElement>
           <input
             type="file"
             onChange={(e) => onChange(e.target.files[0])}
@@ -45,13 +38,12 @@ import {
             {...inputProps}
             style={{ display: "none" }}
           />
-          <Input
-            placeholder={placeholder || "Your file ..."}
-            onClick={() => inputRef.current.click()}
+          <Button onClick={() => inputRef.current.click()}
+            colorScheme='blue' size='sm'
             // onChange={(e) => {}}
-            readOnly={true}
-            value={(value && value.name) || ""}
-          />
+            className={styles.fileUpload}>
+            Upload Photo
+            </Button>
         </InputGroup>
         <FormErrorMessage>{invalid}</FormErrorMessage>
       </FormControl>
@@ -62,5 +54,3 @@ import {
     acceptedFileTypes: "",
     allowMultipleFiles: false,
   };
-  
-  export default FileUpload;

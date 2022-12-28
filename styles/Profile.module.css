@@ -3,22 +3,28 @@
 .profileContainer {
   display: flex;
   flex-direction: row;
-  width: 100vh;
+  width: 80%;
   height: 100vh;
-  padding: 60px 40px 40px 60px;
+  padding: 40px 60px 40px 60px;
+  /* border-color: green;
+  border-width: 1px; */
+  gap: 60px;
+}
+
+.profileLeft {
+  max-width: 35%;
+  /* border-color: blue;
+  border-width: 1px; */
 }
 
 .profileRight {
   display: flex;
   flex-direction: column;
-  height: 500px;
-  gap: 20px;
-  margin-left: 120px;
-}
-
-.barChart {
-  height: 400px;
-  width: 200px;
+  margin-left: 20px;
+  /* margin-left: 80px; */
+  width: 100%;
+  /* border-color: red;
+  border-width: 1px; */
 }
 
 .formContainer {
@@ -28,7 +34,8 @@
 }
 
 .input {
-  margin-bottom: 15px;
+  margin-bottom: 8px;
+  margin-top: 3px;
 }
 
 .namesContainer {
@@ -39,10 +46,105 @@
 
 .header {
   font-size: 18pt;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
 .label {
   font-size: 10pt;
-  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.fileUpload {
+  cursor: pointer;
+}
+
+.avatarContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 20px;
+  /* justify-content: center; */
+}
+
+.subHeader {
+  font-size: 14pt;
+  font-weight: 600;
+}
+
+.joined {
+  font-size: 10pt;
+  color: gray;
+  font-style: italic;
+}
+
+.statusAlerts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.statusCards {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+
+.rightHeader {
+  font-size: 16pt;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.beltCard {
+  width: 150px;
+  height: 165px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+.beltImageCropper {
+  display: flex;
+  width: 75px;
+  height: 75px;
+  background-color: rgb(101, 101, 101);
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.beltImage {
+  width: 60px;
+  align-self: center;
+}
+
+.tableDisplay {
+  display: table;
+}
+
+.classType {
+  font-size: 12pt;
+  font-weight: 600;
+}
+
+.promoteDate {
+  color: gray;
+  font-style: italic;
+  font-size: 10pt;
+  margin-bottom: 10px;
+}
+
+.barChart {
+  height: 400px;
+  width: 100%;
+  /* border-color: blue;
+  border-width: 1px; */
 }

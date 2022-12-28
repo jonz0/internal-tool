@@ -6,10 +6,8 @@
   display: table-cell;
   border-radius: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  margin-right: 20px;
   vertical-align: middle;
   text-align: center;
-  margin-top: 10px;
 }
 
 .header {
@@ -30,11 +28,6 @@
   color: black;
   font-size: 11pt;
   height: 100%;
-}
-
-.cardContainer {
-  align-self: center;
-  vertical-align: middle;
 }
 
 .boardContainer {
@@ -61,6 +54,7 @@
   border-collapse: separate;
   margin-top: -5px;
   margin-left: -10px;
+  gap: 20px;
 }
 
 .classLeaders {

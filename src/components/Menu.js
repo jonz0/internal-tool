@@ -69,7 +69,7 @@ export default function Menu() {
             Sign Out
           </p>
         </div>
-        <Button
+        {/* <Button
           mt={4}
           colorScheme="teal"
           style={{ marginRight: "8px" }}
@@ -77,7 +77,7 @@ export default function Menu() {
           width="140px"
         >
           Debug
-        </Button>
+        </Button> */}
       </div>
       <ProgressCircle />
     </div>

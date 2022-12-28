@@ -14,8 +14,8 @@ export default function DetailsAdmin() {
   const details = useSelector((state) => state.details.value);
   const removeStaging = useSelector((state) => state.removeStaging.value);
   const belts = ["⬜", "🟨", "🟧", "🟦", "🟪", "🟫", "⬛"];
-  const awards = ["🥋", "🤼‍♂️", "🐯", "🥊"];
-  const ranks = ["🥉", "🥈", "🥇"];
+  // const awards = ["🥋", "🤼‍♂️", "🐯", "🥊"];
+  // const ranks = ["🥉", "🥈", "🥇"];
 
   function removeStagedUsers() {
     removeStaging.forEach(async (id) => {
