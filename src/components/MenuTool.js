@@ -18,10 +18,11 @@ import {
   Users,
   ClipboardCheck,
   PencilPlus,
+  ChevronUp,
 } from "tabler-icons-react";
 import { useEffect } from "react";
 
-export default function MenuTool({ text, selected }) {
+export default function MenuTool({ text, selected, clicked }) {
   const [bg, setBg] = useState("rgb(198, 213, 233)");
   const icons = {
     Profile: (
@@ -72,41 +73,24 @@ export default function MenuTool({ text, selected }) {
         className={styles.toolIcon}
       />
     ),
-    ManageClasses: (
-      <PencilPlus
-        size={26}
-        strokeWidth={2}
-        color={"black"}
-        className={styles.toolIcon}
-      />
-    ),
-    ManageUsers: (
-      <Users
-        size={26}
-        strokeWidth={2}
-        color={"black"}
-        className={styles.toolIcon}
-      />
-    ),
-    ManageAttendees: (
-      <ClipboardCheck
-        size={26}
-        strokeWidth={2}
-        color={"black"}
-        className={styles.toolIcon}
-      />
-    ),
   };
 
   return (
     <div className={styles.tool}>
-      {icons[text.replace(/\s+/g, "")]}
-      {text == selected ? (
+      {text == selected || clicked ? (
         <p className={styles.toolText} style={{ fontWeight: "700" }}>
           {text}
         </p>
       ) : (
         <p className={styles.toolText}>{text}</p>
+      )}
+      {text == "Admin" && (
+        <ChevronUp
+          size={16}
+          strokeWidth={2}
+          color={"black"}
+          className={(clicked ? "show" : "") + " chevron"}
+        />
       )}
     </div>
   );

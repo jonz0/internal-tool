@@ -113,10 +113,20 @@ a {
   opacity: 0;
   overflow: hidden;
   display: flex;
-  transition: all 600ms ease-in-out;
+  transition: all 350ms ease-in-out;
 }
 
 .dropdown.show {
   height: 90px;
   opacity: 1;
+}
+
+.chevron {
+  margin-left: auto;
+  margin-right: 10px;
+  transition: all 350ms;
+}
+
+.chevron.show {
+  transform: rotate(180deg);
 }

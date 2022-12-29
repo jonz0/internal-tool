@@ -46,10 +46,15 @@ export default function Menu({ selected }) {
           setAdmin(!admin);
         }}
       >
-        <MenuTool text="Admin" selected={selected} class="admin" />
+        <MenuTool
+          text="Admin"
+          selected={selected}
+          class="admin"
+          clicked={admin}
+        />
       </div>
 
-      <div className={(admin === true ? "show" : "") + " dropdown"}>
+      <div className={(admin ? "show" : "") + " dropdown"}>
         <div className={styles.dropdown} id="dropdown">
           <a href="/manage-attendees">
             <MenuToolSmall text="Manage Attendees" selected={selected} />
