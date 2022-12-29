@@ -28,6 +28,7 @@ export default function MenuToolSmall({ text, selected }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const [bg, setBg] = useState("rgb(198, 213, 233)");
+  const adminState = useSelector((state) => state.admin.value);
   const icons = {
     ManageClasses: (
       <PencilPlus
@@ -66,8 +67,11 @@ export default function MenuToolSmall({ text, selected }) {
       }}
     >
       {icons[text.replace(/\s+/g, "")]}
-      {text == selected ? (
-        <p className={styles.toolText} style={{ fontWeight: "700" }}>
+      {text == adminState ? (
+        <p
+          className={styles.toolText}
+          style={{ fontWeight: "700", fontSize: "9pt" }}
+        >
           {text}
         </p>
       ) : (

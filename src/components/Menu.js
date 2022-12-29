@@ -9,12 +9,15 @@ import MenuToolSmall from "./MenuToolSmall";
 import { Power } from "tabler-icons-react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+import { setManage } from "../features/class/adminSlice";
 
 export default function Menu({ selected }) {
   const currentUser = UserPool.getCurrentUser();
   const [page, setPage] = useState("Classes");
   const [admin, setAdmin] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (selected != null) {
@@ -42,6 +45,7 @@ export default function Menu({ selected }) {
       </div>
       <div
         onClick={() => {
+          dispatch(setManage(""));
           router.push("/profile");
         }}
       >
@@ -49,6 +53,7 @@ export default function Menu({ selected }) {
       </div>
       <div
         onClick={() => {
+          dispatch(setManage(""));
           router.push("/leaderboard");
         }}
       >
@@ -60,6 +65,7 @@ export default function Menu({ selected }) {
       <div
         className="container"
         onClick={() => {
+          dispatch(setManage(""));
           setAdmin(!admin);
         }}
       >

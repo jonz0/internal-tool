@@ -77,7 +77,7 @@ export default function MenuTool({ text, selected, clicked }) {
 
   return (
     <div className={styles.tool}>
-      {text == selected || clicked ? (
+      {text == selected ? (
         <p className={styles.toolText} style={{ fontWeight: "700" }}>
           {text}
         </p>

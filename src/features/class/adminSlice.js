@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const adminSlice = createSlice({
   name: "manage",
   initialState: {
-    value: "Manage Attendees",
+    value: "",
   },
   reducers: {
     setManage: (state, action) => {
