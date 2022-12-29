@@ -17,6 +17,6 @@ import * as queries from "../graphql/queries";
 import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 
-export default function ManageUsers() {
-  return <div>ManageUsers</div>;
+export default function ManageClasses() {
+  return <div>ManageClasses</div>;
 }

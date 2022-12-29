@@ -18,7 +18,7 @@ import {
   Users,
   ClipboardCheck,
   PencilPlus,
-  ChevronUp,
+  ChevronDown,
 } from "tabler-icons-react";
 import { useEffect } from "react";
 
@@ -85,7 +85,7 @@ export default function MenuTool({ text, selected, clicked }) {
         <p className={styles.toolText}>{text}</p>
       )}
       {text == "Admin" && (
-        <ChevronUp
+        <ChevronDown
           size={16}
           strokeWidth={2}
           color={"black"}

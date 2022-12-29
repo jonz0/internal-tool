@@ -17,6 +17,9 @@ import * as queries from "../graphql/queries";
 import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import ManageUsers from "../components/ManageUsers";
+import ManageAttendees from "../components/ManageAttendees";
+import ManageClasses from "../components/ManageClasses";
+import { useSelector, useDispatch } from "react-redux";
 
 function debug() {
   console.log(retrieveInactives());
@@ -40,32 +43,14 @@ async function buildDefaultSchema() {
 }
 
 export default function admin() {
+  const adminState = useSelector((state) => state.admin.value);
   return (
     <div className="page-container">
       <Menu selected="Admin" />
       <div className={styles.pageRight}>
-        <ManageUsers />
-        {/* <div className={styles.calendarContainer}>
-          <Tabs variant="soft-rounded" colorScheme="blue">
-            <TabList className="tab-list">
-              <Tab>Adults</Tab>
-              <Tab>Kids</Tab>
-            </TabList>
-            <TabPanels>
-              <TabPanel>
-                <div className={styles.signupContainer}>
-                  <DaySet exclude="kids" />
-                </div>
-              </TabPanel>
-              <TabPanel>
-                <div className={styles.signupContainer}>
-                  <DaySet exclude="adults" />
-                </div>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-          <DetailsAdmin />
-        </div> */}
+        {adminState == "Manage Attendees" && <ManageAttendees />}
+        {adminState == "Manage Users" && <ManageUsers />}
+        {adminState == "Manage Classes" && <ManageClasses />}
       </div>
     </div>
   );

@@ -8,14 +8,19 @@ import MenuTool from "./MenuTool";
 import MenuToolSmall from "./MenuToolSmall";
 import { Power } from "tabler-icons-react";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Menu({ selected }) {
   const currentUser = UserPool.getCurrentUser();
   const [page, setPage] = useState("Classes");
   const [admin, setAdmin] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (selected != null) {
+      if (selected == "Admin") {
+        setAdmin(true);
+      }
       setPage(selected);
     }
   }, []);
@@ -28,15 +33,27 @@ export default function Menu({ selected }) {
     <div className={styles.toolbar}>
       <img src="/serao-transparent-black.png" className={styles.serao} />
 
-      <a href="/">
+      <div
+        onClick={() => {
+          router.push("/");
+        }}
+      >
         <MenuTool text="Classes" selected={selected} />
-      </a>
-      <a href="/profile">
+      </div>
+      <div
+        onClick={() => {
+          router.push("/profile");
+        }}
+      >
         <MenuTool text="Profile" selected={selected} />
-      </a>
-      <a href="/leaderboard">
+      </div>
+      <div
+        onClick={() => {
+          router.push("/leaderboard");
+        }}
+      >
         <MenuTool text="Leaderboard" selected={selected} />
-      </a>
+      </div>
 
       <hr className={styles.hl} />
 
@@ -56,15 +73,9 @@ export default function Menu({ selected }) {
 
       <div className={(admin ? "show" : "") + " dropdown"}>
         <div className={styles.dropdown} id="dropdown">
-          <a href="/manage-attendees">
-            <MenuToolSmall text="Manage Attendees" selected={selected} />
-          </a>
-          <a href="/manage-classes">
-            <MenuToolSmall text="Manage Classes" selected={selected} />
-          </a>
-          <a href="/manage-users">
-            <MenuToolSmall text="Manage Users" selected={selected} />
-          </a>
+          <MenuToolSmall text="Manage Attendees" selected={selected} />
+          <MenuToolSmall text="Manage Classes" selected={selected} />
+          <MenuToolSmall text="Manage Users" selected={selected} />
         </div>
       </div>
 

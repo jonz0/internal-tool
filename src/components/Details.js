@@ -3,9 +3,9 @@ import { v4 as uuidv4 } from "uuid";
 import styles from "../../styles/Home.module.css";
 
 export default function Details() {
-  const details = useSelector((state) => state.details.value);
+  const detailsState = useSelector((state) => state.details.value);
   const belts = ["⬜", "🟨", "🟧", "🟦", "🟪", "🟫", "⬛"];
-  const classType = details.type;
+  const classType = detailsState.type;
 
   // const awards = ["🥋", "🤼‍♂️", "🐯", "🥊"];
   // const ranks = ["🥉", "🥈", "🥇"];
@@ -31,21 +31,22 @@ export default function Details() {
       <div className={styles.detailsContainer}>
         <div className={styles.detailsLeft}>
           <p>
-            <b>Class:</b> {details.name}
+            <b>Class:</b> {detailsState.name}
           </p>
           <p>
-            <b>Instructor:</b> {details.instructor}
+            <b>Instructor:</b> {detailsState.instructor}
           </p>
           <p>
-            <b>Availability:</b> {details.openSpots} out of {details.maxSpots}
+            <b>Availability:</b> {detailsState.openSpots} out of{" "}
+            {detailsState.maxSpots}
           </p>
           <p>
-            <b>Message:</b> {details.message}
+            <b>Message:</b> {detailsState.message}
           </p>
         </div>
 
         <div className={styles.detailsRight}>
-          {details.attendees.map((attendee) => (
+          {detailsState.attendees.map((attendee) => (
             <p key={uuidv4()} className={styles.attendeeName}>
               {getBelt(attendee)} {attendee.name}
             </p>

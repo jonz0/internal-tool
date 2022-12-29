@@ -8,7 +8,7 @@ import UserPool from "../UserPool";
 import { CognitoUserAttribute, CognitoUser } from "amazon-cognito-identity-js";
 
 export default function AuthWrapper(props) {
-  //   const [session, setSession] = useState(false);
+  // const [session, setSession] = useState(false);
   // const session = useSelector((state) => state.user.value);
   const router = useRouter();
   const [session, setSession] = useState(true);

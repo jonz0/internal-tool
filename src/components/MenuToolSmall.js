@@ -20,8 +20,13 @@ import {
   PencilPlus,
 } from "tabler-icons-react";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+import { setManage } from "../features/class/adminSlice";
 
 export default function MenuToolSmall({ text, selected }) {
+  const router = useRouter();
+  const dispatch = useDispatch();
   const [bg, setBg] = useState("rgb(198, 213, 233)");
   const icons = {
     ManageClasses: (
@@ -51,7 +56,15 @@ export default function MenuToolSmall({ text, selected }) {
   };
 
   return (
-    <div className={styles.toolSmall}>
+    <div
+      className={styles.toolSmall}
+      onClick={() => {
+        if (router.pathname != "/admin") {
+          router.push("/admin");
+        }
+        dispatch(setManage(text));
+      }}
+    >
       {icons[text.replace(/\s+/g, "")]}
       {text == selected ? (
         <p className={styles.toolText} style={{ fontWeight: "700" }}>
