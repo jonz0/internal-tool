@@ -42,7 +42,7 @@ async function buildDefaultSchema() {
 export default function admin() {
   return (
     <div className="page-container">
-      <Menu />
+      <Menu selected="Admin" />
       <div className={styles.pageRight}>
         <ManageUsers />
         {/* <div className={styles.calendarContainer}>

@@ -22,7 +22,7 @@ export default function AuthWrapper(props) {
           setSession(false);
           return;
         }
-        console.log("session validity: " + session.isValid());
+        // console.log("session validity: " + session.isValid());
 
         if (session.isValid) {
           setSession(true);

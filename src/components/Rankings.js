@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { API } from "aws-amplify";
 import * as queries from "../graphql/queries";
 import Rank from "../components/Rank";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Rankings({ exclude }) {
   const [numDays, setNumDays] = useState(0);
@@ -21,6 +22,6 @@ export default function Rankings({ exclude }) {
   });
 
   return rankings.map((c) => {
-    return <Rank rank={c} name="Jackie Chan" />;
+    return <Rank rank={c} name="Jackie Chan" key={uuidv4()} />;
   });
 }

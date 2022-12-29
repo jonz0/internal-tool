@@ -6,7 +6,7 @@ import Rankings from "../components/Rankings";
 export default function Leaderboard() {
   return (
     <div className="page-container">
-      <Menu />
+      <Menu selected="Leaderboard" />
 
       <div className={styles.boardContainer}>
         <div className={styles.titlesContainer}>

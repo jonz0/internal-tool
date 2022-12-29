@@ -102,3 +102,21 @@ a {
 .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {
   stroke: transparent;
 }
+
+.admin {
+  background-color: gray;
+  cursor: pointer;
+}
+
+.dropdown {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  display: flex;
+  transition: all 600ms ease-in-out;
+}
+
+.dropdown.show {
+  height: 90px;
+  opacity: 1;
+}

@@ -27,6 +27,7 @@
     "chart.js": "^4.1.1",
     "framer-motion": "^7.6.5",
     "graphql": "^15.8.0",
+    "jquery": "^3.6.3",
     "next": "^13.0.0",
     "next-redux-wrapper": "^8.0.0",
     "node-fetch": "^3.3.0",
@@ -42,6 +43,7 @@
     "react-redux": "^8.0.5",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.2",
+    "tabler-icons-react": "^1.56.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -50,6 +52,7 @@
     "@babel/preset-env": "^7.20.2",
     "@faker-js/faker": "^7.6.0",
     "@redux-devtools/core": "^3.13.1",
+    "@types/jquery": "^3.5.14",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.0",
     "faker": "^5.5.3",

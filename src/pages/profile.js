@@ -8,7 +8,7 @@ import Belt from "../components/Belt";
 export default function Profile() {
   return (
     <div className="page-container">
-      <Menu />
+      <Menu selected="Profile" />
       <div className={styles.profileContainer}>
         <div className={styles.profileLeft}>
           <EditProfile />

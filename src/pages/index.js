@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <AmplifyProvider>
       <div className="page-container">
-        <Menu />
+        <Menu selected="Classes" />
         <div className={styles.pageRight}>
           <div className={styles.calendarContainer}>
             <Tabs variant="soft-rounded" colorScheme="blue">
