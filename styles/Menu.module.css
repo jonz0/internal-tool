@@ -87,7 +87,7 @@
   height: 250px;
   width: 260px;
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
 }
 
 .dropdown {
@@ -98,4 +98,19 @@
   margin-left: auto;
   margin-right: 10px;
   transform: rotate(-180deg);
+}
+
+.inputContainer {
+  background-color: white;
+  width: 80px;
+  align-self: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 160px;
+  justify-self: center;
+  margin: auto;
 }
