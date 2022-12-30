@@ -36,7 +36,7 @@ export default function Home() {
         <div className={styles.pageRight}>
           <div className={styles.calendarContainer}>
             <Tabs variant="soft-rounded" colorScheme="blue">
-              <TabList className="tab-list">
+              <TabList className={styles.tabs}>
                 <Tab>Adults</Tab>
                 <Tab>Kids</Tab>
               </TabList>

@@ -24,7 +24,7 @@ import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { setManage } from "../features/class/adminSlice";
 
-export default function MenuToolSmall({ text, selected }) {
+export default function MenuToolSmall({ text }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const [bg, setBg] = useState("rgb(198, 213, 233)");

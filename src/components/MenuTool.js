@@ -1,26 +1,13 @@
 import { useState } from "react";
 import styles from "../../styles/Menu.module.css";
-import Image from "next/image";
-import ProgressCircle from "./ProgressCircle";
 import "@aws-amplify/ui-react/styles.css";
-import UserPool from "../UserPool";
-import { Button } from "@chakra-ui/react";
-import {
-  CognitoIdentityProviderClient,
-  ListUsersCommand,
-} from "@aws-sdk/client-cognito-identity-provider";
 import {
   CalendarEvent,
   UserCircle,
   Trophy,
   Edit,
-  Power,
-  Users,
-  ClipboardCheck,
-  PencilPlus,
   ChevronDown,
 } from "tabler-icons-react";
-import { useEffect } from "react";
 
 export default function MenuTool({ text, selected, clicked }) {
   const [bg, setBg] = useState("rgb(198, 213, 233)");
@@ -77,6 +64,7 @@ export default function MenuTool({ text, selected, clicked }) {
 
   return (
     <div className={styles.tool}>
+      {icons[text]}
       {text == selected ? (
         <p className={styles.toolText} style={{ fontWeight: "700" }}>
           {text}

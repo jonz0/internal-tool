@@ -10,10 +10,6 @@ import ManageClasses from "../components/ManageClasses";
 import { useSelector, useDispatch } from "react-redux";
 import { setManage } from "../features/class/adminSlice";
 
-function debug() {
-  console.log(retrieveInactives());
-}
-
 async function retrieveInactives() {
   const getInactives = await API.graphql({
     query: queries.listUsers,
@@ -30,7 +26,9 @@ export default function admin() {
   const adminState = useSelector((state) => state.admin.value);
 
   useEffect(() => {
-    dispatch(setManage("Manage Attendees"));
+    if (adminState == "") {
+      dispatch(setManage("Manage Attendees"));
+    }
   }, []);
 
   return (

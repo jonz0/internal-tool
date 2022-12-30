@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styles from "../../styles/Menu.module.css";
-import Image from "next/image";
 import ProgressCircle from "./ProgressCircle";
 import "@aws-amplify/ui-react/styles.css";
 import UserPool from "../UserPool";
@@ -9,11 +8,10 @@ import MenuToolSmall from "./MenuToolSmall";
 import { Power } from "tabler-icons-react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setManage } from "../features/class/adminSlice";
 
 export default function Menu({ selected }) {
-  const currentUser = UserPool.getCurrentUser();
   const [page, setPage] = useState("Classes");
   const [admin, setAdmin] = useState(false);
   const router = useRouter();
