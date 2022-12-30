@@ -38,16 +38,101 @@
   margin-bottom: 10px;
 }
 
-.detailsContainer {
+.pageRight {
   display: flex;
-  flex-direction: row;
+  width: 80%;
+  height: 100vh;
+  padding: 40px 60px 40px 60px;
+  gap: 60px;
 }
 
-.detailsLeft {
-  width: 40%;
+/* .attendeesContainer {
+  border-width: 2px;
+  border-color: red;
+  width: 100%;
+  height: 100%;
+} */
+
+.attendeesList {
+  border-width: 2px;
+  border-color: blue;
+  width: 100%;
+}
+
+.attendees {
+  height: 100%;
+  width: 100%;
+  overflow-x: scroll;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 280px);
+
+  /* border-width: 2px;
+  border-color: red; */
 }
 
 .detailsHeaders {
   display: flex;
   flex-direction: row;
+}
+
+.calendarContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* border-width: 5px;
+  border-color: orange; */
+}
+
+.signupContainer {
+  display: flex;
+  flex-direction: row;
+  overflow-y: auto;
+  overflow-x: auto;
+  width: 68vw;
+  margin-left: -16px;
+  padding-bottom: 15px;
+  /* border-width: 1px;
+  border-color: green; */
+}
+
+.tabs {
+  margin-left: -10px;
+}
+
+.detailsRight {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 100%;
+  height: 100%;
+}
+
+.detailsHeader {
+  font-family: "Georama", sans-serif;
+  font-size: 17pt;
+  font-weight: 500;
+  margin-bottom: 20px;
+  width: 40%;
+}
+
+.attendeesHeader {
+  font-family: "Georama", sans-serif;
+  font-size: 17pt;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.userContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.removeButton {
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.attendeeName {
+  margin-right: 35px;
 }

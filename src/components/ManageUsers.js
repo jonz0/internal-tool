@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState, useContext } from "react";
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/Admin.module.css";
 import { API, graphqlOperation } from "aws-amplify";
 import DaySet from "../components/DaySet";
-import DetailsAdmin from "../components/DetailsAdmin";
 import {
   Button,
   ButtonGroup,

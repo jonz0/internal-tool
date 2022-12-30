@@ -6,9 +6,9 @@
   width: 80%;
   height: 100vh;
   padding: 40px 60px 40px 60px;
+  gap: 60px;
   /* border-color: green;
   border-width: 1px; */
-  gap: 60px;
 }
 
 .profileLeft {

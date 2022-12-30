@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/Admin.module.css";
 import { setToRemove } from "../features/class/removeStaging";
 
 export default function RemoveUser({ attendee }) {
