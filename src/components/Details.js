@@ -21,15 +21,9 @@ export default function Details() {
 
   return (
     <div className={styles.detailsContainer}>
-      <div className={styles.details}>
-        <div className={styles.detailsHeaders}>
-          <p className={styles.detailsHeader}>Details</p>
-          <p className={styles.attendeesHeader}>Attendees</p>
-        </div>
-      </div>
-
       <div className={styles.detailsContents}>
         <div className={styles.detailsLeft}>
+          <p className={styles.detailsHeader}>Details</p>
           <p>
             <b>Class:</b> {detailsState.name}
           </p>
@@ -45,12 +39,15 @@ export default function Details() {
           </p>
         </div>
 
-        <div className={styles.detailsRight}>
-          {detailsState.attendees.map((attendee) => (
-            <p key={uuidv4()} className={styles.attendeeName}>
-              {getBelt(attendee)} {attendee.name}
-            </p>
-          ))}
+        <div clasName={styles.rightContainer}>
+          <p className={styles.attendeesHeader}>Attendees</p>
+          <div className={styles.detailsRight}>
+            {detailsState.attendees.map((attendee) => (
+              <p key={uuidv4()}>
+                {getBelt(attendee)} {attendee.name}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </div>

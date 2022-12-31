@@ -56,10 +56,12 @@ export default function Attendees() {
           Confirm Removals
         </Button>
       </div>
-      <div className={styles.attendees}>
-        {detailsState.attendees.map((attendee) => (
-          <RemoveUser key={uuidv4()} attendee={attendee} />
-        ))}
+      <div className={styles.contain}>
+        <div className={styles.attendees}>
+          {detailsState.attendees.map((attendee) => (
+            <RemoveUser key={uuidv4()} attendee={attendee} />
+          ))}
+        </div>
       </div>
     </div>
   );

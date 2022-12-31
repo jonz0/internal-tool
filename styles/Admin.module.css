@@ -41,7 +41,7 @@
 .pageRight {
   display: flex;
   width: 80%;
-  height: 100vh;
+  height: 100%;
   padding: 40px 60px 40px 60px;
   gap: 60px;
 }
@@ -53,12 +53,18 @@
 }
 
 .attendees {
-  height: 100%;
-  overflow-x: scroll;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 290px);
-  gap: 8px;
-  grid-auto-rows: 20px;
+  overflow-x: auto;
+  height: 25vh;
+
+  -webkit-column-count: 5; /* Chrome, Safari, Opera */
+  -moz-column-count: 5; /* Firefox */
+  column-count: 5;
+  column-width: 280px;
+  max-width: 1300px;
+  width: 69vw;
+
+  /* border-width: 1px;
+  border-color: red; */
 }
 
 .detailsHeaders {
@@ -79,7 +85,7 @@
   flex-direction: row;
   overflow-y: auto;
   overflow-x: auto;
-  width: 68vw;
+  width: 69vw;
   margin-left: -16px;
   padding-bottom: 15px;
   /* border-width: 1px;
