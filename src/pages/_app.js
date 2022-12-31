@@ -16,9 +16,9 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider>
       <Provider store={store}>
-        {/* <AuthWrapper> */}
-        <Component {...pageProps} />
-        {/* </AuthWrapper> */}
+        <AuthWrapper>
+          <Component {...pageProps} />
+        </AuthWrapper>
       </Provider>
     </ChakraProvider>
   );

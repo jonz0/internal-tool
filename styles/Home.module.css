@@ -19,7 +19,6 @@
 .signupContainer {
   display: flex;
   flex-direction: row;
-  overflow-y: auto;
   overflow-x: auto;
   width: 68vw;
   margin-left: -16px;
@@ -82,11 +81,10 @@
   margin-bottom: 10px;
 }
 
-.detailsContainer {
+.detailsContents {
   display: flex;
   height: 40%;
   margin-left: 15px;
-  overflow: scroll;
 }
 
 .detailsLeft {
@@ -108,8 +106,10 @@
   margin-top: 3px;
 }
 
-.testDiv {
-  max-height: 100vh;
+.detailsContainer {
+  height: 100%;
+  /* border-width: 1px;
+  border-color: green; */
 }
 
 .setupContainer {

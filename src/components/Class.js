@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setDetails } from "../features/class/detailsSlice";
 
 export default function Class({ c }) {
+  const dispatch = useDispatch();
+
   if (c == null) {
     return (
       <div>
@@ -24,8 +26,6 @@ export default function Class({ c }) {
       </div>
     );
   }
-
-  const dispatch = useDispatch();
 
   const details = useRef({
     id: c.id,
@@ -117,7 +117,6 @@ export default function Class({ c }) {
       >
         {c.name} <br />
         {getRangeReadable(c)}
-        {/* {getTimeReadable(c.start)} - {getTimeReadable(c.end)} */}
       </Button>
     </div>
   );

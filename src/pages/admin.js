@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState, useContext } from "react";
+import { useEffect } from "react";
 import styles from "../../styles/Admin.module.css";
-import { API, graphqlOperation } from "aws-amplify";
-import DaySet from "../components/DaySet";
+import { API } from "aws-amplify";
 import Menu from "../components/Menu";
 import * as queries from "../graphql/queries";
 import ManageUsers from "../components/ManageUsers";

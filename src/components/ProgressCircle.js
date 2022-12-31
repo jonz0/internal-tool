@@ -18,7 +18,11 @@ export default function ProgressCircle({ index }) {
   const [goal, setGoal] = useState();
   const [final, setFinal] = useState(0);
   const percentage =
-    progress / final > 1 ? (final == 0 ? 0 : 100) : (progress / final) * 100;
+    progress / final > 1
+      ? final == 0
+        ? 0
+        : 100
+      : Math.round((progress / final) * 100);
   const shownPercentage = final !== 0 ? percentage : 0;
 
   function submitGoal() {
@@ -27,7 +31,7 @@ export default function ProgressCircle({ index }) {
 
   return (
     <div className={styles.progressCard}>
-      {!(final > 0) && (
+      {
         <p
           style={{
             textAlign: "center",
@@ -36,26 +40,34 @@ export default function ProgressCircle({ index }) {
             fontSize: "14pt",
           }}
         >
-          Set a weekly goal:
+          {!(final > 0) ? "Set a weekly goal" : "Current Progress"}
         </p>
-      )}
-      {final > 0 && (
-        <p
-          style={{
-            textAlign: "center",
-            marginBottom: "12px",
-            fontWeight: "600",
-            fontSize: "14pt",
-          }}
-        >
-          Current Progress:
-        </p>
-      )}
+      }
       <CircularProgressbar value={shownPercentage} text={`${percentage}%`} />;
       {final > 0 && (
-        <p style={{ textAlign: "center", marginTop: "-5px" }}>
-          {progress} out of {final} hours
-        </p>
+        <div className={styles.goalSet}>
+          <p
+            style={{
+              textAlign: "center",
+              marginTop: "-10px",
+              marginBottom: "5px",
+            }}
+          >
+            {progress} out of {final} hours
+          </p>
+          <Button
+            colorScheme="red"
+            size="md"
+            height="33px"
+            fontSize="10pt"
+            onClick={() => {
+              setFinal(0);
+              setGoal();
+            }}
+          >
+            Reset Goal
+          </Button>
+        </div>
       )}
       {final == 0 && (
         <form

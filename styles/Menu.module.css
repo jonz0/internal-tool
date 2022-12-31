@@ -114,3 +114,10 @@
   justify-self: center;
   margin: auto;
 }
+
+.goalSet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

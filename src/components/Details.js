@@ -20,7 +20,7 @@ export default function Details() {
   }
 
   return (
-    <div className={styles.testDiv}>
+    <div className={styles.detailsContainer}>
       <div className={styles.details}>
         <div className={styles.detailsHeaders}>
           <p className={styles.detailsHeader}>Details</p>
@@ -28,7 +28,7 @@ export default function Details() {
         </div>
       </div>
 
-      <div className={styles.detailsContainer}>
+      <div className={styles.detailsContents}>
         <div className={styles.detailsLeft}>
           <p>
             <b>Class:</b> {detailsState.name}
