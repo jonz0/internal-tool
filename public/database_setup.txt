@@ -99,101 +99,101 @@ mutation MyMutation {
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 mutation MyMutation {
-  createUser(input: {firstName: "Joshua", lastName: "Diaz", jjbelt: 0, llbelt: 2, username: "joshua", id: "joshua", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Joshua", lastName: "Diaz", jjbelt: 0, llbelt: 2, username: "joshua", id: "joshua", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 
 mutation MyMutation {
-  createUser(input: {firstName: "Jordan", lastName: "Banholzer", jjbelt: 0, llbelt: 0, username: "jordan", id: "jordan", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Jordan", lastName: "Banholzer", jjbelt: 0, llbelt: 0, username: "jordan", id: "jordan", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Wen", lastName: "Ong", jjbelt: 3, llbelt: 3, username: "wen", id: "wen", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
-    id
-  }
-}
-
-
-mutation MyMutation {
-  createUser(input: {firstName: "Christine", lastName: "Tran", jjbelt: 0, llbelt: 0, username: "christine", id: "christine", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Wen", lastName: "Ong", jjbelt: 3, llbelt: 3, username: "wen", id: "wen", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 
 mutation MyMutation {
-  createUser(input: {firstName: "Natalie", lastName: "Abal", jjbelt: 0, llbelt: 1, username: "natalie", id: "natalie", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Christine", lastName: "Tran", jjbelt: 0, llbelt: 0, username: "christine", id: "christine", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 
 mutation MyMutation {
-  createUser(input: {firstName: "Pian", lastName: "Pawakapan", jjbelt: 0, llbelt: 1, username: "pian", id: "pian", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Natalie", lastName: "Abal", jjbelt: 0, llbelt: 1, username: "natalie", id: "natalie", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
+    id
+  }
+}
+
+
+mutation MyMutation {
+  createUser(input: {firstName: "Pian", lastName: "Pawakapan", jjbelt: 0, llbelt: 1, username: "pian", id: "pian", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Spencer", lastName: "Choi", jjbelt: 3, llbelt: 2, username: "spencer", id: "spencer", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Spencer", lastName: "Choi", jjbelt: 3, llbelt: 2, username: "spencer", id: "spencer", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Giovanni", lastName: "Ribeiro", jjbelt: 3, llbelt: 3, username: "giovanni", id: "giovanni", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Giovanni", lastName: "Ribeiro", jjbelt: 3, llbelt: 3, username: "giovanni", id: "giovanni", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Lucas", lastName: "Costa", jjbelt: 5, llbelt: 4, username: "lucas", id: "lucas", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Lucas", lastName: "Costa", jjbelt: 5, llbelt: 4, username: "lucas", id: "lucas", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Vijay", lastName: "Pottathil", jjbelt: 3, llbelt: 3, username: "vijay", id: "vijay", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Vijay", lastName: "Pottathil", jjbelt: 3, llbelt: 3, username: "vijay", id: "vijay", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Vincent", lastName: "Shields", jjbelt: 5, llbelt: 4, username: "vincent", id: "vincent", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Vincent", lastName: "Shields", jjbelt: 5, llbelt: 4, username: "vincent", id: "vincent", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Murilo", lastName: "de Melo", jjbelt: 0, llbelt: 1, username: "murilo", id: "murilo", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Murilo", lastName: "de Melo", jjbelt: 0, llbelt: 1, username: "murilo", id: "murilo", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Abraham", lastName: "Macayan", jjbelt: 0, llbelt: 2, username: "abraham", id: "abraham", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Abraham", lastName: "Macayan", jjbelt: 0, llbelt: 2, username: "abraham", id: "abraham", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Jermy", lastName: "Chamo", jjbelt: 0, llbelt: 2, username: "jermy", id: "jermy", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Jermy", lastName: "Chamo", jjbelt: 0, llbelt: 2, username: "jermy", id: "jermy", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Christian", lastName: "Luong", jjbelt: 4, llbelt: 3, username: "christian", id: "christian", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Christian", lastName: "Luong", jjbelt: 4, llbelt: 3, username: "christian", id: "christian", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Michael", lastName: "Marczi", jjbelt: 0, llbelt: 2, username: "michael", id: "michael", active: true, renew: "2023-01-31", enroll: "2022-01-01"}) {
+  createUser(input: {firstName: "Michael", lastName: "Marczi", jjbelt: 0, llbelt: 2, username: "michael", id: "michael", active: true, renew: "2023-01-31", enroll: "2022-01-01", classesTotal: 150}) {
     id
   }
 }

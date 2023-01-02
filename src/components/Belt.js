@@ -1,6 +1,6 @@
 import styles from "../../styles/Profile.module.css";
 
-export default function Belt({ index }) {
+export default function Belt({ index, classType }) {
   const belts = [
     ["/white_belt.png", "White Belt"],
     ["/yellow_belt.png", "Yellow Belt"],
@@ -11,9 +11,11 @@ export default function Belt({ index }) {
     ["/black_belt.png", "Black Belt"],
   ];
 
+  const classes = ["Jiu-Jitsu", "Luta Livre"];
+
   return (
     <div className={styles.beltCard}>
-      <p className={styles.classType}>Jiu-Jitsu</p>
+      <p className={styles.classType}>{classes[classType]}</p>
       <p className={styles.promoteDate}>Promoted July 2021</p>
       <div className={styles.beltImageCropper}>
         <img src={belts[index][0]} className={styles.beltImage} />

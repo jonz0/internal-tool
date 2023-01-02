@@ -54,12 +54,11 @@
 
 .attendees {
   overflow-x: auto;
-  height: 24vh;
-
-  -webkit-column-count: 5; /* Chrome, Safari, Opera */
-  -moz-column-count: 5; /* Firefox */
-  column-count: 5;
-  column-width: 280px;
+  height: 23vh;
+  -webkit-column-count: auto; /* Chrome, Safari, Opera */
+  -moz-column-count: auto; /* Firefox */
+  column-count: auto;
+  column-width: 230px;
   max-width: 1300px;
   width: 69vw;
 
@@ -127,10 +126,6 @@
 .removeButton {
   margin-right: 10px;
   margin-top: 3px;
-}
-
-.attendeeName {
-  margin-right: 35px;
 }
 
 .header {

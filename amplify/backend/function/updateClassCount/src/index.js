@@ -25,7 +25,7 @@ const {
 
 const date_today = new Date();
 const date_yday = new Date(date_today.setDate(date_today.getDate() - 1));
-const month_yday = ("0" + (date_yday.getMonth() + 1)).slice(-2);
+const month_yday = ("" + (date_yday.getMonth() + 1)).slice(-2);
 const year_yday = date_yday.getFullYear();
 const userMonthPrefix = month_yday + "-" + year_yday + "-";
 const weekday = [

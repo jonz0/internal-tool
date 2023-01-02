@@ -23,6 +23,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import UserPool from "../UserPool";
 
 ChartJS.register(
   CategoryScale,
@@ -34,12 +35,7 @@ ChartJS.register(
 );
 
 export const options = {
-  plugins: {
-    title: {
-      display: true,
-      text: "Chart.js Bar Chart - Stacked",
-    },
-  },
+  plugins: {},
   responsive: true,
   scales: {
     x: {
@@ -52,58 +48,88 @@ export const options = {
   maintainAspectRatio: false,
 };
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: [0, 1, 3, 4, 2, 4, 5, 9],
-      backgroundColor: "#D6E9C6",
-      stack: "Stack 0",
-    },
-    {
-      label: "Dataset 2",
-      data: [0, 12, 3, 6, 2, 4, 8, 9],
-      backgroundColor: "#FAEBCC",
-      stack: "Stack 0",
-    },
-    {
-      label: "Dataset 3",
-      data: [0, 1, 3, 4, 2, 4, 5, 9],
-      backgroundColor: "#EBCCD1",
-      stack: "Stack 1",
-    },
-  ],
-};
+function getLabels() {
+  const current = new Date();
+  current.setMonth(current.getMonth() - 12);
+  let labels = [];
+  for (let i = 0; i < 12; i++) {
+    current.setMonth(current.getMonth() + 1);
+    labels.push(
+      current.toLocaleString("default", { month: "long" }) +
+        " " +
+        current.getFullYear()
+    );
+  }
+  return labels;
+}
 
 export default function ProgressChart() {
-  const [hour, setHours] = useState({
-    jj: null,
-    ll: null,
-    kb: null,
-  });
+  const [labels, setLabels] = useState([]);
+  const [hours, setHours] = useState({});
 
-  const [belts, setBelts] = useState({
-    jj: null,
-    ll: null,
-  });
+  useEffect(() => {
+    setLabels(getLabels());
+    setHours(getHours());
+  }, []);
 
-  const [attributes, setAttributes] = useState({
-    username: null,
-    firstName: null,
-    lastName: null,
-    email: null,
-    phone: null,
-    freezeStart: null,
-    freezeEnd: null,
-    enroll: null,
-    renew: null,
-    active: null,
-  });
+  async function getHours() {
+    let jjHours = [];
+    let llHours = [];
+    let kbHours = [];
 
-  useEffect(() => {}, []);
+    const current = new Date();
+    current.setMonth(current.getMonth() - 12);
+    for (let i = 0; i < 12; i++) {
+      current.setMonth(current.getMonth() + 1);
+      const queryHours = await API.graphql({
+        query: queries.getUserMonth,
+        variables: {
+          id:
+            current.getMonth() +
+            1 +
+            "-" +
+            current.getFullYear() +
+            "-" +
+            UserPool.getCurrentUser().username,
+        },
+      });
+
+      if (queryHours.data.getUserMonth != null) {
+        jjHours.push(queryHours.data.getUserMonth.jj);
+        llHours.push(queryHours.data.getUserMonth.ll);
+        kbHours.push(queryHours.data.getUserMonth.kb);
+      } else {
+        jjHours.push(0);
+        llHours.push(0);
+        kbHours.push(0);
+      }
+    }
+    setHours({ jj: jjHours, ll: llHours, kb: kbHours });
+  }
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Jiu-Jitsu",
+        data: hours.jj,
+        backgroundColor: "#D6E9C6",
+        stack: "Stack 0",
+      },
+      {
+        label: "Luta Livre",
+        data: hours.ll,
+        backgroundColor: "#FAEBCC",
+        stack: "Stack 0",
+      },
+      {
+        label: "Kickboxing",
+        data: hours.kb,
+        backgroundColor: "#EBCCD1",
+        stack: "Stack 1",
+      },
+    ],
+  };
 
   return (
     <div>
