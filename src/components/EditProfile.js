@@ -33,6 +33,8 @@ export default function UserData() {
   const [editingPw, setEditingPw] = useState(false);
   const [alert, setAlert] = useState("");
   const [info, setInfo] = useState(false);
+  const [verifyPw, setVerifyPw] = useState("");
+  const [verifying, setVerifying] = useState(false);
   let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
     Username: UserPool.getCurrentUser().username,
     Pool: UserPool,
@@ -117,21 +119,6 @@ export default function UserData() {
     });
   }
 
-  async function updateEmail() {
-    setEditingEmail(false);
-    // const updateUser = await API.graphql(
-    //   {
-    //     query: mutations.updateUser,
-    //     variables: {
-    //       input: {
-    //         id: UserPool.getCurrentUser().username,
-    //         email: email,
-    //       },
-    //     },
-    //   },
-    // );
-  }
-
   function sendPwCode() {
     cognitoUser.forgotPassword({
       onSuccess: function (result) {
@@ -190,12 +177,33 @@ export default function UserData() {
     });
   }
 
-  function sendEmailCode() {
+  function sendEmailCode(attributeList) {
+    cognitoUser.getAttributeVerificationCode(email, {
+      onSuccess: function (result) {
+        console.log("call result: " + result);
+        cognitoUser.updateAttributes(attributeList, function (err, result) {
+          if (err) {
+            console.log("error: ", err.message || JSON.stringify(err));
+            return;
+          }
+          console.log("call result: " + result);
+        });
+      },
+      onFailure: function (err) {
+        console.log(err.message || JSON.stringify(err));
+      },
+      inputVerificationCode: function () {
+        var verificationCode = emailCode;
+      },
+    });
+  }
+
+  function validatePw() {
     setEditingEmail(true);
 
     var attributeList = [];
     var attribute = {
-      Name: "password",
+      Name: "email",
       Value: email,
     };
 
@@ -203,7 +211,7 @@ export default function UserData() {
     attributeList.push(attribute);
 
     let Username = "ijonluu";
-    let Password = "test12345";
+    let Password = verifyPw;
 
     const authUser = () => {
       const authDetails = new AmazonCognitoIdentity.AuthenticationDetails({
@@ -213,26 +221,8 @@ export default function UserData() {
       cognitoUser.authenticateUser(authDetails, {
         onSuccess: () => {
           console.log("User authenticated");
-
-          cognitoUser.getAttributeVerificationCode(email, {
-            onSuccess: function (result) {
-              console.log("call result: " + result);
-            },
-            onFailure: function (err) {
-              console.log(err.message || JSON.stringify(err));
-            },
-            inputVerificationCode: function () {
-              var verificationCode = emailCode;
-            },
-          });
-
-          // cognitoUser.updateAttributes(attributeList, function (err, result) {
-          //   if (err) {
-          //     console.log("error: ", err.message || JSON.stringify(err));
-          //     return;
-          //   }
-          //   console.log("call result: " + result);
-          // });
+          setVerifying(true);
+          sendEmailCode(attributeList);
         },
         onFailure: (error) => {
           console.log("An error happened");
@@ -401,7 +391,7 @@ export default function UserData() {
           className={styles.editEmail}
           size="sm"
           onClick={() => {
-            sendEmailCode();
+            setEditingEmail(true);
             setEditingPw(false);
           }}
           disabled={editingEmail}
@@ -411,17 +401,17 @@ export default function UserData() {
       </div>
       {editingEmail && (
         <div>
-          <label className={styles.label}>Verification Code</label>
+          <label className={styles.label}>Password</label>
           <div className={styles.changeInline}>
             <Input
-              id="email"
-              type="email"
-              value={emailCode}
+              id="password"
+              type="password"
+              value={verifyPw}
               onChange={(event) => {
-                setEmailCode(event.target.value);
+                setVerifyPw(event.target.value);
               }}
               color="grey"
-              placeholder="Code"
+              placeholder="Password"
               _placeholder={{ color: "inherit" }}
               autoComplete="off"
               size="sm"
@@ -431,11 +421,42 @@ export default function UserData() {
               colorScheme="teal"
               className={styles.confirmChanges}
               size="sm"
-              onClick={() => updateEmail()}
+              onClick={() => {
+                validatePw();
+              }}
             >
-              Confirm Changes
+              Enter Password
             </Button>
           </div>
+          {verifying && (
+            <div>
+              <label className={styles.label}>Verification Code</label>
+              <div className={styles.changeInline}>
+                <Input
+                  id="email"
+                  type="email"
+                  value={emailCode}
+                  onChange={(event) => {
+                    setEmailCode(event.target.value);
+                  }}
+                  color="grey"
+                  placeholder="Code"
+                  _placeholder={{ color: "inherit" }}
+                  autoComplete="off"
+                  size="sm"
+                  style={{ marginTop: "-2px" }}
+                />
+                <Button
+                  colorScheme="teal"
+                  className={styles.confirmChanges}
+                  size="sm"
+                  onClick={() => updateEmail()}
+                >
+                  Verify
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       )}
       <label className={styles.label}>Password</label>
