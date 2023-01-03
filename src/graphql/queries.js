@@ -232,8 +232,10 @@ export const getUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
-      classesTotal
+      llhours
+      jjhours
       active
+      adult
       userMonths {
         items {
           id
@@ -278,8 +280,10 @@ export const listUsers = /* GraphQL */ `
         freezeEnd
         goal
         progress
-        classesTotal
+        llhours
+        jjhours
         active
+        adult
         userMonths {
           nextToken
         }
@@ -312,8 +316,10 @@ export const getUserMonth = /* GraphQL */ `
         freezeEnd
         goal
         progress
-        classesTotal
+        llhours
+        jjhours
         active
+        adult
         userMonths {
           nextToken
         }
@@ -358,8 +364,10 @@ export const listUserMonths = /* GraphQL */ `
           freezeEnd
           goal
           progress
-          classesTotal
+          llhours
+          jjhours
           active
+          adult
           createdAt
           updatedAt
         }

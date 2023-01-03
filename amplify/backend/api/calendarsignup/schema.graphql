@@ -54,8 +54,11 @@ type User @model {
   freezeEnd: AWSDate
   goal: Int
   progress: Int
-  classesTotal: Int
+  llhours: Int
+  jjhours: Int
+  kbhours: Int
   active: Boolean
+  adult: Boolean
   userMonths: [UserMonth] @hasMany
 }
 

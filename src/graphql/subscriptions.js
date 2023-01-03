@@ -366,8 +366,10 @@ export const onCreateUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
-      classesTotal
+      llhours
+      jjhours
       active
+      adult
       userMonths {
         items {
           id
@@ -407,8 +409,10 @@ export const onUpdateUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
-      classesTotal
+      llhours
+      jjhours
       active
+      adult
       userMonths {
         items {
           id
@@ -448,8 +452,10 @@ export const onDeleteUser = /* GraphQL */ `
       freezeEnd
       goal
       progress
-      classesTotal
+      llhours
+      jjhours
       active
+      adult
       userMonths {
         items {
           id
@@ -493,8 +499,10 @@ export const onCreateUserMonth = /* GraphQL */ `
         freezeEnd
         goal
         progress
-        classesTotal
+        llhours
+        jjhours
         active
+        adult
         userMonths {
           nextToken
         }
@@ -536,8 +544,10 @@ export const onUpdateUserMonth = /* GraphQL */ `
         freezeEnd
         goal
         progress
-        classesTotal
+        llhours
+        jjhours
         active
+        adult
         userMonths {
           nextToken
         }
@@ -579,8 +589,10 @@ export const onDeleteUserMonth = /* GraphQL */ `
         freezeEnd
         goal
         progress
-        classesTotal
+        llhours
+        jjhours
         active
+        adult
         userMonths {
           nextToken
         }

@@ -8,28 +8,25 @@ import * as mutations from "../graphql/mutations";
 import Day from "./Day";
 import { resolve } from "styled-jsx/css";
 
-export default function Rank({ rank, name }) {
-  const [color, setColor] = useState("transparent");
-
-  useEffect(() => {
-    if (rank % 2 == 0) {
-      setColor("rgb(237, 237, 237)");
-    }
-  }, []);
+export default function Rank({ rank, user }) {
+  const belts = ["⬜", "🟨", "🟧", "🟦", "🟪", "🟫", "⬛"];
 
   return (
-    <div className={styles.rankRow} style={{ backgroundColor: color }}>
+    <div className={rank % 2 == 0 ? styles.rankRow : styles.rankRowDark}>
       <p className={styles.rankHeader}>{rank}</p>
       <div className={styles.rankUser}>
         <div className={styles.imageCropperSmall}>
           <img src="/user-placeholder.jpeg" className={styles.rankImage} />
         </div>
-        <p style={{ marginLeft: "5px" }} className={styles.rankHeader}>
-          Jackie Chan
+        <p style={{ marginLeft: "5px" }} className={styles.nameHeader}>
+          {user.firstName + " " + user.lastName}
         </p>
       </div>
-      <p className={styles.rankHeader}>🟪</p>
-      <p className={styles.rankHeader}>900 Classes</p>
+      <div style={{ display: "flex", gap: "5px" }}>
+        <p className={styles.jjColor}>{belts[user.jjbelt]}</p>
+        <p className={styles.llColor}>{belts[user.llbelt]}</p>
+      </div>
+      <p className={styles.classCount}>{user.classesTotal} Classes</p>
     </div>
   );
 }
