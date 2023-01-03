@@ -25,25 +25,29 @@ export default function Card({ index, user }) {
 
       let sorted = [];
 
-      switch (index) {
-        case 2:
-          sorted = getUsers.data.listUsers.items.sort((a, b) =>
-            a.jjHours < b.jjHours ? 1 : -1
-          );
-        case 3:
-          sorted = getUsers.data.listUsers.items.sort((a, b) =>
-            a.llHours < b.llHours ? 1 : -1
-          );
-        case 4:
-          sorted = getUsers.data.listUsers.items.sort((a, b) =>
-            a.kbHours < b.kbHours ? 1 : -1
-          );
+      if (index == 3) {
+        sorted = getUsers.data.listUsers.items.sort((a, b) =>
+          a.jjHours < b.jjHours ? 1 : -1
+        );
+        setClasses(sorted[0].jjhours);
+        console.log(sorted[0].firstName + " " + sorted[0].lastName);
+      } else if (index == 4) {
+        sorted = getUsers.data.listUsers.items.sort((a, b) =>
+          a.llHours < b.llHours ? 1 : -1
+        );
+        setClasses(sorted[0].llhours);
+      } else if (index == 5) {
+        sorted = getUsers.data.listUsers.items.sort((a, b) =>
+          a.kbHours < b.kbHours ? 1 : -1
+        );
+        setClasses(sorted[0].kbhours);
+        console.log(sorted[0]);
       }
-
       setName(sorted[0].firstName + " " + sorted[0].lastName);
     }
-
-    getLeaders();
+    if (index > 2) {
+      getLeader();
+    }
   }, []);
 
   return (
@@ -57,8 +61,12 @@ export default function Card({ index, user }) {
       </div>
 
       <div className={styles.cardContents}>
-        <p className={styles.content}>{user.firstName + " " + user.lastName}</p>
-        <p className={styles.content}>{user.classesTotal} Classes</p>
+        <p className={styles.content}>
+          {user != null ? user.firstName + " " + user.lastName : name}
+        </p>
+        <p className={styles.content}>
+          {user != null ? user.llhours + user.jjhours : classes} Classes
+        </p>
       </div>
     </div>
   );

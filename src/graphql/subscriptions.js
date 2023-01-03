@@ -368,6 +368,7 @@ export const onCreateUser = /* GraphQL */ `
       progress
       llhours
       jjhours
+      kbhours
       active
       adult
       userMonths {
@@ -411,6 +412,7 @@ export const onUpdateUser = /* GraphQL */ `
       progress
       llhours
       jjhours
+      kbhours
       active
       adult
       userMonths {
@@ -454,6 +456,7 @@ export const onDeleteUser = /* GraphQL */ `
       progress
       llhours
       jjhours
+      kbhours
       active
       adult
       userMonths {
@@ -501,6 +504,7 @@ export const onCreateUserMonth = /* GraphQL */ `
         progress
         llhours
         jjhours
+        kbhours
         active
         adult
         userMonths {
@@ -546,6 +550,7 @@ export const onUpdateUserMonth = /* GraphQL */ `
         progress
         llhours
         jjhours
+        kbhours
         active
         adult
         userMonths {
@@ -591,6 +596,7 @@ export const onDeleteUserMonth = /* GraphQL */ `
         progress
         llhours
         jjhours
+        kbhours
         active
         adult
         userMonths {

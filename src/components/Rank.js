@@ -26,7 +26,9 @@ export default function Rank({ rank, user }) {
         <p className={styles.jjColor}>{belts[user.jjbelt]}</p>
         <p className={styles.llColor}>{belts[user.llbelt]}</p>
       </div>
-      <p className={styles.classCount}>{user.classesTotal} Classes</p>
+      <p className={styles.classCount}>
+        {user.llhours + user.jjhours + user.kbhours} Classes
+      </p>
     </div>
   );
 }

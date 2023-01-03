@@ -20,7 +20,9 @@ export default function Leaderboard() {
       });
 
       let sorted = getUsers.data.listUsers.items.sort((a, b) =>
-        a.classesTotal < b.classesTotal ? 1 : -1
+        a.jjhours + a.llhours + a.kbhours < b.jjhours + b.llhours + b.kbhours
+          ? 1
+          : -1
       );
 
       setLeaders(sorted);
@@ -35,7 +37,7 @@ export default function Leaderboard() {
           sortedKids.push(item);
         }
       });
-      console.log("leaders", sortedAdults);
+      // console.log("leaders", sortedAdults);
 
       setAdults(sortedAdults);
       setKids(sortedKids);
@@ -64,9 +66,9 @@ export default function Leaderboard() {
           </div>
           <p className={styles.header}>Monthly Titles</p>
           <div className={styles.row}>
-            {/* <Card index="3" />
-            <Card index="4" />
-            <Card index="5" /> */}
+            <Card index={3} />
+            <Card index={4} />
+            <Card index={5} />
           </div>
         </div>
 

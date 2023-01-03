@@ -99,120 +99,120 @@ mutation MyMutation {
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 mutation MyMutation {
-  createUser(input: {firstName: "Joshua", lastName: "Diaz", jjbelt: 0, llbelt: 2, username: "joshua", id: "joshua", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 150, jjhours: 165, adult: true}) {
+  createUser(input: {firstName: "Joshua", lastName: "Diaz", jjbelt: 0, llbelt: 2, username: "joshua", id: "joshua", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 150, jjhours: 165, kbhours: 40, adult: true}) {
     id
   }
 }
 
 
 mutation MyMutation {
-  createUser(input: {firstName: "Jordan", lastName: "Banholzer", jjbelt: 0, llbelt: 0, username: "jordan", id: "jordan", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 151, jjhours: 164, adult: true}) {
+  createUser(input: {firstName: "Jordan", lastName: "Banholzer", jjbelt: 0, llbelt: 0, username: "jordan", id: "jordan", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 151, jjhours: 164, kbhours: 40, adult: true}) {
     id
   }
 }
 
 mutation MyMutation {
-  createUser(input: {firstName: "Wen", lastName: "Ong", jjbelt: 3, llbelt: 3, username: "wen", id: "wen", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 152, jjhours: 163, adult: true}) {
-    id
-  }
-}
-
-
-mutation MyMutation {
-  createUser(input: {firstName: "Christine", lastName: "Tran", jjbelt: 0, llbelt: 0, username: "christine", id: "christine", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 153, jjhours: 162, adult: true}) {
+  createUser(input: {firstName: "Wen", lastName: "Ong", jjbelt: 3, llbelt: 3, username: "wen", id: "wen", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 152, jjhours: 163, kbhours: 40, adult: true}) {
     id
   }
 }
 
 
 mutation MyMutation {
-  createUser(input: {firstName: "Natalie", lastName: "Abal", jjbelt: 0, llbelt: 1, username: "natalie", id: "natalie", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 154, jjhours: 161, adult: true}) {
+  createUser(input: {firstName: "Christine", lastName: "Tran", jjbelt: 0, llbelt: 0, username: "christine", id: "christine", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 153, jjhours: 162, kbhours: 40, adult: true}) {
     id
   }
 }
 
 
 mutation MyMutation {
-  createUser(input: {firstName: "Pian", lastName: "Pawakapan", jjbelt: 0, llbelt: 1, username: "pian", id: "pian", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 155, jjhours: 160, adult: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Spencer", lastName: "Choi", jjbelt: 3, llbelt: 2, username: "spencer", id: "spencer", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 156, jjhours: 159, adult: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Giovanni", lastName: "Ribeiro", jjbelt: 3, llbelt: 3, username: "giovanni", id: "giovanni", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 157, jjhours: 158, adult: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Lucas", lastName: "Costa", jjbelt: 5, llbelt: 4, username: "lucas", id: "lucas", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 158, jjhours: 157, adult: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Vijay", lastName: "Pottathil", jjbelt: 3, llbelt: 3, username: "vijay", id: "vijay", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 159, jjhours: 156, adult: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Vincent", lastName: "Shields", jjbelt: 5, llbelt: 4, username: "vincent", id: "vincent", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 160, jjhours: 155, adult: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Murilo", lastName: "de Melo", jjbelt: 0, llbelt: 1, username: "murilo", id: "murilo", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 161, jjhours: 154, adult: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Abraham", lastName: "Macayan", jjbelt: 0, llbelt: 2, username: "abraham", id: "abraham", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 162, jjhours: 153, adult: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Jermy", lastName: "Chamo", jjbelt: 0, llbelt: 2, username: "jermy", id: "jermy", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 163, jjhours: 152, adult: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Christian", lastName: "Luong", jjbelt: 4, llbelt: 3, username: "christian", id: "christian", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 164, jjhours: 151, adult: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Michael", lastName: "Marczi", jjbelt: 0, llbelt: 2, username: "michael", id: "michael", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 165, jjhours: 150, adult: true}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Jaden", lastName: "smith", jjbelt: 0, llbelt: 2, username: "jaden", id: "jaden", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 45, jjhours: 52, adult: false}) {
-    id
-  }
-}
-
-mutation MyMutation {
-  createUser(input: {firstName: "Macaulay", lastName: "Culkin", jjbelt: 0, llbelt: 2, username: "macaulay", id: "macaulay", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 55, jjhours: 42, adult: false}) {
+  createUser(input: {firstName: "Natalie", lastName: "Abal", jjbelt: 0, llbelt: 1, username: "natalie", id: "natalie", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 154, jjhours: 161, kbhours: 40, adult: true}) {
     id
   }
 }
 
 
 mutation MyMutation {
-  createUser(input: {firstName: "North", lastName: "West", jjbelt: 0, llbelt: 2, username: "north", id: "north", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 65, jjhours: 32, adult: false}) {
+  createUser(input: {firstName: "Pian", lastName: "Pawakapan", jjbelt: 0, llbelt: 1, username: "pian", id: "pian", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 155, jjhours: 160, kbhours: 40, adult: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Spencer", lastName: "Choi", jjbelt: 3, llbelt: 2, username: "spencer", id: "spencer", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 156, jjhours: 159, kbhours: 40, adult: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Giovanni", lastName: "Ribeiro", jjbelt: 3, llbelt: 3, username: "giovanni", id: "giovanni", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 157, jjhours: 158, kbhours: 40, adult: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Lucas", lastName: "Costa", jjbelt: 5, llbelt: 4, username: "lucas", id: "lucas", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 158, jjhours: 157, kbhours: 40, adult: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Vijay", lastName: "Pottathil", jjbelt: 3, llbelt: 3, username: "vijay", id: "vijay", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 159, jjhours: 156, kbhours: 40, adult: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Vincent", lastName: "Shields", jjbelt: 5, llbelt: 4, username: "vincent", id: "vincent", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 160, jjhours: 155, kbhours: 40, adult: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Murilo", lastName: "de Melo", jjbelt: 0, llbelt: 1, username: "murilo", id: "murilo", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 161, jjhours: 154, kbhours: 40, adult: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Abraham", lastName: "Macayan", jjbelt: 0, llbelt: 2, username: "abraham", id: "abraham", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 162, jjhours: 153, kbhours: 40, adult: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Jermy", lastName: "Chamo", jjbelt: 0, llbelt: 2, username: "jermy", id: "jermy", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 163, jjhours: 152, kbhours: 40, adult: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Christian", lastName: "Luong", jjbelt: 4, llbelt: 3, username: "christian", id: "christian", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 164, jjhours: 151, kbhours: 40, adult: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Michael", lastName: "Marczi", jjbelt: 0, llbelt: 2, username: "michael", id: "michael", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 165, jjhours: 150, kbhours: 40, adult: true}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Jaden", lastName: "Smith", jjbelt: 0, llbelt: 0, username: "jaden", id: "jaden", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 45, jjhours: 52, kbhours: 10, adult: false}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createUser(input: {firstName: "Macaulay", lastName: "Culkin", jjbelt: 0, llbelt: 0, username: "macaulay", id: "macaulay", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 55, jjhours: 42, kbhours: 15, adult: false}) {
+    id
+  }
+}
+
+
+mutation MyMutation {
+  createUser(input: {firstName: "North", lastName: "West", jjbelt: 0, llbelt: 0, username: "north", id: "north", active: true, renew: "2023-01-31", enroll: "2022-01-01", llhours: 65, jjhours: 32, kbhours: 10, adult: false}) {
     id
   }
 }

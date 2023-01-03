@@ -234,6 +234,7 @@ export const getUser = /* GraphQL */ `
       progress
       llhours
       jjhours
+      kbhours
       active
       adult
       userMonths {
@@ -282,6 +283,7 @@ export const listUsers = /* GraphQL */ `
         progress
         llhours
         jjhours
+        kbhours
         active
         adult
         userMonths {
@@ -318,6 +320,7 @@ export const getUserMonth = /* GraphQL */ `
         progress
         llhours
         jjhours
+        kbhours
         active
         adult
         userMonths {
@@ -366,6 +369,7 @@ export const listUserMonths = /* GraphQL */ `
           progress
           llhours
           jjhours
+          kbhours
           active
           adult
           createdAt

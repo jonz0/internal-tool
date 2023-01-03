@@ -8,7 +8,6 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function Rankings({ leaders }) {
   return leaders.map((c, index) => {
-    console.log("generating user", c.id);
     return <Rank rank={index + 1} user={c} key={uuidv4()} />;
   });
 }
