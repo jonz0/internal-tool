@@ -76,7 +76,9 @@ export default function Leaderboard() {
           <p className={styles.header} style={{ marginBottom: "20px" }}>
             Leaderboard
           </p>
-          <Rankings className={styles.rankings} leaders={leaders} />
+          <div className={styles.list}>
+            <Rankings className={styles.rankings} leaders={leaders} />
+          </div>
         </div>
       </div>
     </div>

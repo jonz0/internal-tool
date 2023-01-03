@@ -2,19 +2,7 @@ import { useEffect, useRef, useState, useContext } from "react";
 import styles from "../../styles/Admin.module.css";
 import { API, graphqlOperation } from "aws-amplify";
 import DaySet from "../components/DaySet";
-import {
-  Button,
-  ButtonGroup,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Avatar,
-  Input,
-  Alert,
-  AlertIcon,
-} from "@chakra-ui/react";
+import { Button, Avatar, Input, Alert, AlertIcon } from "@chakra-ui/react";
 import Menu from "../components/Menu";
 import * as queries from "../graphql/queries";
 import * as subscriptions from "../graphql/subscriptions";
@@ -230,7 +218,7 @@ export default function ManageUsers() {
         </div>
       </div>
       <div className={styles.manageUsersRight}>
-        <Rankings className={styles.rankings} />
+        {/* <Rankings className={styles.rankings} /> */}
       </div>
     </div>
   );

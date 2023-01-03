@@ -5,6 +5,7 @@ import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import Rank from "../components/Rank";
 import { v4 as uuidv4 } from "uuid";
+import styles from "../../styles/Leaderboard.module.css";
 
 export default function Rankings({ leaders }) {
   return leaders.map((c, index) => {
