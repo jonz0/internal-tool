@@ -94,6 +94,108 @@ mutation MyMutation {
   }
 }
 
+mutation MyMutation {
+  createAttendee(input: {firstName: "Marcelo", lastName: "Garcia", jjbelt: 6, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Roger", lastName: "Gracie", jjbelt: 6, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Oliver", lastName: "Taza", jjbelt: 5, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Dominique", lastName: "Bell", jjbelt: 5, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Fábio", lastName: "Alano", jjbelt: 5, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Cole", lastName: "Abate", jjbelt: 4, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Giovanna", lastName: "Jara", jjbelt: 4, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Shay", lastName: "Montague", jjbelt: 4, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Tom", lastName: "Hardy", jjbelt: 3, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Demi", lastName: "Lovato", jjbelt: 3, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Kelly", lastName: "slater", jjbelt: 3, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Vince", lastName: "Vaughn", jjbelt: 3, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Vin", lastName: "Diesel", jjbelt: 0, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Jonah", lastName: "Hill", jjbelt: 0, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Henry", lastName: "Cavill", jjbelt: 0, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Steve", lastName: "Aoki", jjbelt: 0, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
+
+mutation MyMutation {
+  createAttendee(input: {firstName: "Wiz", lastName: "Khalifa", jjbelt: 0, classAttendeesId: "1230-mon"}) {
+    id
+  }
+}
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------

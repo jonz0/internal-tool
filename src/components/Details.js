@@ -35,15 +35,15 @@ export default function Details() {
             <b>Instructor:</b> {detailsState.instructor}
           </p>
           <p className={styles.detailsText}>
-            <b>Availability:</b> {detailsState.openSpots} out of{" "}
-            {detailsState.maxSpots}
+            {/* <b>Availability:</b> {detailsState.openSpots} out of{" "} */}
+            <b>Availability:</b> 23 out of {detailsState.maxSpots}
           </p>
           <p className={styles.detailsText}>
-            <b>Message:</b> {detailsState.message}
+            <b>Content:</b> {detailsState.message}
           </p>
         </div>
 
-        <div clasName={styles.rightContainer}>
+        <div>
           <p className={styles.attendeesHeader}>Attendees</p>
           <div className={styles.detailsRight}>
             {detailsState.attendees.map((attendee) => (

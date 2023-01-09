@@ -48,6 +48,7 @@ export default function Class({ c }) {
 
   async function fetchDetails() {
     let students = [];
+    let sorted = [];
 
     const classAttendees = await API.graphql({
       query: queries.listAttendees,
@@ -69,7 +70,13 @@ export default function Class({ c }) {
       })
     );
 
-    details.current.attendees = students;
+    if (c.type == "jj") {
+      sorted = students.sort((a, b) => (a.jjbelt < b.jjbelt ? 1 : -1));
+    } else {
+      sorted = students.sort((a, b) => (a.llbelt < b.llbelt ? 1 : -1));
+    }
+
+    details.current.attendees = sorted;
   }
 
   function toTitleCase(str) {

@@ -26,15 +26,15 @@
   gap: 20px;
 }
 
+.signupContainer::-webkit-scrollbar {
+  background: #ecf0f4;
+  height: 6px;
+}
+
 .details {
   padding-left: 15px;
   margin-top: 20px;
   width: 100%;
-}
-
-.rightContainer {
-  display: flex;
-  flex-direction: column;
 }
 
 .detailsRight {
@@ -47,18 +47,18 @@
 }
 
 .detailsHeader {
-  font-family: "Georama", sans-serif;
-  font-size: 17pt;
-  font-weight: 500;
-  margin-bottom: 20px;
+  font-family: "PT Sans", sans-serif;
+  font-size: 16pt;
+  font-weight: 700;
+  margin-bottom: 10px;
   width: 40%;
 }
 
 .attendeesHeader {
-  font-family: "Georama", sans-serif;
-  font-size: 17pt;
-  font-weight: 500;
-  margin-bottom: 20px;
+  font-family: "PT Sans", sans-serif;
+  font-size: 16pt;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .dayHeader {
@@ -136,6 +136,7 @@
 
 .detailsContainer {
   max-height: 25vh;
+  margin-top: 10px;
   /* border-width: 1px;
   border-color: green; */
 }
