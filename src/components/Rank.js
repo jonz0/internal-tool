@@ -9,7 +9,25 @@ import Day from "./Day";
 import { resolve } from "styled-jsx/css";
 
 export default function Rank({ rank, user }) {
-  const belts = ["⬜", "🟨", "🟧", "🟦", "🟪", "🟫", "⬛"];
+  const belts = [
+    "/white-belt-icon.png",
+    "/yellow-belt-icon.png",
+    "/orange-belt-icon.png",
+    "/blue-belt-icon.png",
+    "/purple-belt-icon.png",
+    "/brown-belt-icon.png",
+    "/black-belt-icon.png",
+  ];
+
+  function getBelt() {
+    if (user.llbelt > user.jjbelt) {
+      return belts[user.llbelt];
+    }
+    if (user.jjbelt == 0 && rank % 2 > 0) {
+      return "/white-belt-icon-2.png";
+    }
+    return belts[user.jjbelt];
+  }
 
   return (
     <div className={rank % 2 == 0 ? styles.rankRow : styles.rankRowDark}>
@@ -23,8 +41,7 @@ export default function Rank({ rank, user }) {
         </p>
       </div>
       <div style={{ display: "flex", gap: "5px" }}>
-        <p className={styles.jjColor}>{belts[user.jjbelt]}</p>
-        <p className={styles.llColor}>{belts[user.llbelt]}</p>
+        <img src={getBelt()} className={styles.beltImg} />
       </div>
       <p className={styles.classCount}>
         {user.llhours + user.jjhours + user.kbhours} Classes

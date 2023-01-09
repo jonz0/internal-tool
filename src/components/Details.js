@@ -4,15 +4,19 @@ import styles from "../../styles/Home.module.css";
 
 export default function Details() {
   const detailsState = useSelector((state) => state.details.value);
-  const belts = ["⬜", "🟨", "🟧", "🟦", "🟪", "🟫", "⬛"];
+  const belts = [
+    "/white-belt-icon.png",
+    "/yellow-belt-icon.png",
+    "/orange-belt-icon.png",
+    "/blue-belt-icon.png",
+    "/purple-belt-icon.png",
+    "/brown-belt-icon.png",
+    "/black-belt-icon.png",
+  ];
   const classType = detailsState.type;
-
-  // const awards = ["🥋", "🤼‍♂️", "🐯", "🥊"];
-  // const ranks = ["🥉", "🥈", "🥇"];
 
   function getBelt(attendee) {
     if (classType == "jj") {
-      console.log(attendee.jjbelt);
       return belts[attendee.jjbelt];
     } else if (classType == "ll") {
       return belts[attendee.llbelt];
@@ -24,17 +28,17 @@ export default function Details() {
       <div className={styles.detailsContents}>
         <div className={styles.detailsLeft}>
           <p className={styles.detailsHeader}>Details</p>
-          <p>
+          <p className={styles.detailsText}>
             <b>Class:</b> {detailsState.name}
           </p>
-          <p>
+          <p className={styles.detailsText}>
             <b>Instructor:</b> {detailsState.instructor}
           </p>
-          <p>
+          <p className={styles.detailsText}>
             <b>Availability:</b> {detailsState.openSpots} out of{" "}
             {detailsState.maxSpots}
           </p>
-          <p>
+          <p className={styles.detailsText}>
             <b>Message:</b> {detailsState.message}
           </p>
         </div>
@@ -43,8 +47,10 @@ export default function Details() {
           <p className={styles.attendeesHeader}>Attendees</p>
           <div className={styles.detailsRight}>
             {detailsState.attendees.map((attendee) => (
-              <p key={uuidv4()}>
-                {getBelt(attendee)} {attendee.name}
+              <p key={uuidv4()} className={styles.attendee}>
+                {/* <p className={styles.beltColor}>{getBelt(attendee)}</p> */}
+                <img src={getBelt(attendee)} className={styles.beltImg} />
+                <p className={styles.attendeeName}>{attendee.name}</p>
               </p>
             ))}
           </div>

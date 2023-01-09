@@ -14,12 +14,13 @@ export default function Class({ c }) {
       <div>
         <Button
           className={styles.signupButton}
-          colorScheme="blue"
+          colorScheme="gray"
           width="150px"
           height="50px"
           variant="outline"
           fontSize="10pt"
           isDisabled={true}
+          border="2px"
         >
           No Classes
         </Button>
@@ -91,10 +92,13 @@ export default function Class({ c }) {
     let startMinutes = parseInt(classData.start.slice(3, 5));
     let endMinutes = parseInt(classData.end.slice(3, 5));
 
+    // let startRange =
+    //   halfDayFormat(startHour) +
+    //   (startMinutes == 0 ? "" : ":" + startMinutes) +
+    //   (getSuffix(startHour) == getSuffix(endHour) ? "" : getSuffix(startHour));
+
     let startRange =
-      halfDayFormat(startHour) +
-      (startMinutes == 0 ? "" : ":" + startMinutes) +
-      (getSuffix(startHour) == getSuffix(endHour) ? "" : getSuffix(startHour));
+      halfDayFormat(startHour) + (startMinutes == 0 ? "" : ":" + startMinutes);
 
     let endRange =
       halfDayFormat(endHour) +
@@ -108,15 +112,20 @@ export default function Class({ c }) {
     <div>
       <Button
         className={styles.signupButton}
-        colorScheme="blue"
+        colorScheme="gray"
         onClick={() => dispatch(setDetails(details.current))}
-        width="150px"
-        height="50px"
+        width="160px"
+        height="58px"
         variant="outline"
+        border="2px"
         fontSize="10pt"
+        textAlign="left"
+        borderRadius="12px"
       >
-        {c.name} <br />
-        {getRangeReadable(c)}
+        <div className={styles.classButton}>
+          <p className={styles.classTime}>{getRangeReadable(c)}</p>
+          <p className={styles.className}>{c.name}</p>
+        </div>
       </Button>
     </div>
   );

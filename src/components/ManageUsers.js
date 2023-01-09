@@ -216,7 +216,7 @@ export default function ManageUsers() {
             Users must have a last name.
           </Alert>
         </div>
-      </div>
+    </div>
       <div className={styles.manageUsersRight}>
         {/* <Rankings className={styles.rankings} /> */}
       </div>
