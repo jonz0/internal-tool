@@ -47,7 +47,6 @@
 
 .attendeesList {
   border-width: 2px;
-  border-color: blue;
   width: 100%;
 }
 
@@ -137,10 +136,18 @@
 .label {
   font-size: 10pt;
   font-weight: 600;
+  /* border-width: 1px;
+  border-color: blue; */
 }
 
 .fileUpload {
   cursor: pointer;
+}
+
+.selectInput {
+  width: 150px;
+  /* border-width: 1px;
+  border-color: red; */
 }
 
 .avatarContainer {
@@ -227,4 +234,123 @@
   height: 100%;
   /* border-width: 1px;
   border-color: green; */
+}
+
+/* */
+
+.rankHeader,
+.nameHeader,
+.classCount,
+.studentHeader,
+.status,
+.enrollDate,
+.age {
+  color: black;
+  font-size: 11pt;
+}
+
+.nameHeader {
+  width: 140px;
+}
+
+.rankHeader {
+  margin-left: 10px;
+  width: 38px;
+  text-align: center;
+  /* border-width: 1px;
+  border-color: red; */
+}
+
+.age {
+  text-align: center;
+  width: 45px;
+}
+
+.enrollDate {
+  width: 75px;
+  text-align: center;
+}
+
+.status {
+  width: 55px;
+  text-align: center;
+}
+
+.studentHeader {
+  width: 175px;
+  text-align: center;
+}
+
+.classCount {
+  margin-left: 10px;
+  width: 60px;
+  text-align: center;
+}
+
+.rankRow {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  height: 40px;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.rankRow:hover,
+.rankRowDark:hover {
+  background-color: #d8ebfc;
+}
+
+.rankRowDark {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  height: 40px;
+  align-items: center;
+  background-color: rgb(237, 237, 237);
+  padding-right: 15px;
+}
+
+.rankUser {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.beltImg {
+  height: 14px;
+}
+
+.list {
+  height: 90%;
+  overflow: auto;
+}
+
+.rankImage {
+  display: inline;
+  margin: 0 auto;
+  width: auto;
+  width: 25px;
+  height: 25px;
+  align-self: center;
+}
+
+.imageCropperSmall {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.input {
+  margin-bottom: 8px;
+  margin-top: 3px;
+  height: 34px;
+  border-width: 1px;
+  border-color: lightgray;
+  font-size: 11pt;
+  padding-left: 11px;
 }

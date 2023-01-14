@@ -1,12 +1,13 @@
 import styles from "../../styles/Leaderboard.module.css";
 import Menu from "../components/Menu";
 import Card from "../components/Card";
-import Rankings from "../components/Rankings";
 import { API } from "aws-amplify";
 import * as queries from "../graphql/queries";
 import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
 import { useState, useEffect } from "react";
+import Rank from "../components/Rank";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Leaderboard() {
   const [leaders, setLeaders] = useState([]);
@@ -77,7 +78,17 @@ export default function Leaderboard() {
             Leaderboard
           </p>
           <div className={styles.list}>
-            <Rankings className={styles.rankings} leaders={leaders} />
+            <div className={styles.rankRow}>
+              <p className={styles.rankHeader}>Rank</p>
+              <div className={styles.rankUser}>
+                <p className={styles.studentHeader}>Student</p>
+              </div>
+              <p className={styles.beltHeader}>Belt</p>
+              <p className={styles.classHeader}>Hours</p>
+            </div>
+            {leaders.map((c, index) => {
+              return <Rank rank={index + 1} user={c} key={uuidv4()} />;
+            })}
           </div>
         </div>
       </div>
