@@ -9,7 +9,7 @@ import Day from "./Day";
 import { resolve } from "styled-jsx/css";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 
-export default function AdminRank({ rank, user, setEditUser }) {
+export default function AdminRank({ rank, user, editUser }) {
   const belts = [
     "/white-belt-icon.png",
     "/yellow-belt-icon.png",
@@ -51,8 +51,14 @@ export default function AdminRank({ rank, user, setEditUser }) {
           user.enroll.slice(2, 4)}
       </p>
       <p className={styles.status}>{user.active ? "Active" : "Inactive"}</p>
-      <Button colorScheme="blue" size="xs" onClick={setEditUser(user)}>
-        Edit
+      <Button
+        colorScheme="blue"
+        size="xs"
+        onClick={() => {
+          editUser(user);
+        }}
+      >
+        Select
       </Button>
     </div>
   );

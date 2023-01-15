@@ -215,10 +215,10 @@
 .manageUsersContainer {
   display: flex;
   flex-direction: row;
-  gap: 40px;
+  gap: 60px;
 }
 
-.manageUsersLeft {
+.manageUsersRight {
   max-width: 35%;
 }
 
@@ -267,7 +267,7 @@
 }
 
 .enrollDate {
-  width: 75px;
+  width: 80px;
   text-align: center;
 }
 
@@ -353,4 +353,17 @@
   border-color: lightgray;
   font-size: 11pt;
   padding-left: 11px;
+  padding-right: 11px;
+}
+
+.inputGray {
+  margin-bottom: 8px;
+  margin-top: 3px;
+  height: 34px;
+  border-width: 1px;
+  border-color: lightgray;
+  font-size: 11pt;
+  padding-left: 11px;
+  padding-right: 11px;
+  color: lightgray;
 }
