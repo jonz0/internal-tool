@@ -10,17 +10,19 @@ import {
   AlertIcon,
   Select,
 } from "@chakra-ui/react";
-import Menu from "../components/Menu";
 import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
-import { useForm } from "react-hook-form";
 import AdminRank from "./AdminRank";
 import { v4 as uuidv4 } from "uuid";
 
 export default function ManageUsers() {
   const [users, setUsers] = useState([]);
-  const [kids, setKids] = useState([]);
+  const [sort, setSort] = useState({
+    adults: [],
+    kids: [],
+    active: [],
+    inactive: [],
+  });
   const [adults, setAdults] = useState([]);
   const [active, setActive] = useState([]);
   const [inactive, setInactive] = useState([]);
@@ -69,10 +71,12 @@ export default function ManageUsers() {
       });
 
       setUsers(tempUsers);
-      setAdults(tempAdults);
-      setKids(tempKids);
-      setActive(tempActive);
-      setInactive(tempInactive);
+      setSort({
+        kids: tempKids,
+        adults: tempAdults,
+        active: tempActive,
+        inactive: tempInactive,
+      });
     }
 
     getUsers();
@@ -172,7 +176,7 @@ export default function ManageUsers() {
       </div>
       {(current != null || editing) && (
         <div className={styles.manageUsersRight}>
-          <p className={styles.header}>My Profile</p>
+          <p className={styles.header}>Edit Users</p>
           <div className={styles.avatarContainer}>
             <Avatar size="xl" src="/user-placeholder.jpeg" />
             <div className={styles.avatarRight}>

@@ -9,6 +9,14 @@ import {
   Alert,
   AlertIcon,
   Select,
+  FormControl,
+  FormLabel,
+  Switch,
+  NumberInput,
+  NumberInputStepper,
+  NumberInputField,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
 } from "@chakra-ui/react";
 import Menu from "../components/Menu";
 import * as queries from "../graphql/queries";
@@ -38,22 +46,31 @@ export default function ManageClasses() {
   const [editing, setEditing] = useState(false);
   const [current, setCurrent] = useState();
   const [alert, setAlert] = useState("");
+  const [type, setType] = useState("");
+  const [age, setAge] = useState("");
+  const [open, setOpen] = useState("");
+  const [day, setDay] = useState("");
+  const [message, setMessage] = useState("");
+  const [instructor, setInstructor] = useState("");
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
+  const [spots, setSpots] = useState("");
 
   useEffect(() => {
-    async function getUsers() {
+    async function getClasses() {
       let tempClasses = [];
-      let tempJj,
-        tempLl,
-        tempKb,
-        tempKids,
-        tempAdults,
-        tempMon,
-        tempTue,
-        tempWed,
-        tempThu,
-        tempFri,
-        tempSat,
-        tempSun = [];
+      let tempJj = [];
+      let tempLl = [];
+      let tempKb = [];
+      let tempKids = [];
+      let tempAdults = [];
+      let tempMon = [];
+      let tempTue = [];
+      let tempWed = [];
+      let tempThu = [];
+      let tempFri = [];
+      let tempSat = [];
+      let tempSun = [];
 
       let days = {
         sunday: 1,
@@ -65,7 +82,7 @@ export default function ManageClasses() {
         saturday: 7,
       };
 
-      const getclasses = await API.graphql({
+      const getClasses = await API.graphql({
         query: queries.listClasses,
       });
 
@@ -74,6 +91,9 @@ export default function ManageClasses() {
           days[a.dayClassesId] + b.type + b.age
         )
       );
+
+      console.log("logging...");
+      console.log(getClasses);
 
       getClasses.data.listClasses.items.forEach((cla) => {
         tempClasses.push(cla);
@@ -146,44 +166,43 @@ export default function ManageClasses() {
         });
       });
     }
+
+    getClasses();
   }, [editing]);
 
   async function saveChanges() {
-    if (first.length < 1) {
-      setFirst(current.firstName);
-    } else if (last.length < 1) {
-      setLast(current.lastName);
-    } else if (jj == null) {
-      setJj(current.jjbelt);
-    } else if (ll == null) {
-      setLl(current.llbelt);
-    } else if (enroll == null) {
-      setEnroll(current.enroll);
-    } else if (renew == null) {
-      setEnroll(current.renew);
-    } else if (freezeStart == null) {
-      if (freezeEnd != null) {
-        return setAlert("User is missing a Freeze Start date.");
+    if (day.length < 1) {
+      return setAlert("Class is missing an assigned day.");
+    } else if (type.length < 1) {
+      return setAlert("Class is missing an assigned type.");
+    } else if (age.length < 1) {
+      return setAlert("Class is missing an assigned age group.");
+    } else if (start == null) {
+      if (end != null) {
+        return setAlert("Class is missing a start time.");
+      } else {
+        return setAlert("Class is missing start and end times.");
       }
-    } else if (freezeEnd == null) {
-      if (freezeStart != null) {
-        return setAlert("User is missing a Freeze End date.");
+    } else if (end == null) {
+      if (start != null) {
+        return setAlert("Class is missing an end time.");
       }
     }
 
-    const updateUser = await API.graphql({
-      query: mutations.updateUser,
+    const updateclass = await API.graphql({
+      query: mutations.updateClass,
       variables: {
         input: {
-          id: current.username,
-          firstName: first,
-          lastName: last,
-          jjbelt: jj,
-          llbelt: ll,
-          enroll: enroll,
-          renew: renew,
-          freezeStart: freezeStart,
-          freezeEnd: freezeEnd,
+          id: current.id,
+          type: type,
+          age: age,
+          start: start,
+          end: end,
+          message: message,
+          maxSpots: spots,
+          dayClassesId: day,
+          classOpen: open,
+          instructor: instructor,
         },
       },
     });
@@ -192,30 +211,37 @@ export default function ManageClasses() {
     setCurrent();
   }
 
-  function editUser(cla) {
+  function editClass(cla) {
     console.log("changing to class", cla.id);
+    setDay(cla.dayClassesId);
     setCurrent(cla);
+    setAge(cla.age);
+    setOpen(cla.open);
+    setType(cla.type);
+    setStart(cla.start);
+    setEnd(cla.end);
+    setSpots(cla.maxSpots);
   }
 
   return (
     <div className={styles.manageUsersContainer}>
       <div className={styles.manageUsersLeft}>
         <div className={styles.rankRow}>
-          <p className={styles.rankHeader}>
-            <b>Rank</b>
+          <p className={styles.numberHeader}>
+            <b>No.</b>
           </p>
           <div className={styles.rankUser}>
-            <p className={styles.studentHeader}>
-              <b>Student</b>
+            <p className={styles.dayHeader}>
+              <b>Day</b>
             </p>
           </div>
-          <p className={styles.age}>
-            <b>Group</b>
+          <p className={styles.typeHeader}>
+            <b>Type</b>
           </p>
-          <p className={styles.enrollDate}>
-            <b>Enroll Date</b>
+          <p className={styles.ageHeader}>
+            <b>Age</b>
           </p>
-          <p className={styles.status}>
+          <p className={styles.statusHeader}>
             <b>Status</b>
           </p>
         </div>
@@ -224,7 +250,7 @@ export default function ManageClasses() {
             return (
               <AdminClass
                 rank={index + 1}
-                class={c}
+                cla={c}
                 key={uuidv4()}
                 editClass={editClass}
               />
@@ -234,8 +260,8 @@ export default function ManageClasses() {
       </div>
       {(current != null || editing) && (
         <div className={styles.manageUsersRight}>
-          <p className={styles.header}>My Profile</p>
-          <div className={styles.avatarContainer}>
+          <p className={styles.header}>Edit Class</p>
+          {/* <div className={styles.avatarContainer}>
             <Avatar size="xl" src="/user-placeholder.jpeg" />
             <div className={styles.avatarRight}>
               <p className={styles.subHeader}>{first + " " + last}</p>
@@ -260,137 +286,157 @@ export default function ManageClasses() {
                 {current.enroll == null ? "Awaiting Approval" : ""}
               </p>
             </div>
-          </div>
-          <div className={styles.namesContainer}>
-            <div>
-              <label className={styles.label}>First Name</label>
-              <Input
-                id="firstname"
-                type="text"
-                value={first}
-                onChange={(event) => {
-                  setFirst(event.target.value);
-                }}
-                className={styles.input}
-                color="grey"
-                _placeholder={{ color: "inherit" }}
-                autoComplete="off"
-                size="sm"
-                disabled={!editing}
-              />
-            </div>
-            <div>
-              <label className={styles.label}>Last Name</label>
-              <Input
-                id="lastname"
-                type="text"
-                value={last}
-                onChange={(event) => {
-                  setLast(event.target.value);
-                }}
-                className={styles.input}
-                color="grey"
-                _placeholder={{ color: "inherit" }}
-                autoComplete="off"
-                size="sm"
-                disabled={!editing}
-              />
-            </div>
-          </div>
+          </div> */}
           <div className={styles.sideBySide}>
             <div className={styles.selectInput}>
-              <label className={styles.label}>Jiu-Jitsu Belt</label>
+              <label className={styles.label}>Day</label>
               <Select
                 placeholder="Select"
                 size="sm"
                 disabled={!editing}
-                value={jj}
+                value={day}
                 onChange={(event) => {
-                  setJj(event.target.value);
+                  setDay(event.target.value);
                 }}
+                className={styles.input}
               >
-                <option value="0">White</option>
-                <option value="1">Yellow</option>
-                <option value="2">Orange</option>
-                <option value="3">Blue</option>
-                <option value="4">Purple</option>
-                <option value="5">Brown</option>
-                <option value="6">Black</option>
+                <option value="sunday">Sunday</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
               </Select>
             </div>
             <div className={styles.selectInput}>
-              <label className={styles.label}>Luta Livre Belt</label>
+              <label className={styles.label}>Type</label>
               <Select
                 placeholder="Select"
                 size="sm"
                 disabled={!editing}
-                value={ll}
+                value={type}
                 onChange={(event) => {
-                  setLl(event.target.value);
+                  setType(event.target.value);
                 }}
+                style={{ marginTop: "3px" }}
               >
-                <option value="0">White</option>
-                <option value="1">Yellow</option>
-                <option value="2">Orange</option>
-                <option value="3">Blue</option>
-                <option value="4">Purple</option>
-                <option value="5">Brown</option>
-                <option value="6">Black</option>
+                <option value="jj">Jiu-Jitsu</option>
+                <option value="ll">Luta Livre</option>
+                <option value="kb">Kickboxing</option>
               </Select>
             </div>
           </div>
+
           <div className={styles.sideBySide}>
             <div className={styles.selectInput}>
-              <label className={styles.label}>Enroll Date</label>
+              <label className={styles.label}>Age Group</label>
+              <Select
+                placeholder="Select"
+                size="sm"
+                disabled={!editing}
+                value={age}
+                onChange={(event) => {
+                  setAge(event.target.value);
+                }}
+                className={styles.input}
+              >
+                <option value="adults">Adults</option>
+                <option value="kids">Kids</option>
+              </Select>
+            </div>
+            <div className={styles.selectInput}>
+              <label className={styles.label}>Availability</label>
+              <NumberInput
+                size="sm"
+                defaultValue={spots}
+                min={10}
+                max={100}
+                disabled={!editing}
+                value={spots}
+                onChange={(valueString) =>
+                  setSpots(valueString.replace(/\D/g, ""))
+                }
+                style={{ marginTop: "3px" }}
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </div>
+          </div>
+
+          <label className={styles.label}>Instructor</label>
+          <Select
+            placeholder="Select"
+            size="sm"
+            disabled={!editing}
+            value={instructor}
+            onChange={(event) => {
+              setInstructor(event.target.value);
+            }}
+            className={styles.input}
+          >
+            <option value="Leopoldo Serao">Leo</option>
+            <option value="Gustavo Andrade">Gustavo</option>
+            <option value="Eugene Robinson">Eugene</option>
+            <option value="Martin Galinski">Martin</option>
+          </Select>
+          <div className={styles.sideBySide}>
+            <div className={styles.selectInput}>
+              <label className={styles.label}>Start Time</label>
               <input
-                type="date"
+                type="time"
                 className={editing ? styles.input : styles.inputGray}
                 disabled={!editing}
-                value={enroll}
+                value={start}
                 onChange={(event) => {
-                  setEnroll(event.target.value);
+                  setStart(event.target.value);
                 }}
+                style={{ width: "100%" }}
               />
             </div>
             <div className={styles.selectInput}>
-              <label className={styles.label}>Renew Date</label>
+              <label className={styles.label}>End Time</label>
               <input
-                type="date"
+                type="time"
                 className={editing ? styles.input : styles.inputGray}
                 disabled={!editing}
-                value={renew}
+                value={end}
                 onChange={(event) => {
-                  setRenew(event.target.value);
+                  setEnd(event.target.value);
                 }}
+                style={{ width: "100%" }}
               />
             </div>
           </div>
-          <div className={styles.sideBySide}>
-            <div className={styles.selectInput}>
-              <label className={styles.label}>Freeze Start</label>
-              <input
-                type="date"
-                className={editing ? styles.input : styles.inputGray}
-                disabled={!editing}
-                value={freezeStart}
-                onChange={(event) => {
-                  setFreezeStart(event.target.value);
-                }}
-              />
-            </div>
-            <div className={styles.selectInput}>
-              <label className={styles.label}>Freeze End</label>
-              <input
-                type="date"
-                className={editing ? styles.input : styles.inputGray}
-                disabled={!editing}
-                value={freezeEnd}
-                onChange={(event) => {
-                  setFreezeEnd(event.target.value);
-                }}
-              />
-            </div>
-          </div>
+          <label className={styles.label}>Message</label>
+          <Input
+            type="text"
+            value={message}
+            onChange={(event) => {
+              setMessage(event.target.value);
+            }}
+            className={styles.input}
+            color="grey"
+            _placeholder={{ color: "inherit" }}
+            autoComplete="off"
+            size="sm"
+            disabled={!editing}
+          />
+          <FormControl
+            display="flex"
+            alignItems="center"
+            className={styles.switchInput}
+          >
+            <FormLabel mb="0">Close this week?</FormLabel>
+            <Switch
+              isChecked={current == null ? false : current.open}
+              disabled={!editing}
+            />
+          </FormControl>
           {!editing && (
             <Button
               mt={4}
@@ -422,7 +468,7 @@ export default function ManageClasses() {
                 size="sm"
                 onClick={() => {
                   setEditing(false);
-                  editUser(current);
+                  editClass(current);
                 }}
                 style={{ width: "70px" }}
               >
