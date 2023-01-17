@@ -79,12 +79,20 @@ export default function Leaderboard() {
           </p>
           <div className={styles.list}>
             <div className={styles.rankRow}>
-              <p className={styles.rankHeader}>Rank</p>
+              <p className={styles.rankHeader}>
+                <b>Rank</b>
+              </p>
               <div className={styles.rankUser}>
-                <p className={styles.studentHeader}>Student</p>
+                <p className={styles.studentHeader}>
+                  <b>Student</b>
+                </p>
               </div>
-              <p className={styles.beltHeader}>Belt</p>
-              <p className={styles.classHeader}>Hours</p>
+              <p className={styles.beltHeader}>
+                <b>Belt</b>
+              </p>
+              <p className={styles.classHeader}>
+                <b>Hours</b>
+              </p>
             </div>
             {leaders.map((c, index) => {
               return <Rank rank={index + 1} user={c} key={uuidv4()} />;

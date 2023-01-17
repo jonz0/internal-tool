@@ -113,19 +113,19 @@ export default function ProgressChart() {
       {
         label: "Jiu-Jitsu",
         data: hours.jj,
-        backgroundColor: "#D6E9C6",
+        backgroundColor: "#e85a5a",
         stack: "Stack 0",
       },
       {
         label: "Luta Livre",
         data: hours.ll,
-        backgroundColor: "#FAEBCC",
+        backgroundColor: "#79d2f2",
         stack: "Stack 0",
       },
       {
         label: "Kickboxing",
         data: hours.kb,
-        backgroundColor: "#EBCCD1",
+        backgroundColor: "#f7da4a",
         stack: "Stack 1",
       },
     ],

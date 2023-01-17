@@ -222,7 +222,8 @@
 .dayHeader,
 .day,
 .ageHeader,
-.statusHeader {
+.statusHeader,
+.startHeader {
   color: black;
   font-size: 11pt;
   align-items: center;
@@ -244,14 +245,30 @@
 
 .dayHeader {
   width: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .typeHeader {
   width: 75px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .statusHeader {
-  width: 55px;
+  width: 65px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.startHeader {
+  width: 65px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .rankHeader {
@@ -263,7 +280,10 @@
 }
 
 .ageHeader {
-  width: 50px;
+  width: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .age {
@@ -299,6 +319,7 @@
   height: 40px;
   align-items: center;
   padding-right: 15px;
+  cursor: pointer;
 }
 
 .rankRow:hover,
@@ -315,6 +336,7 @@
   align-items: center;
   background-color: rgb(237, 237, 237);
   padding-right: 15px;
+  cursor: pointer;
 }
 
 .rankUser {

@@ -26,23 +26,10 @@ import { useForm } from "react-hook-form";
 import AdminRank from "./AdminRank";
 import { v4 as uuidv4 } from "uuid";
 import AdminClass from "./AdminClass";
+import { ArrowsMoveVertical } from "tabler-icons-react";
 
 export default function ManageClasses() {
   const [classes, setClasses] = useState([]);
-  const [sort, setSort] = useState({
-    jj: [],
-    ll: [],
-    kb: [],
-    kids: [],
-    adults: [],
-    mon: [],
-    tue: [],
-    wed: [],
-    thu: [],
-    fri: [],
-    sat: [],
-    sun: [],
-  });
   const [editing, setEditing] = useState(false);
   const [current, setCurrent] = useState();
   const [alert, setAlert] = useState("");
@@ -59,114 +46,33 @@ export default function ManageClasses() {
   useEffect(() => {
     async function getClasses() {
       let tempClasses = [];
-      let tempJj = [];
-      let tempLl = [];
-      let tempKb = [];
-      let tempKids = [];
-      let tempAdults = [];
-      let tempMon = [];
-      let tempTue = [];
-      let tempWed = [];
-      let tempThu = [];
-      let tempFri = [];
-      let tempSat = [];
-      let tempSun = [];
-
-      let days = {
-        sunday: 1,
-        monday: 2,
-        tuesday: 3,
-        wednesday: 4,
-        thursday: 5,
-        friday: 6,
-        saturday: 7,
-      };
 
       const getClasses = await API.graphql({
         query: queries.listClasses,
       });
 
+      let days = {
+        sunday: "a",
+        monday: "b",
+        tuesday: "c",
+        wednesday: "d",
+        thursday: "e",
+        friday: "f",
+        saturday: "g",
+      };
+
       getClasses.data.listClasses.items.sort((a, b) =>
         (days[a.dayClassesId] + a.type + a.age).localeCompare(
-          days[a.dayClassesId] + b.type + b.age
+          days[b.dayClassesId] + b.type + b.age
         )
       );
 
-      console.log("logging...");
-      console.log(getClasses);
-
       getClasses.data.listClasses.items.forEach((cla) => {
         tempClasses.push(cla);
-
-        if (cla.age == "adults") {
-          tempAdults.push(cla);
-          if (cla.type == "jj") {
-            tempJj.push(cla);
-          } else if (cla.type == "ll") {
-            tempLl.push(cla);
-          } else {
-            tempKb.push(cla);
-          }
-          if (cla.dayClassesId == "monday") {
-            tempMon.push(cla);
-          } else if (cla.dayClassesId == "tuesday") {
-            tempTue.push(cla);
-          } else if (cla.dayClassesId == "wednesday") {
-            tempWed.push(cla);
-          } else if (cla.dayClassesId == "thursday") {
-            tempThu.push(cla);
-          } else if (cla.dayClassesId == "friday") {
-            tempFri.push(cla);
-          } else if (cla.dayClassesId == "saturday") {
-            tempSat.push(cla);
-          } else if (cla.dayClassesId == "sunday") {
-            tempSun.push(cla);
-          }
-        } else {
-          tempKids.push(cla);
-          if (cla.type == "jj") {
-            tempJj.push(cla);
-          } else if (cla.type == "ll") {
-            tempLl.push(cla);
-          } else {
-            tempKb.push(cla);
-          }
-
-          if (cla.dayClassesId == "monday") {
-            tempMon.push(cla);
-          } else if (cla.dayClassesId == "tuesday") {
-            tempTue.push(cla);
-          } else if (cla.dayClassesId == "wednesday") {
-            tempWed.push(cla);
-          } else if (cla.dayClassesId == "thursday") {
-            tempThu.push(cla);
-          } else if (cla.dayClassesId == "friday") {
-            tempFri.push(cla);
-          } else if (cla.dayClassesId == "saturday") {
-            tempSat.push(cla);
-          } else if (cla.dayClassesId == "sunday") {
-            tempSun.push(cla);
-          }
-        }
-
-        setClasses(tempClasses);
-        setSort({
-          jj: tempJj,
-          ll: tempLl,
-          kb: tempLl,
-          kids: tempKids,
-          adults: tempAdults,
-          mon: tempMon,
-          tue: tempTue,
-          wed: tempWed,
-          thu: tempThu,
-          fri: tempFri,
-          sat: tempSat,
-          sun: tempSun,
-        });
       });
-    }
 
+      setClasses(tempClasses);
+    }
     getClasses();
   }, [editing]);
 
@@ -223,6 +129,60 @@ export default function ManageClasses() {
     setSpots(cla.maxSpots);
   }
 
+  async function sort(category) {
+    let tempClasses = [];
+
+    let getClasses = await API.graphql({
+      query: queries.listClasses,
+    });
+
+    let days = {
+      sunday: "a",
+      monday: "b",
+      tuesday: "c",
+      wednesday: "d",
+      thursday: "e",
+      friday: "f",
+      saturday: "g",
+    };
+
+    switch (category) {
+      case "day":
+        getClasses.data.listClasses.items.sort((a, b) =>
+          (days[a.dayClassesId] + a.type + a.age).localeCompare(
+            days[b.dayClassesId] + b.type + b.age
+          )
+        );
+      case "type":
+        getClasses.data.listClasses.items.sort((a, b) =>
+          (a.type + days[a.dayClassesId] + a.age).localeCompare(
+            b.type + days[b.dayClassesId] + b.age
+          )
+        );
+        console.log("sorting category:", category);
+      case "age":
+        getClasses.data.listClasses.items.sort((a, b) =>
+          (a.age + a.type + days[a.dayClassesId]).localeCompare(
+            b.age + b.type + days[b.dayClassesId]
+          )
+        );
+      case "status":
+        getClasses.data.listClasses.items.sort(
+          (a, b) =>
+            -1 *
+            (a.status + days[a.dayClassesId] + a.type + a.age).localeCompare(
+              b.status + days[b.dayClassesId] + b.type + b.age
+            )
+        );
+    }
+
+    getClasses.data.listClasses.items.forEach((cla) => {
+      tempClasses.push(cla);
+    });
+
+    setClasses(tempClasses);
+  }
+
   return (
     <div className={styles.manageUsersContainer}>
       <div className={styles.manageUsersLeft}>
@@ -233,16 +193,52 @@ export default function ManageClasses() {
           <div className={styles.rankUser}>
             <p className={styles.dayHeader}>
               <b>Day</b>
+              <ArrowsMoveVertical
+                size={13}
+                strokeWidth={2}
+                color={"black"}
+                onClick={() => sort("day")}
+              />
             </p>
           </div>
           <p className={styles.typeHeader}>
             <b>Type</b>
+            <ArrowsMoveVertical
+              size={13}
+              strokeWidth={2}
+              color={"black"}
+              className={styles.sortType}
+              onClick={() => sort("type")}
+            />
+          </p>
+          <p className={styles.startHeader}>
+            <b>Time</b>
+            <ArrowsMoveVertical
+              size={13}
+              strokeWidth={2}
+              color={"black"}
+              className={styles.sortStart}
+            />
           </p>
           <p className={styles.ageHeader}>
             <b>Age</b>
+            <ArrowsMoveVertical
+              size={13}
+              strokeWidth={2}
+              color={"black"}
+              className={styles.sortAge}
+              onClick={() => sort("age")}
+            />
           </p>
           <p className={styles.statusHeader}>
             <b>Status</b>
+            <ArrowsMoveVertical
+              size={13}
+              strokeWidth={2}
+              color={"black"}
+              className={styles.sortStatus}
+              onClick={() => sort("status")}
+            />
           </p>
         </div>
         <div className={styles.list}>
