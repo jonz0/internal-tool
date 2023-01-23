@@ -1,9 +1,7 @@
-import styles from "../../styles/Leaderboard.module.css";
 import { API } from "aws-amplify";
+import { useEffect, useState } from "react";
+import styles from "../../styles/Leaderboard.module.css";
 import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import { useState, useEffect } from "react";
 
 export default function Card({ index, user }) {
   const [name, setName] = useState("");
