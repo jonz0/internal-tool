@@ -25,37 +25,43 @@ export default function Details() {
 
   return (
     <div className={styles.detailsContainer}>
-      <div className={styles.detailsContents}>
-        <div className={styles.detailsLeft}>
-          <p className={styles.detailsHeader}>Details</p>
-          <p className={styles.detailsText}>
-            <b>Class:</b> {detailsState.name}
-          </p>
-          <p className={styles.detailsText}>
-            <b>Instructor:</b> {detailsState.instructor}
-          </p>
-          <p className={styles.detailsText}>
-            {/* <b>Availability:</b> {detailsState.openSpots} out of{" "} */}
-            <b>Availability:</b> 23 out of {detailsState.maxSpots}
-          </p>
-          <p className={styles.detailsText}>
-            <b>Content:</b> {detailsState.message}
-          </p>
-        </div>
+      {detailsState.id !== "" && (
+        <div className={styles.detailsContents}>
+          <div className={styles.detailsLeft}>
+            <p className={styles.detailsHeader}>Details</p>
+            <p className={styles.detailsText}>
+              <b>Class:</b> {detailsState.name}
+            </p>
+            <p className={styles.detailsText}>
+              <b>Instructor:</b> {detailsState.instructor}
+            </p>
+            <p className={styles.detailsText}>
+              {/* <b>Availability:</b> {detailsState.openSpots} out of{" "} */}
+              <b>Availability:</b>{" "}
+              {detailsState.maxSpots -
+                detailsState.attendees.length +
+                " out of " +
+                detailsState.maxSpots}
+            </p>
+            <p className={styles.detailsText}>
+              <b>Content:</b> {detailsState.message}
+            </p>
+          </div>
 
-        <div>
-          <p className={styles.attendeesHeader}>Attendees</p>
-          <div className={styles.detailsRight}>
-            {detailsState.attendees.map((attendee) => (
-              <div key={uuidv4()} className={styles.attendee}>
-                {/* <p className={styles.beltColor}>{getBelt(attendee)}</p> */}
-                <img src={getBelt(attendee)} className={styles.beltImg} />
-                <p className={styles.attendeeName}>{attendee.name}</p>
-              </div>
-            ))}
+          <div>
+            <p className={styles.attendeesHeader}>Attendees</p>
+            <div className={styles.detailsRight}>
+              {detailsState.attendees.map((attendee) => (
+                <div key={uuidv4()} className={styles.attendee}>
+                  {/* <p className={styles.beltColor}>{getBelt(attendee)}</p> */}
+                  <img src={getBelt(attendee)} className={styles.beltImg} />
+                  <p className={styles.attendeeName}>{attendee.name}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
