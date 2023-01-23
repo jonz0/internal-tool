@@ -42,6 +42,7 @@ export default function ManageClasses() {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [spots, setSpots] = useState("");
+  const [sortValue, setSortValue] = useState(["", false]);
 
   useEffect(() => {
     async function getClasses() {
@@ -73,8 +74,14 @@ export default function ManageClasses() {
 
       setClasses(tempClasses);
     }
-    getClasses();
+    if (!editing) {
+      getClasses();
+    }
   }, [editing]);
+
+  useEffect(() => {
+    setSortValue(["day", false]);
+  }, []);
 
   async function saveChanges() {
     if (day.length < 1) {
@@ -114,27 +121,26 @@ export default function ManageClasses() {
     });
 
     setEditing(false);
-    setCurrent();
   }
 
   function editClass(cla) {
-    console.log("changing to class", cla.id);
+    if (editing) {
+      setEditing(false);
+    }
     setDay(cla.dayClassesId);
     setCurrent(cla);
     setAge(cla.age);
-    setOpen(cla.open);
+    setOpen(cla.classOpen);
     setType(cla.type);
     setStart(cla.start);
     setEnd(cla.end);
     setSpots(cla.maxSpots);
+    setInstructor(cla.instructor);
+    setMessage(cla.message);
   }
 
-  async function sort(category) {
+  async function sortList(category) {
     let tempClasses = [];
-
-    let getClasses = await API.graphql({
-      query: queries.listClasses,
-    });
 
     let days = {
       sunday: "a",
@@ -146,39 +152,118 @@ export default function ManageClasses() {
       saturday: "g",
     };
 
-    switch (category) {
-      case "day":
-        getClasses.data.listClasses.items.sort((a, b) =>
-          (days[a.dayClassesId] + a.type + a.age).localeCompare(
-            days[b.dayClassesId] + b.type + b.age
-          )
-        );
-      case "type":
-        getClasses.data.listClasses.items.sort((a, b) =>
-          (a.type + days[a.dayClassesId] + a.age).localeCompare(
-            b.type + days[b.dayClassesId] + b.age
-          )
-        );
-        console.log("sorting category:", category);
-      case "age":
-        getClasses.data.listClasses.items.sort((a, b) =>
-          (a.age + a.type + days[a.dayClassesId]).localeCompare(
-            b.age + b.type + days[b.dayClassesId]
-          )
-        );
-      case "status":
-        getClasses.data.listClasses.items.sort(
-          (a, b) =>
-            -1 *
-            (a.status + days[a.dayClassesId] + a.type + a.age).localeCompare(
-              b.status + days[b.dayClassesId] + b.type + b.age
-            )
-        );
-    }
+    let types = {
+      jj: "a",
+      ll: "b",
+      kb: "c",
+    };
 
-    getClasses.data.listClasses.items.forEach((cla) => {
+    let ages = { adults: "a", kids: "b" };
+
+    classes.forEach((cla) => {
       tempClasses.push(cla);
     });
+
+    if (category == "day") {
+      if (category == sortValue[0] && !sortValue[1]) {
+        days = {
+          sunday: "g",
+          monday: "f",
+          tuesday: "e",
+          wednesday: "d",
+          thursday: "c",
+          friday: "b",
+          saturday: "a",
+        };
+      }
+      tempClasses.sort((a, b) =>
+        (
+          days[a.dayClassesId] + a.start.slice(0, 5).replace(":", "")
+        ).localeCompare(
+          days[b.dayClassesId] + b.start.slice(0, 5).replace(":", "")
+        )
+      );
+    } else if (category == "type") {
+      if (category == sortValue[0] && !sortValue[1]) {
+        types = {
+          jj: "c",
+          ll: "b",
+          kb: "a",
+        };
+      }
+      tempClasses.sort((a, b) =>
+        (types[a.type] + days[a.dayClassesId]).localeCompare(
+          types[b.type] + days[b.dayClassesId]
+        )
+      );
+    } else if (category == "time") {
+      if (category == sortValue[0] && !sortValue[1]) {
+        tempClasses.sort((a, b) =>
+          (b.start.slice(0, 5).replace(":", "") + types[b.type]).localeCompare(
+            a.start.slice(0, 5).replace(":", "") + types[a.type]
+          )
+        );
+      } else {
+        tempClasses.sort((a, b) =>
+          (a.start.slice(0, 5).replace(":", "") + types[a.type]).localeCompare(
+            b.start.slice(0, 5).replace(":", "") + types[b.type]
+          )
+        );
+      }
+    } else if (category == "age") {
+      if (category == sortValue[0] && !sortValue[1]) {
+        ages = {
+          adults: "b",
+          kids: "a",
+        };
+      }
+      tempClasses.sort((a, b) =>
+        (
+          ages[a.age] +
+          days[a.dayClassesId] +
+          types[a.type] +
+          a.start.slice(0, 5).replace(":", "")
+        ).localeCompare(
+          ages[b.age] +
+            days[b.dayClassesId] +
+            types[b.type] +
+            b.start.slice(0, 5).replace(":", "")
+        )
+      );
+    } else if (category == "status") {
+      function getStart(open) {
+        if (open) {
+          return category == sortValue[0] && !sortValue[1] ? "b" : "a";
+        } else {
+          return category == sortValue[0] && !sortValue[1] ? "a" : "b";
+        }
+      }
+      tempClasses.sort((a, b) =>
+        (
+          getStart(a.classOpen) +
+          ages[a.age] +
+          days[a.dayClassesId] +
+          types[a.type] +
+          a.start.slice(0, 5).replace(":", "")
+        ).localeCompare(
+          getStart(b.classOpen) +
+            ages[b.age] +
+            days[b.dayClassesId] +
+            types[b.type] +
+            b.start.slice(0, 5).replace(":", "")
+        )
+      );
+    }
+
+    if (category == sortValue[0]) {
+      console.log("same category");
+      setSortValue((prevState) => [prevState[0], !prevState[1]]);
+    } else {
+      console.log("diff category");
+      console.log(category);
+      console.log(sortValue[0]);
+      setSortValue([category, false]);
+    }
 
     setClasses(tempClasses);
   }
@@ -186,58 +271,60 @@ export default function ManageClasses() {
   return (
     <div className={styles.manageUsersContainer}>
       <div className={styles.manageUsersLeft}>
-        <div className={styles.rankRow}>
-          <p className={styles.numberHeader}>
+        <div className={styles.topRow}>
+          <p className={styles.numberHeader} id={styles.top}>
             <b>No.</b>
           </p>
           <div className={styles.rankUser}>
-            <p className={styles.dayHeader}>
+            <p className={styles.dayHeader} id={styles.top}>
               <b>Day</b>
               <ArrowsMoveVertical
                 size={13}
                 strokeWidth={2}
-                color={"black"}
-                onClick={() => sort("day")}
+                color={"white"}
+                onClick={() => sortList("day")}
+                className={styles.sortButton}
               />
             </p>
           </div>
-          <p className={styles.typeHeader}>
+          <p className={styles.typeHeader} id={styles.top}>
             <b>Type</b>
             <ArrowsMoveVertical
               size={13}
               strokeWidth={2}
-              color={"black"}
-              className={styles.sortType}
-              onClick={() => sort("type")}
+              color={"white"}
+              className={styles.sortButton}
+              onClick={() => sortList("type")}
             />
           </p>
-          <p className={styles.startHeader}>
+          <p className={styles.startHeader} id={styles.top}>
             <b>Time</b>
             <ArrowsMoveVertical
               size={13}
               strokeWidth={2}
-              color={"black"}
-              className={styles.sortStart}
+              color={"white"}
+              className={styles.sortButton}
+              onClick={() => sortList("time")}
             />
           </p>
-          <p className={styles.ageHeader}>
+          <p className={styles.ageHeader} id={styles.top}>
             <b>Age</b>
             <ArrowsMoveVertical
               size={13}
               strokeWidth={2}
-              color={"black"}
-              className={styles.sortAge}
-              onClick={() => sort("age")}
+              color={"white"}
+              className={styles.sortButton}
+              onClick={() => sortList("age")}
             />
           </p>
-          <p className={styles.statusHeader}>
+          <p className={styles.statusHeader} id={styles.top}>
             <b>Status</b>
             <ArrowsMoveVertical
               size={13}
               strokeWidth={2}
-              color={"black"}
-              className={styles.sortStatus}
-              onClick={() => sort("status")}
+              color={"white"}
+              className={styles.sortButton}
+              onClick={() => sortList("status")}
             />
           </p>
         </div>
@@ -249,6 +336,7 @@ export default function ManageClasses() {
                 cla={c}
                 key={uuidv4()}
                 editClass={editClass}
+                selected={false}
               />
             );
           })}
@@ -257,32 +345,6 @@ export default function ManageClasses() {
       {(current != null || editing) && (
         <div className={styles.manageUsersRight}>
           <p className={styles.header}>Edit Class</p>
-          {/* <div className={styles.avatarContainer}>
-            <Avatar size="xl" src="/user-placeholder.jpeg" />
-            <div className={styles.avatarRight}>
-              <p className={styles.subHeader}>{first + " " + last}</p>
-              <p className={styles.joined}>
-                {"Enrolled " +
-                  new Date(
-                    new Date(
-                      enroll.slice(0, 4),
-                      enroll.slice(5, 7),
-                      enroll.slice(8) - 1
-                    )
-                  ).toLocaleString("default", {
-                    month: "long",
-                  }) +
-                  " " +
-                  enroll.slice(0, 4)}
-              </p>
-              <p className={styles.joined}>
-                {current.active ? "Status: Active" : "Status: Inactive"}
-              </p>
-              <p className={styles.joined}>
-                {current.enroll == null ? "Awaiting Approval" : ""}
-              </p>
-            </div>
-          </div> */}
           <div className={styles.sideBySide}>
             <div className={styles.selectInput}>
               <label className={styles.label}>Day</label>
@@ -416,7 +478,7 @@ export default function ManageClasses() {
               setMessage(event.target.value);
             }}
             className={styles.input}
-            color="grey"
+            color="black"
             _placeholder={{ color: "inherit" }}
             autoComplete="off"
             size="sm"
@@ -427,9 +489,10 @@ export default function ManageClasses() {
             alignItems="center"
             className={styles.switchInput}
           >
-            <FormLabel mb="0">Close this week?</FormLabel>
+            <FormLabel mb="0">Closed this week?</FormLabel>
             <Switch
-              isChecked={current == null ? false : current.open}
+              isChecked={!open}
+              onChange={() => setOpen((prevState) => !prevState)}
               disabled={!editing}
             />
           </FormControl>

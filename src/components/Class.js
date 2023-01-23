@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState, useContext } from "react";
 import { Button } from "@chakra-ui/react";
 import { API } from "aws-amplify";
-import * as queries from "../graphql/queries";
 import styles from "../../styles/Home.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setDetails } from "../features/class/detailsSlice";
+import * as queries from "../graphql/queries";
+import * as subscriptions from "../graphql/subscriptions";
+import * as mutations from "../graphql/mutations";
 
 export default function Class({ c }) {
   const dispatch = useDispatch();
+  const [selected, setSelected] = useState(false);
 
   if (c == null) {
     return (
@@ -90,7 +93,7 @@ export default function Class({ c }) {
   }
 
   function getSuffix(hours) {
-    return hours <= 12 ? "am" : "pm";
+    return hours < 12 ? "am" : "pm";
   }
 
   function getRangeReadable(classData) {
@@ -105,7 +108,10 @@ export default function Class({ c }) {
     //   (getSuffix(startHour) == getSuffix(endHour) ? "" : getSuffix(startHour));
 
     let startRange =
-      halfDayFormat(startHour) + (startMinutes == 0 ? "" : ":" + startMinutes);
+      halfDayFormat(startHour) +
+      (startMinutes == 0
+        ? ""
+        : ":" + (startMinutes < 10 ? "0" + startMinutes : startMinutes));
 
     let endRange =
       halfDayFormat(endHour) +
@@ -115,12 +121,37 @@ export default function Class({ c }) {
     return startRange + " - " + endRange;
   }
 
+  async function signUp() {
+    const newAttendee = await API.graphql({
+      query: mutations.addAttendee,
+      variables: {
+        input: {
+          firstName: "",
+          lastName: "",
+          llbelt: 10,
+          jjbelt: 10,
+          username: "",
+          classAttendeesId: "",
+        },
+      },
+    });
+  }
+
+  function handleClick() {
+    dispatch(setDetails(details.current));
+    if (!selected) {
+      return setSelected(true);
+    }
+    return setSelected(false);
+  }
+
   return (
     <div>
       <Button
         className={styles.signupButton}
-        colorScheme="gray"
-        onClick={() => dispatch(setDetails(details.current))}
+        style={selected ? { backgroundColor: "#d8ebfc" } : {}}
+        colorScheme={selected ? "blue" : "gray"}
+        onClick={handleClick}
         width="160px"
         height="58px"
         variant="outline"
