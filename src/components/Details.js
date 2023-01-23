@@ -47,11 +47,11 @@ export default function Details() {
           <p className={styles.attendeesHeader}>Attendees</p>
           <div className={styles.detailsRight}>
             {detailsState.attendees.map((attendee) => (
-              <p key={uuidv4()} className={styles.attendee}>
+              <div key={uuidv4()} className={styles.attendee}>
                 {/* <p className={styles.beltColor}>{getBelt(attendee)}</p> */}
                 <img src={getBelt(attendee)} className={styles.beltImg} />
                 <p className={styles.attendeeName}>{attendee.name}</p>
-              </p>
+              </div>
             ))}
           </div>
         </div>

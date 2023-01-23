@@ -3,6 +3,16 @@ import AuthPage from "./AuthPage";
 import { useRouter } from "next/router";
 var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 import UserPool from "../UserPool";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../features/class/userSlice";
+import {
+  setConfirmed,
+  removeConfirmed,
+  addConfirmed,
+} from "../features/class/confirmedSlice";
+import { API } from "aws-amplify";
+import * as queries from "../graphql/queries";
+import * as mutations from "../graphql/mutations";
 
 // ES Modules, e.g. transpiling with Babel
 import { CognitoUserAttribute, CognitoUser } from "amazon-cognito-identity-js";
@@ -13,11 +23,12 @@ export default function AuthWrapper(props) {
   const router = useRouter();
   const [session, setSession] = useState(true);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const currentUser = UserPool.getCurrentUser();
     if (currentUser != null) {
-      currentUser.getSession(function (err, session) {
+      currentUser.getSession(async function (err, session) {
         if (err) {
           setSession(false);
           return;
@@ -26,6 +37,35 @@ export default function AuthWrapper(props) {
 
         if (session.isValid) {
           setSession(true);
+          const queryUser = await API.graphql({
+            query: queries.getUser,
+            variables: {
+              id: currentUser.getUsername(),
+            },
+          });
+
+          const queryClasses = await API.graphql({
+            query: queries.listAttendees,
+            variables: {
+              filter: {
+                username: {
+                  eq: currentUser.getUsername(),
+                },
+                id: {
+                  contains: currentUser.getUsername(),
+                },
+              },
+            },
+          });
+
+          dispatch(setUser(queryUser.data.getUser));
+          dispatch(
+            setConfirmed(
+              queryClasses.data.listAttendees.items.map(
+                (c) => c.classAttendeesId
+              )
+            )
+          );
         }
 
         setLoading(false);

@@ -6,7 +6,7 @@ export const selectedSlice = createSlice({
     value: [],
   },
   reducers: {
-    newSelect: (state, action) => {
+    addSelect: (state, action) => {
       state.value.push(action.payload);
     },
     removeSelect: (state, action) => {
@@ -15,10 +15,13 @@ export const selectedSlice = createSlice({
         state.value.splice(index, 1);
       }
     },
+    clearSelect: (state, action) => {
+      state.value = [];
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { newSelect, removeSelect } = selectedSlice.actions;
+export const { addSelect, removeSelect, clearSelect } = selectedSlice.actions;
 
 export default selectedSlice.reducer;

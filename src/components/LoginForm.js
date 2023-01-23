@@ -5,8 +5,8 @@ var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 import styles from "../../styles/Signup.module.css";
 import * as AWS from "aws-sdk/global";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
 import ForgotForm from "./ForgotForm";
+import { getUser } from "../graphql/queries";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -73,12 +73,13 @@ export default function LoginForm() {
           },
         });
 
-        AWS.config.credentials.refresh((error) => {
+        AWS.config.credentials.refresh(async (error) => {
           if (error) {
             setAlertText("Error logging in. Please try again after some time.");
             setAlert(true);
           } else {
             console.log("Successfully logged!");
+
             window.location.reload();
           }
         });

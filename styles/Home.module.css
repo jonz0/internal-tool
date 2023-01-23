@@ -160,8 +160,25 @@
   position: absolute;
 }
 
-.tabs {
+.tabsList {
   margin-left: -10px;
+}
+
+.tabsBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+}
+
+.confirm {
+  margin-right: 40px;
 }
 
 .classButton {
@@ -207,4 +224,10 @@
 
 .beltImg {
   height: 14px;
+}
+
+.home {
+  align-self: center;
+  justify-self: center;
+  margin: 0 auto;
 }

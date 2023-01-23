@@ -7,10 +7,24 @@ import { setDetails } from "../features/class/detailsSlice";
 import * as queries from "../graphql/queries";
 import * as subscriptions from "../graphql/subscriptions";
 import * as mutations from "../graphql/mutations";
+import {
+  addSelect,
+  removeSelect,
+  clearSelect,
+} from "../features/class/selectedSlice";
+import {
+  setConfirmed,
+  removeConfirmed,
+  addConfirmed,
+} from "../features/class/confirmedSlice";
+import { connect } from "react-redux";
 
-export default function Class({ c }) {
+function Class({ c }, enrolled) {
   const dispatch = useDispatch();
-  const [selected, setSelected] = useState(false);
+  const confirmedState = useSelector((state) => state.confirmed.value);
+  const [selected, setSelected] = useState(
+    c !== null && confirmedState.includes(c.id) ? true : false
+  );
 
   if (c == null) {
     return (
@@ -31,7 +45,13 @@ export default function Class({ c }) {
     );
   }
 
-  const details = useRef({
+  enrolled = confirmedState;
+
+  useEffect(() => {
+    fetchDetails();
+  }, [enrolled]);
+
+  const [det, setDet] = useState({
     id: c.id,
     name: c.name,
     start: c.start,
@@ -44,10 +64,6 @@ export default function Class({ c }) {
     message: c.message,
     instructor: c.instructor,
   });
-
-  useEffect(() => {
-    fetchDetails();
-  }, []);
 
   async function fetchDetails() {
     let students = [];
@@ -79,7 +95,19 @@ export default function Class({ c }) {
       sorted = students.sort((a, b) => (a.llbelt < b.llbelt ? 1 : -1));
     }
 
-    details.current.attendees = sorted;
+    setDet({
+      id: c.id,
+      name: c.name,
+      start: c.start,
+      end: c.end,
+      type: c.type,
+      maxSpots: c.maxSpots,
+      openSpots: c.openSpots,
+      classOpen: c.classOpen,
+      attendees: sorted,
+      message: c.message,
+      instructor: c.instructor,
+    });
   }
 
   function toTitleCase(str) {
@@ -102,11 +130,6 @@ export default function Class({ c }) {
     let startMinutes = parseInt(classData.start.slice(3, 5));
     let endMinutes = parseInt(classData.end.slice(3, 5));
 
-    // let startRange =
-    //   halfDayFormat(startHour) +
-    //   (startMinutes == 0 ? "" : ":" + startMinutes) +
-    //   (getSuffix(startHour) == getSuffix(endHour) ? "" : getSuffix(startHour));
-
     let startRange =
       halfDayFormat(startHour) +
       (startMinutes == 0
@@ -121,36 +144,44 @@ export default function Class({ c }) {
     return startRange + " - " + endRange;
   }
 
-  async function signUp() {
-    const newAttendee = await API.graphql({
-      query: mutations.addAttendee,
-      variables: {
-        input: {
-          firstName: "",
-          lastName: "",
-          llbelt: 10,
-          jjbelt: 10,
-          username: "",
-          classAttendeesId: "",
-        },
-      },
-    });
-  }
-
   function handleClick() {
-    dispatch(setDetails(details.current));
-    if (!selected) {
+    dispatch(setDetails(det));
+    if (enrolled.includes(c.id)) {
+      if (selected) {
+        dispatch(addSelect(c.id));
+        return setSelected(false);
+      }
+      dispatch(removeSelect(c.id));
       return setSelected(true);
     }
-    return setSelected(false);
+
+    if (!selected) {
+      dispatch(addSelect(c.id));
+      setSelected(true);
+    } else {
+      dispatch(removeSelect(c.id));
+      setSelected(false);
+    }
+  }
+
+  function handleHover() {
+    console.log("hovered over", c.id);
   }
 
   return (
     <div>
       <Button
         className={styles.signupButton}
-        style={selected ? { backgroundColor: "#d8ebfc" } : {}}
-        colorScheme={selected ? "blue" : "gray"}
+        style={
+          !selected
+            ? {}
+            : enrolled.includes(c.id)
+            ? { backgroundColor: "#e3fae1" }
+            : { backgroundColor: "#d8ebfc" }
+        }
+        colorScheme={
+          !selected ? "gray" : enrolled.includes(c.id) ? "green" : "blue"
+        }
         onClick={handleClick}
         width="160px"
         height="58px"
@@ -168,3 +199,11 @@ export default function Class({ c }) {
     </div>
   );
 }
+
+const mapStateToProps = function (state) {
+  return {
+    enrolled: state.confirmed.value,
+  };
+};
+
+export default connect(mapStateToProps)(Class);
