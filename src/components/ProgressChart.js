@@ -1,28 +1,17 @@
-import { useState, useEffect } from "react";
+import { API } from "aws-amplify";
 import {
-  Button,
-  ButtonGroup,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-} from "@chakra-ui/react";
-import { API, graphqlOperation } from "aws-amplify";
-import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import styles from "../../styles/Profile.module.css";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   Title,
   Tooltip,
-  Legend,
 } from "chart.js";
+import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
+import styles from "../../styles/Profile.module.css";
+import * as queries from "../graphql/queries";
 import UserPool from "../UserPool";
 
 ChartJS.register(

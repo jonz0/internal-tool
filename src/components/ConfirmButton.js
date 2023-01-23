@@ -1,33 +1,15 @@
-import styles from "../../styles/Home.module.css";
-import DaySet from "../components/DaySet";
-import Details from "../components/Details";
-import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Button,
-} from "@chakra-ui/react";
-import Menu from "../components/Menu";
 import "@aws-amplify/ui-react/styles.css";
-import { AmplifyProvider } from "@aws-amplify/ui-react";
-import { useSelector, useDispatch } from "react-redux";
-import * as queries from "../graphql/queries";
-import * as mutations from "../graphql/mutations";
+import { Button } from "@chakra-ui/react";
 import { API } from "aws-amplify";
+import { connect, useDispatch, useSelector } from "react-redux";
+import styles from "../../styles/Home.module.css";
 import {
-  setConfirmed,
-  removeConfirmed,
   addConfirmed,
+  removeConfirmed,
 } from "../features/class/confirmedSlice";
-import {
-  addSelect,
-  removeSelect,
-  clearSelect,
-} from "../features/class/selectedSlice";
 import { clearDetails } from "../features/class/detailsSlice";
-import { connect } from "react-redux";
+import { clearSelect } from "../features/class/selectedSlice";
+import * as mutations from "../graphql/mutations";
 
 function ConfirmButton({ selects }) {
   const userState = useSelector((state) => state.user.value);

@@ -1,12 +1,10 @@
+import { Alert, AlertIcon, Button, FormControl, Input } from "@chakra-ui/react";
+import { API } from "aws-amplify";
 import { useState } from "react";
-import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
+import styles from "../../styles/Signup.module.css";
+import * as mutations from "../graphql/mutations";
 import UserPool from "../UserPool";
 var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
-import styles from "../../styles/Signup.module.css";
-import { API } from "aws-amplify";
-import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
 
 export default function VerifyForm({ user, setVerifying, setSuccess }) {
   const [code, setCode] = useState("");

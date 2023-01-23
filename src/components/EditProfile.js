@@ -1,22 +1,11 @@
-import { useState, useEffect } from "react";
-import {
-  Button,
-  FormControl,
-  Input,
-  Avatar,
-  AvatarBadge,
-  AvatarGroup,
-  Alert,
-  AlertIcon,
-} from "@chakra-ui/react";
-import { API, graphqlOperation } from "aws-amplify";
-import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import styles from "../../styles/Profile.module.css";
+import { Alert, AlertIcon, Avatar, Button, Input } from "@chakra-ui/react";
+import { API } from "aws-amplify";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import FileUpload from "./FileUpload";
+import styles from "../../styles/Profile.module.css";
+import * as mutations from "../graphql/mutations";
 import UserPool from "../UserPool";
+import FileUpload from "./FileUpload";
 var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 
 export default function UserData() {

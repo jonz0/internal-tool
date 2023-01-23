@@ -1,15 +1,13 @@
-import Menu from "../components/Menu";
+import { API } from "aws-amplify";
+import { useEffect, useState } from "react";
 import styles from "../../styles/Profile.module.css";
-import EditProfile from "../components/EditProfile";
-import ProgressChart from "../components/ProgressChart";
-import Card from "../components/Card";
 import Belt from "../components/Belt";
-import UserPool from "../UserPool";
-import { API, graphqlOperation } from "aws-amplify";
+import Card from "../components/Card";
+import EditProfile from "../components/EditProfile";
+import Menu from "../components/Menu";
+import ProgressChart from "../components/ProgressChart";
 import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import { useState, useEffect } from "react";
+import UserPool from "../UserPool";
 
 export default function Profile() {
   const [belts, setBelts] = useState([0, 0]);

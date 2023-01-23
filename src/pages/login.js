@@ -1,13 +1,6 @@
 // import logo from "./logo.svg";
+import { Button, Card, Heading, Image, View } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-import {
-  withAuthenticator,
-  Button,
-  Heading,
-  Image,
-  View,
-  Card,
-} from "@aws-amplify/ui-react";
 
 export default function Login({ signOut }) {
   return (

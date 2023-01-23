@@ -1,22 +1,11 @@
-import { useEffect, useRef, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import { API } from "aws-amplify";
 import styles from "../../styles/Home.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setDetails } from "../features/class/detailsSlice";
 import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import {
-  addSelect,
-  removeSelect,
-  clearSelect,
-} from "../features/class/selectedSlice";
-import {
-  setConfirmed,
-  removeConfirmed,
-  addConfirmed,
-} from "../features/class/confirmedSlice";
+import { addSelect, removeSelect } from "../features/class/selectedSlice";
 import { connect } from "react-redux";
 
 function Class({ c }, enrolled) {

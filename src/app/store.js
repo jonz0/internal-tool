@@ -1,5 +1,4 @@
-import { configureStore, current } from "@reduxjs/toolkit";
-import { userAgentFromString } from "next/server";
+import { configureStore } from "@reduxjs/toolkit";
 import attendees from "../features/class/detailsSlice";
 import staging from "../features/class/removeStaging";
 import manage from "../features/class/adminSlice";

@@ -1,31 +1,23 @@
-import styles from "../../styles/Home.module.css";
-import { useState, useEffect, useRef, useContext } from "react";
+import { AmplifyProvider, withAuthenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
 import {
-  Button,
-  ButtonGroup,
+  Flex,
   FormControl,
-  FormLabel,
-  FormErrorMessage,
   FormHelperText,
+  FormLabel,
   Input,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  Flex,
   Slider,
-  SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  SliderTrack,
 } from "@chakra-ui/react";
-import Menu from "../components/Menu";
-import { Amplify } from "aws-amplify";
-import config from "../aws-exports";
-import { AmplifyProvider, withAuthenticator } from "@aws-amplify/ui-react";
-import "@aws-amplify/ui-react/styles.css";
-import { Redirect, Route } from "react-router-dom";
-import Router from "next/router";
+import { useState } from "react";
+import styles from "../../styles/Home.module.css";
 
 export default withAuthenticator(function setup() {
   const [input, setInput] = useState("");

@@ -1,7 +1,7 @@
-import styles from "../../styles/Menu.module.css";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import { useState } from "react";
 import { Button, Input } from "@chakra-ui/react";
+import { useState } from "react";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import styles from "../../styles/Menu.module.css";
 
 export default function ProgressCircle({ index }) {
   const progress = 11;

@@ -1,8 +1,8 @@
+import { Alert, AlertIcon, Button, FormControl, Input } from "@chakra-ui/react";
 import { useState } from "react";
-import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
+import styles from "../../styles/Signup.module.css";
 import UserPool from "../UserPool";
 var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
-import styles from "../../styles/Signup.module.css";
 export default function ForgotForm({ setForgot, setSuccess }) {
   const [username, setUsername] = useState("");
   const [code, setCode] = useState("");

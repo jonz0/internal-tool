@@ -1,27 +1,9 @@
-import { useState } from "react";
-import styles from "../../styles/Menu.module.css";
-import Image from "next/image";
-import ProgressCircle from "./ProgressCircle";
 import "@aws-amplify/ui-react/styles.css";
-import UserPool from "../UserPool";
-import { Button } from "@chakra-ui/react";
-import {
-  CognitoIdentityProviderClient,
-  ListUsersCommand,
-} from "@aws-sdk/client-cognito-identity-provider";
-import {
-  CalendarEvent,
-  UserCircle,
-  Trophy,
-  Edit,
-  Power,
-  Users,
-  ClipboardCheck,
-  PencilPlus,
-} from "tabler-icons-react";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ClipboardCheck, PencilPlus, Users } from "tabler-icons-react";
+import styles from "../../styles/Menu.module.css";
 import { setManage } from "../features/class/adminSlice";
 
 export default function MenuToolSmall({ text }) {

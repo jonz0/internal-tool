@@ -1,12 +1,10 @@
-import { useState } from "react";
-import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
-import UserPool from "../UserPool";
-var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
-import styles from "../../styles/Signup.module.css";
+import { Alert, AlertIcon, Button, FormControl, Input } from "@chakra-ui/react";
 import * as AWS from "aws-sdk/global";
-import { useRouter } from "next/router";
+import { useState } from "react";
+import styles from "../../styles/Signup.module.css";
+import UserPool from "../UserPool";
 import ForgotForm from "./ForgotForm";
-import { getUser } from "../graphql/queries";
+var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");

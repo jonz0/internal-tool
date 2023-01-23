@@ -1,32 +1,26 @@
-import { useEffect, useRef, useState, useContext } from "react";
-import styles from "../../styles/Admin.module.css";
-import { API, graphqlOperation } from "aws-amplify";
-import DaySet from "../components/DaySet";
 import {
-  Button,
-  Avatar,
-  Input,
   Alert,
   AlertIcon,
-  Select,
+  Button,
   FormControl,
   FormLabel,
-  Switch,
-  NumberInput,
-  NumberInputStepper,
-  NumberInputField,
-  NumberIncrementStepper,
+  Input,
   NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  Select,
+  Switch,
 } from "@chakra-ui/react";
-import Menu from "../components/Menu";
-import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import { useForm } from "react-hook-form";
-import AdminRank from "./AdminRank";
-import { v4 as uuidv4 } from "uuid";
-import AdminClass from "./AdminClass";
+import { API } from "aws-amplify";
+import { useEffect, useState } from "react";
 import { ArrowsMoveVertical } from "tabler-icons-react";
+import { v4 as uuidv4 } from "uuid";
+import styles from "../../styles/Admin.module.css";
+import * as mutations from "../graphql/mutations";
+import * as queries from "../graphql/queries";
+import AdminClass from "./AdminClass";
 
 export default function ManageClasses() {
   const [classes, setClasses] = useState([]);

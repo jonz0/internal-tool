@@ -1,19 +1,18 @@
-import { useEffect, useRef, useState, useContext } from "react";
-import styles from "../../styles/Admin.module.css";
-import { API, graphqlOperation } from "aws-amplify";
-import DaySet from "../components/DaySet";
 import {
-  Button,
-  Avatar,
-  Input,
   Alert,
   AlertIcon,
+  Avatar,
+  Button,
+  Input,
   Select,
 } from "@chakra-ui/react";
-import * as queries from "../graphql/queries";
-import * as mutations from "../graphql/mutations";
-import AdminRank from "./AdminRank";
+import { API } from "aws-amplify";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import styles from "../../styles/Admin.module.css";
+import * as mutations from "../graphql/mutations";
+import * as queries from "../graphql/queries";
+import AdminRank from "./AdminRank";
 
 export default function ManageUsers() {
   const [users, setUsers] = useState([]);

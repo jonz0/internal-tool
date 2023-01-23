@@ -1,9 +1,7 @@
-import SignupForm from "./SignupForm";
-import LoginForm from "./LoginForm";
-import UserPool from "../UserPool";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import styles from "../../styles/Signup.module.css";
-import Image from "next/image";
+import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
 
 export default function AuthPage() {
   return (

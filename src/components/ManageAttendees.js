@@ -1,23 +1,7 @@
-import { useEffect, useRef, useState, useContext } from "react";
-import { API, graphqlOperation } from "aws-amplify";
-import DaySet from "./DaySet";
-import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Button,
-  ButtonGroup,
-} from "@chakra-ui/react";
-import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import { v4 as uuidv4 } from "uuid";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import styles from "../../styles/Admin.module.css";
-import RemoveUser from "./RemoveUser";
-import { useSelector, useDispatch } from "react-redux";
 import Attendees from "./Attendees";
+import DaySet from "./DaySet";
 
 export default function ManageAttendees() {
   return (

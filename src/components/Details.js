@@ -36,7 +36,6 @@ export default function Details() {
               <b>Instructor:</b> {detailsState.instructor}
             </p>
             <p className={styles.detailsText}>
-              {/* <b>Availability:</b> {detailsState.openSpots} out of{" "} */}
               <b>Availability:</b>{" "}
               {detailsState.maxSpots -
                 detailsState.attendees.length +

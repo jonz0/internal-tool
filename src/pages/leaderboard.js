@@ -1,13 +1,11 @@
-import styles from "../../styles/Leaderboard.module.css";
-import Menu from "../components/Menu";
-import Card from "../components/Card";
 import { API } from "aws-amplify";
-import * as queries from "../graphql/queries";
-import * as subscriptions from "../graphql/subscriptions";
-import * as mutations from "../graphql/mutations";
-import { useState, useEffect } from "react";
-import Rank from "../components/Rank";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import styles from "../../styles/Leaderboard.module.css";
+import Card from "../components/Card";
+import Menu from "../components/Menu";
+import Rank from "../components/Rank";
+import * as queries from "../graphql/queries";
 
 export default function Leaderboard() {
   const [leaders, setLeaders] = useState([]);

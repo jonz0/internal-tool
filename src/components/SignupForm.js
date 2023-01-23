@@ -1,9 +1,9 @@
+import { Alert, AlertIcon, Button, FormControl, Input } from "@chakra-ui/react";
 import { useState } from "react";
-import { Button, FormControl, Input, Alert, AlertIcon } from "@chakra-ui/react";
-import UserPool from "../UserPool";
-var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 import styles from "../../styles/Signup.module.css";
+import UserPool from "../UserPool";
 import VerifyForm from "./VerifyForm";
+var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 
 export default function SignupForm() {
   const [username, setUsername] = useState("");

@@ -1,25 +1,9 @@
-import { useEffect, useRef, useState, useContext } from "react";
-import styles from "../../styles/Admin.module.css";
-import { API, graphqlOperation } from "aws-amplify";
-import DaySet from "../components/DaySet";
-import Menu from "../components/Menu";
-import * as queries from "../graphql/queries";
-import ManageUsers from "../components/ManageUsers";
-import ManageAttendees from "../components/ManageAttendees";
-import ManageClasses from "../components/ManageClasses";
-import { useSelector, useDispatch } from "react-redux";
-import { setManage } from "../features/class/adminSlice";
-import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Button,
-  ButtonGroup,
-} from "@chakra-ui/react";
-import RemoveUser from "../components/RemoveUser";
+import { Button } from "@chakra-ui/react";
+import { API } from "aws-amplify";
+import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import styles from "../../styles/Admin.module.css";
+import RemoveUser from "../components/RemoveUser";
 export default function Attendees() {
   const detailsState = useSelector((state) => state.details.value);
   const removeStaging = useSelector((state) => state.removeStaging.value);

@@ -1,10 +1,10 @@
+import "@aws-amplify/ui-react/styles.css";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css";
+import ConfirmButton from "../components/ConfirmButton";
 import DaySet from "../components/DaySet";
 import Details from "../components/Details";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import Menu from "../components/Menu";
-import "@aws-amplify/ui-react/styles.css";
-import ConfirmButton from "../components/ConfirmButton";
 
 export default function Home() {
   return (

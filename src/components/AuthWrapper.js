@@ -1,21 +1,15 @@
-import { useState, useEffect } from "react";
-import AuthPage from "./AuthPage";
-import { useRouter } from "next/router";
-var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
-import UserPool from "../UserPool";
-import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "../features/class/userSlice";
-import {
-  setConfirmed,
-  removeConfirmed,
-  addConfirmed,
-} from "../features/class/confirmedSlice";
 import { API } from "aws-amplify";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setConfirmed } from "../features/class/confirmedSlice";
+import { setUser } from "../features/class/userSlice";
 import * as queries from "../graphql/queries";
-import * as mutations from "../graphql/mutations";
+import UserPool from "../UserPool";
+import AuthPage from "./AuthPage";
+var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 
 // ES Modules, e.g. transpiling with Babel
-import { CognitoUserAttribute, CognitoUser } from "amazon-cognito-identity-js";
 
 export default function AuthWrapper(props) {
   // const [session, setSession] = useState(false);
