@@ -17,11 +17,8 @@ export default function AdminClass({ rank, cla, editClass, selected }) {
 
   function handleClick(e) {
     e.preventDefault();
-    console.log(selected);
     selected = true;
     editClass(cla);
-    console.log("you clicked a class.");
-    console.log(selected);
   }
 
   return (
@@ -52,6 +49,9 @@ export default function AdminClass({ rank, cla, editClass, selected }) {
         {cla.age == "adults" ? "Adults" : "Kids"}
       </p>
       <p className={styles.statusHeader}>{cla.classOpen ? "Open" : "Closed"}</p>
+      <p className={styles.statusHeader}>
+        {cla.instructor != null ? cla.instructor.split(" ")[0] : ""}
+      </p>
     </div>
   );
 }

@@ -217,7 +217,8 @@
 .dayHeader,
 .ageHeader,
 .statusHeader,
-.startHeader {
+.startHeader,
+.instructorHeader {
   color: black;
   font-size: 11pt;
   align-items: center;
@@ -254,6 +255,13 @@
 
 .statusHeader {
   width: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.instructorHeader {
+  width: 92px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
