@@ -48,12 +48,12 @@ export default function Home() {
               </TabPanel>
               <TabPanel>
                 <div className={styles.signupContainer}>
-                  {/* <DaySet exclude="adults" /> */}
-                  {Array.from(Array(numDays).keys()).map((day) => {
+                  <DaySet exclude="adults" admin={false} />
+                  {/* {Array.from(Array(numDays).keys()).map((day) => {
                     return (
                       <Day key={uuidv4()} increment={day} exclude={"adults"} />
                     );
-                  })}
+                  })} */}
                 </div>
               </TabPanel>
             </TabPanels>

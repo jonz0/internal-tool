@@ -16,7 +16,7 @@ export default function ManageAttendees() {
         <TabPanels>
           <TabPanel>
             <div className={styles.signupContainer}>
-              <DaySet exclude="kids" />
+              <DaySet exclude="kids" admin={true} />
             </div>
           </TabPanel>
           <TabPanel>

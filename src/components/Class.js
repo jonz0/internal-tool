@@ -8,7 +8,7 @@ import * as queries from "../graphql/queries";
 import { addSelect, removeSelect } from "../features/class/selectedSlice";
 import { connect } from "react-redux";
 
-function Class({ c, admin }, enrolled, adminToggle) {
+function Class({ c, admin }, enrolled) {
   const dispatch = useDispatch();
   const confirmedState = useSelector((state) => state.confirmed.value);
   const [selected, setSelected] = useState(
@@ -40,13 +40,6 @@ function Class({ c, admin }, enrolled, adminToggle) {
     fetchDetails();
     console.log("Admin", admin);
   }, [enrolled]);
-
-  useEffect(() => {
-    // if (c.id !== adminToggle.id) {
-    //   setSelected(false);
-    // }
-    console.log(adminToggle);
-  }, [adminToggle]);
 
   const [det, setDet] = useState({
     id: c.id,
@@ -142,6 +135,8 @@ function Class({ c, admin }, enrolled, adminToggle) {
   }
 
   function handleClick() {
+    console.log(admin);
+    dispatch(setDetails(det));
     if (admin) {
       if (enrolled.includes(c.id)) {
         if (selected) {
@@ -161,8 +156,6 @@ function Class({ c, admin }, enrolled, adminToggle) {
       }
       return;
     }
-    dispatch(setDetails(det));
-    console.log(adminToggle);
     setSelected((prevState) => !prevState);
   }
 
@@ -175,7 +168,7 @@ function Class({ c, admin }, enrolled, adminToggle) {
       <Button
         className={styles.signupButton}
         style={
-          admin
+          !admin
             ? !selected
               ? {}
               : enrolled.includes(c.id)
@@ -186,7 +179,7 @@ function Class({ c, admin }, enrolled, adminToggle) {
             : {}
         }
         colorScheme={
-          admin
+          !admin
             ? !selected
               ? "gray"
               : enrolled.includes(c.id)
@@ -217,7 +210,6 @@ function Class({ c, admin }, enrolled, adminToggle) {
 const mapStateToProps = function (state) {
   return {
     enrolled: state.confirmed.value,
-    adminToggle: state.details.value,
   };
 };
 
