@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import Class from "../components/Class";
 import * as queries from "../graphql/queries";
 
-export default function ClassSet({ day, exclude }) {
+export default function ClassSet({ day, exclude, admin }) {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
@@ -36,9 +36,9 @@ export default function ClassSet({ day, exclude }) {
 
   if (classes.length !== 0) {
     return classes.map((c) => {
-      return <Class key={uuidv4()} c={c} />;
+      return <Class key={uuidv4()} c={c} admin={admin} />;
     });
   } else {
-    return <Class key={uuidv4()} c={null} />;
+    return <Class key={uuidv4()} c={null} admin={admin} />;
   }
 }

@@ -1,23 +1,20 @@
 import { Button } from "@chakra-ui/react";
 import { API } from "aws-amplify";
-import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import styles from "../../styles/Admin.module.css";
 import RemoveUser from "../components/RemoveUser";
-export default function Attendees() {
-  const detailsState = useSelector((state) => state.details.value);
-  const removeStaging = useSelector((state) => state.removeStaging.value);
-  const belts = ["⬜", "🟨", "🟧", "🟦", "🟪", "🟫", "⬛"];
-  const classType = detailsState.type;
+import { useDispatch, useSelector } from "react-redux";
+import { setToRemove, deselect, clear } from "../features/class/removeStaging";
+// import { removeAttendees } from "../features/class/detailsSlice";
+import * as mutations from "../graphql/mutations";
+import { connect } from "react-redux";
 
-  function getBelt(attendee) {
-    if (classType == "jj") {
-      console.log(attendee.jjbelt);
-      return belts[attendee.jjbelt];
-    } else if (classType == "ll") {
-      return belts[attendee.llbelt];
-    }
-  }
+function Attendees({ setToggle }, enrolled) {
+  let detailsState = useSelector((state) => state.details.value);
+  const removeStaging = useSelector((state) => state.removeStaging.value);
+  const dispatch = useDispatch();
+
+  enrolled = detailsState;
 
   function removeStagedUsers() {
     removeStaging.forEach(async (id) => {
@@ -29,6 +26,10 @@ export default function Attendees() {
           },
         },
       });
+
+      dispatch(clear());
+      setToggle((prevState) => !prevState);
+      // dispatch(removeAttendees(removeStaging));
     });
   }
 
@@ -36,13 +37,18 @@ export default function Attendees() {
     <div className={styles.attendeesContainer}>
       <div className={styles.detailsHeaders}>
         <p className={styles.attendeesHeader}>Attendees</p>
-        <Button colorScheme="red" size="sm" style={{ marginLeft: "50px" }}>
+        <Button
+          colorScheme="red"
+          size="sm"
+          style={{ marginLeft: "50px" }}
+          onClick={removeStagedUsers}
+        >
           Confirm Removals
         </Button>
       </div>
       <div className={styles.contain}>
         <div className={styles.attendees}>
-          {detailsState.attendees.map((attendee) => (
+          {enrolled.attendees.map((attendee) => (
             <RemoveUser key={uuidv4()} attendee={attendee} />
           ))}
         </div>
@@ -50,3 +56,11 @@ export default function Attendees() {
     </div>
   );
 }
+
+const mapStateToProps = function (state) {
+  return {
+    enrolled: state.details.value,
+  };
+};
+
+export default connect(mapStateToProps)(Attendees);

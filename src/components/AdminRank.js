@@ -23,7 +23,12 @@ export default function AdminRank({ rank, user, editUser }) {
   }
 
   return (
-    <div className={rank % 2 == 0 ? styles.rankRow : styles.rankRowDark}>
+    <div
+      className={rank % 2 == 0 ? styles.rankRow : styles.rankRowDark}
+      onClick={() => {
+        editUser(user);
+      }}
+    >
       <p className={styles.rankHeader}>{rank}</p>
       <div className={styles.rankUser}>
         <div className={styles.imageCropperSmall}>
@@ -34,7 +39,7 @@ export default function AdminRank({ rank, user, editUser }) {
         </p>
       </div>
       {/* <img src={getBelt()} className={styles.beltImg} /> */}
-      <p className={styles.age}>{user.adult ? "Adult" : "Kid"}</p>
+      <p className={styles.ageHeader}>{user.adult ? "Adult" : "Kid"}</p>
       <p className={styles.enrollDate}>
         {user.enroll.slice(5, 7) +
           "/" +
@@ -43,15 +48,6 @@ export default function AdminRank({ rank, user, editUser }) {
           user.enroll.slice(2, 4)}
       </p>
       <p className={styles.status}>{user.active ? "Active" : "Inactive"}</p>
-      <Button
-        colorScheme="blue"
-        size="xs"
-        onClick={() => {
-          editUser(user);
-        }}
-      >
-        Select
-      </Button>
     </div>
   );
 }

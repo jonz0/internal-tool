@@ -1,7 +1,7 @@
 import styles from "../../styles/Home.module.css";
 import ClassSet from "./ClassSet";
 
-export default function Day({ increment, exclude }) {
+export default function Day({ increment, exclude, admin }) {
   let date = new Date();
   date.setDate(date.getDate() + increment);
 
@@ -23,6 +23,7 @@ export default function Day({ increment, exclude }) {
           .toLocaleDateString("default", { weekday: "long" })
           .toLowerCase()}
         exclude={exclude}
+        admin={admin}
       ></ClassSet>
     </div>
   );

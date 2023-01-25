@@ -8,7 +8,7 @@ import * as queries from "../graphql/queries";
 import { addSelect, removeSelect } from "../features/class/selectedSlice";
 import { connect } from "react-redux";
 
-function Class({ c }, enrolled) {
+function Class({ c, admin }, enrolled, adminToggle) {
   const dispatch = useDispatch();
   const confirmedState = useSelector((state) => state.confirmed.value);
   const [selected, setSelected] = useState(
@@ -38,7 +38,15 @@ function Class({ c }, enrolled) {
 
   useEffect(() => {
     fetchDetails();
+    console.log("Admin", admin);
   }, [enrolled]);
+
+  useEffect(() => {
+    // if (c.id !== adminToggle.id) {
+    //   setSelected(false);
+    // }
+    console.log(adminToggle);
+  }, [adminToggle]);
 
   const [det, setDet] = useState({
     id: c.id,
@@ -134,23 +142,28 @@ function Class({ c }, enrolled) {
   }
 
   function handleClick() {
-    dispatch(setDetails(det));
-    if (enrolled.includes(c.id)) {
-      if (selected) {
-        dispatch(addSelect(c.id));
-        return setSelected(false);
+    if (admin) {
+      if (enrolled.includes(c.id)) {
+        if (selected) {
+          dispatch(addSelect(c.id));
+          return setSelected(false);
+        }
+        dispatch(removeSelect(c.id));
+        return setSelected(true);
       }
-      dispatch(removeSelect(c.id));
-      return setSelected(true);
-    }
 
-    if (!selected) {
-      dispatch(addSelect(c.id));
-      setSelected(true);
-    } else {
-      dispatch(removeSelect(c.id));
-      setSelected(false);
+      if (!selected) {
+        dispatch(addSelect(c.id));
+        setSelected(true);
+      } else {
+        dispatch(removeSelect(c.id));
+        setSelected(false);
+      }
+      return;
     }
+    dispatch(setDetails(det));
+    console.log(adminToggle);
+    setSelected((prevState) => !prevState);
   }
 
   function handleHover() {
@@ -162,14 +175,26 @@ function Class({ c }, enrolled) {
       <Button
         className={styles.signupButton}
         style={
-          !selected
-            ? {}
-            : enrolled.includes(c.id)
-            ? { backgroundColor: "#e3fae1" }
-            : { backgroundColor: "#d8ebfc" }
+          admin
+            ? !selected
+              ? {}
+              : enrolled.includes(c.id)
+              ? { backgroundColor: "#e3fae1" }
+              : { backgroundColor: "#d8ebfc" }
+            : selected
+            ? { backgroundColor: "#d8ebfc" }
+            : {}
         }
         colorScheme={
-          !selected ? "gray" : enrolled.includes(c.id) ? "green" : "blue"
+          admin
+            ? !selected
+              ? "gray"
+              : enrolled.includes(c.id)
+              ? "green"
+              : "blue"
+            : selected
+            ? "blue"
+            : "gray"
         }
         onClick={handleClick}
         width="160px"
@@ -192,6 +217,7 @@ function Class({ c }, enrolled) {
 const mapStateToProps = function (state) {
   return {
     enrolled: state.confirmed.value,
+    adminToggle: state.details.value,
   };
 };
 

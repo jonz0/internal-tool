@@ -43,7 +43,12 @@ export default function Details() {
                 detailsState.maxSpots}
             </p>
             <p className={styles.detailsText}>
-              <b>Content:</b> {detailsState.message}
+              {detailsState.message != null &&
+                detailsState.message.length > 0 && (
+                  <div>
+                    <b>Content:</b> {detailsState.message}
+                  </div>
+                )}
             </p>
           </div>
 

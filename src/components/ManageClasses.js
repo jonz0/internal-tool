@@ -38,7 +38,7 @@ export default function ManageClasses() {
   const [sortValue, setSortValue] = useState(["", false]);
   const [change, setChange] = useState(false);
 
-  async function getClasses() {
+  async function getClasses(keep) {
     let tempClasses = [];
 
     const getClasses = await API.graphql({
@@ -68,12 +68,12 @@ export default function ManageClasses() {
 
       setClasses(tempClasses);
     } else {
-      sortList(sortValue[0]);
+      sortList(sortValue[0], getClasses.data.listClasses.items, keep);
     }
   }
 
   useEffect(() => {
-    getClasses();
+    getClasses(false);
     setSortValue(["day", false]);
   }, []);
 
@@ -132,6 +132,7 @@ export default function ManageClasses() {
     });
 
     setChange(false);
+    getClasses(true);
   }
 
   function editClass(cla) {
@@ -145,7 +146,6 @@ export default function ManageClasses() {
     setSpots([cla.maxSpots, cla.maxSpots]);
     setInstructor([cla.instructor, cla.instructor]);
     setMessage([cla.message, cla.message]);
-    console.log(instructor);
   }
 
   function reset(cla) {
@@ -161,8 +161,7 @@ export default function ManageClasses() {
     setMessage((prevState) => [prevState[0], prevState[0]]);
   }
 
-  async function sortList(category) {
-    console.log("sorting list by", category);
+  async function sortList(category, list, keep) {
     let tempClasses = [];
 
     let days = {
@@ -183,7 +182,7 @@ export default function ManageClasses() {
 
     let ages = { adults: "a", kids: "b" };
 
-    classes.forEach((cla) => {
+    list.forEach((cla) => {
       tempClasses.push(cla);
     });
 
@@ -207,7 +206,10 @@ export default function ManageClasses() {
         )
       );
     } else if (category == "type") {
-      if (category == sortValue[0] && !sortValue[1]) {
+      if (
+        (sortValue[1] && keep) ||
+        (category == sortValue[0] && !sortValue[1] && !keep)
+      ) {
         types = {
           jj: "c",
           ll: "b",
@@ -220,7 +222,10 @@ export default function ManageClasses() {
         )
       );
     } else if (category == "time") {
-      if (category == sortValue[0] && !sortValue[1]) {
+      if (
+        (sortValue[1] && keep) ||
+        (category == sortValue[0] && !sortValue[1] && !keep)
+      ) {
         tempClasses.sort((a, b) =>
           (b.start.slice(0, 5).replace(":", "") + types[b.type]).localeCompare(
             a.start.slice(0, 5).replace(":", "") + types[a.type]
@@ -234,7 +239,10 @@ export default function ManageClasses() {
         );
       }
     } else if (category == "age") {
-      if (category == sortValue[0] && !sortValue[1]) {
+      if (
+        (sortValue[1] && keep) ||
+        (category == sortValue[0] && !sortValue[1] && !keep)
+      ) {
         ages = {
           adults: "b",
           kids: "a",
@@ -277,7 +285,10 @@ export default function ManageClasses() {
         )
       );
     } else if (category == "instructor") {
-      if (category == sortValue[0] && !sortValue[1]) {
+      if (
+        (sortValue[1] && keep) ||
+        (category == sortValue[0] && !sortValue[1] && !keep)
+      ) {
         tempClasses.sort((a, b) =>
           (
             b.instructor +
@@ -305,7 +316,10 @@ export default function ManageClasses() {
     }
 
     if (category == sortValue[0]) {
-      setSortValue((prevState) => [prevState[0], !prevState[1]]);
+      setSortValue((prevState) => [
+        category,
+        keep ? prevState[1] : !prevState[1],
+      ]);
     } else {
       setSortValue([category, false]);
     }
@@ -319,18 +333,16 @@ export default function ManageClasses() {
           <p className={styles.numberHeader} id={styles.top}>
             <b>No.</b>
           </p>
-          <div className={styles.rankUser}>
-            <p className={styles.dayHeader} id={styles.top}>
-              <b>Day</b>
-              <ArrowsMoveVertical
-                size={13}
-                strokeWidth={2}
-                color={"white"}
-                onClick={() => sortList("day")}
-                className={styles.sortButton}
-              />
-            </p>
-          </div>
+          <p className={styles.dayHeader} id={styles.top}>
+            <b>Day</b>
+            <ArrowsMoveVertical
+              size={13}
+              strokeWidth={2}
+              color={"white"}
+              onClick={() => sortList("day", classes, false)}
+              className={styles.sortButton}
+            />
+          </p>
           <p className={styles.typeHeader} id={styles.top}>
             <b>Type</b>
             <ArrowsMoveVertical
@@ -338,7 +350,7 @@ export default function ManageClasses() {
               strokeWidth={2}
               color={"white"}
               className={styles.sortButton}
-              onClick={() => sortList("type")}
+              onClick={() => sortList("type", classes, false)}
             />
           </p>
           <p className={styles.startHeader} id={styles.top}>
@@ -348,7 +360,7 @@ export default function ManageClasses() {
               strokeWidth={2}
               color={"white"}
               className={styles.sortButton}
-              onClick={() => sortList("time")}
+              onClick={() => sortList("time", classes, false)}
             />
           </p>
           <p className={styles.ageHeader} id={styles.top}>
@@ -358,7 +370,7 @@ export default function ManageClasses() {
               strokeWidth={2}
               color={"white"}
               className={styles.sortButton}
-              onClick={() => sortList("age")}
+              onClick={() => sortList("age", classes, false)}
             />
           </p>
           <p className={styles.statusHeader} id={styles.top}>
@@ -368,7 +380,7 @@ export default function ManageClasses() {
               strokeWidth={2}
               color={"white"}
               className={styles.sortButton}
-              onClick={() => sortList("status")}
+              onClick={() => sortList("status", classes, false)}
             />
           </p>
           <p className={styles.instructorHeader} id={styles.top}>
@@ -378,7 +390,7 @@ export default function ManageClasses() {
               strokeWidth={2}
               color={"white"}
               className={styles.sortButton}
-              onClick={() => sortList("instructor")}
+              onClick={() => sortList("instructor", classes, false)}
             />
           </p>
         </div>

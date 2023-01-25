@@ -1,18 +1,20 @@
+import { useEffect, useRef, useState, useContext } from "react";
+import styles from "../../styles/Admin.module.css";
+import { API, graphqlOperation } from "aws-amplify";
+import DaySet from "../components/DaySet";
 import {
+  Button,
+  Avatar,
+  Input,
   Alert,
   AlertIcon,
-  Avatar,
-  Button,
-  Input,
   Select,
 } from "@chakra-ui/react";
-import { API } from "aws-amplify";
-import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import styles from "../../styles/Admin.module.css";
-import * as mutations from "../graphql/mutations";
 import * as queries from "../graphql/queries";
+import * as mutations from "../graphql/mutations";
 import AdminRank from "./AdminRank";
+import { v4 as uuidv4 } from "uuid";
+import { ArrowsMoveVertical } from "tabler-icons-react";
 
 export default function ManageUsers() {
   const [users, setUsers] = useState([]);
@@ -141,23 +143,51 @@ export default function ManageUsers() {
   return (
     <div className={styles.manageUsersContainer}>
       <div className={styles.manageUsersLeft}>
-        <div className={styles.rankRow}>
-          <p className={styles.rankHeader}>
+        <div className={styles.topRow}>
+          <p className={styles.rankHeader} id={styles.top}>
             <b>Rank</b>
           </p>
           <div className={styles.rankUser}>
-            <p className={styles.studentHeader}>
+            <p className={styles.studentHeader} id={styles.top}>
               <b>Student</b>
+              <ArrowsMoveVertical
+                size={13}
+                strokeWidth={2}
+                color={"white"}
+                onClick={() => sortList("day")}
+                className={styles.sortButton}
+              />
             </p>
           </div>
-          <p className={styles.age}>
-            <b>Group</b>
+          <p className={styles.ageHeader} id={styles.top}>
+            <b>Age</b>
+            <ArrowsMoveVertical
+              size={13}
+              strokeWidth={2}
+              color={"white"}
+              className={styles.sortButton}
+              onClick={() => sortList("type")}
+            />
           </p>
-          <p className={styles.enrollDate}>
-            <b>Enroll Date</b>
+          <p className={styles.enrollDate} id={styles.top}>
+            <b>Enrolled</b>
+            <ArrowsMoveVertical
+              size={13}
+              strokeWidth={2}
+              color={"white"}
+              className={styles.sortButton}
+              onClick={() => sortList("time")}
+            />
           </p>
-          <p className={styles.status}>
+          <p className={styles.statusHeader} id={styles.top}>
             <b>Status</b>
+            <ArrowsMoveVertical
+              size={13}
+              strokeWidth={2}
+              color={"white"}
+              className={styles.sortButton}
+              onClick={() => sortList("age")}
+            />
           </p>
         </div>
         <div className={styles.list}>
