@@ -1,11 +1,27 @@
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import styles from "../../styles/Admin.module.css";
 import Attendees from "./Attendees";
-import DaySet from "./DaySet";
 import { useState } from "react";
+import Day from "./Day";
+import { API } from "aws-amplify";
+import * as queries from "../graphql/queries";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ManageAttendees() {
   const [toggle, setToggle] = useState(false);
+  const [numDays, setNumDays] = useState(0);
+
+  async function getDays() {
+    const days = await API.graphql({
+      query: queries.listDays,
+    });
+    return days.data.listDays.items.length;
+  }
+
+  getDays().then((ret) => {
+    setNumDays(ret);
+  });
+
   return (
     <div className={styles.calendarContainer}>
       <Tabs variant="soft-rounded" colorScheme="blue">
@@ -16,12 +32,30 @@ export default function ManageAttendees() {
         <TabPanels>
           <TabPanel>
             <div className={styles.signupContainer}>
-              <DaySet exclude="kids" admin={true} />
+              {Array.from(Array(numDays).keys()).map((day) => {
+                return (
+                  <Day
+                    key={uuidv4()}
+                    increment={day}
+                    exclude={"kids"}
+                    admin={true}
+                  />
+                );
+              })}
             </div>
           </TabPanel>
           <TabPanel>
             <div className={styles.signupContainer}>
-              <DaySet exclude="adults" admin={true} />
+              {Array.from(Array(numDays).keys()).map((day) => {
+                return (
+                  <Day
+                    key={uuidv4()}
+                    increment={day}
+                    exclude={"adults"}
+                    admin={true}
+                  />
+                );
+              })}
             </div>
           </TabPanel>
         </TabPanels>

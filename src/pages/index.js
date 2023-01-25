@@ -43,17 +43,30 @@ export default function Home() {
             <TabPanels>
               <TabPanel>
                 <div className={styles.signupContainer}>
-                  <DaySet exclude="kids" admin={false} />
+                  {Array.from(Array(numDays).keys()).map((day) => {
+                    return (
+                      <Day
+                        key={uuidv4()}
+                        increment={day}
+                        exclude={"kids"}
+                        admin={false}
+                      />
+                    );
+                  })}
                 </div>
               </TabPanel>
               <TabPanel>
                 <div className={styles.signupContainer}>
-                  <DaySet exclude="adults" admin={false} />
-                  {/* {Array.from(Array(numDays).keys()).map((day) => {
+                  {Array.from(Array(numDays).keys()).map((day) => {
                     return (
-                      <Day key={uuidv4()} increment={day} exclude={"adults"} />
+                      <Day
+                        key={uuidv4()}
+                        increment={day}
+                        exclude={"adults"}
+                        admin={false}
+                      />
                     );
-                  })} */}
+                  })}
                 </div>
               </TabPanel>
             </TabPanels>
