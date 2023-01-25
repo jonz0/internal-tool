@@ -1,5 +1,4 @@
 import styles from "../../styles/Home.module.css";
-import ClassSet from "./ClassSet";
 import { API } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
