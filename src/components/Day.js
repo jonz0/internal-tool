@@ -2,8 +2,9 @@ import styles from "../../styles/Home.module.css";
 import { API } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Class from "../components/Class";
+import Class from "./Class";
 import * as queries from "../graphql/queries";
+import AdminClass from "./AdminClass";
 
 export default function Day({ increment, exclude, admin }) {
   let date = new Date();
@@ -54,10 +55,14 @@ export default function Day({ increment, exclude, admin }) {
       </div>
       {classes.length !== 0 ? (
         classes.map((c) => {
-          return <Class key={uuidv4()} c={c} admin={admin} />;
+          return admin ? (
+            <AdminClass key={uuidv4()} c={c} />
+          ) : (
+            <Class key={uuidv4()} c={c} />
+          );
         })
       ) : (
-        <Class key={uuidv4()} c={null} admin={admin} />
+        <Class key={uuidv4()} c={null} />
       )}
     </div>
   );

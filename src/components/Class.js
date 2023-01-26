@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import { API } from "aws-amplify";
+import { useEffect, useState } from "react";
+import { connect, useDispatch, useSelector } from "react-redux";
 import styles from "../../styles/Home.module.css";
-import { useSelector, useDispatch } from "react-redux";
 import { setDetails } from "../features/class/detailsSlice";
-import * as queries from "../graphql/queries";
 import { addSelect, removeSelect } from "../features/class/selectedSlice";
-import { connect } from "react-redux";
+import * as queries from "../graphql/queries";
 
-function Class({ c, admin }, enrolled) {
+function Class({ c }, enrolled) {
   const dispatch = useDispatch();
   const confirmedState = useSelector((state) => state.confirmed.value);
+  const selectState = useSelector((state) => state.selected.value);
   const [selected, setSelected] = useState(
     c !== null && confirmedState.includes(c.id) ? true : false
   );
@@ -38,7 +38,6 @@ function Class({ c, admin }, enrolled) {
 
   useEffect(() => {
     fetchDetails();
-    console.log("Admin", admin);
   }, [enrolled]);
 
   const [det, setDet] = useState({
@@ -135,28 +134,25 @@ function Class({ c, admin }, enrolled) {
   }
 
   function handleClick() {
-    console.log(admin);
+    console.log(c.id);
+    console.log(selectState);
     dispatch(setDetails(det));
-    if (admin) {
-      if (enrolled.includes(c.id)) {
-        if (selected) {
-          dispatch(addSelect(c.id));
-          return setSelected(false);
-        }
-        dispatch(removeSelect(c.id));
-        return setSelected(true);
-      }
-
-      if (!selected) {
+    if (enrolled.includes(c.id)) {
+      if (selected) {
         dispatch(addSelect(c.id));
-        setSelected(true);
-      } else {
-        dispatch(removeSelect(c.id));
-        setSelected(false);
+        return setSelected(false);
       }
-      return;
+      dispatch(removeSelect(c.id));
+      return setSelected(true);
     }
-    setSelected((prevState) => !prevState);
+
+    if (!selected) {
+      dispatch(addSelect(c.id));
+      setSelected(true);
+    } else {
+      dispatch(removeSelect(c.id));
+      setSelected(false);
+    }
   }
 
   function handleHover() {
@@ -168,26 +164,14 @@ function Class({ c, admin }, enrolled) {
       <Button
         className={styles.signupButton}
         style={
-          !admin
-            ? !selected
-              ? {}
-              : enrolled.includes(c.id)
-              ? { backgroundColor: "#e3fae1" }
-              : { backgroundColor: "#d8ebfc" }
-            : selected
-            ? { backgroundColor: "#d8ebfc" }
-            : {}
+          !selected
+            ? {}
+            : enrolled.includes(c.id)
+            ? { backgroundColor: "#e3fae1" }
+            : { backgroundColor: "#d8ebfc" }
         }
         colorScheme={
-          !admin
-            ? !selected
-              ? "gray"
-              : enrolled.includes(c.id)
-              ? "green"
-              : "blue"
-            : selected
-            ? "blue"
-            : "gray"
+          !selected ? "gray" : enrolled.includes(c.id) ? "green" : "blue"
         }
         onClick={handleClick}
         width="160px"

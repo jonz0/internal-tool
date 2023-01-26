@@ -15,13 +15,13 @@ export const stagingSlice = createSlice({
         state.value.splice(index, 1);
       }
     },
-    clear: (state, action) => {
+    clearStaging: (state, action) => {
       state.value = [];
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setToRemove, deselect, clear } = stagingSlice.actions;
+export const { setToRemove, deselect, clearStaging } = stagingSlice.actions;
 
 export default stagingSlice.reducer;

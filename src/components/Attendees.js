@@ -1,20 +1,19 @@
 import { Button } from "@chakra-ui/react";
 import { API } from "aws-amplify";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import styles from "../../styles/Admin.module.css";
 import RemoveUser from "../components/RemoveUser";
-import { useDispatch, useSelector } from "react-redux";
-import { setToRemove, deselect, clear } from "../features/class/removeStaging";
-// import { removeAttendees } from "../features/class/detailsSlice";
+import { removeFromDetails } from "../features/class/detailsSlice";
+import { clearStaging } from "../features/class/removeStaging";
+import { addSelect, clearSelect } from "../features/class/selectedSlice";
 import * as mutations from "../graphql/mutations";
-import { connect } from "react-redux";
 
-function Attendees({ setToggle }, enrolled) {
-  let detailsState = useSelector((state) => state.details.value);
+function Attendees({ enrolled }) {
   const removeStaging = useSelector((state) => state.removeStaging.value);
+  const selectState = useSelector((state) => state.selected.value);
+  const confirmedState = useSelector((state) => state.confirmed.value);
   const dispatch = useDispatch();
-
-  enrolled = detailsState;
 
   function removeStagedUsers() {
     removeStaging.forEach(async (id) => {
@@ -26,11 +25,12 @@ function Attendees({ setToggle }, enrolled) {
           },
         },
       });
-
-      dispatch(clear());
-      setToggle((prevState) => !prevState);
-      // dispatch(removeAttendees(removeStaging));
     });
+
+    dispatch(clearStaging());
+    dispatch(clearSelect());
+    dispatch(addSelect(selectState));
+    dispatch(removeFromDetails(removeStaging));
   }
 
   return (
@@ -48,9 +48,10 @@ function Attendees({ setToggle }, enrolled) {
       </div>
       <div className={styles.contain}>
         <div className={styles.attendees}>
-          {enrolled.attendees.map((attendee) => (
-            <RemoveUser key={uuidv4()} attendee={attendee} />
-          ))}
+          {enrolled.id !== "" &&
+            enrolled.attendees.map((attendee) => (
+              <RemoveUser key={uuidv4()} attendee={attendee} />
+            ))}
         </div>
       </div>
     </div>

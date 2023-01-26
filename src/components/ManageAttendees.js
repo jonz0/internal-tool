@@ -8,7 +8,6 @@ import * as queries from "../graphql/queries";
 import { v4 as uuidv4 } from "uuid";
 
 export default function ManageAttendees() {
-  const [toggle, setToggle] = useState(false);
   const [numDays, setNumDays] = useState(0);
 
   async function getDays() {
@@ -60,7 +59,7 @@ export default function ManageAttendees() {
           </TabPanel>
         </TabPanels>
       </Tabs>
-      <Attendees setToggle={setToggle} />
+      <Attendees />
     </div>
   );
 }

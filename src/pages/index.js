@@ -4,7 +4,6 @@ import { API } from "aws-amplify";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css";
 import ConfirmButton from "../components/ConfirmButton";
-import DaySet from "../components/DaySet";
 import Details from "../components/Details";
 import Menu from "../components/Menu";
 import Day from "../components/Day";

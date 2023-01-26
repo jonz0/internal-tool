@@ -20,7 +20,7 @@ import { v4 as uuidv4 } from "uuid";
 import styles from "../../styles/Admin.module.css";
 import * as mutations from "../graphql/mutations";
 import * as queries from "../graphql/queries";
-import AdminClass from "./AdminClass";
+import ClassRow from "./ClassRow";
 
 export default function ManageClasses() {
   const [classes, setClasses] = useState([]);
@@ -397,7 +397,7 @@ export default function ManageClasses() {
         <div className={styles.list}>
           {classes.map((c, index) => {
             return (
-              <AdminClass
+              <ClassRow
                 rank={index + 1}
                 cla={c}
                 key={uuidv4()}
