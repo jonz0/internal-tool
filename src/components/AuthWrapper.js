@@ -21,6 +21,8 @@ export default function AuthWrapper(props) {
 
   useEffect(() => {
     const currentUser = UserPool.getCurrentUser();
+    console.log("current:", currentUser.getUsername());
+    // console.log(currentUser.getUsername());
     if (currentUser != null) {
       currentUser.getSession(async function (err, session) {
         if (err) {
@@ -30,6 +32,7 @@ export default function AuthWrapper(props) {
         // console.log("session validity: " + session.isValid());
 
         if (session.isValid) {
+          // console.log(currentUser.getUsername());
           setSession(true);
           const queryUser = await API.graphql({
             query: queries.getUser,
@@ -53,6 +56,7 @@ export default function AuthWrapper(props) {
           });
 
           dispatch(setUser(queryUser.data.getUser));
+          console.log("setting user:", queryUser.data.getUser);
           dispatch(
             setConfirmed(
               queryClasses.data.listAttendees.items.map(

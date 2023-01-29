@@ -9,10 +9,12 @@ import Menu from "../components/Menu";
 import Day from "../components/Day";
 import * as queries from "../graphql/queries";
 import { v4 as uuidv4 } from "uuid";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Home() {
   const [numDays, setNumDays] = useState(0);
-
+  const userState = useSelector((state) => state.user.value);
+  console.log("userstate for index", userState);
   async function getDays() {
     const days = await API.graphql({
       query: queries.listDays,

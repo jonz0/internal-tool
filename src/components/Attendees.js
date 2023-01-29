@@ -12,7 +12,7 @@ import * as mutations from "../graphql/mutations";
 function Attendees({ enrolled }) {
   const removeStaging = useSelector((state) => state.removeStaging.value);
   const selectState = useSelector((state) => state.selected.value);
-  const confirmedState = useSelector((state) => state.confirmed.value);
+  const detailsState = useSelector((state) => state.details.value);
   const dispatch = useDispatch();
 
   function removeStagedUsers() {
@@ -37,21 +37,26 @@ function Attendees({ enrolled }) {
     <div className={styles.attendeesContainer}>
       <div className={styles.detailsHeaders}>
         <p className={styles.attendeesHeader}>Attendees</p>
-        <Button
-          colorScheme="red"
-          size="sm"
-          style={{ marginLeft: "50px" }}
-          onClick={removeStagedUsers}
-        >
-          Confirm Removals
-        </Button>
+        {removeStaging.length > 0 && (
+          <Button
+            colorScheme="red"
+            size="sm"
+            style={{ marginLeft: "50px" }}
+            onClick={removeStagedUsers}
+          >
+            Confirm Removals
+          </Button>
+        )}
       </div>
       <div className={styles.contain}>
         <div className={styles.attendees}>
-          {enrolled.id !== "" &&
+          {enrolled.id !== "" && detailsState.attendees.length > 0 ? (
             enrolled.attendees.map((attendee) => (
               <RemoveUser key={uuidv4()} attendee={attendee} />
-            ))}
+            ))
+          ) : (
+            <p>There are no attendees.</p>
+          )}
         </div>
       </div>
     </div>

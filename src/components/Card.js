@@ -28,7 +28,7 @@ export default function Card({ index, user }) {
           a.jjHours < b.jjHours ? 1 : -1
         );
         setClasses(sorted[0].jjhours);
-        console.log(sorted[0].firstName + " " + sorted[0].lastName);
+        // console.log(sorted[0].firstName + " " + sorted[0].lastName);
       } else if (index == 4) {
         sorted = getUsers.data.listUsers.items.sort((a, b) =>
           a.llHours < b.llHours ? 1 : -1
@@ -39,7 +39,7 @@ export default function Card({ index, user }) {
           a.kbHours < b.kbHours ? 1 : -1
         );
         setClasses(sorted[0].kbhours);
-        console.log(sorted[0]);
+        // console.log(sorted[0]);
       }
       setName(sorted[0].firstName + " " + sorted[0].lastName);
     }

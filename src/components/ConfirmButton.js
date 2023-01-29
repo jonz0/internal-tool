@@ -13,6 +13,7 @@ import * as mutations from "../graphql/mutations";
 
 function ConfirmButton({ selects }) {
   const userState = useSelector((state) => state.user.value);
+  // console.log(userState);
   const confirmedState = useSelector((state) => state.confirmed.value);
   const dispatch = useDispatch();
 

@@ -36,7 +36,6 @@ export default function Leaderboard() {
           sortedKids.push(item);
         }
       });
-      // console.log("leaders", sortedAdults);
 
       setAdults(sortedAdults);
       setKids(sortedKids);

@@ -4,10 +4,19 @@ import {
   FormErrorMessage,
   FormLabel,
   InputGroup,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderMark,
 } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useController } from "react-hook-form";
 import styles from "../../styles/Profile.module.css";
+import S3 from "react-aws-s3";
+import AvatarEditor from "react-avatar-editor";
+var AWS = require("aws-sdk");
+import { connect, useDispatch, useSelector } from "react-redux";
 
 export default function FileUpload({
   name,
@@ -24,32 +33,152 @@ export default function FileUpload({
     control,
     rules: { required: false },
   });
+  const [precrop, setPrecrop] = useState(null);
+  const [sliderValue, setSliderValue] = useState(1);
+  const userState = useSelector((state) => state.user.value);
+
+  const config = {
+    bucketName: "amplify-calendarsignup-dev-20052-deployment",
+    // dirName: "photos" /* optional */,
+    region: "us-west-1",
+    accessKeyId: "AKIAZYYIRAJWQ7YS5E6E",
+    secretAccessKey: "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",
+  };
+
+  const ReactS3Client = new S3(config);
+
+  function handleUpload(files) {
+    console.log("doing this...");
+    console.log(files[0]);
+    setPrecrop(files[0]);
+  }
+
+  const editor = useRef(null);
+
+  function dataURItoBlob(dataURI) {
+    // convert base64 to raw binary data held in a string
+    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+    var byteString = atob(dataURI.split(",")[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+
+    // write the bytes of the string to an ArrayBuffer
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    //Old Code
+    //write the ArrayBuffer to a blob, and you're done
+    //var bb = new BlobBuilder();
+    //bb.append(ab);
+    //return bb.getBlob(mimeString);
+
+    //New Code
+    return new Blob([ab], { type: mimeString });
+  }
 
   return (
-    <FormControl isInvalid={invalid}>
-      <FormLabel htmlFor="writeUpFile">{children}</FormLabel>
-      <InputGroup>
-        <input
-          type="file"
-          onChange={(e) => onChange(e.target.files[0])}
-          accept={acceptedFileTypes}
-          name={name}
-          ref={inputRef}
-          {...inputProps}
-          style={{ display: "none" }}
-        />
-        <Button
-          onClick={() => inputRef.current.click()}
-          colorScheme="blue"
-          size="sm"
-          // onChange={(e) => {}}
-          className={styles.fileUpload}
-        >
-          Upload Photo
-        </Button>
-      </InputGroup>
-      <FormErrorMessage>{invalid}</FormErrorMessage>
-    </FormControl>
+    <div>
+      <FormControl isInvalid={invalid}>
+        <FormLabel htmlFor="writeUpFile">{children}</FormLabel>
+        <InputGroup>
+          <input
+            type="file"
+            onChange={(e) => {
+              onChange(e.target.files[0]);
+              handleUpload(e.target.files);
+            }}
+            accept={acceptedFileTypes}
+            name={name}
+            ref={inputRef}
+            {...inputProps}
+            style={{ display: "none" }}
+          />
+          <Button
+            onClick={() => inputRef.current.click()}
+            colorScheme="blue"
+            size="sm"
+            // onChange={(e) => {}}
+            className={styles.fileUpload}
+          >
+            Upload Photo
+          </Button>
+        </InputGroup>
+        <FormErrorMessage>{invalid}</FormErrorMessage>
+      </FormControl>
+      {precrop !== null && (
+        <>
+          <div className={styles.cropbg} />
+          <div className={styles.cropImage}>
+            <AvatarEditor
+              image={precrop}
+              width={250}
+              height={250}
+              border={50}
+              color={[255, 255, 255, 0.6]} // RGBA
+              borderRadius={125}
+              scale={sliderValue}
+              rotate={0}
+              ref={editor}
+            />
+            <Slider
+              aria-label="slider-ex-1"
+              min={0.8}
+              max={2}
+              defaultValue={1}
+              width={300}
+              step={0.05}
+              onChange={(v) => setSliderValue(v)}
+            >
+              <SliderTrack>
+                <SliderFilledTrack />
+              </SliderTrack>
+              <SliderThumb />
+            </Slider>
+            <div>
+              <Button
+                onClick={() => {
+                  if (editor) {
+                    // This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
+                    // drawn on another canvas, or added to the DOM.
+                    const canvas = editor.current.getImage();
+
+                    // If you want the image resized to the canvas size (also a HTMLCanvasElement)
+                    const canvasScaled =
+                      editor.current.getImageScaledToCanvas();
+
+                    let imageName = userState.username + "-" + "profile-image";
+
+                    ReactS3Client.uploadFile(
+                      dataURItoBlob(canvas.toDataURL()),
+                      imageName
+                    )
+                      .then((data) => console.log(data))
+                      .catch((err) => console.error(err));
+
+                    setPrecrop(null);
+                    setSliderValue(1);
+                  }
+                }}
+              >
+                Save
+              </Button>
+              <Button
+                onClick={() => {
+                  editor.current = null;
+                  setPrecrop(null);
+                }}
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 

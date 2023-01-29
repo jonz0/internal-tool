@@ -2,11 +2,14 @@ import { Alert, AlertIcon, Avatar, Button, Input } from "@chakra-ui/react";
 import { API } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import styles from "../../styles/Profile.module.css";
 import * as mutations from "../graphql/mutations";
 import UserPool from "../UserPool";
 import FileUpload from "./FileUpload";
 var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
+import S3 from "react-aws-s3";
+var AWS = require("aws-sdk");
 
 export default function UserData() {
   const [editing, setEditing] = useState(false);
@@ -15,7 +18,6 @@ export default function UserData() {
   const [password, setPassword] = useState("");
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
-  const [insta, setInsta] = useState("");
   const [emailCode, setEmailCode] = useState("");
   const [pwCode, setPwCode] = useState("");
   const [editingEmail, setEditingEmail] = useState(false);
@@ -24,41 +26,36 @@ export default function UserData() {
   const [info, setInfo] = useState(false);
   const [verifyPw, setVerifyPw] = useState("");
   const [verifying, setVerifying] = useState(false);
-  let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
-    Username: UserPool.getCurrentUser().username,
-    Pool: UserPool,
+  const userState = useSelector((state) => state.user.value);
+
+  const config = {
+    bucketName: "amplify-calendarsignup-dev-20052-deployment",
+    // dirName: "photos" /* optional */,
+    region: "us-west-1",
+    accessKeyId: "AKIAZYYIRAJWQ7YS5E6E",
+    secretAccessKey: "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",
+  };
+
+  const ReactS3Client = new S3(config);
+
+  var AWS = require("aws-sdk");
+  AWS.config.update({
+    accessKeyId: "AKIAZYYIRAJWQ7YS5E6E",
+    secretAccessKey: "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",
   });
+  var s3 = new AWS.S3();
+
+  function encode(data) {
+    var str = data.reduce(function (a, b) {
+      return a + String.fromCharCode(b);
+    }, "");
+    return Buffer.from(str, "base64");
+  }
 
   function resetAlerts() {
     setAlert("");
     setInfo(false);
   }
-
-  const [hour, setHours] = useState({
-    jj: null,
-    ll: null,
-    kb: null,
-  });
-
-  const [belts, setBelts] = useState({
-    jj: null,
-    ll: null,
-  });
-
-  const [attributes, setAttributes] = useState({
-    username: null,
-    firstName: null,
-    lastName: null,
-    email: null,
-    phone: null,
-    freezeStart: null,
-    freezeEnd: null,
-    enroll: null,
-    renew: null,
-    active: null,
-  });
-
-  useEffect(() => {}, []);
 
   const {
     handleSubmit,
@@ -109,6 +106,11 @@ export default function UserData() {
   }
 
   function sendPwCode() {
+    let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
+      Username: userState.username,
+      Pool: UserPool,
+    });
+
     cognitoUser.forgotPassword({
       onSuccess: function (result) {
         setEditingPw(true);
@@ -135,6 +137,11 @@ export default function UserData() {
       setAlert("Please enter a new password.");
       return;
     }
+
+    let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
+      Username: userState.username,
+      Pool: UserPool,
+    });
 
     cognitoUser.confirmPassword(pwCode, password, {
       onFailure(err) {
@@ -167,6 +174,11 @@ export default function UserData() {
   }
 
   function sendEmailCode(attributeList) {
+    let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
+      Username: userState.username,
+      Pool: UserPool,
+    });
+
     cognitoUser.getAttributeVerificationCode(email, {
       onSuccess: function (result) {
         console.log("call result: " + result);
@@ -189,14 +201,20 @@ export default function UserData() {
 
   function validatePw() {
     setEditingEmail(true);
+    let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
+      Username: userState.username,
+      Pool: UserPool,
+    });
 
-    var attributeList = [];
-    var attribute = {
+    let attributeList = [];
+    let emailAttribute = {
       Name: "email",
       Value: email,
     };
 
-    var attribute = new AmazonCognitoIdentity.CognitoUserAttribute(attribute);
+    let attribute = new AmazonCognitoIdentity.CognitoUserAttribute(
+      emailAttribute
+    );
     attributeList.push(attribute);
 
     let Username = "ijonluu";
@@ -222,19 +240,50 @@ export default function UserData() {
     authUser();
   }
 
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
   return (
     <div>
       <p className={styles.header}>My Profile</p>
       <div className={styles.avatarContainer}>
-        <Avatar size="xl" src="/user-placeholder.jpeg" />
+        <Avatar
+          size="xl"
+          src={
+            "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/" +
+            userState.username +
+            "-profile-image.png"
+          }
+        />
         <div className={styles.avatarRight}>
-          <p className={styles.subHeader}>Jackie Chan</p>
-          <p className={styles.joined}>Joined June 2020</p>
+          <p className={styles.subHeader}>
+            {userState.firstName + " " + userState.lastName}
+          </p>
+          <p className={styles.joined}>
+            {"Joined" +
+              " " +
+              months[parseInt(userState.enroll.slice(5, 7)) - 1] +
+              " " +
+              userState.enroll.slice(0, 4)}
+          </p>
           <FileUpload
             name="avatar"
             acceptedFileTypes="image/*"
             placeholder="Your avatar"
             control={control}
+            // onUpload={handleUpload}
           />
         </div>
       </div>
@@ -293,22 +342,6 @@ export default function UserData() {
           size="sm"
           disabled={!editing}
         />
-        <label className={styles.label}>Instagram</label>
-        <Input
-          id="instagram"
-          type="text"
-          value={insta}
-          onChange={(event) => {
-            setInsta(event.target.value);
-          }}
-          className={styles.input}
-          color="grey"
-          placeholder="Instagram"
-          _placeholder={{ color: "inherit" }}
-          autoComplete="off"
-          size="sm"
-          disabled={!editing}
-        />
         {!editing && (
           <Button
             mt={4}
@@ -358,7 +391,6 @@ export default function UserData() {
           </div>
         )}
       </form>
-
       <label className={styles.label}>Email address</label>
       <div className={styles.changeInline}>
         <Input

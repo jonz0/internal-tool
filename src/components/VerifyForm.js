@@ -12,9 +12,6 @@ export default function VerifyForm({ user, setVerifying, setSuccess }) {
   const [alertText, setAlertText] = useState("");
   const [resent, setResent] = useState(false);
 
-  console.log("here");
-  console.log(user);
-
   function resetAlerts() {
     setAlert(false);
     setAlertText("");
