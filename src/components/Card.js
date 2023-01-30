@@ -4,8 +4,8 @@ import styles from "../../styles/Leaderboard.module.css";
 import * as queries from "../graphql/queries";
 
 export default function Card({ index, user }) {
-  const [name, setName] = useState("");
-  const [classes, setClasses] = useState("");
+  const [userData, setUserData] = useState("");
+  const [classes, setClasses] = useState(0);
   const awards = [
     ["/gold-cup.png", "1st Place"],
     ["/silver-cup.png", "2nd Place"],
@@ -24,24 +24,22 @@ export default function Card({ index, user }) {
       let sorted = [];
 
       if (index == 3) {
-        sorted = getUsers.data.listUsers.items.sort((a, b) =>
-          a.jjHours < b.jjHours ? 1 : -1
-        );
+        sorted = getUsers.data.listUsers.items.sort(function (a, b) {
+          return b.jjhours - a.jjhours;
+        });
         setClasses(sorted[0].jjhours);
-        // console.log(sorted[0].firstName + " " + sorted[0].lastName);
       } else if (index == 4) {
-        sorted = getUsers.data.listUsers.items.sort((a, b) =>
-          a.llHours < b.llHours ? 1 : -1
-        );
+        sorted = getUsers.data.listUsers.items.sort(function (a, b) {
+          return b.llhours - a.llhours;
+        });
         setClasses(sorted[0].llhours);
       } else if (index == 5) {
-        sorted = getUsers.data.listUsers.items.sort((a, b) =>
-          a.kbHours < b.kbHours ? 1 : -1
-        );
+        sorted = getUsers.data.listUsers.items.sort(function (a, b) {
+          return b.kbhours - a.kbhours;
+        });
         setClasses(sorted[0].kbhours);
-        // console.log(sorted[0]);
       }
-      setName(sorted[0].firstName + " " + sorted[0].lastName);
+      setUserData(sorted[0]);
     }
     if (index > 2) {
       getLeader();
@@ -54,13 +52,28 @@ export default function Card({ index, user }) {
       <div className={styles.awardImages}>
         <img src={awards[index][0]} className={styles.awardImage} />
         <div className={styles.imageCropper}>
-          <img src="/user-placeholder.jpeg" className={styles.userImage} />
+          <img
+            src={
+              user != null
+                ? "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
+                  user.username +
+                  "-profile-image.png?" +
+                  Date.now()
+                : "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
+                  userData.username +
+                  "-profile-image.png?" +
+                  Date.now()
+            }
+            className={styles.userImage}
+          />
         </div>
       </div>
 
       <div className={styles.cardContents}>
         <p className={styles.content}>
-          {user != null ? user.firstName + " " + user.lastName : name}
+          {user != null
+            ? user.firstName + " " + user.lastName
+            : userData.firstName + " " + userData.lastName}
         </p>
         <p className={styles.content}>
           {user != null ? user.llhours + user.jjhours : classes} Classes

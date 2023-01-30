@@ -26,7 +26,15 @@ export default function Rank({ rank, user }) {
       <p className={styles.rankHeader}>{rank}</p>
       <div className={styles.studentDiv}>
         <div className={styles.imageCropperSmall}>
-          <img src="/user-placeholder.jpeg" className={styles.rankImage} />
+          <img
+            src={
+              "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
+              user.username +
+              "-profile-image.png?" +
+              Date.now()
+            }
+            className={styles.rankImage}
+          />
         </div>
         <p style={{ marginLeft: "5px" }} className={styles.nameHeader}>
           {user.firstName + " " + user.lastName}

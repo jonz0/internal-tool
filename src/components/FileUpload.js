@@ -67,13 +67,6 @@ export default function FileUpload({
       ia[i] = byteString.charCodeAt(i);
     }
 
-    //Old Code
-    //write the ArrayBuffer to a blob, and you're done
-    //var bb = new BlobBuilder();
-    //bb.append(ab);
-    //return bb.getBlob(mimeString);
-
-    //New Code
     return new Blob([ab], { type: mimeString });
   }
 
@@ -150,7 +143,8 @@ export default function FileUpload({
                     const canvasScaled =
                       editor.current.getImageScaledToCanvas();
 
-                    let imageName = userState.username + "-" + "profile-image";
+                    // let imageName = userState.username + "-" + "profile-image";
+                    let imageName = precrop.name;
 
                     ReactS3Client.uploadFile(
                       dataURItoBlob(canvas.toDataURL()),

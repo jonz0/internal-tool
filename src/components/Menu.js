@@ -10,12 +10,31 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { setManage } from "../features/class/adminSlice";
+var AWS = require("aws-sdk");
+import S3 from "react-aws-s3";
+import { Alert, AlertIcon, Avatar, Button, Input } from "@chakra-ui/react";
 
 export default function Menu({ selected }) {
   const [page, setPage] = useState("Classes");
   const [admin, setAdmin] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
+
+  var AWS = require("aws-sdk");
+  AWS.config.update({
+    accessKeyId: "AKIAZYYIRAJWQ7YS5E6E",
+    secretAccessKey: "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",
+  });
+
+  const config = {
+    bucketName: "amplify-calendarsignup-dev-20052-deployment",
+    dirName: "photos",
+    region: "us-west-1",
+    accessKeyId: "AKIAZYYIRAJWQ7YS5E6E",
+    secretAccessKey: "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",
+  };
+
+  const ReactS3Client = new S3(config);
 
   useEffect(() => {
     if (selected != null) {
@@ -25,10 +44,6 @@ export default function Menu({ selected }) {
       setPage(selected);
     }
   }, []);
-
-  async function debug() {
-    console.log("debugging...");
-  }
 
   return (
     <div className={styles.toolbar}>
@@ -103,15 +118,6 @@ export default function Menu({ selected }) {
         />
         <p className={styles.toolText}>Sign Out</p>
       </div>
-      {/* <Button
-          mt={4}
-          colorScheme="teal"
-          style={{ marginRight: "8px" }}
-          onClick={debug}
-          width="140px"
-        >
-          Debug
-        </Button> */}
       <ProgressCircle />
     </div>
   );

@@ -33,13 +33,6 @@ export default function UserData() {
     secretAccessKey: "fqi4Xl7Wptxo6efx9sI+9NG44cJoe0CCuV9G1gCh",
   });
 
-  function encode(data) {
-    var str = data.reduce(function (a, b) {
-      return a + String.fromCharCode(b);
-    }, "");
-    return Buffer.from(str, "base64");
-  }
-
   function resetAlerts() {
     setAlert("");
     setInfo(false);
@@ -253,7 +246,8 @@ export default function UserData() {
               src={
                 "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
                 userState.username +
-                "-profile-image.png?"
+                "-profile-image.png?" +
+                Date.now()
               }
             />
             <div className={styles.avatarRight}>

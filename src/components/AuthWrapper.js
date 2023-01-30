@@ -55,7 +55,6 @@ export default function AuthWrapper(props) {
           });
 
           dispatch(setUser(queryUser.data.getUser));
-          console.log("setting user:", queryUser.data.getUser);
           dispatch(
             setConfirmed(
               queryClasses.data.listAttendees.items.map(
