@@ -118,6 +118,7 @@ export default function Menu({ selected }) {
         />
         <p className={styles.toolText}>Sign Out</p>
       </div>
+
       <ProgressCircle />
     </div>
   );

@@ -11,6 +11,8 @@ export default function Rank({ rank, user }) {
     "/black-belt-icon.png",
   ];
 
+  const bg = ["#fff3bd", "#e4eff5", "#ffebd6"];
+
   function getBelt() {
     if (user.llbelt > user.jjbelt) {
       return belts[user.llbelt];
@@ -22,7 +24,10 @@ export default function Rank({ rank, user }) {
   }
 
   return (
-    <div className={rank % 2 == 0 ? styles.rankRow : styles.rankRowDark}>
+    <div
+      className={rank % 2 == 0 ? styles.rankRow : styles.rankRowDark}
+      style={rank < 4 ? { backgroundColor: bg[rank - 1] } : {}}
+    >
       <p className={styles.rankHeader}>{rank}</p>
       <div className={styles.studentDiv}>
         <div className={styles.imageCropperSmall}>

@@ -65,6 +65,12 @@
 .input {
   margin-bottom: 8px;
   margin-top: 3px;
+  height: 34px;
+  border-width: 1px;
+  border-color: lightgray;
+  font-size: 11pt;
+  padding-left: 8px;
+  font-family: "Manrope", sans-serif;
 }
 
 .namesContainer {
@@ -90,6 +96,7 @@
 .label {
   font-size: 10pt;
   font-weight: 600;
+  font-family: "Manrope", sans-serif;
 }
 
 .fileUpload {
@@ -113,6 +120,7 @@
 .subHeader {
   font-size: 14pt;
   font-weight: 600;
+  font-family: "Manrope", sans-serif;
 }
 
 .joined {
@@ -140,7 +148,7 @@
 .beltCard {
   width: 250px;
   height: 120px;
-  gap: 10px;
+  gap: 15px;
   display: flex;
   flex-direction: row;
   border-radius: 20px;
@@ -153,7 +161,9 @@
   display: flex;
   width: 75px;
   height: 75px;
-  background-color: rgb(147, 147, 147);
+  /* background-color: rgb(232, 232, 232); */
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   position: relative;
   overflow: hidden;
   border-radius: 50%;

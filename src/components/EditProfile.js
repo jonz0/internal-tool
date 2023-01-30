@@ -27,6 +27,18 @@ export default function UserData() {
   const [verifying, setVerifying] = useState(false);
   const userState = useSelector((state) => state.user.value);
 
+  useEffect(() => {
+    console.log("running this");
+    if (typeof userState != null) {
+      setFirst(userState.firstName);
+      setLast(userState.lastName);
+      setPhone(userState.phone);
+      setEmail(userState.email);
+    } else {
+      setTimeout(waitForElement, 100);
+    }
+  });
+
   var AWS = require("aws-sdk");
   AWS.config.update({
     accessKeyId: "AKIAZYYIRAJWQ7YS5E6E",
@@ -266,7 +278,6 @@ export default function UserData() {
                 acceptedFileTypes="image/*"
                 placeholder="Your avatar"
                 control={control}
-                // onUpload={handleUpload}
               />
             </div>
           </div>
@@ -283,7 +294,6 @@ export default function UserData() {
                   }}
                   className={styles.input}
                   color="grey"
-                  placeholder="First Name"
                   _placeholder={{ color: "inherit" }}
                   autoComplete="off"
                   size="sm"
@@ -373,7 +383,6 @@ export default function UserData() {
               _placeholder={{ color: "inherit" }}
               autoComplete="off"
               size="sm"
-              // disabled={!editing}
             />
             <Button
               colorScheme="blue"
@@ -462,7 +471,6 @@ export default function UserData() {
               _placeholder={{ color: "inherit" }}
               autoComplete="off"
               size="sm"
-              // disabled={!editing}
             />
             <Button
               colorScheme="blue"

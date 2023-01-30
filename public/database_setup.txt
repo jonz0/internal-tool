@@ -5,116 +5,116 @@ mutation MyMutation {
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-marcelo, username: "marcelo", firstName: "Marcelo", lastName: "Garcia", jjbelt: 6, llbelt: 6, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-marcelo", username: "marcelo", firstName: "Marcelo", lastName: "Garcia", jjbelt: 6, llbelt: 6, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-roger, username: "roger", firstName: "Roger", lastName: "Gracie", jjbelt: 6, llbelt: 6, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-roger", username: "roger", firstName: "Roger", lastName: "Gracie", jjbelt: 6, llbelt: 6, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-oliver, username: "oliver", firstName: "Oliver", lastName: "Taza", jjbelt: 5, llbelt: 5, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-oliver", username: "oliver", firstName: "Oliver", lastName: "Taza", jjbelt: 5, llbelt: 5, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-dominique, username: "dominique", firstName: "Dominique", lastName: "Bell", jjbelt: 5, llbelt: 5, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-dominique", username: "dominique", firstName: "Dominique", lastName: "Bell", jjbelt: 5, llbelt: 5, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-fabio, username: "fabio", firstName: "Fábio", lastName: "Alano", jjbelt: 5, llbelt: 5, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-fabio", username: "fabio", firstName: "Fábio", lastName: "Alano", jjbelt: 5, llbelt: 5, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-cole, username: "cole", firstName: "Cole", lastName: "Abate", jjbelt: 4, llbelt: 4, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-cole", username: "cole", firstName: "Cole", lastName: "Abate", jjbelt: 4, llbelt: 4, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-giovanna, username: "giovanna", firstName: "Giovanna", lastName: "Jara", jjbelt: 4, llbelt: 4, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-giovanna", username: "giovanna", firstName: "Giovanna", lastName: "Jara", jjbelt: 4, llbelt: 4, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-shay, username: "shay", firstName: "Shay", lastName: "Montague", jjbelt: 4, llbelt: 4, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-shay", username: "shay", firstName: "Shay", lastName: "Montague", jjbelt: 4, llbelt: 4, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-tom, username: "tom", firstName: "Tom", lastName: "Hardy", jjbelt: 3, llbelt: 3, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-tom", username: "tom", firstName: "Tom", lastName: "Hardy", jjbelt: 3, llbelt: 3, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-demi, username: "demi", firstName: "Demi", lastName: "Lovato", jjbelt: 3, llbelt: 3, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-demi", username: "demi", firstName: "Demi", lastName: "Lovato", jjbelt: 3, llbelt: 3, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-kelly, username: "kelly", firstName: "Kelly", lastName: "slater", jjbelt: 3, llbelt: 3, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-kelly", username: "kelly", firstName: "Kelly", lastName: "slater", jjbelt: 3, llbelt: 3, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-vince, username: "vince", firstName: "Vince", lastName: "Vaughn", jjbelt: 3, llbelt: 3, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-vince", username: "vince", firstName: "Vince", lastName: "Vaughn", jjbelt: 3, llbelt: 3, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-vin, username: "vin", firstName: "Vin", lastName: "Diesel", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-vin", username: "vin", firstName: "Vin", lastName: "Diesel", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-jonah, username: "jonah", firstName: "Jonah", lastName: "Hill", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-jonah", username: "jonah", firstName: "Jonah", lastName: "Hill", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-henry, username: "henry", firstName: "Henry", lastName: "Cavill", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-henry", username: "henry", firstName: "Henry", lastName: "Cavill", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-steve, username: "steve", firstName: "Steve", lastName: "Aoki", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-steve", username: "steve", firstName: "Steve", lastName: "Aoki", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-wiz, username: "wiz", firstName: "Wiz", lastName: "Khalifa", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-wiz", username: "wiz", firstName: "Wiz", lastName: "Khalifa", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-shaquille, username: "shaquille", firstName: "Shaquille", lastName: "O'Neal", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-shaquille", username: "shaquille", firstName: "Shaquille", lastName: "O'Neal", jjbelt: 0, llbelt: 0, classAttendeesId: "1230-mon"}) {
     id
   }
 }
 
 mutation MyMutation {
-  createAttendee(input: {id: "0700-mon-russell, username: "russell", firstName: "russell", lastName: "brand", jjbelt: 4, llbelt: , classAttendeesId: "1230-mon"}) {
+  createAttendee(input: {id: "0700-mon-russell", username: "russell", firstName: "russell", lastName: "brand", jjbelt: 4, llbelt: , classAttendeesId: "1230-mon"}) {
     id
   }
 }

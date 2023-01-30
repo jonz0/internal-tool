@@ -157,9 +157,6 @@ function AdminClass({ c, selects }) {
     dispatch(clearSelect());
     dispatch(addSelect(c.id));
     dispatch(setDetails(det));
-    // console.log("selects", selectState[0]);
-    // console.log("c.id", c.id);
-    // setSelected(c.id == selects[0]);
   }
 
   function handleHover() {

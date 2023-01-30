@@ -14,20 +14,13 @@ import * as mutations from "../graphql/mutations";
 import AdminRank from "./AdminRank";
 import { v4 as uuidv4 } from "uuid";
 import { ArrowsMoveVertical } from "tabler-icons-react";
+import _ from "lodash";
 
 export default function ManageUsers() {
   const [users, setUsers] = useState([]);
-  const [sort, setSort] = useState({
-    adults: [],
-    kids: [],
-    active: [],
-    inactive: [],
-  });
-  const [adults, setAdults] = useState([]);
-  const [active, setActive] = useState([]);
-  const [inactive, setInactive] = useState([]);
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
+  const [username, setUsername] = useState("");
   const [jj, setJj] = useState("");
   const [ll, setLl] = useState("");
   const [enroll, setEnroll] = useState("");
@@ -71,12 +64,6 @@ export default function ManageUsers() {
       });
 
       setUsers(tempUsers);
-      setSort({
-        kids: tempKids,
-        adults: tempAdults,
-        active: tempActive,
-        inactive: tempInactive,
-      });
     }
 
     getUsers();
@@ -127,8 +114,8 @@ export default function ManageUsers() {
   }
 
   function editUser(user) {
-    console.log("changing to user", user.firstName);
     setCurrent(user);
+    setUsername(user.username);
     setFirst(user.firstName);
     setLast(user.lastName);
     setJj(user.jjbelt);
@@ -197,6 +184,12 @@ export default function ManageUsers() {
                 <AdminRank
                   rank={index + 1}
                   user={c}
+                  img={
+                    "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
+                    c.username +
+                    "-profile-image.png?" +
+                    Date.now()
+                  }
                   key={uuidv4()}
                   editUser={editUser}
                 />
@@ -210,7 +203,15 @@ export default function ManageUsers() {
               <p className={styles.editClassHeader}>Edit User</p>
             </div>
             <div className={styles.avatarContainer}>
-              <Avatar size="xl" src="/user-placeholder.jpeg" />
+              <Avatar
+                size="xl"
+                src={
+                  "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
+                  username +
+                  "-profile-image.png?" +
+                  Date.now()
+                }
+              />
               <div className={styles.avatarRight}>
                 <p className={styles.subHeader}>{first + " " + last}</p>
                 <p className={styles.joined}>
@@ -302,6 +303,7 @@ export default function ManageUsers() {
                   onChange={(event) => {
                     setLl(event.target.value);
                   }}
+                  className={styles.input}
                 >
                   <option value="0">White</option>
                   <option value="1">Yellow</option>

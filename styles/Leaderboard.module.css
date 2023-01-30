@@ -29,15 +29,17 @@
 
 .subHeader {
   color: black;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 10px;
   font-size: 11pt;
+  font-family: "Georama", sans-serif;
 }
 
 .content {
   color: black;
   font-size: 11pt;
   height: 100%;
+  font-family: "Lato", sans-serif;
 }
 
 .boardContainer {

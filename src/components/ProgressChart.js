@@ -13,6 +13,8 @@ import { Bar } from "react-chartjs-2";
 import styles from "../../styles/Profile.module.css";
 import * as queries from "../graphql/queries";
 import UserPool from "../UserPool";
+import { defaults } from "chart.js";
+defaults.font.family = "Lato";
 
 ChartJS.register(
   CategoryScale,
@@ -44,7 +46,7 @@ function getLabels() {
   for (let i = 0; i < 12; i++) {
     current.setMonth(current.getMonth() + 1);
     labels.push(
-      current.toLocaleString("default", { month: "long" }) +
+      current.toLocaleString("default", { month: "short" }) +
         " " +
         current.getFullYear()
     );

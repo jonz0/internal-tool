@@ -67,7 +67,7 @@ export default function Leaderboard() {
             </div>
           </div>
           <div>
-            <p className={styles.header}>Monthly Titles</p>
+            <p className={styles.header}>Yearly Titles</p>
             <div className={styles.row}>
               <Card index={3} />
               <Card index={4} />

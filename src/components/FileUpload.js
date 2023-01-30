@@ -145,17 +145,17 @@ export default function FileUpload({
 
                     let imageName = userState.username + "-" + "profile-image";
 
+                    setPrecrop(null);
+                    setSliderValue(1);
+
                     ReactS3Client.uploadFile(
                       dataURItoBlob(canvas.toDataURL()),
                       imageName
                     )
-                      .then((data) => console.log(data))
+                      .then((data) => {
+                        window.location.reload();
+                      })
                       .catch((err) => console.error(err));
-
-                    setPrecrop(null);
-                    setSliderValue(1);
-
-                    window.location.reload();
                   }
                 }}
               >

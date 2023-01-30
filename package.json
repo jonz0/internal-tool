@@ -28,6 +28,7 @@
     "framer-motion": "^7.6.5",
     "graphql": "^15.8.0",
     "jquery": "^3.6.3",
+    "lodash": "^4.17.21",
     "next": "^13.0.0",
     "next-redux-wrapper": "^8.0.0",
     "node-fetch": "^3.3.0",
