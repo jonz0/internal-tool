@@ -31,9 +31,29 @@
   column-width: 230px;
   max-width: 1300px;
   width: 69vw;
+}
 
-  /* border-width: 1px;
-  border-color: red; */
+.noAttendees {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.noAttendeesText {
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 300px;
+  height: 60px;
+  border-width: 1px;
+  border-color: black;
+  background-color: rgb(245, 245, 245);
+  border-radius: 20px;
+  font-family: "Georama", sans-serif;
 }
 
 .detailsHeaders {
@@ -46,8 +66,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  /* border-width: 5px;
-  border-color: orange; */
 }
 
 .signupContainer {
@@ -100,17 +118,23 @@
   margin-top: 3px;
 }
 
-.header {
-  font-size: 18pt;
+.editClassHeader {
+  font-size: 12pt;
   font-weight: 600;
-  margin-bottom: 20px;
+  color: white;
+  font-family: "Manrope", sans-serif;
+}
+
+.header {
+  font-size: 17pt;
+  font-weight: 600;
+  font-family: "Lato", sans-serif;
+  margin-left: 30px;
 }
 
 .label {
   font-size: 10pt;
   font-weight: 600;
-  /* border-width: 1px;
-  border-color: blue; */
 }
 
 .fileUpload {
@@ -119,8 +143,8 @@
 
 .selectInput {
   width: 150px;
-  /* border-width: 1px;
-  border-color: red; */
+  margin-bottom: 8px;
+  margin-top: 3px;
 }
 
 .avatarContainer {
@@ -128,7 +152,13 @@
   flex-direction: row;
   gap: 20px;
   margin-bottom: 20px;
-  /* justify-content: center; */
+}
+
+.avatarRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -5px;
 }
 
 .subHeader {
@@ -189,10 +219,21 @@
   display: flex;
   flex-direction: row;
   gap: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+  height: 90%;
 }
 
 .manageUsersRight {
   max-width: 35%;
+  padding: 0 30px 0 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 0 0 15px 15px;
+}
+
+.manageUsersLeft {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 15px;
 }
 
 .sideBySide {
@@ -284,8 +325,6 @@
   text-align: center;
   align-items: center;
   justify-content: space-between;
-  /* border-width: 1px;
-  border-color: red; */
 }
 
 .ageHeader {
@@ -354,6 +393,21 @@
   background-color: red;
 }
 
+.editClassBar {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  height: 50px;
+  align-items: center;
+  text-align: center;
+  padding-left: 30px;
+  margin-bottom: 20px;
+  background-color: rgb(38, 73, 177);
+  border-radius: 15px 15px 0 0;
+  margin-left: -30px;
+  width: calc(100% + 60px);
+}
+
 .topRow {
   display: flex;
   flex-direction: row;
@@ -399,9 +453,18 @@
 }
 
 .list {
-  height: 90%;
-  overflow: auto;
-  border-radius: 0 0 15px 15px;
+  height: calc(100% - 50px);
+  overflow-y: auto;
+}
+
+.list::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+.list::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: grey;
 }
 
 .rankImage {
@@ -428,8 +491,7 @@
   border-width: 1px;
   border-color: lightgray;
   font-size: 11pt;
-  padding-left: 11px;
-  padding-right: 11px;
+  padding-left: 8px;
 }
 
 .inputGray {
@@ -439,8 +501,7 @@
   border-width: 1px;
   border-color: lightgray;
   font-size: 11pt;
-  padding-left: 11px;
-  padding-right: 11px;
+  padding-left: 8px;
   color: lightgray;
 }
 

@@ -48,17 +48,19 @@ function Attendees({ enrolled }) {
           </Button>
         )}
       </div>
-      <div className={styles.contain}>
+      {enrolled.id !== "" && detailsState.attendees.length > 0 ? (
         <div className={styles.attendees}>
-          {enrolled.id !== "" && detailsState.attendees.length > 0 ? (
-            enrolled.attendees.map((attendee) => (
-              <RemoveUser key={uuidv4()} attendee={attendee} />
-            ))
-          ) : (
-            <p>There are no attendees.</p>
-          )}
+          {enrolled.attendees.map((attendee) => (
+            <RemoveUser key={uuidv4()} attendee={attendee} />
+          ))}
         </div>
-      </div>
+      ) : (
+        <div className={styles.noAttendees}>
+          <div className={styles.noAttendeesText}>
+            <p>There are currently no attendees.</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

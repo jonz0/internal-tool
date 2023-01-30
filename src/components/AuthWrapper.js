@@ -21,7 +21,6 @@ export default function AuthWrapper(props) {
 
   useEffect(() => {
     const currentUser = UserPool.getCurrentUser();
-    console.log("current:", currentUser.getUsername());
     // console.log(currentUser.getUsername());
     if (currentUser != null) {
       currentUser.getSession(async function (err, session) {

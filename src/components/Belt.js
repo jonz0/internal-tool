@@ -15,10 +15,12 @@ export default function Belt({ index, classType }) {
 
   return (
     <div className={styles.beltCard}>
-      <p className={styles.classType}>{classes[classType]}</p>
-      <p className={styles.promoteDate}>Promoted July 2021</p>
       <div className={styles.beltImageCropper}>
         <img src={belts[index][0]} className={styles.beltImage} />
+      </div>
+      <div>
+        <p className={styles.classType}>{classes[classType]}</p>
+        <p className={styles.promoteDate}>Promoted July 2021</p>
       </div>
     </div>
   );

@@ -39,7 +39,7 @@ export default function FileUpload({
 
   const config = {
     bucketName: "amplify-calendarsignup-dev-20052-deployment",
-    // dirName: "photos" /* optional */,
+    dirName: "photos",
     region: "us-west-1",
     accessKeyId: "AKIAZYYIRAJWQ7YS5E6E",
     secretAccessKey: "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",
@@ -48,8 +48,6 @@ export default function FileUpload({
   const ReactS3Client = new S3(config);
 
   function handleUpload(files) {
-    console.log("doing this...");
-    console.log(files[0]);
     setPrecrop(files[0]);
   }
 
@@ -113,6 +111,7 @@ export default function FileUpload({
         <>
           <div className={styles.cropbg} />
           <div className={styles.cropImage}>
+            <p className={styles.cropTitle}>Crop and adjust your image:</p>
             <AvatarEditor
               image={precrop}
               width={250}
@@ -132,14 +131,16 @@ export default function FileUpload({
               width={300}
               step={0.05}
               onChange={(v) => setSliderValue(v)}
+              className={styles.slider}
             >
               <SliderTrack>
                 <SliderFilledTrack />
               </SliderTrack>
               <SliderThumb />
             </Slider>
-            <div>
+            <div className={styles.cropButtons}>
               <Button
+                colorScheme="teal"
                 onClick={() => {
                   if (editor) {
                     // This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
@@ -161,12 +162,15 @@ export default function FileUpload({
 
                     setPrecrop(null);
                     setSliderValue(1);
+
+                    window.location.reload();
                   }
                 }}
               >
                 Save
               </Button>
               <Button
+                colorScheme="red"
                 onClick={() => {
                   editor.current = null;
                   setPrecrop(null);

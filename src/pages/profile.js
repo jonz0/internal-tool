@@ -2,7 +2,6 @@ import { API } from "aws-amplify";
 import { useEffect, useState } from "react";
 import styles from "../../styles/Profile.module.css";
 import Belt from "../components/Belt";
-import Card from "../components/Card";
 import EditProfile from "../components/EditProfile";
 import Menu from "../components/Menu";
 import ProgressChart from "../components/ProgressChart";
@@ -33,20 +32,14 @@ export default function Profile() {
       <div className={styles.profileContainer}>
         <div className={styles.profileLeft}>
           <EditProfile />
-        </div>
-        <div className={styles.profileRight}>
-          <p className={styles.rightHeader}>Achievements</p>
           <div className={styles.statusCards}>
             <Belt index={belts[0]} classType={0} />
             <Belt index={belts[1]} classType={1} />
-            <div className={styles.tableDisplay}>
-              <Card index="0" />
-            </div>
           </div>
-          <p className={styles.rightHeader}>Monthly Progress</p>
-          <div className={styles.progressChart}>
-            <ProgressChart />
-          </div>
+        </div>
+        <div className={styles.profileRight}>
+          <p className={styles.header}>Monthly Progress</p>
+          <ProgressChart />
         </div>
       </div>
     </div>

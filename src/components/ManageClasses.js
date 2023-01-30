@@ -327,272 +327,280 @@ export default function ManageClasses() {
     setClasses(tempClasses);
   }
   return (
-    <div className={styles.manageUsersContainer}>
-      <div className={styles.manageUsersLeft}>
-        <div className={styles.topRow}>
-          <p className={styles.numberHeader} id={styles.top}>
-            <b>No.</b>
-          </p>
-          <p className={styles.dayHeader} id={styles.top}>
-            <b>Day</b>
-            <ArrowsMoveVertical
-              size={13}
-              strokeWidth={2}
-              color={"white"}
-              onClick={() => sortList("day", classes, false)}
-              className={styles.sortButton}
-            />
-          </p>
-          <p className={styles.typeHeader} id={styles.top}>
-            <b>Type</b>
-            <ArrowsMoveVertical
-              size={13}
-              strokeWidth={2}
-              color={"white"}
-              className={styles.sortButton}
-              onClick={() => sortList("type", classes, false)}
-            />
-          </p>
-          <p className={styles.startHeader} id={styles.top}>
-            <b>Time</b>
-            <ArrowsMoveVertical
-              size={13}
-              strokeWidth={2}
-              color={"white"}
-              className={styles.sortButton}
-              onClick={() => sortList("time", classes, false)}
-            />
-          </p>
-          <p className={styles.ageHeader} id={styles.top}>
-            <b>Age</b>
-            <ArrowsMoveVertical
-              size={13}
-              strokeWidth={2}
-              color={"white"}
-              className={styles.sortButton}
-              onClick={() => sortList("age", classes, false)}
-            />
-          </p>
-          <p className={styles.statusHeader} id={styles.top}>
-            <b>Status</b>
-            <ArrowsMoveVertical
-              size={13}
-              strokeWidth={2}
-              color={"white"}
-              className={styles.sortButton}
-              onClick={() => sortList("status", classes, false)}
-            />
-          </p>
-          <p className={styles.instructorHeader} id={styles.top}>
-            <b>Instructor</b>
-            <ArrowsMoveVertical
-              size={13}
-              strokeWidth={2}
-              color={"white"}
-              className={styles.sortButton}
-              onClick={() => sortList("instructor", classes, false)}
-            />
-          </p>
+    <div>
+      <p className={styles.header}>Manage Classes</p>
+      <div className={styles.manageUsersContainer}>
+        <div className={styles.manageUsersLeft}>
+          <div className={styles.topRow}>
+            <p className={styles.numberHeader} id={styles.top}>
+              <b>No.</b>
+            </p>
+            <p className={styles.dayHeader} id={styles.top}>
+              <b>Day</b>
+              <ArrowsMoveVertical
+                size={13}
+                strokeWidth={2}
+                color={"white"}
+                onClick={() => sortList("day", classes, false)}
+                className={styles.sortButton}
+              />
+            </p>
+            <p className={styles.typeHeader} id={styles.top}>
+              <b>Type</b>
+              <ArrowsMoveVertical
+                size={13}
+                strokeWidth={2}
+                color={"white"}
+                className={styles.sortButton}
+                onClick={() => sortList("type", classes, false)}
+              />
+            </p>
+            <p className={styles.startHeader} id={styles.top}>
+              <b>Time</b>
+              <ArrowsMoveVertical
+                size={13}
+                strokeWidth={2}
+                color={"white"}
+                className={styles.sortButton}
+                onClick={() => sortList("time", classes, false)}
+              />
+            </p>
+            <p className={styles.ageHeader} id={styles.top}>
+              <b>Age</b>
+              <ArrowsMoveVertical
+                size={13}
+                strokeWidth={2}
+                color={"white"}
+                className={styles.sortButton}
+                onClick={() => sortList("age", classes, false)}
+              />
+            </p>
+            <p className={styles.statusHeader} id={styles.top}>
+              <b>Status</b>
+              <ArrowsMoveVertical
+                size={13}
+                strokeWidth={2}
+                color={"white"}
+                className={styles.sortButton}
+                onClick={() => sortList("status", classes, false)}
+              />
+            </p>
+            <p className={styles.instructorHeader} id={styles.top}>
+              <b>Instructor</b>
+              <ArrowsMoveVertical
+                size={13}
+                strokeWidth={2}
+                color={"white"}
+                className={styles.sortButton}
+                onClick={() => sortList("instructor", classes, false)}
+              />
+            </p>
+          </div>
+          <div className={styles.list}>
+            {classes.map((c, index) => {
+              return (
+                <ClassRow
+                  rank={index + 1}
+                  cla={c}
+                  key={uuidv4()}
+                  editClass={editClass}
+                  selected={false}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div className={styles.list}>
-          {classes.map((c, index) => {
-            return (
-              <ClassRow
-                rank={index + 1}
-                cla={c}
-                key={uuidv4()}
-                editClass={editClass}
-                selected={false}
-              />
-            );
-          })}
-        </div>
-      </div>
-      {current != null && (
-        <div className={styles.manageUsersRight}>
-          <p className={styles.header}>Edit Class</p>
-          <div className={styles.sideBySide}>
-            <div className={styles.selectInput}>
-              <label className={styles.label}>Day</label>
-              <Select
-                placeholder="Select"
-                size="sm"
-                value={day[1]}
-                onChange={(event) => {
-                  setDay((prevState) => [prevState[0], event.target.value]);
-                }}
-                className={styles.input}
-              >
-                <option value="sunday">Sunday</option>
-                <option value="monday">Monday</option>
-                <option value="tuesday">Tuesday</option>
-                <option value="wednesday">Wednesday</option>
-                <option value="thursday">Thursday</option>
-                <option value="friday">Friday</option>
-                <option value="saturday">Saturday</option>
-              </Select>
+        {current != null && (
+          <div className={styles.manageUsersRight}>
+            <div className={styles.editClassBar}>
+              <p className={styles.editClassHeader}>Edit Class</p>
             </div>
-            <div className={styles.selectInput}>
-              <label className={styles.label}>Type</label>
-              <Select
-                placeholder="Select"
-                size="sm"
-                value={type[1]}
-                onChange={(event) => {
-                  setType((prevState) => [prevState[0], event.target.value]);
-                }}
-                style={{ marginTop: "3px" }}
-              >
-                <option value="jj">Jiu-Jitsu</option>
-                <option value="ll">Luta Livre</option>
-                <option value="kb">Kickboxing</option>
-              </Select>
-            </div>
-          </div>
-
-          <div className={styles.sideBySide}>
-            <div className={styles.selectInput}>
-              <label className={styles.label}>Age Group</label>
-              <Select
-                placeholder="Select"
-                size="sm"
-                value={age[1]}
-                onChange={(event) => {
-                  setAge((prevState) => [prevState[0], event.target.value]);
-                }}
-                className={styles.input}
-              >
-                <option value="adults">Adults</option>
-                <option value="kids">Kids</option>
-              </Select>
-            </div>
-            <div className={styles.selectInput}>
-              <label className={styles.label}>Availability</label>
-              <NumberInput
-                size="sm"
-                defaultValue={spots[1]}
-                min={10}
-                max={100}
-                value={spots[1]}
-                onChange={(valueString) => {
-                  valueString.replace(/\D/g, "");
-                  setSpots((prevState) => [prevState[0], valueString]);
-                }}
-                style={{ marginTop: "3px" }}
-              >
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-            </div>
-          </div>
-
-          <label className={styles.label}>Instructor</label>
-          <Select
-            placeholder="Select"
-            size="sm"
-            value={instructor[1]}
-            onChange={(event) => {
-              setInstructor((prevState) => [prevState[0], event.target.value]);
-            }}
-            className={styles.input}
-          >
-            <option value="Leo Serao">Leo</option>
-            <option value="Gustavo Andrade">Gustavo</option>
-            <option value="Eugene Robinson">Eugene</option>
-            <option value="Martin Galinski">Martin</option>
-            <option value="Paul Jarvis">Paul</option>
-          </Select>
-          <div className={styles.sideBySide}>
-            <div className={styles.selectInput}>
-              <label className={styles.label}>Start Time</label>
-              <input
-                type="time"
-                className={styles.input}
-                value={start[1]}
-                onChange={(event) => {
-                  setStart((prevState) => [prevState[0], event.target.value]);
-                }}
-                style={{ width: "100%" }}
-              />
-            </div>
-            <div className={styles.selectInput}>
-              <label className={styles.label}>End Time</label>
-              <input
-                type="time"
-                className={styles.input}
-                value={end[1]}
-                onChange={(event) => {
-                  setEnd((prevState) => [prevState[0], event.target.value]);
-                }}
-                style={{ width: "100%" }}
-              />
-            </div>
-          </div>
-          <label className={styles.label}>Message</label>
-          <Input
-            type="text"
-            value={message == null ? "" : message[1]}
-            onChange={(event) => {
-              setMessage((prevState) => [prevState[0], event.target.value]);
-            }}
-            className={styles.input}
-            color="black"
-            _placeholder={{ color: "inherit" }}
-            autoComplete="off"
-            size="sm"
-          />
-          <FormControl
-            display="flex"
-            alignItems="center"
-            className={styles.switchInput}
-          >
-            <FormLabel mb="0">Closed this week?</FormLabel>
-            <Switch
-              isChecked={!open[1]}
-              onChange={() => {
-                setOpen((prevState) => [prevState[0], !prevState[1]]);
-              }}
-            />
-          </FormControl>
-          {change && (
             <div className={styles.sideBySide}>
-              <Button
-                mt={4}
-                colorScheme="teal"
-                className={styles.submitButtons}
-                size="sm"
-                onClick={saveChanges}
-                style={{ width: "120px" }}
-              >
-                Save Changes
-              </Button>
-              <Button
-                mt={4}
-                colorScheme="red"
-                className={styles.submitButtons}
-                size="sm"
-                onClick={() => {
-                  reset(current);
-                }}
-                style={{ width: "70px" }}
-              >
-                Cancel
-              </Button>
+              <div className={styles.selectInput}>
+                <label className={styles.label}>Day</label>
+                <Select
+                  placeholder="Select"
+                  size="sm"
+                  value={day[1]}
+                  onChange={(event) => {
+                    setDay((prevState) => [prevState[0], event.target.value]);
+                  }}
+                  className={styles.input}
+                >
+                  <option value="sunday">Sunday</option>
+                  <option value="monday">Monday</option>
+                  <option value="tuesday">Tuesday</option>
+                  <option value="wednesday">Wednesday</option>
+                  <option value="thursday">Thursday</option>
+                  <option value="friday">Friday</option>
+                  <option value="saturday">Saturday</option>
+                </Select>
+              </div>
+              <div className={styles.selectInput}>
+                <label className={styles.label}>Type</label>
+                <Select
+                  placeholder="Select"
+                  size="sm"
+                  value={type[1]}
+                  onChange={(event) => {
+                    setType((prevState) => [prevState[0], event.target.value]);
+                  }}
+                  style={{ marginTop: "3px" }}
+                >
+                  <option value="jj">Jiu-Jitsu</option>
+                  <option value="ll">Luta Livre</option>
+                  <option value="kb">Kickboxing</option>
+                </Select>
+              </div>
             </div>
-          )}
-          <div className={styles.statusAlerts}>
-            {alert.length > 0 && (
-              <Alert status="error" height="40px" fontSize="sm">
-                <AlertIcon />
-                {alert}
-              </Alert>
+
+            <div className={styles.sideBySide}>
+              <div className={styles.selectInput}>
+                <label className={styles.label}>Age Group</label>
+                <Select
+                  placeholder="Select"
+                  size="sm"
+                  value={age[1]}
+                  onChange={(event) => {
+                    setAge((prevState) => [prevState[0], event.target.value]);
+                  }}
+                  className={styles.input}
+                >
+                  <option value="adults">Adults</option>
+                  <option value="kids">Kids</option>
+                </Select>
+              </div>
+              <div className={styles.selectInput}>
+                <label className={styles.label}>Availability</label>
+                <NumberInput
+                  size="sm"
+                  defaultValue={spots[1]}
+                  min={10}
+                  max={100}
+                  value={spots[1]}
+                  onChange={(valueString) => {
+                    valueString.replace(/\D/g, "");
+                    setSpots((prevState) => [prevState[0], valueString]);
+                  }}
+                  style={{ marginTop: "3px" }}
+                >
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </div>
+            </div>
+
+            <label className={styles.label}>Instructor</label>
+            <Select
+              placeholder="Select"
+              size="sm"
+              value={instructor[1]}
+              onChange={(event) => {
+                setInstructor((prevState) => [
+                  prevState[0],
+                  event.target.value,
+                ]);
+              }}
+              className={styles.input}
+            >
+              <option value="Leo Serao">Leo</option>
+              <option value="Gustavo Andrade">Gustavo</option>
+              <option value="Eugene Robinson">Eugene</option>
+              <option value="Martin Galinski">Martin</option>
+              <option value="Paul Jarvis">Paul</option>
+            </Select>
+            <div className={styles.sideBySide}>
+              <div className={styles.selectInput}>
+                <label className={styles.label}>Start Time</label>
+                <input
+                  type="time"
+                  className={styles.input}
+                  value={start[1]}
+                  onChange={(event) => {
+                    setStart((prevState) => [prevState[0], event.target.value]);
+                  }}
+                  style={{ width: "100%" }}
+                />
+              </div>
+              <div className={styles.selectInput}>
+                <label className={styles.label}>End Time</label>
+                <input
+                  type="time"
+                  className={styles.input}
+                  value={end[1]}
+                  onChange={(event) => {
+                    setEnd((prevState) => [prevState[0], event.target.value]);
+                  }}
+                  style={{ width: "100%" }}
+                />
+              </div>
+            </div>
+            <label className={styles.label}>Message</label>
+            <Input
+              type="text"
+              value={message == null ? "" : message[1]}
+              onChange={(event) => {
+                setMessage((prevState) => [prevState[0], event.target.value]);
+              }}
+              className={styles.input}
+              color="black"
+              _placeholder={{ color: "inherit" }}
+              autoComplete="off"
+              size="sm"
+            />
+            <FormControl
+              display="flex"
+              alignItems="center"
+              className={styles.switchInput}
+            >
+              <FormLabel mb="0">Closed this week?</FormLabel>
+              <Switch
+                isChecked={!open[1]}
+                onChange={() => {
+                  setOpen((prevState) => [prevState[0], !prevState[1]]);
+                }}
+              />
+            </FormControl>
+            {change && (
+              <div className={styles.sideBySide}>
+                <Button
+                  mt={4}
+                  colorScheme="teal"
+                  className={styles.submitButtons}
+                  size="sm"
+                  onClick={saveChanges}
+                  style={{ width: "120px" }}
+                >
+                  Save Changes
+                </Button>
+                <Button
+                  mt={4}
+                  colorScheme="red"
+                  className={styles.submitButtons}
+                  size="sm"
+                  onClick={() => {
+                    reset(current);
+                  }}
+                  style={{ width: "70px" }}
+                >
+                  Cancel
+                </Button>
+              </div>
             )}
+            <div className={styles.statusAlerts}>
+              {alert.length > 0 && (
+                <Alert status="error" height="40px" fontSize="sm">
+                  <AlertIcon />
+                  {alert}
+                </Alert>
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
