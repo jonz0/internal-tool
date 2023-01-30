@@ -24,7 +24,7 @@ export default function Rank({ rank, user }) {
   return (
     <div className={rank % 2 == 0 ? styles.rankRow : styles.rankRowDark}>
       <p className={styles.rankHeader}>{rank}</p>
-      <div className={styles.rankUser}>
+      <div className={styles.studentDiv}>
         <div className={styles.imageCropperSmall}>
           <img src="/user-placeholder.jpeg" className={styles.rankImage} />
         </div>
@@ -33,7 +33,7 @@ export default function Rank({ rank, user }) {
         </p>
       </div>
       <img src={getBelt()} className={styles.beltImg} />
-      <p className={styles.classCount}>
+      <p className={styles.classHeader}>
         {user.llhours + user.jjhours + user.kbhours}
       </p>
     </div>

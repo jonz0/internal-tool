@@ -5,18 +5,17 @@ import {
   FormLabel,
   InputGroup,
   Slider,
-  SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-  SliderMark,
+  SliderTrack,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
-import { useController } from "react-hook-form";
-import styles from "../../styles/Profile.module.css";
-import S3 from "react-aws-s3";
 import AvatarEditor from "react-avatar-editor";
+import S3 from "react-aws-s3";
+import { useController } from "react-hook-form";
+import { useSelector } from "react-redux";
+import styles from "../../styles/Profile.module.css";
 var AWS = require("aws-sdk");
-import { connect, useDispatch, useSelector } from "react-redux";
 
 export default function FileUpload({
   name,

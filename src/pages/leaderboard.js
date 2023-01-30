@@ -74,26 +74,26 @@ export default function Leaderboard() {
           <p className={styles.header} style={{ marginBottom: "20px" }}>
             Leaderboard
           </p>
-          <div className={styles.list}>
-            <div className={styles.rankRow}>
-              <p className={styles.rankHeader}>
+          <div className={styles.leaderboardBox}>
+            <div className={styles.topRow}>
+              <p className={styles.rankHeader} id={styles.top}>
                 <b>Rank</b>
               </p>
-              <div className={styles.rankUser}>
-                <p className={styles.studentHeader}>
-                  <b>Student</b>
-                </p>
-              </div>
-              <p className={styles.beltHeader}>
+              <p className={styles.studentHeader} id={styles.top}>
+                <b>Student</b>
+              </p>
+              <p className={styles.beltHeader} id={styles.top}>
                 <b>Belt</b>
               </p>
-              <p className={styles.classHeader}>
-                <b>Hours</b>
+              <p className={styles.classHeader} id={styles.top}>
+                <b>Classes</b>
               </p>
             </div>
-            {leaders.map((c, index) => {
-              return <Rank rank={index + 1} user={c} key={uuidv4()} />;
-            })}
+            <div className={styles.list}>
+              {leaders.map((c, index) => {
+                return <Rank rank={index + 1} user={c} key={uuidv4()} />;
+              })}
+            </div>
           </div>
         </div>
       </div>

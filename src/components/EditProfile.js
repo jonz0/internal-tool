@@ -251,7 +251,7 @@ export default function UserData() {
             <Avatar
               size="xl"
               src={
-                "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/" +
+                "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
                 userState.username +
                 "-profile-image.png?"
               }
