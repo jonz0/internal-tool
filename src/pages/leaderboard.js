@@ -50,50 +50,52 @@ export default function Leaderboard() {
 
       <div className={styles.boardContainer}>
         <div className={styles.titlesContainer}>
-          <p className={styles.header}>Ranking - Adults</p>
-          <div className={styles.row}>
-            <Card index="0" user={adults[0]} />
-            <Card index="1" user={adults[1]} />
-            <Card index="2" user={adults[2]} />
+          <div>
+            <p className={styles.header}>Ranking - Adults</p>
+            <div className={styles.row}>
+              <Card index="0" user={adults[0]} />
+              <Card index="1" user={adults[1]} />
+              <Card index="2" user={adults[2]} />
+            </div>
           </div>
-          <p className={styles.header}>Ranking - Kids</p>
-          <div className={styles.row}>
-            <Card index="0" user={kids[0]} />
-            <Card index="1" user={kids[1]} />
-            <Card index="2" user={kids[2]} />
+          <div>
+            <p className={styles.header}>Ranking - Kids</p>
+            <div className={styles.row}>
+              <Card index="0" user={kids[0]} />
+              <Card index="1" user={kids[1]} />
+              <Card index="2" user={kids[2]} />
+            </div>
           </div>
-          <p className={styles.header}>Monthly Titles</p>
-          <div className={styles.row}>
-            <Card index={3} />
-            <Card index={4} />
-            <Card index={5} />
+          <div>
+            <p className={styles.header}>Monthly Titles</p>
+            <div className={styles.row}>
+              <Card index={3} />
+              <Card index={4} />
+              <Card index={5} />
+            </div>
           </div>
         </div>
 
         <div className={styles.classLeaders}>
-          <p className={styles.header} style={{ marginBottom: "20px" }}>
-            Leaderboard
-          </p>
-          <div className={styles.leaderboardBox}>
-            <div className={styles.topRow}>
-              <p className={styles.rankHeader} id={styles.top}>
-                <b>Rank</b>
-              </p>
-              <p className={styles.studentHeader} id={styles.top}>
-                <b>Student</b>
-              </p>
-              <p className={styles.beltHeader} id={styles.top}>
-                <b>Belt</b>
-              </p>
-              <p className={styles.classHeader} id={styles.top}>
-                <b>Classes</b>
-              </p>
-            </div>
-            <div className={styles.list}>
-              {leaders.map((c, index) => {
-                return <Rank rank={index + 1} user={c} key={uuidv4()} />;
-              })}
-            </div>
+          <p className={styles.leaderboardHeader}>Leaderboard</p>
+          <div className={styles.topRow}>
+            <p className={styles.rankHeader} id={styles.top}>
+              <b>Rank</b>
+            </p>
+            <p className={styles.studentHeader} id={styles.top}>
+              <b>Student</b>
+            </p>
+            <p className={styles.beltHeader} id={styles.top}>
+              <b>Belt</b>
+            </p>
+            <p className={styles.classHeader} id={styles.top}>
+              <b>Classes</b>
+            </p>
+          </div>
+          <div className={styles.list}>
+            {leaders.map((c, index) => {
+              return <Rank rank={index + 1} user={c} key={uuidv4()} />;
+            })}
           </div>
         </div>
       </div>
