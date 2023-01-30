@@ -143,8 +143,7 @@ export default function FileUpload({
                     const canvasScaled =
                       editor.current.getImageScaledToCanvas();
 
-                    // let imageName = userState.username + "-" + "profile-image";
-                    let imageName = precrop.name;
+                    let imageName = userState.username + "-" + "profile-image";
 
                     ReactS3Client.uploadFile(
                       dataURItoBlob(canvas.toDataURL()),
