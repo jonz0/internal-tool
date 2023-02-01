@@ -57,12 +57,10 @@ export default function Card({ index, user }) {
               user != null
                 ? "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
                   user.username +
-                  "-profile-image.png?" +
-                  Date.now()
+                  "-profile-image.png"
                 : "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
                   userData.username +
-                  "-profile-image.png?" +
-                  Date.now()
+                  "-profile-image.png"
             }
             className={styles.userImage}
           />

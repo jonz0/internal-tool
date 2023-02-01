@@ -35,8 +35,7 @@ export default function Rank({ rank, user }) {
             src={
               "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
               user.username +
-              "-profile-image.png?" +
-              Date.now()
+              "-profile-image.png"
             }
             className={styles.rankImage}
           />

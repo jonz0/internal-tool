@@ -187,8 +187,7 @@ export default function ManageUsers() {
                   img={
                     "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
                     c.username +
-                    "-profile-image.png?" +
-                    Date.now()
+                    "-profile-image.png"
                   }
                   key={uuidv4()}
                   editUser={editUser}
@@ -208,8 +207,7 @@ export default function ManageUsers() {
                 src={
                   "https://amplify-calendarsignup-dev-20052-deployment.s3.us-west-1.amazonaws.com/photos/" +
                   username +
-                  "-profile-image.png?" +
-                  Date.now()
+                  "-profile-image.png"
                 }
               />
               <div className={styles.avatarRight}>
