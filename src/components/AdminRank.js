@@ -1,5 +1,6 @@
 import styles from "../../styles/Admin.module.css";
 import { Button } from "@chakra-ui/react";
+import Image from "next/image";
 
 export default function AdminRank({ rank, user, editUser, img }) {
   return (
@@ -12,7 +13,13 @@ export default function AdminRank({ rank, user, editUser, img }) {
       <p className={styles.rankHeader}>{rank}</p>
       <div className={styles.rankUser}>
         <div className={styles.imageCropperSmall}>
-          <img src={img} className={styles.rankImage} />
+          <Image
+            src={img}
+            className={styles.rankImage}
+            width={25}
+            height={25}
+            priority
+          />
         </div>
         <p style={{ marginLeft: "5px" }} className={styles.nameHeader}>
           {user.firstName + " " + user.lastName}

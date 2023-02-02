@@ -134,8 +134,6 @@ function Class({ c }, enrolled) {
   }
 
   function handleClick() {
-    console.log(c.id);
-    console.log(selectState);
     dispatch(setDetails(det));
     if (enrolled.includes(c.id)) {
       if (selected) {

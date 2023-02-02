@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Home() {
   const [numDays, setNumDays] = useState(0);
   const userState = useSelector((state) => state.user.value);
-  console.log("userstate for index", userState);
+
   async function getDays() {
     const days = await API.graphql({
       query: queries.listDays,
